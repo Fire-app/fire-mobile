@@ -1,0 +1,45 @@
+{
+    "extends": [
+      "airbnb",
+      "prettier",
+      "prettier/react"
+    ],
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
+      "prettier/prettier": [
+        "error",
+        {
+          "trailingComma": "es5",
+          "singleQuote": true,
+          "printWidth": 80
+        }
+      ],
+      "no-use-before-define": 0,
+      // For immer https://github.com/immerjs/immer/issues/189
+      "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["draft"] }],
+
+      "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+      "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+      "react/jsx-curly-brace-presence": ["error", { "props": "never", "children": "always" }],
+      "react/require-default-props": "warn"
+    },
+    "plugins": [
+      "prettier",
+      "react-hooks"
+    ],
+    "globals": {
+      "window": true,
+      "__DEV__": true,
+      // Consider setting `env: browser: true` instead
+      "fetch": false,
+      "FormData": false
+    }
+  }
