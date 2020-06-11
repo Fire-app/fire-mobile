@@ -18,9 +18,9 @@ const Onboarding = () => (
 
 const MainApp = () => (
   <Tabs.Navigator name="MainApp">
-    <Tabs.Screen name="Tab1" component={ExampleTab} />
-    <Tabs.Screen name="Tab2" component={ExampleTab} />
-    <Tabs.Screen name="Tab3" component={ExampleTab} />
+    <Tabs.Screen name="Alerts" component={ExampleTab} />
+    <Tabs.Screen name="Home" component={ExampleTab} />
+    <Tabs.Screen name="Resources" component={ExampleTab} />
   </Tabs.Navigator>
 );
 
