@@ -13,7 +13,7 @@ const EXAMPLE_IMAGES = [
 
 function EnvironmentCard({ location, description, image }) {
   return (
-    <View style={styles.envCard} top={100}>
+    <View style={styles.envCard}>
       <Text style={styles.titletext}>{location}</Text>
       <Text style={styles.subtext}>{description}</Text>
       <Image style={styles.image} source={image} />
