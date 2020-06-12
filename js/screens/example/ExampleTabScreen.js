@@ -11,28 +11,6 @@ const EXAMPLE_IMAGES = [
   require('../../../assets/street-fire-icon.jpg'),
 ];
 
-// const EXAMPLE_TEXT = [
-//   'This is Banksi',
-//   'He is a very good boy',
-//   'He is very seasonal',
-// ];
-
-// export default function ExampleTabScreen({ route: { name } }) {
-//   const index = name.charAt(name.length - 1) - 1; // Big hack to get an index, because we named these "Tab1", "Tab2", etc.
-//   // const image = EXAMPLE_IMAGES[index];
-//   // const text = EXAMPLE_TEXT[index];
-//   return (
-//     <View style={styles.container}>
-//       {/* <Image
-//         style={styles.image}
-//         source={image}
-//         accessibilityLabel="Banksy the dog" // This is a fallback of having the dynamic images! Less curated accessibility
-//       /> */}
-//       <Text style={styles.text}>{'hello'}</Text>
-//     </View>
-//   );
-// }
-
 function EnvironmentCard({ location, description, image }) {
   return (
     <View style={styles.envCard} top={100}>
@@ -109,7 +87,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     paddingVertical: 20,
     paddingRight: 150,
-    // width: 300,
     backgroundColor: 'rgba(22,22,22,0.2)',
     justifyContent: 'space-between',
     alignItems: 'center',
