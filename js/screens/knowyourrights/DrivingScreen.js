@@ -4,10 +4,10 @@ import { ScrollView } from 'react-native-gesture-handler';
 import styles from '../styles'
 import { RightsTitle, RightsWarning, ActionBullets, ActionItems, Tips } from './components'
 
-export default OutsideHome = () => {
+export default Driving = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <RightsTitle title="Agent Outside My Home" />
+            <RightsTitle title="Agent Pulls Me Over" />
             <RightsWarning title="Present your rights card and remain silent." subtitle="You have the right to remain silent!" />
             <ActionBullets
                 title="Tell the agent(s) if..."

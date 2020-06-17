@@ -50,25 +50,25 @@ export default ListOfCards = ({ navigation }) => {
                 location="Work"
                 description="For use at work"
                 image={EXAMPLE_IMAGES[1]}
-                onPress={() => Alert.alert('work clicked')}
+                onPress={() => navigation.navigate("Work")}
             />
             <EnvironmentCard
                 location="Public Transit"
                 description="For use on Public Transit"
                 image={EXAMPLE_IMAGES[2]}
-                onPress={() => Alert.alert('public transit clicked')}
+                onPress={() => navigation.navigate("Public Transport")}
             />
             <EnvironmentCard
                 location="Driving"
                 description="For use when pulled over"
                 image={EXAMPLE_IMAGES[3]}
-                onPress={() => Alert.alert('driving clicked')}
+                onPress={() => navigation.navigate("Driving")}
             />
             <EnvironmentCard
                 location="Street"
                 description="For use on the street"
                 image={EXAMPLE_IMAGES[4]}
-                onPress={() => Alert.alert('street clicked')}
+                onPress={() => navigation.navigate("On Street")}
             />
         </ScrollView>
     );
@@ -87,7 +87,6 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: 20,
-        fontFamily: 'Roboto',
         fontWeight: 'bold',
     },
     container: {

@@ -17,6 +17,10 @@ import Resources from '../screens/ResourcesScreen';
 import InsideHome from '../screens/knowyourrights/InsideHomeScreen';
 import OutsideHome from '../screens/knowyourrights/OutsideHomeScreen';
 import HomeArrest from '../screens/knowyourrights/HomeArrestScreen';
+import Driving from '../screens/knowyourrights/DrivingScreen';
+import PublicTransport from '../screens/knowyourrights/PublicTransportScreen';
+import Work from '../screens/knowyourrights/WorkScreen';
+import OnStreet from '../screens/knowyourrights/OnStreetScreen';
 
 const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -28,26 +32,15 @@ const Onboarding = () => (
 );
 
 const RightsTabNavigation = () => (
-  <Stack.Navigator
-    name="RightsTabNavigation"
-    initialRouteName="Know Your Rights"
-  >
-    <Stack.Screen
-      name="Know Your Rights Tab"
-      component={KnowYourRights}
-    />
-    <Stack.Screen
-      name="Inside Home"
-      component={InsideHome}
-    />
-    <Stack.Screen
-      name="Outside Home"
-      component={OutsideHome}
-    />
-    <Stack.Screen
-      name="Home Arrest"
-      component={HomeArrest}
-    />
+  <Stack.Navigator name="RightsTabNavigation" initialRouteName="Know Your Rights" >
+    <Stack.Screen name="Know Your Rights Tab" component={KnowYourRights} />
+    <Stack.Screen name="Inside Home" component={InsideHome} />
+    <Stack.Screen name="Outside Home" component={OutsideHome} />
+    <Stack.Screen name="Home Arrest" component={HomeArrest} />
+    <Stack.Screen name="Driving" component={Driving} />
+    <Stack.Screen name="Public Transport" component={PublicTransport} />
+    <Stack.Screen name="On Street" component={OnStreet} />
+    <Stack.Screen name="Work" component={Work} />
   </Stack.Navigator>
 );
 

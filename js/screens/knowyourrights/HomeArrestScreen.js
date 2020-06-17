@@ -1,33 +1,36 @@
-/* eslint-disable global-require */
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native-gesture-handler';
 
-import Constants from 'expo-constants';
-
-const EXAMPLE_IMAGES = [
-    // require('../../assets/fire-house-icon.png'),
-];
+import styles from '../styles'
+import { RightsTitle, RightsWarning, ActionBullets, ActionItems, Tips } from './components'
 
 export default HomeArrest = () => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Home Arrest</Text>
-        </View>
+        <ScrollView contentContainerStyle={styles.container}>
+            <RightsTitle title="Agent Arrests Me" />
+            <RightsWarning title="Present your rights card and remain silent." subtitle="You have the right to remain silent!" />
+            <ActionBullets
+                title="Tell the agent(s) if..."
+                bullets={[
+                    "children or elderly are present",
+                    "you are on medication, nursing, or pregnant",
+                    "you need to arrange care for someone",
+                ]}
+            />
+            <ActionItems
+                title="If the agent(s) don't have a signed warrant..."
+                items={[
+                    "Say, 'I deny consent to search my home'",
+                ]}
+            />
+            <Tips
+                tips={[
+                    "Don't resist arrest.",
+                    "Present your rights card.",
+                    "Don't sign anything.",
+                    "Don't lie.",
+                ]}
+            />
+        </ScrollView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: Constants.statusBarHeight,
-    },
-    text: {
-        fontSize: 30,
-        textAlign: 'center',
-    },
-});
