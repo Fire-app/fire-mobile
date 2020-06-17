@@ -4,8 +4,6 @@ import { View, Image, StyleSheet, Text, Alert, TouchableOpacity } from 'react-na
 import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native-gesture-handler';
 
-import Constants from 'expo-constants';
-
 const EXAMPLE_IMAGES = [
     require('../../assets/fire-house-icon.png'),
     require('../../assets/fire-work-icon.png'),
@@ -89,6 +87,7 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: 20,
+        fontFamily: 'Roboto',
         fontWeight: 'bold',
     },
     container: {
@@ -96,7 +95,6 @@ const styles = StyleSheet.create({
         padding: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: Constants.statusBarHeight,
     },
     envCard: {
         flexDirection: 'row',
