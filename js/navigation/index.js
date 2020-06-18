@@ -1,11 +1,10 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import ExampleTab from '../screens/example/ExampleTabScreen';
 import ExampleOnboarding from '../screens/example/ExampleOnboardingScreen';
@@ -32,8 +31,28 @@ const Onboarding = () => (
 );
 
 const RightsTabNavigation = () => (
-  <Stack.Navigator name="RightsTabNavigation" initialRouteName="Know Your Rights" >
-    <Stack.Screen name="Know Your Rights Tab" component={KnowYourRights} />
+  <Stack.Navigator
+    name="RightsTabNavigation"
+    initialRouteName="Know Your Rights"
+    screenOptions={{
+      headerRight: () => (
+        <Button
+          onPress={() => alert('Emergency button pressed')}
+          buttonStyle={styles.emergencyButton}
+          title="Emergency"
+          color="#2F4555"
+        />
+      ),
+      headerLeft: () => (
+        <Button
+          onPress={() => alert('Settings pressed')}
+          title="Settings"
+          // color='#fff'
+        />
+      ),
+    }}
+  >
+    <Stack.Screen name="Know Your Rights" component={KnowYourRights} />
     <Stack.Screen name="Inside Home" component={InsideHome} />
     <Stack.Screen name="Outside Home" component={OutsideHome} />
     <Stack.Screen name="Home Arrest" component={HomeArrest} />
@@ -62,7 +81,11 @@ const MainApp = () => (
       options={{
         tabBarLabel: 'Alerts',
         tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons name="bell-outline" color={color} size={size} />
+          <MaterialCommunityIcons
+            name="bell-outline"
+            color={color}
+            size={size}
+          />
         ),
       }}
     />
@@ -72,7 +95,11 @@ const MainApp = () => (
       options={{
         tabBarLabel: 'Know Your Rights',
         tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons name="shield-half-full" color={color} size={size} />
+          <MaterialCommunityIcons
+            name="shield-half-full"
+            color={color}
+            size={size}
+          />
         ),
       }}
     />
@@ -82,7 +109,11 @@ const MainApp = () => (
       options={{
         tabBarLabel: 'Resources',
         tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons name="file-document-outline" color={color} size={size} />
+          <MaterialCommunityIcons
+            name="file-document-outline"
+            color={color}
+            size={size}
+          />
         ),
       }}
     />
@@ -104,14 +135,20 @@ const styles = StyleSheet.create({
   tabBar: {
     height: 85,
     paddingVertical: 15,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   tabLabel: {
     fontSize: 14,
   },
   tabs: {
     height: 55,
-  }
+  },
+  emergencyButton: {
+    backgroundColor: '#373643',
+    borderColor: 'red',
+    borderWidth: 5,
+    borderRadius: 15,
+  },
 });
 
 export default Navigation;
