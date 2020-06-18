@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import ExampleOnboarding from '../screens/example/ExampleOnboardingScreen';
 
@@ -13,7 +14,7 @@ import KnowYourRights from '../screens/KnowYourRightsScreen';
 import Resources from '../screens/ResourcesScreen';
 
 import InsideHome from '../screens/knowYourRights/InsideHomeScreen';
-import OutsideHome from '../screens/kngit owYourRights/OutsideHomeScreen';
+import OutsideHome from '../screens/knowYourRights/OutsideHomeScreen';
 import HomeArrest from '../screens/knowYourRights/HomeArrestScreen';
 import Driving from '../screens/knowYourRights/DrivingScreen';
 import PublicTransport from '../screens/knowYourRights/PublicTransportScreen';
@@ -29,7 +30,7 @@ const Onboarding = () => (
   </Stack.Navigator>
 );
 
-const RightsTabNavigation = () => (
+const RightsStackNavigation = () => (
   <Stack.Navigator
     name="RightsTabNavigation"
     initialRouteName="Know Your Rights"
