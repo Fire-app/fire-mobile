@@ -31,27 +31,7 @@ const Onboarding = () => (
 );
 
 const RightsStackNavigation = () => (
-  <Stack.Navigator
-    name="RightsTabNavigation"
-    initialRouteName="Know Your Rights"
-    screenOptions={{
-      headerRight: () => (
-        <Button
-          onPress={() => alert('Emergency button pressed')}
-          buttonStyle={styles.emergencyButton}
-          title="Emergency"
-          color="#2F4555"
-        />
-      ),
-      headerLeft: () => (
-        <Button
-          onPress={() => alert('Settings pressed')}
-          title="Settings"
-          // color='#fff'
-        />
-      ),
-    }}
-  >
+  <Stack.Navigator name="RightsTabNavigation" initialRouteName="Know Your Rights">
     <Stack.Screen name="Know Your Rights" component={KnowYourRights} />
     <Stack.Screen name="Inside Home" component={InsideHome} />
     <Stack.Screen name="Outside Home" component={OutsideHome} />
@@ -145,13 +125,7 @@ const styles = StyleSheet.create({
   },
   tabs: {
     height: 55,
-  },
-  emergencyButton: {
-    backgroundColor: '#373643',
-    borderColor: 'red',
-    borderWidth: 5,
-    borderRadius: 15,
-  },
+  }
 });
 
 export default Navigation;
