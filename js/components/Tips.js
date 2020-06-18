@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 export default function Tips({ tips }) {
   const tipsList = tips.map((tip) => {
     return (
-      <View style={styles.unorderedActionContainer} key={tip}>
+      <View style={styles.bulletPointTextContainer} key={tip}>
         <MaterialCommunityIcons name="circle" style={styles.bulletPoint} />
         <Text style={styles.text}>{tip}</Text>
       </View>
@@ -14,7 +14,7 @@ export default function Tips({ tips }) {
   });
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.titleText}>{'Tips'}</Text>
       <View style={styles.actionContainer}>{tipsList}</View>
     </View>
@@ -26,10 +26,19 @@ Tips.propTypes = {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    alignSelf: 'flex-start',
+    padding: 10,
+  },
   titleText: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
     paddingTop: 25,
+    paddingBottom: 10,
+  },
+  bulletPointTextContainer: {
+    flexDirection: 'row',
+    width: '95%',
   },
   text: {
     fontSize: 18,

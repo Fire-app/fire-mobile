@@ -28,6 +28,13 @@ const styles = StyleSheet.create({
   container: {
     alignSelf: 'flex-start',
     elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.0,
     backgroundColor: 'white',
     padding: 20,
     marginVertical: 10,
