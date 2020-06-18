@@ -41,5 +41,12 @@
       // Consider setting `env: browser: true` instead
       "fetch": false,
       "FormData": false
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": ["js"]
+        }
+      }
     }
-  }
+}
