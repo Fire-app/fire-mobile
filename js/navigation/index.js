@@ -30,7 +30,7 @@ const Onboarding = () => (
   </Stack.Navigator>
 );
 
-const RightsTabNavigation = () => (
+const RightsStackNavigation = () => (
   <Stack.Navigator
     name="RightsTabNavigation"
     initialRouteName="Know Your Rights"
@@ -75,7 +75,7 @@ const MainApp = () => (
     />
     <Tabs.Screen
       name="Home"
-      component={RightsTabNavigation}
+      component={RightsStackNavigation}
       options={{
         tabBarLabel: 'Know Your Rights',
         // eslint-disable-next-line react/prop-types
