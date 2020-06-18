@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -13,13 +13,13 @@ import Alerts from '../screens/AlertsScreen';
 import KnowYourRights from '../screens/KnowYourRightsScreen';
 import Resources from '../screens/ResourcesScreen';
 
-import InsideHome from '../screens/knowYourRights/InsideHomeScreen';
-import OutsideHome from '../screens/knowYourRights/OutsideHomeScreen';
-import HomeArrest from '../screens/knowYourRights/HomeArrestScreen';
-import Driving from '../screens/knowYourRights/DrivingScreen';
-import PublicTransport from '../screens/knowYourRights/PublicTransportScreen';
-import Work from '../screens/knowYourRights/WorkScreen';
-import OnStreet from '../screens/knowYourRights/OnStreetScreen';
+import InsideHome from '../screens/knowyourrights/InsideHomeScreen';
+import OutsideHome from '../screens/knowyourrights/OutsideHomeScreen';
+import HomeArrest from '../screens/knowyourrights/HomeArrestScreen';
+import Driving from '../screens/knowyourrights/DrivingScreen';
+import PublicTransport from '../screens/knowyourrights/PublicTransportScreen';
+import Work from '../screens/knowyourrights/WorkScreen';
+import OnStreet from '../screens/knowyourrights/OnStreetScreen';
 
 const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -31,7 +31,10 @@ const Onboarding = () => (
 );
 
 const RightsStackNavigation = () => (
-  <Stack.Navigator name="RightsTabNavigation" initialRouteName="Know Your Rights">
+  <Stack.Navigator
+    name="RightsTabNavigation"
+    initialRouteName="Know Your Rights"
+  >
     <Stack.Screen name="Know Your Rights" component={KnowYourRights} />
     <Stack.Screen name="Inside Home" component={InsideHome} />
     <Stack.Screen name="Outside Home" component={OutsideHome} />
@@ -125,7 +128,7 @@ const styles = StyleSheet.create({
   },
   tabs: {
     height: 55,
-  }
+  },
 });
 
 export default Navigation;
