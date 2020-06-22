@@ -3,6 +3,9 @@ import React from 'react';
 import { View, Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native-gesture-handler';
+import routes from '../navigation/routes';
+
+const caseRoutes = routes.rights.cases;
 
 const IMAGES = [
   require('../../assets/fire-house-icon.png'),
@@ -31,44 +34,44 @@ export default function ListOfCards({ navigation }) {
         location="Home"
         description="Agent Inside"
         image={IMAGES[0]}
-        onPress={() => navigation.navigate('Inside Home')}
+        onPress={() => navigation.navigate(caseRoutes.insideHome)}
       />
       <EnvironmentCard
         location="Home"
         description="Agent Outside"
         image={IMAGES[0]}
-        onPress={() => navigation.navigate('Outside Home')}
+        onPress={() => navigation.navigate(caseRoutes.outsideHome)}
       />
       <EnvironmentCard
         location="Home"
         description="Agent Arrests Me"
         image={IMAGES[0]}
-        onPress={() => navigation.navigate('Home Arrest')}
+        onPress={() => navigation.navigate(caseRoutes.homeArrest)}
       />
 
       <EnvironmentCard
         location="Work"
         description="For use at work"
         image={IMAGES[1]}
-        onPress={() => navigation.navigate('Work')}
+        onPress={() => navigation.navigate(caseRoutes.work)}
       />
       <EnvironmentCard
         location="Public Transit"
         description="For use on Public Transit"
         image={IMAGES[2]}
-        onPress={() => navigation.navigate('Public Transport')}
+        onPress={() => navigation.navigate(caseRoutes.publicTransport)}
       />
       <EnvironmentCard
         location="Driving"
         description="For use when pulled over"
         image={IMAGES[3]}
-        onPress={() => navigation.navigate('Driving')}
+        onPress={() => navigation.navigate(caseRoutes.driving)}
       />
       <EnvironmentCard
         location="Street"
         description="For use on the street"
         image={IMAGES[4]}
-        onPress={() => navigation.navigate('On Street')}
+        onPress={() => navigation.navigate(caseRoutes.street)}
       />
     </ScrollView>
   );
