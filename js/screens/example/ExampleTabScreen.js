@@ -2,6 +2,7 @@
 import React from 'react';
 import { View, Image, StyleSheet, Text, Alert } from 'react-native';
 import PropTypes from 'prop-types';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const EXAMPLE_IMAGES = [
   require('../../../assets/fire-house-icon.png'),
@@ -14,8 +15,10 @@ const EXAMPLE_IMAGES = [
 function EnvironmentCard({ location, description, image }) {
   return (
     <View style={styles.envCard}>
-      <Text style={styles.titletext}>{location}</Text>
-      <Text style={styles.subtext}>{description}</Text>
+      <View style={{ flexDirection: 'column' }}>
+        <Text style={styles.titletext}>{location}</Text>
+        <Text style={styles.subtext}>{description}</Text>
+      </View>
       <Image style={styles.image} source={image} />
     </View>
   );
@@ -23,7 +26,7 @@ function EnvironmentCard({ location, description, image }) {
 
 export default function ListOfCards() {
   return (
-    <>
+    <ScrollView>
       <EnvironmentCard
         location="Home"
         description="For use in your home"
@@ -54,21 +57,20 @@ export default function ListOfCards() {
         image={EXAMPLE_IMAGES[4]}
         onPress={() => Alert.alert('street clicked')}
       />
-    </>
+    </ScrollView>
   );
 }
 
 EnvironmentCard.propTypes = {
   location: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: Image.propTypes.source.isRequired,
 };
 
 const styles = StyleSheet.create({
   image: {
     height: 75,
     width: 75,
-    marginLeft: 400,
   },
   titleText: {
     fontSize: 20,
@@ -81,14 +83,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   envCard: {
-    flexDirection: 'column',
-    height: 75,
-    marginTop: 10,
-    marginHorizontal: 15,
-    paddingVertical: 20,
-    paddingRight: 150,
+    flexDirection: 'row',
+    padding: 20,
+    margin: 20,
     backgroundColor: 'rgba(22,22,22,0.2)',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    alignContent: 'space-between',
   },
 });
