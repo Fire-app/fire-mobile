@@ -6,5 +6,13 @@
     "location": "location",
     "language": "Hol",
     "notifications": "notification",
-    "choose_language": "Hol wutlh:"
+    "choose_language": "Hol wutlh:",
+    "header_rights": "Knouwu Ur Ruwughts",
+    "header_inside_home": "INs0ide ",
+    "header_outside_home": "oUtsIDe",
+    "header_home_arrest": "h0me",
+    "header_driving": "dr!ve",
+    "header_public_transport": "tRansIt",
+    "header_street": "StrEet",
+    "header_work": "w0rK"
 }

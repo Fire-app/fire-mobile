@@ -1,5 +1,5 @@
 {
-    "tab_rights": "Know Your Rights",
+    "tab_rights": "Rights",
     "tab_alerts": "Alerts",
     "tab_resources": "Resources",
     "settings": "Settings",
@@ -8,5 +8,13 @@
     "notifications": "Notifications",
     "choose_language": "Choose Your Language:",
     "english": "English",
-    "klingon": "Klingon"
+    "klingon": "Klingon",
+    "header_rights": "Know Your Rights",
+    "header_inside_home": "Agent Inside Home",
+    "header_outside_home": "Agent Outside Home",
+    "header_home_arrest": "Agent Arrests Me",
+    "header_driving": "While driving",
+    "header_public_transport": "On Public Transit",
+    "header_street": "On the Street",
+    "header_work": "At Work"
 }
