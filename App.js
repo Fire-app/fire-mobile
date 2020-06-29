@@ -10,6 +10,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { PersistGate } from 'redux-persist/integration/react';
 import createPersistedStore from './js/store/createPersistedStore';
 import Navigation from './js/navigation';
+import './js/config'; // Load our build time configs
 
 const RobotoRegular = require('./assets/fonts/RobotoRegular.ttf');
 
