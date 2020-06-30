@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import Alerts from '../screens/AlertsScreen';
 import Resources from '../screens/ResourcesScreen';
+import Emergency from '../screens/EmergencyScreen';
 
 import routes from './routes';
 import RightsStack from './RightsStack';
@@ -56,6 +57,32 @@ const MainTabs = () => {
               color={color}
               size={size}
             />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name={routes.main.emergency}
+        component={Emergency}
+        options={{
+          // eslint-disable-next-line react/prop-types
+          tabBarLabel: '',
+          tabBarIcon: ({ color, size }) => (
+            <View
+              style={{
+                backgroundColor: '#373643',
+                padding: 7,
+                borderRadius: 90,
+              }}
+            >
+              <MaterialCommunityIcons
+                name="alert-outline"
+                color="white"
+                size={size}
+                style={{
+                  top: -2,
+                }}
+              />
+            </View>
           ),
         }}
       />
