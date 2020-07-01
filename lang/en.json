@@ -1,5 +1,5 @@
 {
-    "tab_rights": "Know Your Rights",
+    "tab_rights": "Rights",
     "tab_alerts": "Alerts",
     "tab_resources": "Resources",
     "settings": "Settings",
@@ -22,6 +22,13 @@
     "For_use_at_work": "For use at work",
     "For_use_on_Public_Transit": "For use on Public Transit",
     "For_use_when_pulled_over": "For use when pulled over",
-    "For_use_on_the_street": "For use on the street"
-
+    "For_use_on_the_street": "For use on the street",
+    "header_rights": "Know Your Rights",
+    "header_inside_home": "Agent Inside Home",
+    "header_outside_home": "Agent Outside Home",
+    "header_home_arrest": "Agent Arrests Me",
+    "header_driving": "While driving",
+    "header_public_transport": "On Public Transit",
+    "header_street": "On the Street",
+    "header_work": "At Work"
 }

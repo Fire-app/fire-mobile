@@ -20,5 +20,13 @@
     "For_use_at_work": "lo' malja'Daq",
     "For_use_on_Public_Transit": "lo' public transit",
     "For_use_when_pulled_over": "lo' HeghDI' DaqaSmoH",
-    "For_use_on_the_street": "lo' street"
+    "For_use_on_the_street": "lo' street",
+    "header_rights": "Knouwu Ur Ruwughts",
+    "header_inside_home": "INs0ide ",
+    "header_outside_home": "oUtsIDe",
+    "header_home_arrest": "h0me",
+    "header_driving": "dr!ve",
+    "header_public_transport": "tRansIt",
+    "header_street": "StrEet",
+    "header_work": "w0rK"
 }
