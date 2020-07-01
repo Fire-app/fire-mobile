@@ -1,41 +1,54 @@
 /* eslint-disable global-require */
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { Button } from 'react-native-elements';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 import routes from '../../navigation/routes';
+import { textStyles, colors } from '../../styles';
 
 const onBoardingRoutes = routes.onboarding;
 
-// eslint-disable-next-line react/prop-types
 const WelcomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{'WelcomeScreen'}</Text>
-      <Button
-        title="Next"
-        // eslint-disable-next-line react/prop-types
+      <Text style={textStyles.h1}>{'WelcomeScreen'}</Text>
+      <TouchableOpacity
+        style={styles.nextButton}
         onPress={() => navigation.navigate(onBoardingRoutes.language)}
-      />
+      >
+        <Text style={styles.text}>{'Next'}</Text>
+      </TouchableOpacity>
     </View>
   );
+};
+
+WelcomeScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default WelcomeScreen;
 
 const styles = StyleSheet.create({
-  image: {
-    height: 250,
-    width: 250,
-    resizeMode: 'cover',
-  },
   text: {
-    fontSize: 20,
-    marginVertical: 20,
+    fontFamily: 'Roboto',
+    fontSize: 16,
+    lineHeight: 19,
+    color: 'white',
+    fontWeight: '500',
   },
   container: {
     flex: 1,
     padding: 20,
     alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  nextButton: {
+    height: '10%',
+    width: '90%',
+    backgroundColor: colors.primary,
+    alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 3,
   },
 });

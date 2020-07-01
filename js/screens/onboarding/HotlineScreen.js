@@ -1,23 +1,30 @@
 /* eslint-disable global-require */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, StyleSheet, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import routes from '../../navigation/routes';
 
 const onBoardingRoutes = routes.onboarding;
 
-// eslint-disable-next-line react/prop-types
 const HotlineScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{'HotlineScreen'}</Text>
+      <Button title="Back" onPress={() => navigation.pop()} />
       <Button
         title="Next"
-        // eslint-disable-next-line react/prop-types
         onPress={() => navigation.navigate(onBoardingRoutes.attorney)}
       />
     </View>
   );
+};
+
+HotlineScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    pop: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default HotlineScreen;

@@ -1,14 +1,22 @@
 /* eslint-disable global-require */
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import PropTypes from 'prop-types';
+import { View, StyleSheet, Text, Button } from 'react-native';
 
-// eslint-disable-next-line react/prop-types
-const CompleteScreen = () => {
+const CompleteScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <Button title="Back" onPress={() => navigation.pop()} />
       <Text style={styles.text}>{'CompleteScreen'}</Text>
     </View>
   );
+};
+
+CompleteScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    pop: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default CompleteScreen;
