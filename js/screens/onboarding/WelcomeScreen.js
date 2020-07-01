@@ -31,7 +31,7 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'Roboto',
+    // fontFamily: 'Roboto',
     fontSize: 16,
     lineHeight: 19,
     color: 'white',

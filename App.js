@@ -3,6 +3,17 @@ import { StatusBar } from 'react-native';
 import { SplashScreen as SplashScreenUtils } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
+import {
+  useFonts,
+  // eslint-disable-next-line camelcase
+  Roboto_400Regular,
+  // eslint-disable-next-line camelcase
+  Roboto_500Medium,
+  // eslint-disable-next-line camelcase
+  Roboto_700Bold,
+  // eslint-disable-next-line camelcase
+  Roboto_900Black,
+} from '@expo-google-fonts/roboto';
 
 import { Provider as ReduxProvider } from 'react-redux';
 import { FontAwesome } from '@expo/vector-icons';
@@ -12,8 +23,6 @@ import createPersistedStore from './js/store/createPersistedStore';
 import Navigation from './js/navigation';
 import './js/config'; // Load our build time configs
 
-const RobotoRegular = require('./assets/fonts/RobotoRegular.ttf');
-
 // Preload all images
 const example1 = require('./assets/example/banksy1.png');
 const example2 = require('./assets/example/banksy2.png');
@@ -21,11 +30,7 @@ const example3 = require('./assets/example/banksy3.png');
 
 // Assets we need to load before app starts:
 const iconFonts = [FontAwesome.font];
-const textFonts = [
-  {
-    RobotoRegular,
-  },
-];
+const textFonts = [];
 const localImages = [example1, example2, example3]; // Ensure that you add all images here! Otherwise they flicker on load!
 
 function cacheLocalImages() {
@@ -59,7 +64,14 @@ const App = () => {
     });
   }, []);
 
-  if (!assetsLoaded) {
+  const googleFontsLoaded = useFonts({
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold,
+    Roboto_900Black,
+  });
+
+  if (!assetsLoaded || !googleFontsLoaded) {
     return null;
   }
 
