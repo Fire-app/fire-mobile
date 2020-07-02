@@ -5,14 +5,12 @@ import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import {
   useFonts,
-  // eslint-disable-next-line camelcase
+  /* eslint-disable camelcase */
   Roboto_400Regular,
-  // eslint-disable-next-line camelcase
   Roboto_500Medium,
-  // eslint-disable-next-line camelcase
   Roboto_700Bold,
-  // eslint-disable-next-line camelcase
   Roboto_900Black,
+  /* eslint-enable camelcase */
 } from '@expo-google-fonts/roboto';
 
 import { Provider as ReduxProvider } from 'react-redux';
@@ -54,6 +52,13 @@ const App = () => {
   const [assetsLoaded, setAssetsLoaded] = useState(false);
   // If application has an online step, that can occur here too, as a redux action.
 
+  const googleFontsLoaded = useFonts({
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold,
+    Roboto_900Black,
+  });
+
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
     StatusBar.setBarStyle('light-content');
@@ -63,13 +68,6 @@ const App = () => {
       SplashScreenUtils.hide();
     });
   }, []);
-
-  const googleFontsLoaded = useFonts({
-    Roboto_400Regular,
-    Roboto_500Medium,
-    Roboto_700Bold,
-    Roboto_900Black,
-  });
 
   if (!assetsLoaded || !googleFontsLoaded) {
     return null;
