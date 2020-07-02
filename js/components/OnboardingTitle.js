@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import PropTypes from 'prop-types';
-import { textStyles } from '../styles';
+import { textStyles, colors } from '../styles';
 
 const OnboardingTitle = ({ title, subtitle }) => {
   return (
     <View style={styles.container}>
       <Text style={[textStyles.h1, styles.title]}>{title}</Text>
-      <Text style={textStyles.body1}>{subtitle}</Text>
+      <Text style={[textStyles.body1, styles.subtitle]}>{subtitle}</Text>
     </View>
   );
 };
@@ -28,5 +28,9 @@ const styles = StyleSheet.create({
   },
   title: {
     paddingBottom: 5,
+    color: colors.text,
+  },
+  subtitle: {
+    color: colors.subtext,
   },
 });

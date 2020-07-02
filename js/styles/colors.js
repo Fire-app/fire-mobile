@@ -3,6 +3,10 @@ const colors = {
   primaryLighter: '#fff1e9',
   text: '#373643',
   secondaryOption1: '#2f4555',
+  buttonDisabled: '#9a9a9a',
+  tabDisabled: '#a1a1a1',
+  subtext: '#6c6c6c',
+  emergencyButton: '#333333',
 };
 
 export default colors;

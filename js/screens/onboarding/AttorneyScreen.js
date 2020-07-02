@@ -10,6 +10,7 @@ import { onboardingStyles } from '../../styles';
 
 import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingButtons from '../../components/OnboardingButtons';
+import UseDefault from '../../components/UseDefault';
 
 const onBoardingRoutes = routes.onboarding;
 
@@ -22,11 +23,18 @@ const AttorneyScreen = ({ navigation }) => {
           title={t('select_attorney')}
           subtitle={t('select_attorney_subtitle')}
         />
+        <View>
+          <UseDefault
+            title={t('use_default')}
+            subtitle={t('attorney_default')}
+          />
+        </View>
       </View>
       <View style={onboardingStyles.buttonContainer}>
         <OnboardingButtons
           onBackPress={() => navigation.pop()}
           onNextPress={() => navigation.navigate(onBoardingRoutes.complete)}
+          nextIsDisabled={false}
         />
       </View>
     </View>

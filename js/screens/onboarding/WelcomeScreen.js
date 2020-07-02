@@ -15,7 +15,7 @@ const WelcomeScreen = ({ navigation }) => {
       </View>
       <TouchableOpacity
         style={styles.nextButton}
-        onPress={() => navigation.navigate(onBoardingRoutes.language)}
+        onPress={() => navigation.navigate(onBoardingRoutes.hotline)}
       >
         <Text style={styles.buttonText}>{'Continue'}</Text>
       </TouchableOpacity>

@@ -5,7 +5,6 @@ const textStyles = StyleSheet.create({
     fontFamily: 'Roboto_900Black',
     fontSize: 24,
     fontStyle: 'normal',
-    lineHeight: 33.8,
     letterSpacing: 0,
   },
   h2: {
@@ -24,7 +23,6 @@ const textStyles = StyleSheet.create({
     fontFamily: 'Roboto_400Regular',
     fontSize: 16,
     fontStyle: 'normal',
-    lineHeight: 24,
     letterSpacing: 0,
   },
   h4: {
@@ -37,14 +35,12 @@ const textStyles = StyleSheet.create({
     fontFamily: 'Roboto_400Regular',
     fontSize: 14,
     fontStyle: 'normal',
-    lineHeight: 17.5,
     letterSpacing: 0,
   },
   overline: {
     fontFamily: 'Roboto_400Regular',
     fontSize: 10,
     fontStyle: 'normal',
-    lineHeight: 14.1,
     letterSpacing: 0.5,
   },
 });

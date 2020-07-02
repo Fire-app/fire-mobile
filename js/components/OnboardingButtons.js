@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { colors } from '../styles';
 
-const OnboardingButtons = ({ onBackPress, onNextPress }) => {
+const OnboardingButtons = ({ onBackPress, onNextPress, nextIsDisabled }) => {
   const { t } = useTranslation();
   return (
     <View style={styles.container}>
@@ -13,7 +13,14 @@ const OnboardingButtons = ({ onBackPress, onNextPress }) => {
           {t('back')}
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.nextButton} onPress={onNextPress}>
+      <TouchableOpacity
+        style={[
+          styles.nextButton,
+          nextIsDisabled ? styles.nextButtonDisabled : null,
+        ]}
+        onPress={onNextPress}
+        disabled={nextIsDisabled}
+      >
         <Text style={[styles.buttonText, styles.nextButtonText]}>
           {t('next')}
         </Text>
@@ -25,6 +32,7 @@ const OnboardingButtons = ({ onBackPress, onNextPress }) => {
 OnboardingButtons.propTypes = {
   onBackPress: PropTypes.func.isRequired,
   onNextPress: PropTypes.func.isRequired,
+  nextIsDisabled: PropTypes.bool.isRequired,
 };
 
 export default OnboardingButtons;
@@ -52,6 +60,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 3,
+  },
+  nextButtonDisabled: {
+    backgroundColor: colors.buttonDisabled,
   },
   buttonText: {
     fontSize: 16,
