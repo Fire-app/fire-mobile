@@ -16,7 +16,7 @@ function EnvironmentCard({ location, description, image }) {
   return (
     <View style={styles.envCard}>
       <View style={{ flexDirection: 'column' }}>
-        <Text style={styles.titletext}>{location}</Text>
+        <Text style={styles.titleText}>{location}</Text>
         <Text style={styles.subtext}>{description}</Text>
       </View>
       <Image style={styles.image} source={image} />
@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 20,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: 'RobotoRegular',
   },
   container: {
     flex: 1,

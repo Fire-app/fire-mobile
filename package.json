@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/roboto": "^0.1.0",
     "@expo/vector-icons": "^10.2.0",
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "0.1.6",
@@ -18,7 +19,7 @@
     "expo": "^37.0.12",
     "expo-asset": "^8.1.5",
     "expo-constants": "^9.0.0",
-    "expo-font": "^8.1.1",
+    "expo-font": "~8.1.0",
     "expo-localization": "~8.1.0",
     "i18n-js": "^3.7.0",
     "i18next": "^19.5.1",

@@ -5,7 +5,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import { useTranslation } from 'react-i18next';
 
-import Alerts from '../screens/AlertsScreen';
 import Resources from '../screens/ResourcesScreen';
 import Emergency from '../screens/EmergencyScreen';
 
@@ -30,21 +29,6 @@ const MainTabs = () => {
         tabStyle: styles.tabs,
       }}
     >
-      <Tabs.Screen
-        name={routes.main.alerts}
-        component={Alerts}
-        options={{
-          tabBarLabel: t('tab_alerts'),
-          // eslint-disable-next-line react/prop-types
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="bell-outline"
-              color={color}
-              size={size}
-            />
-          ),
-        }}
-      />
       <Tabs.Screen
         name={routes.main.rights}
         component={RightsStack}
