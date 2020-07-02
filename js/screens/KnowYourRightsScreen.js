@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primaryLighter,
   },
   learnYourRightsStyle: {
-    margin: '7%',
+    marginLeft: 20,
+    marginTop: 20,
   },
 });
