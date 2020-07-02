@@ -1,13 +1,15 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Text, Button } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
+import { textStyles, colors, onboardingStyles } from '../../styles';
 
-const CompleteScreen = ({ navigation }) => {
+const CompleteScreen = () => {
   return (
-    <View style={styles.container}>
-      <Button title="Back" onPress={() => navigation.pop()} />
-      <Text style={styles.text}>{'CompleteScreen'}</Text>
+    <View style={onboardingStyles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={textStyles.h1}>{'Set up has completed!'}</Text>
+      </View>
     </View>
   );
 };
@@ -22,19 +24,21 @@ CompleteScreen.propTypes = {
 export default CompleteScreen;
 
 const styles = StyleSheet.create({
-  image: {
-    height: 250,
-    width: 250,
-    resizeMode: 'cover',
-  },
-  text: {
-    fontSize: 20,
-    marginVertical: 20,
-  },
-  container: {
+  titleContainer: {
+    justifyContent: 'center',
     flex: 1,
-    padding: 20,
+  },
+  nextButton: {
+    height: '8%',
+    width: '95%',
+    backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 3,
+  },
+  buttonText: {
+    fontFamily: 'Roboto_500Medium',
+    fontSize: 16,
+    color: 'white',
   },
 });

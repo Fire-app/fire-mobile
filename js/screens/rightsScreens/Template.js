@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import PropTypes from 'prop-types';
-import styles from '../../styles/styles';
+import styles from '../../styles/rightsStyles';
 import RightsTitle from '../../components/RightsTitle';
 import RightsWarning from '../../components/RightsWarning';
 import ActionBullets from '../../components/ActionBullets';

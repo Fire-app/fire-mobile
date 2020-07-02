@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+const rightsStyles = StyleSheet.create({
   container: {
     flexGrow: 1,
     padding: 20,
@@ -9,4 +9,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export default rightsStyles;

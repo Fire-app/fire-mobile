@@ -54,6 +54,13 @@ const App = () => {
   const [assetsLoaded, setAssetsLoaded] = useState(false);
   // If application has an online step, that can occur here too, as a redux action.
 
+  const googleFontsLoaded = useFonts({
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold,
+    Roboto_900Black,
+  });
+
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
     StatusBar.setBarStyle('light-content');
@@ -63,13 +70,6 @@ const App = () => {
       SplashScreenUtils.hide();
     });
   }, []);
-
-  const googleFontsLoaded = useFonts({
-    Roboto_400Regular,
-    Roboto_500Medium,
-    Roboto_700Bold,
-    Roboto_900Black,
-  });
 
   if (!assetsLoaded || !googleFontsLoaded) {
     return null;
