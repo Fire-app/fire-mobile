@@ -1,6 +1,7 @@
 // This file holds all action types.
 
 export const COMPLETE_ONBOARDING = 'COMPLETE_ONBOARDING';
+export const RESET_ONBOARDING = 'RESET_ONBOARDING';
 
 // Examples:
 export const TOGGLE_BAR = 'TOGGLE_BAR';

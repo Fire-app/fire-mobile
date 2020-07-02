@@ -5,14 +5,12 @@ import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import {
   useFonts,
-  // eslint-disable-next-line camelcase
+  /* eslint-disable camelcase */
   Roboto_400Regular,
-  // eslint-disable-next-line camelcase
   Roboto_500Medium,
-  // eslint-disable-next-line camelcase
   Roboto_700Bold,
-  // eslint-disable-next-line camelcase
   Roboto_900Black,
+  /* eslint-enable camelcase */
 } from '@expo-google-fonts/roboto';
 
 import { Provider as ReduxProvider } from 'react-redux';

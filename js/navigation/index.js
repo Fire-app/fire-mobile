@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
-// import MainTabs from './MainTabs';
+import MainTabs from './MainTabs';
 import OnboardingStack from './OnboardingStack';
 
 const Navigation = () => {
@@ -10,7 +10,7 @@ const Navigation = () => {
   );
   return (
     <NavigationContainer>
-      {onboardingComplete ? <OnboardingStack /> : <OnboardingStack />}
+      {onboardingComplete ? <MainTabs /> : <OnboardingStack />}
     </NavigationContainer>
   );
 };

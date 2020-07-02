@@ -1,15 +1,24 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux';
+import completeOnboardingAction from '../../store/actions/completeOnboarding';
+
 import { textStyles, colors, onboardingStyles } from '../../styles';
 
 const CompleteScreen = () => {
+  const dispatch = useDispatch();
+  const exitOnboarding = () => dispatch(completeOnboardingAction());
+
   return (
     <View style={onboardingStyles.container}>
       <View style={styles.titleContainer}>
         <Text style={textStyles.h1}>{'Set up has completed!'}</Text>
       </View>
+      <TouchableOpacity style={styles.nextButton} onPress={exitOnboarding}>
+        <Text style={styles.buttonText}>{'Complete Onboarding'}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
