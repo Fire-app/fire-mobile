@@ -93,12 +93,16 @@ const SettingsOverviewScreen = ({ navigation }) => {
         }}
       />
       <Divider />
-      <Row
-        iconName="backup-restore"
-        title="Restart Set-Up"
-        onPress={resetOnboarding}
-      />
-      <Divider />
+      {__DEV__ && (
+        <>
+          <Row
+            iconName="backup-restore"
+            title="Restart Set-Up"
+            onPress={resetOnboarding}
+          />
+          <Divider />
+        </>
+      )}
     </View>
   );
 };

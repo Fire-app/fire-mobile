@@ -14,6 +14,8 @@
     "attorney_default": "No attorney? No problem! The CHIRLA hotline provides legal support.",
     "select_attorney": "Set your attorney contact",
     "select_attorney_subtitle": "The attorney contact will be used for your rights card.",
+    "attorney_name": "Attorney Name",
+    "phone_number": "Phone Number",
     "notifications": "Notifications",
     "choose_language": "Choose Your Language:",
     "english": "English",

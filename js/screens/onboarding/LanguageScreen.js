@@ -27,6 +27,7 @@ const LanguageScreen = ({ navigation }) => {
         <OnboardingButtons
           onBackPress={() => navigation.pop()}
           onNextPress={() => navigation.navigate(onBoardingRoutes.hotline)}
+          nextIsDisabled={false}
         />
       </View>
     </View>
