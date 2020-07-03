@@ -84,25 +84,31 @@ const MainTabs = () => {
             <View
               style={{
                 position: 'absolute',
-                bottom: 0, // space from bottombar
+                bottom: 2, // space from bottombar
                 height: 64,
                 width: 64,
                 borderRadius: 100,
                 backgroundColor: '#FFF4ED',
                 justifyContent: 'center',
                 alignItems: 'center',
+                shadowColor: 'black',
+                shadowOffset: {
+                  width: 3,
+                  height: 3,
+                },
+                shadowOpacity: 0.3,
+                shadowRadius: 7,
               }}
             >
               <MaterialCommunityIcons
                 name="alert-outline"
-                color="white"
+                color="#FC5333"
                 size={40}
                 style={{
                   top: 8,
                   left: 10,
                   width: 60,
                   height: 60,
-                  color: '#FC5333',
                   alignContent: 'center',
                 }}
               />
