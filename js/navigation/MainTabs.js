@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -7,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 import Resources from '../screens/ResourcesScreen';
 import Emergency from '../screens/EmergencyScreen';
+import EmergencyBtn from '../components/EmergencyBtn';
 
 import routes from './routes';
 import RightsStack from './RightsStack';
@@ -45,32 +47,6 @@ const MainTabs = () => {
         }}
       />
       <Tabs.Screen
-        name={routes.main.emergency}
-        component={Emergency}
-        options={{
-          // eslint-disable-next-line react/prop-types
-          tabBarLabel: '',
-          tabBarIcon: ({ color, size }) => (
-            <View
-              style={{
-                backgroundColor: '#373643',
-                padding: 7,
-                borderRadius: 90,
-              }}
-            >
-              <MaterialCommunityIcons
-                name="alert-outline"
-                color="white"
-                size={size}
-                style={{
-                  top: -2,
-                }}
-              />
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
         name={routes.main.resources}
         component={Resources}
         options={{
@@ -94,6 +70,43 @@ const MainTabs = () => {
           // eslint-disable-next-line react/prop-types
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="circle" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name={routes.main.emergency}
+        component={Emergency}
+        options={{
+          // eslint-disable-next-line react/prop-types
+          tabBarLabel: '',
+          // eslint-disable-next-line no-unused-vars
+          tabBarIcon: ({ color, size }) => (
+            <View
+              style={{
+                position: 'absolute',
+                bottom: 0, // space from bottombar
+                height: 64,
+                width: 64,
+                borderRadius: 100,
+                backgroundColor: '#FFF4ED',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <MaterialCommunityIcons
+                name="alert-outline"
+                color="white"
+                size={40}
+                style={{
+                  top: 8,
+                  left: 10,
+                  width: 60,
+                  height: 60,
+                  color: '#FC5333',
+                  alignContent: 'center',
+                }}
+              />
+            </View>
           ),
         }}
       />
