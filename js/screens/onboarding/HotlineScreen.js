@@ -52,6 +52,7 @@ const HotlineScreen = ({ navigation }) => {
           title={t('select_hotline')}
           subtitle={t('select_hotline_subtitle')}
         />
+        <View style={{ height: 20 }} />
         <DropDownPicker
           items={HOTLINE_OPTIONS}
           placeholder="Select a hotline"
