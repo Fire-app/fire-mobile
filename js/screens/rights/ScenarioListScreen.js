@@ -52,7 +52,7 @@ export default function ScenarioListScreen({ navigation }) {
           {t('scenarios_subtitle')}
         </Text>
       }
-      renderItem={({ item: { title, description, route, icon } }) => (
+      renderItem={({ item: { title, route, icon } }) => (
         <NavCard
           title={t(title)}
           onPress={() => navigation.navigate(route)}
