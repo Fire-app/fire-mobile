@@ -8,3 +8,4 @@ export const TOGGLE_BAR = 'TOGGLE_BAR';
 export const SET_FOO = 'SET_FOO';
 
 export const SET_ATTORNEY_NAME = 'SET_ATTORNEY_NAME';
+export const SET_ATTORNEY_NUMBER = 'SET_ATTORNEY_NUMBER';

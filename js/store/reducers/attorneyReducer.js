@@ -1,4 +1,4 @@
-import { SET_ATTORNEY_NAME } from '../actions/constants';
+import { SET_ATTORNEY_NAME, SET_ATTORNEY_NUMBER } from '../actions/constants';
 
 const initialState = {
   name: null,
@@ -11,6 +11,11 @@ const attorneyReducer = (state = initialState, action) => {
       return {
         ...state,
         name: action.payload.name,
+      };
+    case SET_ATTORNEY_NUMBER:
+      return {
+        ...state,
+        phoneNumber: action.payload.phoneNumber,
       };
     default:
       return state;

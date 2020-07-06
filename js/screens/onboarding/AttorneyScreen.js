@@ -1,17 +1,18 @@
 /* eslint-disable global-require */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
   View,
-  KeyboardAvoidingView,
-  ScrollView,
   StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Text,
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useTranslation } from 'react-i18next';
 
 import routes from '../../navigation/routes';
-import { onboardingStyles } from '../../styles';
 
 import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingButtons from '../../components/OnboardingButtons';
@@ -22,32 +23,47 @@ const onBoardingRoutes = routes.onboarding;
 
 const AttorneyScreen = ({ navigation }) => {
   const { t } = useTranslation();
+
+  const [isEnabled, setIsEnabled] = useState(true);
+  const [text, setText] = useState('enabled');
+
+  const toggleSwitch = () => {
+    setIsEnabled((prevState) => !prevState);
+    if (isEnabled) {
+      setText('disabled');
+    } else {
+      setText('enabled');
+    }
+  };
+
   return (
-    <KeyboardAvoidingView
-      // behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
-      style={[styles.container, { justifyContent: 'flex-end' }]}
-    >
-      <ScrollView contentContainerStyle={{ flex: 1 }}>
-        <View style={onboardingStyles.contentContainer}>
-          {/* <OnboardingTitle
-            title={t('select_attorney')}
-            subtitle={t('select_attorney_subtitle')}
-          />
-          <UseDefault
-            title={t('use_default')}
-            subtitle={t('attorney_default')}
-          /> */}
-          <AttorneyForm />
+    <KeyboardAwareScrollView contentContainerStyle={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.inner}>
+          <View style={styles.contentContainer}>
+            <OnboardingTitle
+              title={t('select_attorney')}
+              subtitle={t('select_attorney_subtitle')}
+            />
+            <UseDefault
+              title={t('use_default')}
+              subtitle={t('attorney_default_subtitle')}
+              value={isEnabled}
+              onToggle={toggleSwitch}
+            />
+            <Text>{text}</Text>
+            <AttorneyForm isDefault={isEnabled} />
+          </View>
+          <View style={styles.buttonContainer}>
+            <OnboardingButtons
+              onBackPress={() => navigation.pop()}
+              onNextPress={() => navigation.navigate(onBoardingRoutes.complete)}
+              nextIsDisabled={false}
+            />
+          </View>
         </View>
-        <View style={onboardingStyles.buttonContainer}>
-          <OnboardingButtons
-            onBackPress={() => navigation.pop()}
-            onNextPress={() => navigation.navigate(onBoardingRoutes.complete)}
-            nextIsDisabled={false}
-          />
-        </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
+    </KeyboardAwareScrollView>
   );
 };
 
@@ -64,8 +80,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     backgroundColor: 'white',
+  },
+  inner: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  contentContainer: {
+    width: '100%',
+    justifyContent: 'flex-start',
+  },
+  buttonContainer: {
+    height: '8%',
+    width: '95%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

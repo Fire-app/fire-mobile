@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, Text, Switch } from 'react-native';
 import PropTypes from 'prop-types';
 import { textStyles, colors } from '../styles';
 
-const UseDefault = ({ title, subtitle }) => {
-  const [isEnabled, setIsEnabled] = useState(true);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-
+const UseDefault = ({ title, subtitle, value, onToggle }) => {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
@@ -18,8 +15,8 @@ const UseDefault = ({ title, subtitle }) => {
           trackColor={{ false: colors.buttonDisabled, true: colors.primary }}
           thumbColor="white"
           ios_backgroundColor={colors.buttonDisabled}
-          onValueChange={toggleSwitch}
-          value={isEnabled}
+          onValueChange={onToggle}
+          value={value}
         />
       </View>
     </View>
@@ -29,6 +26,8 @@ const UseDefault = ({ title, subtitle }) => {
 UseDefault.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  value: PropTypes.bool.isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
 
 export default UseDefault;
