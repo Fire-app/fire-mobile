@@ -16,7 +16,6 @@ import routes from '../../navigation/routes';
 
 import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingButtons from '../../components/OnboardingButtons';
-import UseDefault from '../../components/UseDefault';
 import AttorneyForm from '../../components/AttorneyForm';
 
 const onBoardingRoutes = routes.onboarding;
@@ -45,13 +44,6 @@ const AttorneyScreen = ({ navigation }) => {
               title={t('select_attorney')}
               subtitle={t('select_attorney_subtitle')}
             />
-            <UseDefault
-              title={t('use_default')}
-              subtitle={t('attorney_default_subtitle')}
-              value={isEnabled}
-              onToggle={toggleSwitch}
-            />
-            <Text>{text}</Text>
             <AttorneyForm isDefault={isEnabled} />
           </View>
           <View style={styles.buttonContainer}>
