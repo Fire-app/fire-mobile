@@ -1,42 +1,52 @@
-import React from 'react';
-import { View, StyleSheet, Text, TextInput } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { textStyles, colors } from '../styles';
+import setAttorneyNameAction from '../store/actions/settings/setAttorneyNameAction';
+import setAttorneyNumberAction from '../store/actions/settings/setAttorneyNumberAction';
+import AttorneyModal from './AttorneyModal';
 
-const AttorneyForm = ({
-  name,
-  setName,
-  phoneNumber,
-  setPhoneNumber,
-  isLocked,
-}) => {
+const AttorneyForm = ({ shouldFormSubmit }) => {
   const { t } = useTranslation();
 
-  const updateName = (text) => {
-    if (isLocked) {
-      setName('CHIRLA');
-    } else {
-      setName(text);
-    }
-  };
+  const [name, setName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const dispatch = useDispatch();
 
-  const updateNumber = (text) => {
-    if (isLocked) {
-      setPhoneNumber('1234567890');
-    } else {
-      setPhoneNumber(text);
+  useEffect(() => {
+    if (shouldFormSubmit) {
+      dispatch(setAttorneyNameAction(name));
+      dispatch(setAttorneyNumberAction(phoneNumber));
     }
+  });
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const onModalSubmit = () => {
+    setName('CHIRLA Hotline');
+    setPhoneNumber('1234567890');
+    setModalVisible(false);
   };
 
   return (
     <View style={styles.container}>
-      <Text>{isLocked ? 'true' : 'false'}</Text>
+      <AttorneyModal
+        isVisible={modalVisible}
+        setIsVisible={setModalVisible}
+        onSubmit={onModalSubmit}
+      />
       <View style={styles.inputContainer}>
         <Text style={[textStyles.h3, styles.title]}>{t('attorney_name')}</Text>
         <TextInput
           style={[textStyles.h2, styles.textInput]}
-          onChangeText={updateName}
+          onChangeText={(text) => setName(text)}
           defaultValue={name}
         />
       </View>
@@ -45,20 +55,24 @@ const AttorneyForm = ({
         <TextInput
           style={[textStyles.h2, styles.textInput]}
           keyboardType="numeric"
-          onChangeText={updateNumber}
+          onChangeText={(text) => setPhoneNumber(text)}
           defaultValue={phoneNumber}
         />
       </View>
+      <TouchableOpacity
+        style={styles.noAttorney}
+        onPress={() => setModalVisible(true)}
+      >
+        <Text style={[textStyles.h3, { color: colors.primary }]}>
+          {t('no_attorney')}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 AttorneyForm.propTypes = {
-  name: PropTypes.string.isRequired,
-  setName: PropTypes.func.isRequired,
-  phoneNumber: PropTypes.string.isRequired,
-  setPhoneNumber: PropTypes.func.isRequired,
-  isLocked: PropTypes.bool.isRequired,
+  shouldFormSubmit: PropTypes.bool.isRequired,
 };
 
 export default AttorneyForm;
@@ -82,5 +96,9 @@ const styles = StyleSheet.create({
   title: {
     paddingBottom: 5,
     color: colors.text,
+  },
+  noAttorney: {
+    alignItems: 'flex-end',
+    paddingRight: 10,
   },
 });

@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, Text, Modal, Alert } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { textStyles, colors } from '../styles';
+import { textStyles } from '../styles';
 import OnboardingButtons from './OnboardingButtons';
 
 const AttorneyModal = ({ isVisible, setIsVisible, onSubmit }) => {
