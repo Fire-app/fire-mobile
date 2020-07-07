@@ -1,5 +1,5 @@
 const migrations = {
-  // Example migrationo:
+  // Example migration:
   0: (prevState) => prevState,
 };
 

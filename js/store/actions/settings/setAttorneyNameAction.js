@@ -1,8 +1,8 @@
 import { SET_ATTORNEY_NAME } from '../constants';
 
-const setAttorneyNameAction = (name) => ({
+const setAttorneyNameAction = (attorneyName) => ({
   type: SET_ATTORNEY_NAME,
-  payload: { name },
+  payload: { attorneyName },
 });
 
 export default setAttorneyNameAction;

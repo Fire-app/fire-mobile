@@ -27,8 +27,10 @@ const CompleteScreen = ({ navigation }) => {
       </View>
       <View style={onboardingStyles.buttonContainer}>
         <OnboardingButtons
-          onBackPress={() => navigation.pop()}
-          onNextPress={exitOnboarding}
+          onRightPress={() => navigation.pop()}
+          onLeftPress={exitOnboarding}
+          rightTitle={t('back')}
+          leftTitle={t('continue')}
           nextIsDisabled={false}
         />
       </View>

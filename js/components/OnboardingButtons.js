@@ -1,16 +1,20 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import { colors } from '../styles';
 
-const OnboardingButtons = ({ onBackPress, onNextPress, nextIsDisabled }) => {
-  const { t } = useTranslation();
+const OnboardingButtons = ({
+  onRightPress,
+  onLeftPress,
+  rightTitle,
+  leftTitle,
+  nextIsDisabled,
+}) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
+      <TouchableOpacity style={styles.backButton} onPress={onRightPress}>
         <Text style={[styles.buttonText, styles.backButtonText]}>
-          {t('back')}
+          {rightTitle}
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -18,11 +22,11 @@ const OnboardingButtons = ({ onBackPress, onNextPress, nextIsDisabled }) => {
           styles.nextButton,
           nextIsDisabled ? styles.nextButtonDisabled : null,
         ]}
-        onPress={onNextPress}
+        onPress={onLeftPress}
         disabled={nextIsDisabled}
       >
         <Text style={[styles.buttonText, styles.nextButtonText]}>
-          {t('next')}
+          {leftTitle}
         </Text>
       </TouchableOpacity>
     </View>
@@ -30,9 +34,11 @@ const OnboardingButtons = ({ onBackPress, onNextPress, nextIsDisabled }) => {
 };
 
 OnboardingButtons.propTypes = {
-  onBackPress: PropTypes.func.isRequired,
-  onNextPress: PropTypes.func.isRequired,
+  onRightPress: PropTypes.func.isRequired,
+  onLeftPress: PropTypes.func.isRequired,
   nextIsDisabled: PropTypes.bool.isRequired,
+  rightTitle: PropTypes.string.isRequired,
+  leftTitle: PropTypes.string.isRequired,
 };
 
 export default OnboardingButtons;

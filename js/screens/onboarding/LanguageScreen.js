@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import routes from '../../navigation/routes';
 import { onboardingStyles } from '../../styles';
 
@@ -12,6 +13,7 @@ import OnboardingButtons from '../../components/OnboardingButtons';
 const onBoardingRoutes = routes.onboarding;
 
 const LanguageScreen = ({ navigation }) => {
+  const { t } = useTranslation();
   return (
     <View style={onboardingStyles.container}>
       <View style={onboardingStyles.contentContainer}>
@@ -25,8 +27,10 @@ const LanguageScreen = ({ navigation }) => {
       </View>
       <View style={onboardingStyles.buttonContainer}>
         <OnboardingButtons
-          onBackPress={() => navigation.pop()}
-          onNextPress={() => navigation.navigate(onBoardingRoutes.hotline)}
+          onRightPress={() => navigation.pop()}
+          onLeftPress={() => navigation.navigate(onBoardingRoutes.hotline)}
+          rightTitle={t('back')}
+          leftTitle={t('next')}
           nextIsDisabled={false}
         />
       </View>

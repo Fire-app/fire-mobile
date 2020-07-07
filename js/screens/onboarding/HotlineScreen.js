@@ -1,9 +1,12 @@
 /* eslint-disable global-require */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { useTranslation } from 'react-i18next';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
+
 import routes from '../../navigation/routes';
 import { onboardingStyles, colors, textStyles } from '../../styles';
 
@@ -11,6 +14,62 @@ import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingButtons from '../../components/OnboardingButtons';
 
 const onBoardingRoutes = routes.onboarding;
+
+const HotlineScreen = ({ navigation }) => {
+  const { t } = useTranslation();
+
+  const [hotlineNumber, setHotlineNumber] = useState(DEFAULT_NUMBER);
+
+  const dispatch = useDispatch();
+  const saveHotlineNumber = () => {
+    dispatch(setHotlineNumberAction(hotlineNumber));
+    navigation.navigate(onBoardingRoutes.attorney);
+  };
+
+  return (
+    <View style={onboardingStyles.container}>
+      <View style={onboardingStyles.contentContainer}>
+        <OnboardingTitle
+          title={t('select_hotline')}
+          subtitle={t('select_hotline_subtitle')}
+        />
+        <View style={{ height: 20 }} />
+        <DropDownPicker
+          items={HOTLINE_OPTIONS}
+          defaultValue={DEFAULT_NUMBER}
+          containerStyle={{ height: 50 }}
+          style={{ backgroundColor: colors.primaryLighter }}
+          dropDownStyle={{ backgroundColor: colors.primaryLighter }}
+          itemStyle={{ justifyContent: 'flex-start' }}
+          labelStyle={textStyles.text}
+          activeLabelStyle={textStyles.h3}
+          selectedLabelStyle={textStyles.h3}
+          arrowColor={colors.primary}
+          arrowSize={25}
+          onChangeItem={(item) => setHotlineNumber(item.value)}
+        />
+      </View>
+      <View style={onboardingStyles.buttonContainer}>
+        <OnboardingButtons
+          onRightPress={() => navigation.pop()}
+          onLeftPress={saveHotlineNumber}
+          rightTitle={t('back')}
+          leftTitle={t('next')}
+          nextIsDisabled={false}
+        />
+      </View>
+    </View>
+  );
+};
+
+HotlineScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    pop: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default HotlineScreen;
 
 const HOTLINE_OPTIONS = [
   {
@@ -42,48 +101,4 @@ const HOTLINE_OPTIONS = [
   },
 ];
 
-const HotlineScreen = ({ navigation }) => {
-  const { t } = useTranslation();
-
-  return (
-    <View style={onboardingStyles.container}>
-      <View style={onboardingStyles.contentContainer}>
-        <OnboardingTitle
-          title={t('select_hotline')}
-          subtitle={t('select_hotline_subtitle')}
-        />
-        <View style={{ height: 20 }} />
-        <DropDownPicker
-          items={HOTLINE_OPTIONS}
-          placeholder="Select a hotline"
-          containerStyle={{ height: 50 }}
-          style={{ backgroundColor: colors.primaryLighter }}
-          dropDownStyle={{ backgroundColor: colors.primaryLighter }}
-          itemStyle={{ justifyContent: 'flex-start' }}
-          labelStyle={textStyles.text}
-          activeLabelStyle={textStyles.h3}
-          selectedLabelStyle={textStyles.h3}
-          arrowColor={colors.primary}
-          arrowSize={25}
-          // onChangeItem={(item) => console.log(item.label, item.value)}
-        />
-      </View>
-      <View style={onboardingStyles.buttonContainer}>
-        <OnboardingButtons
-          onBackPress={() => navigation.pop()}
-          onNextPress={() => navigation.navigate(onBoardingRoutes.attorney)}
-          nextIsDisabled={false}
-        />
-      </View>
-    </View>
-  );
-};
-
-HotlineScreen.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-    pop: PropTypes.func.isRequired,
-  }).isRequired,
-};
-
-export default HotlineScreen;
+const DEFAULT_NUMBER = HOTLINE_OPTIONS[0].value;

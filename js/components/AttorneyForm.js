@@ -1,33 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, Text, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { useSelector, useDispatch } from 'react-redux';
 import { textStyles, colors } from '../styles';
-import setAttorneyNameAction from '../store/actions/attorney/setAttorneyNameAction';
-import setAttorneyNumberAction from '../store/actions/attorney/setAttorneyNumberAction';
 
-const AttorneyForm = ({ isDefault }) => {
+const AttorneyForm = ({
+  name,
+  setName,
+  phoneNumber,
+  setPhoneNumber,
+  isLocked,
+}) => {
   const { t } = useTranslation();
-  const [attorneyName, setAttorneyName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  // const reduxStateName = useSelector((state) => state.attorney.name);
 
-  const dispatch = useDispatch();
-  const saveName = () => dispatch(setAttorneyNameAction(attorneyName));
-  const savePhoneNumber = () => dispatch(setAttorneyNumberAction(phoneNumber));
-
-  const onChangeName = (text) => {
-    if (isDefault) {
-      setAttorneyName('CHIRLA Hotline');
+  const updateName = (text) => {
+    if (isLocked) {
+      setName('CHIRLA');
     } else {
-      setAttorneyName(text);
+      setName(text);
     }
   };
 
-  const onChangeNumber = (text) => {
-    if (isDefault) {
-      setPhoneNumber('(213)-353-1333');
+  const updateNumber = (text) => {
+    if (isLocked) {
+      setPhoneNumber('1234567890');
     } else {
       setPhoneNumber(text);
     }
@@ -35,30 +31,34 @@ const AttorneyForm = ({ isDefault }) => {
 
   return (
     <View style={styles.container}>
+      <Text>{isLocked ? 'true' : 'false'}</Text>
       <View style={styles.inputContainer}>
         <Text style={[textStyles.h3, styles.title]}>{t('attorney_name')}</Text>
         <TextInput
           style={[textStyles.h2, styles.textInput]}
-          onChangeText={onChangeName}
-          defaultValue={attorneyName}
+          onChangeText={updateName}
+          defaultValue={name}
         />
       </View>
       <View style={styles.inputContainer}>
         <Text style={[textStyles.h3, styles.title]}>{t('phone_number')}</Text>
         <TextInput
           style={[textStyles.h2, styles.textInput]}
-          onChangeText={onChangeNumber}
+          keyboardType="numeric"
+          onChangeText={updateNumber}
           defaultValue={phoneNumber}
         />
       </View>
-      {/* <Button title="Save Name" onPress={saveName} />
-      <Button title="Save Phone Number" onPress={savePhoneNumber} /> */}
     </View>
   );
 };
 
 AttorneyForm.propTypes = {
-  isDefault: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  setName: PropTypes.func.isRequired,
+  phoneNumber: PropTypes.string.isRequired,
+  setPhoneNumber: PropTypes.func.isRequired,
+  isLocked: PropTypes.bool.isRequired,
 };
 
 export default AttorneyForm;
