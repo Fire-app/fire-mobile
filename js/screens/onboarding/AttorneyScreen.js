@@ -25,6 +25,8 @@ const AttorneyScreen = ({ navigation }) => {
     navigation.navigate(onBoardingRoutes.complete);
   };
 
+  const [inputValidated, setInputValidated] = useState(false);
+
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -34,7 +36,10 @@ const AttorneyScreen = ({ navigation }) => {
               title={t('select_attorney')}
               subtitle={t('select_attorney_subtitle')}
             />
-            <AttorneyForm shouldFormSubmit={shouldFormSubmit} />
+            <AttorneyForm
+              shouldFormSubmit={shouldFormSubmit}
+              setInputValidated={setInputValidated}
+            />
           </View>
           <View style={styles.buttonContainer}>
             <OnboardingButtons
@@ -42,7 +47,7 @@ const AttorneyScreen = ({ navigation }) => {
               onLeftPress={onSubmit}
               rightTitle={t('back')}
               leftTitle={t('next')}
-              nextIsDisabled={false}
+              nextIsDisabled={!inputValidated}
             />
           </View>
         </View>
