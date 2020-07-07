@@ -21,15 +21,10 @@ import createPersistedStore from './js/store/createPersistedStore';
 import Navigation from './js/navigation';
 import './js/config'; // Load our build time configs
 
-// Preload all images
-const example1 = require('./assets/example/banksy1.png');
-const example2 = require('./assets/example/banksy2.png');
-const example3 = require('./assets/example/banksy3.png');
-
 // Assets we need to load before app starts:
 const iconFonts = [FontAwesome.font];
 const textFonts = [];
-const localImages = [example1, example2, example3]; // Ensure that you add all images here! Otherwise they flicker on load!
+const localImages = []; // Ensure that you add all images here! Otherwise they flicker on load!
 
 function cacheLocalImages() {
   return localImages.map((image) => Asset.fromModule(image).downloadAsync());

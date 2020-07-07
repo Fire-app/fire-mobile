@@ -7,6 +7,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import { textStyles, colors } from '../../styles';
 import routes from '../../navigation/routes';
+import formattedVersionInfo from '../../util/versionInfo';
 
 const SettingsIcon = ({ name }) => (
   <View
@@ -84,6 +85,13 @@ const SettingsOverviewScreen = ({ navigation }) => {
         }}
       />
       <Divider />
+      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+        <View style={{ paddingVertical: 8, marginBottom: 30 }}>
+          <Text style={[textStyles.h3, { textAlign: 'center' }]}>
+            {formattedVersionInfo()}
+          </Text>
+        </View>
+      </View>
     </View>
   );
 };

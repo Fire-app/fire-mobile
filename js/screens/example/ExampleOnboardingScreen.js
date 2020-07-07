@@ -1,12 +1,10 @@
 /* eslint-disable global-require */
 import React from 'react';
-import { View, Image, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { Button } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import completeOnboardingAction from '../../store/actions/completeOnboarding';
-
-const IMAGE = require('../../../assets/example/banksy4.png');
 
 export default function ExampleOnboardingScreen() {
   const dispatch = useDispatch();
@@ -15,11 +13,6 @@ export default function ExampleOnboardingScreen() {
   const exitOnboarding = () => dispatch(completeOnboardingAction());
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source={IMAGE}
-        accessibilityLabel="Banksy the dog with a bowtie"
-      />
       <Text style={styles.text}>
         {"You are seeing this screen because it's your first time in the app!"}
       </Text>
