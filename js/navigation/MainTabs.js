@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 import Resources from '../screens/ResourcesScreen';
 import Emergency from '../screens/EmergencyScreen';
-import EmergencyBtn from '../components/EmergencyBtn';
+import { textStyles, colors } from '../styles';
 
 import routes from './routes';
 import RightsStack from './RightsStack';
@@ -16,7 +16,6 @@ import SettingsStack from './SettingsStack';
 
 const Tabs = createBottomTabNavigator();
 
-// TODO: use custom icons for these
 const MainTabs = () => {
   const { t } = useTranslation();
   return (
@@ -24,10 +23,10 @@ const MainTabs = () => {
       name={routes.mainTabs}
       initialRouteName={routes.main.rights}
       tabBarOptions={{
-        activeTintColor: '#fb5600',
-        inactiveTintColor: '#373643',
+        activeTintColor: colors.charcoalGrey,
+        inactiveTintColor: colors.warmGrey,
         style: styles.tabBar,
-        labelStyle: styles.tabLabel,
+        labelStyle: textStyles.tabLabel,
         tabStyle: styles.tabs,
       }}
     >
@@ -42,6 +41,7 @@ const MainTabs = () => {
               name="shield-half-full"
               color={color}
               size={size}
+              style={styles.icon}
             />
           ),
         }}
@@ -57,11 +57,11 @@ const MainTabs = () => {
               name="file-document-outline"
               color={color}
               size={size}
+              style={styles.icon}
             />
           ),
         }}
       />
-      {/* TODO: This should probably not be a tab */}
       <Tabs.Screen
         name={routes.main.settings}
         component={SettingsStack}
@@ -69,7 +69,12 @@ const MainTabs = () => {
           tabBarLabel: t('settings'),
           // eslint-disable-next-line react/prop-types
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="circle" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="settings"
+              color={color}
+              size={size}
+              style={styles.icon}
+            />
           ),
         }}
       />
@@ -77,7 +82,6 @@ const MainTabs = () => {
         name={routes.main.emergency}
         component={Emergency}
         options={{
-          // eslint-disable-next-line react/prop-types
           tabBarLabel: '',
           // eslint-disable-next-line no-unused-vars
           tabBarIcon: ({ color, size }) => (
@@ -88,7 +92,7 @@ const MainTabs = () => {
                 height: 64,
                 width: 64,
                 borderRadius: 100,
-                backgroundColor: '#FFF4ED',
+                backgroundColor: colors.primaryLighter,
                 justifyContent: 'center',
                 alignItems: 'center',
                 shadowColor: 'black',
@@ -102,7 +106,7 @@ const MainTabs = () => {
             >
               <MaterialCommunityIcons
                 name="alert-outline"
-                color="#FC5333"
+                color={colors.primary}
                 size={40}
                 style={{
                   top: 8,
@@ -123,14 +127,13 @@ const MainTabs = () => {
 const styles = StyleSheet.create({
   tabBar: {
     height: 85,
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-  },
-  tabLabel: {
-    fontSize: 14,
+    paddingHorizontal: 30,
   },
   tabs: {
     height: 55,
+  },
+  icon: {
+    marginTop: 11,
   },
 });
 
