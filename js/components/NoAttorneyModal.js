@@ -19,14 +19,14 @@ const NoAttorneyModal = ({ isVisible, setIsVisible, onSubmit }) => {
         </Text>
       </TouchableOpacity>
       <Modal transparent animationType="fade" visible={isVisible}>
-        <View style={styles.modalContainer}>
+        <View style={styles.container}>
           <View style={styles.innerContainer}>
-            <Text style={[styles.padding, textStyles.h2]}>
-              {t('attorney_default_title')}
-            </Text>
-            <Text style={[styles.padding, textStyles.body1]}>
-              {t('attorney_default_subtitle')}
-            </Text>
+            <View style={styles.contentContainer}>
+              <Text style={textStyles.h2}>{t('attorney_default_title')}</Text>
+              <Text style={textStyles.body1}>
+                {t('attorney_default_subtitle')}
+              </Text>
+            </View>
             <View style={styles.buttonContainer}>
               <OnboardingButtons
                 onRightPress={() => setIsVisible(false)}
@@ -56,27 +56,34 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     paddingRight: 10,
   },
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  container: {
+    flexGrow: 1,
+    padding: 20,
     backgroundColor: '#00000080',
+    alignItems: 'flex-start',
   },
   innerContainer: {
-    height: '35%',
-    width: '90%',
+    flexGrow: 1,
+    marginVertical: 250,
+    paddingHorizontal: 30,
+    paddingVertical: 30,
+    justifyContent: 'flex-start',
+    alignSelf: 'stretch',
     backgroundColor: 'white',
-    justifyContent: 'center',
     borderRadius: 3,
-    padding: 30,
+  },
+  contentContainer: {
+    flex: 1,
+    flexGrow: 2.5,
+    justifyContent: 'space-around',
+    alignSelf: 'stretch',
+    paddingBottom: 20,
   },
   buttonContainer: {
-    height: '24%',
-    width: '95%',
-    flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  padding: {
-    paddingBottom: 20,
+    flex: 1,
+    flexGrow: 1,
+    alignSelf: 'stretch',
+    margin: 5,
   },
 });
