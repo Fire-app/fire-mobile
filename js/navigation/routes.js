@@ -9,6 +9,7 @@ const routes = {
     resources: 'TAB_RESOURCES',
     rights: 'TAB_RIGHTS',
     settings: 'TAB_SETTINGS', // TODO: Move elsewhere (not a tab eventually)
+    emergency: 'TAB_EMERGENCY',
   },
 
   settingsStack: 'SETTINGS_STACK',
