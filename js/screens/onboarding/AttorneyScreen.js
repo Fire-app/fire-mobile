@@ -1,15 +1,11 @@
 /* eslint-disable global-require */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from 'react-native';
+import { View, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useTranslation } from 'react-i18next';
 import routes from '../../navigation/routes';
+import { screenStyles } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingButtons from '../../components/OnboardingButtons';
 import AttorneyForm from '../../components/AttorneyForm';
@@ -28,10 +24,10 @@ const AttorneyScreen = ({ navigation }) => {
   const [inputValidated, setInputValidated] = useState(false);
 
   return (
-    <KeyboardAwareScrollView contentContainerStyle={styles.container}>
+    <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.inner}>
-          <View style={styles.contentContainer}>
+        <View style={screenStyles.container}>
+          <View style={screenStyles.onboardingContentContainer}>
             <OnboardingTitle
               title={t('select_attorney')}
               subtitle={t('select_attorney_subtitle')}
@@ -41,7 +37,7 @@ const AttorneyScreen = ({ navigation }) => {
               setInputValidated={setInputValidated}
             />
           </View>
-          <View style={styles.buttonContainer}>
+          <View style={screenStyles.onboardingButtonContainer}>
             <OnboardingButtons
               onRightPress={() => navigation.pop()}
               onLeftPress={onSubmit}
@@ -64,27 +60,3 @@ AttorneyScreen.propTypes = {
 };
 
 export default AttorneyScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'space-between',
-    backgroundColor: 'white',
-  },
-  inner: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  contentContainer: {
-    width: '100%',
-    justifyContent: 'flex-start',
-  },
-  buttonContainer: {
-    height: '8%',
-    width: '95%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-});

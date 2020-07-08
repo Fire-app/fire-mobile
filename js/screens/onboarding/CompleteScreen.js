@@ -5,7 +5,7 @@ import { View, StyleSheet, Text, Image, Dimensions } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import completeOnboardingAction from '../../store/actions/completeOnboarding';
-import { textStyles, colors, onboardingStyles } from '../../styles';
+import { textStyles, colors, screenStyles } from '../../styles';
 import OnboardingButtons from '../../components/OnboardingButtons';
 
 const IMAGE = require('../../../assets/completedImage.png');
@@ -17,8 +17,13 @@ const CompleteScreen = ({ navigation }) => {
   const exitOnboarding = () => dispatch(completeOnboardingAction());
 
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
+    <View style={screenStyles.container}>
+      <View
+        style={[
+          screenStyles.onboardingContentContainer,
+          { justifyContent: 'center' },
+        ]}
+      >
         <Text style={[textStyles.h1, styles.title]}>
           {t('completed_title')}
         </Text>
@@ -31,7 +36,7 @@ const CompleteScreen = ({ navigation }) => {
           accessibilityLabel="Illustration of a man sitting"
         />
       </View>
-      <View style={onboardingStyles.buttonContainer}>
+      <View style={screenStyles.onboardingButtonContainer}>
         <OnboardingButtons
           onRightPress={() => navigation.pop()}
           onLeftPress={exitOnboarding}
@@ -54,19 +59,6 @@ CompleteScreen.propTypes = {
 export default CompleteScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    backgroundColor: 'white',
-  },
-  titleContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingVertical: 40,
-    paddingHorizontal: 20,
-  },
   title: {
     color: colors.text,
     textAlign: 'center',

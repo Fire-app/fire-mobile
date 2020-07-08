@@ -1,11 +1,10 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import routes from '../../navigation/routes';
-import { onboardingStyles } from '../../styles';
-
+import { screenStyles } from '../../styles';
 import LanguageList from '../../components/LanguageList';
 import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingButtons from '../../components/OnboardingButtons';
@@ -15,17 +14,22 @@ const onBoardingRoutes = routes.onboarding;
 const LanguageScreen = ({ navigation }) => {
   const { t } = useTranslation();
   return (
-    <View style={onboardingStyles.container}>
-      <View style={onboardingStyles.contentContainer}>
+    <View style={screenStyles.container}>
+      <View style={screenStyles.onboardingContentContainer}>
         <OnboardingTitle
           title="Select your language"
           subtitle="You can change your language later in settings too!"
         />
-        <View style={styles.languageList}>
+        <View
+          style={{
+            flex: 1,
+            alignSelf: 'stretch',
+          }}
+        >
           <LanguageList />
         </View>
       </View>
-      <View style={onboardingStyles.buttonContainer}>
+      <View style={screenStyles.onboardingButtonContainer}>
         <OnboardingButtons
           onRightPress={() => navigation.pop()}
           onLeftPress={() => navigation.navigate(onBoardingRoutes.hotline)}
@@ -46,10 +50,3 @@ LanguageScreen.propTypes = {
 };
 
 export default LanguageScreen;
-
-const styles = StyleSheet.create({
-  languageList: {
-    flex: 1,
-    width: '100%',
-  },
-});

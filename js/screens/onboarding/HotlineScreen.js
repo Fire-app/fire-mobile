@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
 
 import routes from '../../navigation/routes';
-import { onboardingStyles, colors, textStyles } from '../../styles';
+import { colors, textStyles, screenStyles } from '../../styles';
 
 import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingButtons from '../../components/OnboardingButtons';
@@ -27,8 +27,8 @@ const HotlineScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={onboardingStyles.container}>
-      <View style={onboardingStyles.contentContainer}>
+    <View style={screenStyles.container}>
+      <View style={screenStyles.onboardingContentContainer}>
         <OnboardingTitle
           title={t('select_hotline')}
           subtitle={t('select_hotline_subtitle')}
@@ -49,7 +49,7 @@ const HotlineScreen = ({ navigation }) => {
           onChangeItem={(item) => setHotlineNumber(item.value)}
         />
       </View>
-      <View style={onboardingStyles.buttonContainer}>
+      <View style={screenStyles.onboardingButtonContainer}>
         <OnboardingButtons
           onRightPress={() => navigation.pop()}
           onLeftPress={saveHotlineNumber}

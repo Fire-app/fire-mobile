@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { textStyles, colors } from '../styles';
 import OnboardingButtons from './OnboardingButtons';
 
-const AttorneyModal = ({ isVisible, setIsVisible, onSubmit }) => {
+const NoAttorneyModal = ({ isVisible, setIsVisible, onSubmit }) => {
   const { t } = useTranslation();
   return (
     <View>
@@ -43,13 +43,13 @@ const AttorneyModal = ({ isVisible, setIsVisible, onSubmit }) => {
   );
 };
 
-AttorneyModal.propTypes = {
+NoAttorneyModal.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   setIsVisible: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default AttorneyModal;
+export default NoAttorneyModal;
 
 const styles = StyleSheet.create({
   noAttorneyButton: {

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { textStyles, colors } from '../styles';
 import setAttorneyNameAction from '../store/actions/settings/setAttorneyNameAction';
 import setAttorneyNumberAction from '../store/actions/settings/setAttorneyNumberAction';
-import AttorneyModal from './AttorneyModal';
+import NoAttorneyModal from './NoAttorneyModal';
 
 const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
 const DEFAULT_NUMBER = '2133531333';
@@ -94,7 +94,7 @@ const AttorneyForm = ({ shouldFormSubmit, setInputValidated }) => {
           defaultValue={phoneNumber}
         />
       </View>
-      <AttorneyModal
+      <NoAttorneyModal
         isVisible={modalVisible}
         setIsVisible={setModalVisible}
         onSubmit={onModalSubmit}

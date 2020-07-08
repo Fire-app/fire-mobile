@@ -4,7 +4,6 @@ const colors = {
   text: '#373643',
   secondaryOption1: '#2f4555',
   buttonDisabled: '#9a9a9a',
-  tabDisabled: '#a1a1a1',
   subtext: '#6c6c6c',
   emergencyButton: '#333333',
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import { colors } from '../styles';
+import { textStyles, colors } from '../styles';
 
 const OnboardingButtons = ({
   onRightPress,
@@ -13,7 +13,7 @@ const OnboardingButtons = ({
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.backButton} onPress={onRightPress}>
-        <Text style={[styles.buttonText, styles.backButtonText]}>
+        <Text style={[textStyles.h3, { color: colors.primary }]}>
           {rightTitle}
         </Text>
       </TouchableOpacity>
@@ -25,9 +25,7 @@ const OnboardingButtons = ({
         onPress={onLeftPress}
         disabled={nextIsDisabled}
       >
-        <Text style={[styles.buttonText, styles.nextButtonText]}>
-          {leftTitle}
-        </Text>
+        <Text style={[textStyles.h3, { color: 'white' }]}>{leftTitle}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -45,39 +43,32 @@ export default OnboardingButtons;
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
-    width: '100%',
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   backButton: {
-    height: '100%',
-    width: '48%',
-    backgroundColor: 'white',
+    flexDirection: 'row',
+    flexGrow: 1,
+    alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 3,
+    marginRight: 5,
+    backgroundColor: 'white',
   },
   nextButton: {
-    height: '100%',
-    width: '45%',
-    backgroundColor: colors.primary,
+    flexDirection: 'row',
+    flexGrow: 1,
+    alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 3,
+    marginLeft: 5,
+    backgroundColor: colors.primary,
   },
   nextButtonDisabled: {
     backgroundColor: colors.buttonDisabled,
-  },
-  buttonText: {
-    fontSize: 16,
-    fontFamily: 'Roboto_500Medium',
-  },
-  backButtonText: {
-    color: colors.primary,
-  },
-  nextButtonText: {
-    color: 'white',
   },
 });

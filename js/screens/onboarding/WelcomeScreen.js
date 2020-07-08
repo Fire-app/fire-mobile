@@ -3,21 +3,23 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import routes from '../../navigation/routes';
-import { textStyles, colors, onboardingStyles } from '../../styles';
+import { textStyles, colors, screenStyles } from '../../styles';
 
 const onBoardingRoutes = routes.onboarding;
 
 const WelcomeScreen = ({ navigation }) => {
   return (
-    <View style={onboardingStyles.container}>
-      <View style={styles.titleContainer}>
+    <View style={screenStyles.container}>
+      <View
+        style={[screenStyles.onboardingContentContainer, styles.welcomeMessage]}
+      >
         <Text style={textStyles.h1}>{'Welcome to Fire!'}</Text>
       </View>
       <TouchableOpacity
-        style={styles.nextButton}
+        style={[screenStyles.onboardingButtonContainer, styles.continueButton]}
         onPress={() => navigation.navigate(onBoardingRoutes.language)}
       >
-        <Text style={styles.buttonText}>{'Continue'}</Text>
+        <Text style={[textStyles.h3, { color: 'white' }]}>{'Continue'}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -32,21 +34,15 @@ WelcomeScreen.propTypes = {
 export default WelcomeScreen;
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  welcomeMessage: {
+    alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
+    backgroundColor: 'white',
   },
-  nextButton: {
-    height: '8%',
-    width: '95%',
-    backgroundColor: colors.primary,
+  continueButton: {
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 3,
-  },
-  buttonText: {
-    fontFamily: 'Roboto_500Medium',
-    fontSize: 16,
-    color: 'white',
+    backgroundColor: colors.primary,
   },
 });
