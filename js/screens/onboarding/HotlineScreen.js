@@ -11,11 +11,10 @@ import { screenStyles } from '../../styles';
 
 import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingButtons from '../../components/OnboardingButtons';
-import HotlineDropdownPicker from '../../components/HotlineDropdownPicker';
-import {
+import HotlineDropdownPicker, {
   DEFAULT_HOTLINE_NAME,
   DEFAULT_HOTLINE_NUMBER,
-} from '../../hotlineOptions';
+} from '../../components/HotlineDropdownPicker';
 
 const onBoardingRoutes = routes.onboarding;
 
