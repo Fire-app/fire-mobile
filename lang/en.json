@@ -27,8 +27,6 @@
     "choose_language": "Choose Your Language:",
     "english": "English",
     "klingon": "Klingon",
-    "RIGHTS_LIST": "Know Your Rights",
-    "Learn_your_rights_in_different_spaces": "Learn your rights in different spaces",
     "Home": "Home",
     "Work": "Work",
     "Public_Transit": "Public Transit",
@@ -48,5 +46,10 @@
     "header_driving": "While driving",
     "header_public_transport": "On Public Transit",
     "header_street": "On the Street",
-    "header_work": "At Work"
+    "header_work": "At Work",
+    "header_scenarios": "Scenarios",
+
+    "scenarios_title": "Scenarios",
+    "scenarios_description": "Know your rights in different spaces",
+    "scenarios_subtitle": "Know your rights in different spaces."
 }
