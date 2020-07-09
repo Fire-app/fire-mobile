@@ -11,8 +11,15 @@ const composeEnhancers =
   (typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
   compose;
 
+const logger = (store) => (next) => (action) => {
+  console.log('dispatching', action);
+  const result = next(action);
+  console.log('next state', store.getState());
+  return result;
+};
+
 const enhancers = composeEnhancers(
-  applyMiddleware(createImmutableStateInvariantMiddleware())
+  applyMiddleware(createImmutableStateInvariantMiddleware(), logger)
 );
 
 export const STORE_VERSION = 0;

@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
 
 import SettingsOverviewScreen from '../screens/settings/SettingsOverviewScreen';
-import LanguageScreen from '../screens/settings/LanguageScreen';
+import LanguageScreen from '../screens/settings/SettingsLanguageScreen';
 
 import routes from './routes';
 
