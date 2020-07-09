@@ -2,12 +2,12 @@ import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import PropTypes from 'prop-types';
-import styles from '../../styles/styles';
-import RightsTitle from '../../components/RightsTitle';
-import RightsWarning from '../../components/RightsWarning';
-import ActionBullets from '../../components/ActionBullets';
-import ActionItems from '../../components/ActionItems';
-import Tips from '../../components/Tips';
+import styles from '../../../styles/styles';
+import RightsTitle from '../../../components/RightsTitle';
+import RightsWarning from '../../../components/RightsWarning';
+import ActionBullets from '../../../components/ActionBullets';
+import ActionItems from '../../../components/ActionItems';
+import Tips from '../../../components/Tips';
 
 const KnowYourRightsTemplate = ({
   title,

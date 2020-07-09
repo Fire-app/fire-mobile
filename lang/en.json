@@ -9,6 +9,18 @@
     "choose_language": "Choose Your Language:",
     "english": "English",
     "klingon": "Klingon",
+    "Home": "Home",
+    "Work": "Work",
+    "Public_Transit": "Public Transit",
+    "Driving": "Driving",
+    "Street": "Street",
+    "Agent_Inside": "Agent Inside",
+    "Agent_Outside": "Agent Outside",
+    "Agent_Arrests_Me": "Agent Arrests Me",
+    "For_use_at_work": "For use at work",
+    "For_use_on_Public_Transit": "For use on Public Transit",
+    "For_use_when_pulled_over": "For use when pulled over",
+    "For_use_on_the_street": "For use on the street",
     "header_rights": "Know Your Rights",
     "header_inside_home": "Agent Inside Home",
     "header_outside_home": "Agent Outside Home",
@@ -16,5 +28,10 @@
     "header_driving": "While driving",
     "header_public_transport": "On Public Transit",
     "header_street": "On the Street",
-    "header_work": "At Work"
+    "header_work": "At Work",
+    "header_scenarios": "Scenarios",
+
+    "scenarios_title": "Scenarios",
+    "scenarios_description": "Know your rights in different spaces",
+    "scenarios_subtitle": "Know your rights in different spaces."
 }

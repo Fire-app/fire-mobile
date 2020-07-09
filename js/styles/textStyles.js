@@ -37,6 +37,11 @@ const textStyles = StyleSheet.create({
     fontStyle: 'normal',
     letterSpacing: 0.5,
   },
+  tabLabel: {
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 11,
+    fontStyle: 'normal',
+  },
 });
 
 export default textStyles;
