@@ -1,12 +1,25 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+const screenStyles = StyleSheet.create({
   container: {
     flexGrow: 1,
     padding: 20,
+    backgroundColor: 'white',
+    alignItems: 'flex-start',
+  },
+  onboardingContentContainer: {
+    flex: 1,
+    flexGrow: 12,
+    justifyContent: 'flex-start',
+    alignSelf: 'stretch',
+  },
+  onboardingButtonContainer: {
     justifyContent: 'space-between',
-    backgroundColor: '#ffffff',
+    flex: 1,
+    flexGrow: 1,
+    alignSelf: 'stretch',
+    margin: 10,
   },
 });
 
-export default styles;
+export default screenStyles;
