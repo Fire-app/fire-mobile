@@ -17,7 +17,7 @@ const RightsCardContent = () => (
       />
       <Text style={styles.h1}>{'Rights Card'}</Text>
     </View>
-    <Text style={styles.body1}>
+    <Text style={[styles.body1, { flexWrap: 'wrap' }]}>
       {
         'I am showing you this card because I do not wish to speak to you or have any further contact with you. I choose to exercise my constitutional right to remain silent and reguse to answer your questions. If you arrest me, I will continue to exercise my right to remain silent and to refuse to answer your questions.'
       }
@@ -31,7 +31,7 @@ export default function EmergencyScreen({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <TouchableOpacity
-        style={{ alignSelf: 'flex-end', padding: 40 }}
+        style={{ alignSelf: 'flex-start', padding: 40 }}
         onPress={navigation.goBack}
       >
         <MaterialCommunityIcons name="close" color="black" size={40} />
@@ -67,10 +67,12 @@ export default function EmergencyScreen({ navigation }) {
 const localstyles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    paddingBottom: 75,
+    padding: 30,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
+    // flexDirection: 'row',
   },
   titleRow: {
     flexDirection: 'row',
