@@ -22,75 +22,6 @@ import SettingsStack from './SettingsStack';
 
 const Tabs = createBottomTabNavigator();
 
-// function routeToIcon(route) {
-//   switch (route.name) {
-//     case routes.RIGHTS:
-//       return 'foo-icon';
-//     default:
-//       return 'unknown-icon';
-//   }
-// }
-
-function MyTabBar({ state, descriptors, navigation }) {
-  const focusedOptions = descriptors[state.routes[state.index].key].options;
-
-  if (focusedOptions.tabBarVisible === false) {
-    return null;
-  }
-
-  return (
-    <View style={{ flexDirection: 'row' }}>
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
-        const { tabBarIcon } = options;
-        const isFocused = state.index === index;
-
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          });
-
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name);
-          }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
-
-        return (
-          <TouchableOpacity
-            accessibilityRole="button"
-            accessibilityStates={isFocused ? ['selected'] : []}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={{ flex: 1 }}
-          >
-            <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
-              {label}
-            </Text>
-            <tabBarIcon color="blue" size={20} />
-          </TouchableOpacity>
-        );
-      })}
-    </View>
-  );
-}
-
 // TODO: use custom icons for these
 const MainTabs = () => {
   const { t } = useTranslation();
@@ -123,7 +54,7 @@ const MainTabs = () => {
           ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name={routes.main.emergency}
         component={() => null}
         options={{
@@ -149,7 +80,7 @@ const MainTabs = () => {
             </TouchableOpacity>
           ),
         }}
-      />
+      /> */}
       <Tabs.Screen
         name={routes.main.resources}
         component={Resources}
@@ -183,6 +114,15 @@ const MainTabs = () => {
         }}
       />
       <Tabs.Screen
+        listeners={({ navigation, route }) => ({
+          tabPress: (e) => {
+            // Prevent default action
+            e.preventDefault();
+
+            // Do something with the `navigation` object
+            // navigation.navigate('AnotherPlace');
+          },
+        })}
         name={routes.main.emergency}
         component={Emergency}
         options={{
