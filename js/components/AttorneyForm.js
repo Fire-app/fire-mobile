@@ -1,99 +1,119 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Text, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { textStyles, colors } from '../styles';
-import setAttorneyNameAction from '../store/actions/settings/setAttorneyNameAction';
-import setAttorneyNumberAction from '../store/actions/settings/setAttorneyNumberAction';
 import NoAttorneyModal from './NoAttorneyModal';
 
 const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
 const DEFAULT_NUMBER = '2133531333';
 
-const AttorneyForm = ({ shouldFormSubmit, setInputValidated }) => {
+const AttorneyInput = ({
+  label,
+  value,
+  setValue,
+  isInvalid,
+  validate,
+  errorMessage,
+  keyboardType,
+}) => {
+  return (
+    <View
+      style={{
+        paddingBottom: 15,
+      }}
+    >
+      <Text style={[textStyles.h3, styles.title]}>{label}</Text>
+      {isInvalid && (
+        <Text style={[textStyles.body1, styles.errorText]}>{errorMessage}</Text>
+      )}
+      <TextInput
+        style={[
+          textStyles.h2,
+          styles.textInput,
+          isInvalid
+            ? {
+                borderColor: 'red',
+              }
+            : {
+                borderColor: 'gray',
+              },
+        ]}
+        keyboardType={keyboardType}
+        onChangeText={(text) => setValue(text)}
+        defaultValue={value}
+        onBlur={validate(value)}
+      />
+    </View>
+  );
+};
+
+AttorneyInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
+  isInvalid: PropTypes.bool.isRequired,
+  validate: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  keyboardType: PropTypes.string.isRequired,
+};
+
+const AttorneyForm = ({
+  name,
+  setName,
+  number,
+  setNumber,
+  nameIsInvalid,
+  setNameIsInvalid,
+  numberIsInvalid,
+  setNumberIsInvalid,
+}) => {
   const { t } = useTranslation();
-
-  const [name, setName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    validateInput();
-    if (shouldFormSubmit) {
-      dispatch(setAttorneyNameAction(name));
-      dispatch(setAttorneyNumberAction(phoneNumber));
-    }
-  });
-
-  const [nameIsValid, setNameIsValid] = useState('false');
-  const [numberIsValid, setNumberIsValid] = useState('false');
-  const validateInput = () => {
-    if (name.trim().length > 0) {
-      setNameIsValid(true);
-    } else {
-      setNameIsValid(false);
-    }
-    if (
-      phoneNumber.trim().length === 10 &&
-      // eslint-disable-next-line no-restricted-globals
-      !isNaN(phoneNumber.replace('.', ''))
-    ) {
-      setNumberIsValid(true);
-    } else {
-      setNumberIsValid(false);
-    }
-    if (nameIsValid && numberIsValid) {
-      setInputValidated(true);
-    } else {
-      setInputValidated(false);
-    }
-  };
 
   const [modalVisible, setModalVisible] = useState(false);
   const onModalSubmit = () => {
     setName(DEFAULT_ATTORNEY);
-    setPhoneNumber(DEFAULT_NUMBER);
+    setNumber(DEFAULT_NUMBER);
     setModalVisible(false);
+  };
+
+  const validateName = (_name) => {
+    if (_name.trim().length > 0) {
+      setNameIsInvalid(false);
+    } else {
+      setNameIsInvalid(true);
+    }
+  };
+
+  const validateNumber = (_number) => {
+    // eslint-disable-next-line no-restricted-globals
+    if (_number.trim().length === 10 && !isNaN(_number.replace('.', ''))) {
+      setNumberIsInvalid(false);
+    } else {
+      setNumberIsInvalid(true);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <Text style={[textStyles.h3, styles.title]}>{t('attorney_name')}</Text>
-        {!nameIsValid && (
-          <Text style={[textStyles.body1, styles.errorText]}>
-            {'Attorney name field cannot be empty'}
-          </Text>
-        )}
-        <TextInput
-          style={[
-            textStyles.h2,
-            styles.textInput,
-            nameIsValid ? styles.noErrorBorder : styles.errorBorder,
-          ]}
-          onChangeText={(text) => setName(text)}
-          defaultValue={name}
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <Text style={[textStyles.h3, styles.title]}>{t('phone_number')}</Text>
-        {!numberIsValid && (
-          <Text style={[textStyles.body1, styles.errorText]}>
-            {'Please enter a valid phone number'}
-          </Text>
-        )}
-        <TextInput
-          style={[
-            textStyles.h2,
-            styles.textInput,
-            numberIsValid ? styles.noErrorBorder : styles.errorBorder,
-          ]}
-          keyboardType="numeric"
-          onChangeText={(text) => setPhoneNumber(text)}
-          defaultValue={phoneNumber}
-        />
-      </View>
+      <AttorneyInput
+        label={t('attorney_name')}
+        value={name}
+        setValue={setName}
+        isInvalid={nameIsInvalid}
+        validate={validateName}
+        errorMessage={t('attorney_name_error')}
+        keyboardType="default"
+      />
+      <AttorneyInput
+        label={t('phone_number')}
+        value={number}
+        setValue={setNumber}
+        isInvalid={numberIsInvalid}
+        validate={validateNumber}
+        errorMessage={t('phone_number_error')}
+        keyboardType="numeric"
+      />
       <NoAttorneyModal
         isVisible={modalVisible}
         setIsVisible={setModalVisible}
@@ -104,19 +124,24 @@ const AttorneyForm = ({ shouldFormSubmit, setInputValidated }) => {
 };
 
 AttorneyForm.propTypes = {
-  shouldFormSubmit: PropTypes.bool.isRequired,
-  setInputValidated: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  setName: PropTypes.func.isRequired,
+  setNumber: PropTypes.func.isRequired,
+  nameIsInvalid: PropTypes.bool.isRequired,
+  setNameIsInvalid: PropTypes.func.isRequired,
+  numberIsInvalid: PropTypes.bool.isRequired,
+  setNumberIsInvalid: PropTypes.func.isRequired,
 };
 
 export default AttorneyForm;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    padding: 0,
     paddingVertical: 20,
     paddingRight: 10,
-  },
-  inputContainer: {
-    paddingBottom: 15,
   },
   textInput: {
     height: 55,
@@ -137,11 +162,5 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 14,
     paddingBottom: 4,
-  },
-  noErrorBorder: {
-    borderColor: 'gray',
-  },
-  errorBorder: {
-    borderColor: 'red',
   },
 });

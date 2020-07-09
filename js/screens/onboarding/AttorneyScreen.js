@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { View, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
+import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import routes from '../../navigation/routes';
 import { screenStyles } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
@@ -15,13 +18,19 @@ const onBoardingRoutes = routes.onboarding;
 const AttorneyScreen = ({ navigation }) => {
   const { t } = useTranslation();
 
-  const [shouldFormSubmit, setShouldFormSubmit] = useState(false);
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
+
   const onSubmit = () => {
-    setShouldFormSubmit(true);
+    dispatch(setAttorneyNameAction(name));
+    dispatch(setAttorneyNumberAction(number));
     navigation.navigate(onBoardingRoutes.complete);
   };
 
-  const [inputValidated, setInputValidated] = useState(false);
+  const [nameIsInvalid, setNameIsInvalid] = useState(true);
+  const [numberIsInvalid, setNumberIsInvalid] = useState(true);
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
@@ -33,8 +42,14 @@ const AttorneyScreen = ({ navigation }) => {
               subtitle={t('select_attorney_subtitle')}
             />
             <AttorneyForm
-              shouldFormSubmit={shouldFormSubmit}
-              setInputValidated={setInputValidated}
+              name={name}
+              setName={setName}
+              number={number}
+              setNumber={setNumber}
+              nameIsInvalid={nameIsInvalid}
+              setNameIsInvalid={setNameIsInvalid}
+              numberIsInvalid={numberIsInvalid}
+              setNumberIsInvalid={setNumberIsInvalid}
             />
           </View>
           <View style={screenStyles.onboardingButtonContainer}>
@@ -43,7 +58,7 @@ const AttorneyScreen = ({ navigation }) => {
               onLeftPress={onSubmit}
               rightTitle={t('back')}
               leftTitle={t('next')}
-              nextIsDisabled={!inputValidated}
+              nextIsDisabled={nameIsInvalid || numberIsInvalid}
             />
           </View>
         </View>
