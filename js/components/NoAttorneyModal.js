@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
     justifyContent: 'space-between',
     flex: 1,
-    flexGrow: 1,
     alignSelf: 'stretch',
     margin: 5,
   },

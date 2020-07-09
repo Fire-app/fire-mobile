@@ -11,18 +11,18 @@ import { screenStyles } from '../../styles';
 
 import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingButtons from '../../components/OnboardingButtons';
-import HotlineDropdownPicker, {
-  DEFAULT_HOTLINE_NAME,
-  DEFAULT_HOTLINE_NUMBER,
-} from '../../components/HotlineDropdownPicker';
+import HotlineDropdownPicker from '../../components/HotlineDropdownPicker';
+import { DEFAULT_HOTLINE } from '../../../data/hotlineOptions';
 
 const onBoardingRoutes = routes.onboarding;
 
 const HotlineScreen = ({ navigation }) => {
   const { t } = useTranslation();
 
-  const [hotlineName, setHotlineName] = useState(DEFAULT_HOTLINE_NAME);
-  const [hotlineNumber, setHotlineNumber] = useState(DEFAULT_HOTLINE_NUMBER);
+  const [hotlineName, setHotlineName] = useState(DEFAULT_HOTLINE.label);
+  const [hotlineNumber, setHotlineNumber] = useState(
+    DEFAULT_HOTLINE.phoneNumber
+  );
 
   const dispatch = useDispatch();
   const saveHotlineNumber = () => {

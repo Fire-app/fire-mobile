@@ -144,10 +144,11 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   textInput: {
-    height: 55,
+    flexGrow: 1,
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 3,
     paddingHorizontal: 10,
+    paddingVertical: 12,
     color: colors.text,
   },
   title: {
