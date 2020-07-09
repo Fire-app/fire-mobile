@@ -22,7 +22,9 @@ const NoAttorneyModal = ({ isVisible, setIsVisible, onSubmit }) => {
         <View style={styles.container}>
           <View style={styles.innerContainer}>
             <View style={styles.contentContainer}>
-              <Text style={textStyles.h2}>{t('attorney_default_title')}</Text>
+              <Text style={[textStyles.h2, { paddingBottom: 20 }]}>
+                {t('attorney_default_title')}
+              </Text>
               <Text style={textStyles.body1}>
                 {t('attorney_default_subtitle')}
               </Text>
@@ -61,13 +63,14 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#00000080',
     alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   innerContainer: {
-    flexGrow: 1,
-    marginVertical: 250,
+    height: '35%',
     paddingHorizontal: 30,
-    paddingVertical: 30,
-    justifyContent: 'flex-start',
+    paddingTop: 30,
+    paddingBottom: 20,
+    justifyContent: 'space-around',
     alignSelf: 'stretch',
     backgroundColor: 'white',
     borderRadius: 3,
@@ -75,9 +78,9 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     flexGrow: 2.5,
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
     alignSelf: 'stretch',
-    paddingBottom: 20,
+    paddingBottom: 10,
   },
   buttonContainer: {
     justifyContent: 'space-between',
