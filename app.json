@@ -32,12 +32,7 @@
       "versionCode": 370000001
     },
     "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {}
-        }
-      ]
+      "postPublish": []
     }
   }
 }

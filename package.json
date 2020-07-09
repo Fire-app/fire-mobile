@@ -8,7 +8,8 @@
     "eject": "expo eject",
     "minor-version-bump": "npx standard-version && rm CHANGELOG.md && git add CHANGELOG.md && git commit --amend",
     "publish-internal": "expo publish --release-channel internal",
-    "build-ios-internal": "expo build:ios --release-channel internal"
+    "build-ios-internal": "expo build:ios --release-channel internal",
+    "build-android-internal": "expo build:android --release-channel internal"
   },
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.1.0",
