@@ -1,65 +1,69 @@
 /* eslint-disable global-require */
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Alert } from 'react-native';
+import { View, StyleSheet, Text, Alert, Modal } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Constants from 'expo-constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useTranslation } from 'react-i18next';
 import styles from '../styles/textStyles';
 import EmergencyButton from '../components/EmergencyButton';
 
-const RightsCardContent = () => (
-  <View style={localstyles.container}>
-    <View style={localstyles.titleRow}>
-      <MaterialCommunityIcons
-        name="shield-half-full"
-        color="orange"
-        size={30}
-      />
-      <Text style={styles.h1}>{'Rights Card'}</Text>
-    </View>
-    <Text style={[styles.body1, { flexWrap: 'wrap' }]}>
-      {
-        'I am showing you this card because I do not wish to speak to you or have any further contact with you. I choose to exercise my constitutional right to remain silent and reguse to answer your questions. If you arrest me, I will continue to exercise my right to remain silent and to refuse to answer your questions.'
-      }
-    </Text>
-  </View>
-);
-
 export default function EmergencyScreen({ navigation }) {
-  const [currView, setCurrView] = useState('Toolkit');
-
+  const { t } = useTranslation();
+  const [modalVisible, setModalVisible] = useState(false);
   return (
-    <View style={{ flex: 1 }}>
-      <TouchableOpacity
-        style={{ alignSelf: 'flex-start', padding: 40 }}
-        onPress={navigation.goBack}
-      >
-        <MaterialCommunityIcons name="close" color="black" size={40} />
-      </TouchableOpacity>
-      {currView === 'Toolkit' ? (
-        <View style={localstyles.container}>
+    <View style={localstyles.container}>
+      <Modal visible={modalVisible} animationType="slide">
+        <View style={localstyles.rightsCard}>
+          {/* { backgroundColor: '#00000080' }] */}
+          <TouchableOpacity
+            style={{ alignSelf: 'flex-start', padding: 40 }}
+            onPress={() => setModalVisible(!modalVisible)}
+          >
+            <MaterialCommunityIcons name="close" color="black" size={40} />
+          </TouchableOpacity>
+          <View style={localstyles.titleRow}>
+            <MaterialCommunityIcons
+              name="shield-half-full"
+              color="orange"
+              size={30}
+            />
+            <Text style={styles.h1}>{t('rights_card')}</Text>
+          </View>
+          <Text style={[styles.body1, { flexWrap: 'wrap' }]}>
+            {t('rights_card_content')}
+          </Text>
+        </View>
+      </Modal>
+
+      <View>
+        <TouchableOpacity
+          style={{ alignSelf: 'flex-start', padding: 20 }}
+          onPress={navigation.goBack}
+        >
+          <MaterialCommunityIcons name="close" color="black" size={40} />
+        </TouchableOpacity>
+        <View style={{ alignItems: 'center', paddingTop: 100 }}>
           <View style={localstyles.titleRow}>
             <MaterialCommunityIcons
               name="alert-outline"
               color="orange"
               size={30}
             />
-            <Text style={styles.h1}>{'Emergency Toolkit'}</Text>
+            <Text style={styles.h1}>{t('emergency_toolkit')}</Text>
           </View>
           <View style={localstyles.buttonStack}>
             <EmergencyButton
-              title="Emergency Hotline"
+              title={t('emergency_hotline')}
               onPress={() => Alert.alert('hotline pressed')}
             />
             <EmergencyButton
-              title="Rights Card"
-              onPress={() => setCurrView('RightsCard')}
+              title={t('rights_card')}
+              onPress={() => setModalVisible(!modalVisible)}
             />
           </View>
         </View>
-      ) : (
-        <RightsCardContent />
-      )}
+      </View>
     </View>
   );
 }
@@ -67,10 +71,10 @@ export default function EmergencyScreen({ navigation }) {
 const localstyles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingBottom: 75,
-    padding: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // paddingBottom: 75,
+    // padding: 30,
+    // alignItems: 'center',
+    // justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
     // flexDirection: 'row',
   },
@@ -84,5 +88,10 @@ const localstyles = StyleSheet.create({
   text: {
     fontSize: 30,
     textAlign: 'center',
+  },
+  rightsCard: {
+    // justifyContent: 'center',
+    // alignContent: 'center',
+    padding: 30,
   },
 });
