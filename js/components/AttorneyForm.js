@@ -1,62 +1,14 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { textStyles, colors } from '../styles';
+import { colors } from '../styles';
 import NoAttorneyModal from './NoAttorneyModal';
+import PrimaryInput from './PrimaryInput';
+import { SecondaryButton } from './Buttons';
 
 const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
 const DEFAULT_NUMBER = '2133531333';
-
-const AttorneyInput = ({
-  label,
-  value,
-  setValue,
-  isInvalid,
-  validate,
-  errorMessage,
-  keyboardType,
-}) => {
-  return (
-    <View
-      style={{
-        paddingBottom: 15,
-      }}
-    >
-      <Text style={[textStyles.h3, styles.title]}>{label}</Text>
-      {isInvalid && (
-        <Text style={[textStyles.body1, styles.errorText]}>{errorMessage}</Text>
-      )}
-      <TextInput
-        style={[
-          textStyles.h2,
-          styles.textInput,
-          isInvalid
-            ? {
-                borderColor: 'red',
-              }
-            : {
-                borderColor: 'gray',
-              },
-        ]}
-        keyboardType={keyboardType}
-        onChangeText={(text) => setValue(text)}
-        defaultValue={value}
-        onBlur={validate(value)}
-      />
-    </View>
-  );
-};
-
-AttorneyInput.propTypes = {
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  setValue: PropTypes.func.isRequired,
-  isInvalid: PropTypes.bool.isRequired,
-  validate: PropTypes.func.isRequired,
-  errorMessage: PropTypes.string.isRequired,
-  keyboardType: PropTypes.string.isRequired,
-};
 
 const AttorneyForm = ({
   name,
@@ -95,8 +47,8 @@ const AttorneyForm = ({
   };
 
   return (
-    <View style={styles.container}>
-      <AttorneyInput
+    <View>
+      <PrimaryInput
         label={t('attorney_name')}
         value={name}
         setValue={setName}
@@ -105,7 +57,7 @@ const AttorneyForm = ({
         errorMessage={t('attorney_name_error')}
         keyboardType="default"
       />
-      <AttorneyInput
+      <PrimaryInput
         label={t('phone_number')}
         value={number}
         setValue={setNumber}
@@ -113,6 +65,10 @@ const AttorneyForm = ({
         validate={validateNumber}
         errorMessage={t('phone_number_error')}
         keyboardType="numeric"
+      />
+      <SecondaryButton
+        title={t('no_attorney')}
+        onPress={() => setModalVisible(true)}
       />
       <NoAttorneyModal
         isVisible={modalVisible}
@@ -135,33 +91,3 @@ AttorneyForm.propTypes = {
 };
 
 export default AttorneyForm;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 0,
-    paddingVertical: 20,
-    paddingRight: 10,
-  },
-  textInput: {
-    flexGrow: 1,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: 3,
-    paddingHorizontal: 10,
-    paddingVertical: 12,
-    color: colors.text,
-  },
-  title: {
-    paddingBottom: 5,
-    color: colors.text,
-  },
-  noAttorney: {
-    alignItems: 'flex-end',
-    paddingRight: 10,
-  },
-  errorText: {
-    color: 'red',
-    fontSize: 14,
-    paddingBottom: 4,
-  },
-});

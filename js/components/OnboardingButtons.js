@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { textStyles, colors } from '../styles';
+import { PrimaryButton, SecondaryButton } from './Buttons';
 
 const OnboardingButtons = ({
   onRightPress,
@@ -11,22 +11,18 @@ const OnboardingButtons = ({
   nextIsDisabled,
 }) => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={onRightPress}>
-        <Text style={[textStyles.h3, { color: colors.primary }]}>
-          {rightTitle}
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[
-          styles.nextButton,
-          nextIsDisabled ? styles.nextButtonDisabled : null,
-        ]}
-        onPress={onLeftPress}
-        disabled={nextIsDisabled}
-      >
-        <Text style={[textStyles.h3, { color: 'white' }]}>{leftTitle}</Text>
-      </TouchableOpacity>
+    <View style={{ flexDirection: 'row' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <SecondaryButton title={rightTitle} onPress={onRightPress} />
+      </View>
+      <View style={{ width: 5 }} />
+      <View style={{ flex: 1 }}>
+        <PrimaryButton
+          title={leftTitle}
+          onPress={onLeftPress}
+          disabled={nextIsDisabled}
+        />
+      </View>
     </View>
   );
 };
@@ -40,35 +36,3 @@ OnboardingButtons.propTypes = {
 };
 
 export default OnboardingButtons;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  backButton: {
-    flexDirection: 'row',
-    flexGrow: 1,
-    alignSelf: 'stretch',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 3,
-    marginRight: 5,
-    backgroundColor: 'white',
-  },
-  nextButton: {
-    flexDirection: 'row',
-    flexGrow: 1,
-    alignSelf: 'stretch',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 3,
-    marginLeft: 5,
-    backgroundColor: colors.primary,
-  },
-  nextButtonDisabled: {
-    backgroundColor: colors.buttonDisabled,
-  },
-});

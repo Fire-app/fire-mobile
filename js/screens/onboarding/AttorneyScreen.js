@@ -1,10 +1,16 @@
 /* eslint-disable global-require */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import {
+  View,
+  TouchableWithoutFeedback,
+  Keyboard,
+  KeyboardAvoidingView,
+  ScrollView,
+  LayoutAnimation,
+} from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import routes from '../../navigation/routes';
@@ -12,14 +18,18 @@ import { screenStyles } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingButtons from '../../components/OnboardingButtons';
 import AttorneyForm from '../../components/AttorneyForm';
+import useKeyboard from '../../hook/useKeyboard';
 
 const onBoardingRoutes = routes.onboarding;
 
 const AttorneyScreen = ({ navigation }) => {
   const { t } = useTranslation();
 
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const savedName = useSelector((state) => state.settings.attorneyName);
+  const savedNumber = useSelector((state) => state.settings.attorneyNumber);
+
+  const [name, setName] = useState(savedName);
+  const [number, setNumber] = useState(savedNumber);
 
   const dispatch = useDispatch();
 
@@ -32,11 +42,22 @@ const AttorneyScreen = ({ navigation }) => {
   const [nameIsInvalid, setNameIsInvalid] = useState(true);
   const [numberIsInvalid, setNumberIsInvalid] = useState(true);
 
+  // We don't want a ton of padding if the keyboard is up. This animates between paddings
+  const [visible] = useKeyboard({ useWillShow: true, useWillHide: true });
+  const paddingBottom = visible ? 10 : screenStyles.container.paddingBottom;
+  useEffect(() => {
+    LayoutAnimation.easeInEaseOut();
+  }, [visible]);
+
   return (
-    <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+    <KeyboardAvoidingView style={{ flexGrow: 1 }} behavior="padding">
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={screenStyles.container}>
-          <View style={screenStyles.onboardingContentContainer}>
+        <View style={[screenStyles.container, { paddingBottom }]}>
+          <ScrollView
+            alwaysBounceVertical={false}
+            style={{ flex: 1 }}
+            contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
+          >
             <OnboardingTitle
               title={t('select_attorney')}
               subtitle={t('select_attorney_subtitle')}
@@ -51,19 +72,17 @@ const AttorneyScreen = ({ navigation }) => {
               numberIsInvalid={numberIsInvalid}
               setNumberIsInvalid={setNumberIsInvalid}
             />
-          </View>
-          <View style={screenStyles.onboardingButtonContainer}>
-            <OnboardingButtons
-              onRightPress={() => navigation.pop()}
-              onLeftPress={onSubmit}
-              rightTitle={t('back')}
-              leftTitle={t('next')}
-              nextIsDisabled={nameIsInvalid || numberIsInvalid}
-            />
-          </View>
+          </ScrollView>
+          <OnboardingButtons
+            onRightPress={() => navigation.pop()}
+            onLeftPress={onSubmit}
+            rightTitle={t('back')}
+            leftTitle={t('next')}
+            nextIsDisabled={nameIsInvalid || numberIsInvalid}
+          />
         </View>
       </TouchableWithoutFeedback>
-    </KeyboardAwareScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

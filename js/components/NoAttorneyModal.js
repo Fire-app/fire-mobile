@@ -1,23 +1,15 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Text, Modal, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Modal } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { textStyles, colors } from '../styles';
+import { textStyles } from '../styles';
 import OnboardingButtons from './OnboardingButtons';
 
 const NoAttorneyModal = ({ isVisible, setIsVisible, onSubmit }) => {
   const { t } = useTranslation();
   return (
     <View>
-      <TouchableOpacity
-        style={styles.noAttorneyButton}
-        onPress={() => setIsVisible(true)}
-      >
-        <Text style={[textStyles.h3, { color: colors.primary }]}>
-          {t('no_attorney')}
-        </Text>
-      </TouchableOpacity>
       <Modal transparent animationType="fade" visible={isVisible}>
         <View style={styles.container}>
           <View style={styles.innerContainer}>
