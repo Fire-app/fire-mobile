@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { colors } from '../styles';
 import NoAttorneyModal from './NoAttorneyModal';
 import PrimaryInput from './PrimaryInput';
 import { SecondaryButton } from './Buttons';
