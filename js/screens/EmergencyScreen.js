@@ -5,23 +5,28 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Constants from 'expo-constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
+import call from 'react-native-phone-call';
 import styles from '../styles/textStyles';
 import EmergencyButton from '../components/EmergencyButton';
 
 export default function EmergencyScreen({ navigation }) {
   const { t } = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
+  const phoneNum = {
+    number: '+15105550199',
+    prompt: false,
+  };
   return (
     <View style={localstyles.container}>
       <Modal visible={modalVisible} animationType="slide">
+        {/* { backgroundColor: '#00000080' }] */}
+        <TouchableOpacity
+          style={{ alignSelf: 'flex-start', padding: 20 }}
+          onPress={() => setModalVisible(!modalVisible)}
+        >
+          <MaterialCommunityIcons name="close" color="black" size={40} />
+        </TouchableOpacity>
         <View style={localstyles.rightsCard}>
-          {/* { backgroundColor: '#00000080' }] */}
-          <TouchableOpacity
-            style={{ alignSelf: 'flex-start', padding: 40 }}
-            onPress={() => setModalVisible(!modalVisible)}
-          >
-            <MaterialCommunityIcons name="close" color="black" size={40} />
-          </TouchableOpacity>
           <View style={localstyles.titleRow}>
             <MaterialCommunityIcons
               name="shield-half-full"
@@ -31,7 +36,10 @@ export default function EmergencyScreen({ navigation }) {
             <Text style={styles.h1}>{t('rights_card')}</Text>
           </View>
           <Text style={[styles.body1, { flexWrap: 'wrap' }]}>
-            {t('rights_card_content')}
+            {t('rights_card_content_1')}
+          </Text>
+          <Text style={[styles.body1, { flexWrap: 'wrap' }]}>
+            {t('rights_card_content_2')}
           </Text>
         </View>
       </Modal>
@@ -55,7 +63,7 @@ export default function EmergencyScreen({ navigation }) {
           <View style={localstyles.buttonStack}>
             <EmergencyButton
               title={t('emergency_hotline')}
-              onPress={() => Alert.alert('hotline pressed')}
+              onPress={() => call(phoneNum).catch(console.error)}
             />
             <EmergencyButton
               title={t('rights_card')}
@@ -80,6 +88,7 @@ const localstyles = StyleSheet.create({
   },
   titleRow: {
     flexDirection: 'row',
+    paddingVertical: 10,
   },
   buttonStack: {
     flexDirection: 'column',
