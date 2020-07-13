@@ -43,15 +43,13 @@ const HotlineScreen = ({ navigation }) => {
           setHotlineNumber={setHotlineNumber}
         />
       </View>
-      <View style={screenStyles.onboardingButtonContainer}>
-        <OnboardingButtons
-          onRightPress={() => navigation.pop()}
-          onLeftPress={saveHotlineNumber}
-          rightTitle={t('back')}
-          leftTitle={t('next')}
-          nextIsDisabled={false}
-        />
-      </View>
+      <OnboardingButtons
+        onRightPress={() => navigation.pop()}
+        onLeftPress={saveHotlineNumber}
+        rightTitle={t('back')}
+        leftTitle={t('next')}
+        nextIsDisabled={false}
+      />
     </View>
   );
 };

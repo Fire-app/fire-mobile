@@ -1,12 +1,13 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Text, Image, Dimensions } from 'react-native';
+import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import completeOnboardingAction from '../../store/actions/completeOnboarding';
-import { textStyles, colors, screenStyles } from '../../styles';
+import { colors, screenStyles } from '../../styles';
 import OnboardingButtons from '../../components/OnboardingButtons';
+import OnboardingTitle from '../../components/OnboardingTitle';
 
 const IMAGE = require('../../../assets/completedImage.png');
 
@@ -24,12 +25,11 @@ const CompleteScreen = ({ navigation }) => {
           { justifyContent: 'center' },
         ]}
       >
-        <Text style={[textStyles.h1, styles.title]}>
-          {t('completed_title')}
-        </Text>
-        <Text style={[textStyles.body1, styles.subtitle]}>
-          {t('completed_subtitle')}
-        </Text>
+        <OnboardingTitle
+          alignCenter
+          title={t('completed_title')}
+          subtitle={t('completed_subtitle')}
+        />
         <Image
           style={styles.image}
           source={IMAGE}

@@ -29,15 +29,13 @@ const LanguageScreen = ({ navigation }) => {
           <LanguageList />
         </View>
       </View>
-      <View style={screenStyles.onboardingButtonContainer}>
-        <OnboardingButtons
-          onRightPress={() => navigation.pop()}
-          onLeftPress={() => navigation.navigate(onBoardingRoutes.hotline)}
-          rightTitle={t('back')}
-          leftTitle={t('next')}
-          nextIsDisabled={false}
-        />
-      </View>
+      <OnboardingButtons
+        onRightPress={() => navigation.pop()}
+        onLeftPress={() => navigation.navigate(onBoardingRoutes.hotline)}
+        rightTitle={t('back')}
+        leftTitle={t('next')}
+        nextIsDisabled={false}
+      />
     </View>
   );
 };

@@ -3,11 +3,27 @@ import { View, StyleSheet, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { textStyles, colors } from '../styles';
 
-const OnboardingTitle = ({ title, subtitle }) => {
+const OnboardingTitle = ({ title, subtitle, alignCenter }) => {
   return (
     <View style={styles.container}>
-      <Text style={[textStyles.h1, styles.title]}>{title}</Text>
-      <Text style={[textStyles.body1, styles.subtitle]}>{subtitle}</Text>
+      <Text
+        style={[
+          textStyles.h1,
+          styles.title,
+          alignCenter && { textAlign: 'center' },
+        ]}
+      >
+        {title}
+      </Text>
+      <Text
+        style={[
+          textStyles.body1,
+          styles.subtitle,
+          alignCenter && { textAlign: 'center' },
+        ]}
+      >
+        {subtitle}
+      </Text>
     </View>
   );
 };
@@ -15,6 +31,11 @@ const OnboardingTitle = ({ title, subtitle }) => {
 OnboardingTitle.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  alignCenter: PropTypes.bool,
+};
+
+OnboardingTitle.defaultProps = {
+  alignCenter: false,
 };
 
 export default OnboardingTitle;
