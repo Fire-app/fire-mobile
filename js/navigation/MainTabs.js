@@ -6,13 +6,13 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import { useTranslation } from 'react-i18next';
 
-import Resources from '../screens/ResourcesScreen';
 import Emergency from '../screens/EmergencyScreen';
 import { textStyles, colors } from '../styles';
 
 import routes from './routes';
 import RightsStack from './RightsStack';
 import SettingsStack from './SettingsStack';
+import ResourcesStack from './ResourcesStack';
 
 const Tabs = createBottomTabNavigator();
 
@@ -48,7 +48,7 @@ const MainTabs = () => {
       />
       <Tabs.Screen
         name={routes.main.resources}
-        component={Resources}
+        component={ResourcesStack}
         options={{
           tabBarLabel: t('tab_resources'),
           // eslint-disable-next-line react/prop-types

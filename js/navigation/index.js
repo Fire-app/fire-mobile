@@ -10,7 +10,7 @@ const Navigation = () => {
   );
   return (
     <NavigationContainer>
-      {onboardingComplete ? <MainTabs /> : <OnboardingStack />}
+      {true ? <MainTabs /> : <OnboardingStack />}
     </NavigationContainer>
   );
 };

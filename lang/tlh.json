@@ -34,5 +34,10 @@
     "header_driving": "dr!ve",
     "header_public_transport": "tRansIt",
     "header_street": "StrEet",
-    "header_work": "w0rK"
+    "header_work": "w0rK",
+
+    "header_resources": "jo",
+    "header_AAAJ": "AAAJ",
+    "header_CARECEN": "CARECEN",
+    "header_CHIRLA": "CHIRLA"
 }

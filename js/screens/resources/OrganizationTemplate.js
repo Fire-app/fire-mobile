@@ -1,13 +1,12 @@
-/* eslint-disable global-require */
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 import Constants from 'expo-constants';
 
-export default function Resources() {
+export default function resourceDetails() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{'This is the Resources page!'}</Text>
+      <Text style={styles.text}>{'This is the Emergency pop-up!'}</Text>
     </View>
   );
 }
