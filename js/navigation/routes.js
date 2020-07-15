@@ -1,7 +1,11 @@
 const routes = {
   onboardingStack: 'ONBOARDING',
   onboarding: {
-    start: 'ONBOARDING_START',
+    welcome: 'ONBOARDING_WELCOME',
+    language: 'ONBOARDING_LANGUAGE',
+    hotline: 'ONBOARDING_HOTLINE',
+    attorney: 'ONBOARDING_ATTORNEY',
+    complete: 'ONBOARDING_COMPLETE',
   },
 
   mainTabs: 'MAIN_TABS',

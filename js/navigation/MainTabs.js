@@ -20,7 +20,6 @@ const Stack = createStackNavigator();
 
 const FakeScreen = () => null;
 
-// TODO: use custom icons for these
 const AppTabs = () => {
   const { t } = useTranslation();
   return (
@@ -85,12 +84,11 @@ const AppTabs = () => {
         }}
       />
       <Tabs.Screen
-        listeners={({ navigation, route }) => ({
+        listeners={({ navigation }) => ({
           tabPress: (e) => {
             // Prevent default action
             e.preventDefault();
 
-            // Do something with the `navigation` object
             navigation.navigate('emergency_modal');
           },
         })}
@@ -99,7 +97,7 @@ const AppTabs = () => {
         options={{
           tabBarLabel: '',
           // eslint-disable-next-line no-unused-vars
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: () => (
             <View
               style={{
                 position: 'absolute',
@@ -150,6 +148,7 @@ const MainTabs = () => (
     <Tabs.Screen name="emergency_modal" component={EmergencyScreen} />
   </Stack.Navigator>
 );
+
 const styles = StyleSheet.create({
   tabBar: {
     height: 85,

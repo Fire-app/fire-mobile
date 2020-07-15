@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Alert, Modal } from 'react-native';
+import PropTypes from 'prop-types';
+import { View, StyleSheet, Text, Modal } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Constants from 'expo-constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -63,7 +64,7 @@ export default function EmergencyScreen({ navigation }) {
           <View style={localstyles.buttonStack}>
             <EmergencyButton
               title={t('emergency_hotline')}
-              onPress={() => call(phoneNum).catch(console.error)}
+              onPress={() => call(phoneNum)}
             />
             <EmergencyButton
               title={t('rights_card')}
@@ -76,15 +77,17 @@ export default function EmergencyScreen({ navigation }) {
   );
 }
 
+EmergencyScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
 const localstyles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingBottom: 75,
-    // padding: 30,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-    // flexDirection: 'row',
   },
   titleRow: {
     flexDirection: 'row',
@@ -99,8 +102,6 @@ const localstyles = StyleSheet.create({
     textAlign: 'center',
   },
   rightsCard: {
-    // justifyContent: 'center',
-    // alignContent: 'center',
     padding: 30,
   },
 });

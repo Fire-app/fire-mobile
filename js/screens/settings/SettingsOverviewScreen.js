@@ -5,8 +5,13 @@ import { useTranslation } from 'react-i18next';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
+
+import { useDispatch } from 'react-redux';
+import resetOnboardingAction from '../../store/actions/resetOnboarding';
+
 import { textStyles, colors } from '../../styles';
 import routes from '../../navigation/routes';
+import formattedVersionInfo from '../../util/versionInfo';
 
 const SettingsIcon = ({ name }) => (
   <View
@@ -65,6 +70,11 @@ Row.propTypes = {
 
 const SettingsOverviewScreen = ({ navigation }) => {
   const { t } = useTranslation();
+
+  // TODO: temporary hack to test onboarding
+  const dispatch = useDispatch();
+  const resetOnboarding = () => dispatch(resetOnboardingAction());
+
   return (
     <View style={styles.container}>
       <Divider />
@@ -84,6 +94,23 @@ const SettingsOverviewScreen = ({ navigation }) => {
         }}
       />
       <Divider />
+      {__DEV__ && (
+        <>
+          <Row
+            iconName="backup-restore"
+            title="Restart Set-Up"
+            onPress={resetOnboarding}
+          />
+          <Divider />
+        </>
+      )}
+      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+        <View style={{ paddingVertical: 8, marginBottom: 30 }}>
+          <Text style={[textStyles.h3, { textAlign: 'center' }]}>
+            {formattedVersionInfo()}
+          </Text>
+        </View>
+      </View>
     </View>
   );
 };
