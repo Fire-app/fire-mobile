@@ -28,8 +28,13 @@ const AttorneyScreen = ({ navigation }) => {
   const savedName = useSelector((state) => state.settings.attorneyName);
   const savedNumber = useSelector((state) => state.settings.attorneyNumber);
 
+<<<<<<< HEAD
   const [name, setName] = useState(savedName);
   const [number, setNumber] = useState(savedNumber);
+=======
+  const [name, setName] = useState(savedName || '');
+  const [number, setNumber] = useState(savedNumber || '');
+>>>>>>> master
 
   const dispatch = useDispatch();
 
