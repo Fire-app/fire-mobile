@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import routes from '../../navigation/routes';
@@ -12,27 +12,10 @@ const onboardingRoutes = routes.onboarding;
 
 const InfoSection = ({ title, subtitle, iconName }) => {
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        paddingLeft: 40,
-        paddingRight: 50,
-        paddingVertical: 20,
-      }}
-    >
-      <MaterialCommunityIcons
-        name={iconName}
-        style={{ color: colors.primary, fontSize: 40, padding: 15 }}
-      />
+    <View style={styles.infoSectionContainer}>
+      <MaterialCommunityIcons name={iconName} style={styles.icon} />
       <View>
-        <Text
-          style={[
-            textStyles.h1,
-            { paddingTop: 10, paddingBottom: 10, color: colors.charcoalGrey },
-          ]}
-        >
-          {title}
-        </Text>
+        <Text style={[textStyles.h1, styles.title]}>{title}</Text>
         <Text style={[textStyles.body1, { color: colors.textLight }]}>
           {subtitle}
         </Text>
@@ -68,15 +51,7 @@ const IntroScreen = ({ navigation }) => {
           subtitle={t('connect_with_orgs_sub')}
           iconName="file-document-outline"
         />
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            alignSelf: 'stretch',
-            justifyContent: 'center',
-            alignItems: 'flex-end',
-          }}
-        >
+        <View style={styles.circleIndicatorContainer}>
           <MaterialCommunityIcons
             name="circle"
             style={{ fontSize: 16, color: colors.primary, padding: 8 }}
@@ -104,3 +79,29 @@ IntroScreen.propTypes = {
 };
 
 export default IntroScreen;
+
+const styles = StyleSheet.create({
+  circleIndicatorContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  infoSectionContainer: {
+    flexDirection: 'row',
+    paddingLeft: 40,
+    paddingRight: 50,
+    paddingVertical: 20,
+  },
+  icon: {
+    color: colors.primary,
+    fontSize: 40,
+    padding: 15,
+  },
+  title: {
+    paddingTop: 10,
+    paddingBottom: 10,
+    color: colors.charcoalGrey,
+  },
+});

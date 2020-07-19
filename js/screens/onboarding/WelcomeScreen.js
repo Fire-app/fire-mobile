@@ -15,37 +15,14 @@ const onboardingRoutes = routes.onboarding;
 const WelcomeInfo = () => {
   const { t } = useTranslation();
   return (
-    <View
-      style={{
-        alignItems: 'center',
-      }}
-    >
-      <Text
-        style={[
-          textStyles.h1,
-          { padding: 5, paddingTop: 30, color: colors.charcoalGrey },
-        ]}
-      >
-        {t('welcome_to_fire')}
-      </Text>
-      <Text
-        style={[
-          textStyles.body1,
-          { color: colors.textLight, textAlign: 'center', padding: 5 },
-        ]}
-      >
+    <View style={styles.welcomeInfoContainer}>
+      <Text style={[textStyles.h1, styles.title]}>{t('welcome_to_fire')}</Text>
+      <Text style={[textStyles.body1, styles.subtitle]}>
         {t('welcome_message')}
       </Text>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          padding: 20,
-          paddingBottom: 30,
-        }}
-      >
+      <View style={styles.logoNameContainer}>
         <Image
-          style={{ height: 25, width: 25 }}
+          style={styles.logo}
           source={LOGO}
           accessibilityLabel="CHIRLA Logo"
         />
@@ -65,38 +42,11 @@ const WelcomeInfo = () => {
 const LegalInfo = () => {
   const { t } = useTranslation();
   return (
-    <View
-      style={{
-        borderRadius: 3,
-        backgroundColor: colors.border,
-        paddingVertical: 20,
-        paddingHorizontal: 30,
-        marginTop: 20,
-      }}
-    >
-      <Text
-        style={[
-          textStyles.body2,
-          {
-            textAlign: 'center',
-            color: colors.charcoalGrey,
-            paddingBottom: 15,
-            paddingHorizontal: 5,
-          },
-        ]}
-      >
+    <View style={styles.legalInfoContainer}>
+      <Text style={[textStyles.body2, styles.legalText]}>
         {t('must_be_over_13')}
       </Text>
-      <Text
-        style={[
-          textStyles.body2,
-          {
-            textAlign: 'center',
-            color: colors.charcoalGrey,
-            paddingHorizontal: 5,
-          },
-        ]}
-      >
+      <Text style={[textStyles.body2, styles.legalText]}>
         {t('verify_over_13')}
       </Text>
     </View>
@@ -108,14 +58,7 @@ const WelcomeScreen = ({ navigation }) => {
   return (
     <View style={screenStyles.container}>
       <View style={screenStyles.contentContainer}>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            paddingTop: 50,
-          }}
-        >
+        <View style={styles.innerContainer}>
           <Image
             style={styles.image}
             source={IMAGE}
@@ -154,5 +97,46 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignSelf: 'center',
     resizeMode: 'cover',
+  },
+  innerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 50,
+  },
+  legalInfoContainer: {
+    borderRadius: 3,
+    backgroundColor: colors.border,
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+    marginTop: 20,
+  },
+  legalText: {
+    textAlign: 'center',
+    color: colors.charcoalGrey,
+    paddingBottom: 15,
+    paddingHorizontal: 5,
+  },
+  welcomeInfoContainer: {
+    alignItems: 'center',
+  },
+  logoNameContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20,
+    paddingBottom: 30,
+  },
+  logo: {
+    height: 25,
+    width: 25,
+  },
+  title: {
+    paddingTop: 30,
+    color: colors.charcoalGrey,
+  },
+  subtitle: {
+    color: colors.textLight,
+    textAlign: 'center',
+    padding: 10,
   },
 });

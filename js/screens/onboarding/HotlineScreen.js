@@ -18,9 +18,27 @@ import { DEFAULT_HOTLINE } from '../../../data/hotlineOptions';
 
 const onboardingRoutes = routes.onboarding;
 
+const ModalContent = () => {
+  const { t } = useTranslation();
+  return (
+    <View
+      style={{
+        justifyContent: 'flex-start',
+        paddingBottom: 20,
+      }}
+    >
+      <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
+        {t('what_is_hotline')}
+      </Text>
+      <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
+        {t('hotline_note')}
+      </Text>
+    </View>
+  );
+};
+
 const HotlineScreen = ({ navigation }) => {
   const { t } = useTranslation();
-
   const [hotlineName, setHotlineName] = useState(DEFAULT_HOTLINE.name);
   const [hotlineNumber, setHotlineNumber] = useState(
     DEFAULT_HOTLINE.phoneNumber
@@ -47,19 +65,7 @@ const HotlineScreen = ({ navigation }) => {
           setIsVisible={setModalVisible}
           buttonTitle={t('what_is_hotline')}
         >
-          <View
-            style={{
-              justifyContent: 'flex-start',
-              paddingBottom: 20,
-            }}
-          >
-            <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
-              {t('what_is_hotline')}
-            </Text>
-            <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
-              {t('hotline_note')}
-            </Text>
-          </View>
+          <ModalContent />
           <PrimaryButton
             title={t('got_it')}
             onPress={() => setModalVisible(false)}

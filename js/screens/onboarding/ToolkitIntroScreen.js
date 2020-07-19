@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import routes from '../../navigation/routes';
@@ -12,26 +12,10 @@ const onboardingRoutes = routes.onboarding;
 
 const ToolkitInfoSection = ({ title, subtitle, iconName }) => {
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        paddingHorizontal: 20,
-        paddingVertical: 10,
-      }}
-    >
-      <MaterialCommunityIcons
-        name={iconName}
-        style={{ color: colors.charcoalGrey, fontSize: 20, padding: 10 }}
-      />
+    <View style={styles.infoContainer}>
+      <MaterialCommunityIcons name={iconName} style={styles.infoIcon} />
       <View>
-        <Text
-          style={[
-            textStyles.h3,
-            { color: colors.charcoalGrey, paddingTop: 10, paddingBottom: 5 },
-          ]}
-        >
-          {title}
-        </Text>
+        <Text style={[textStyles.h3, styles.infoTitle]}>{title}</Text>
         <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
           {subtitle}
         </Text>
@@ -49,40 +33,14 @@ ToolkitInfoSection.propTypes = {
 const ToolkitTitleInfo = () => {
   const { t } = useTranslation();
   return (
-    <View
-      style={{
-        alignSelf: 'stretch',
-        alignItems: 'center',
-        paddingHorizontal: 20,
-        paddingVertical: 10,
-      }}
-    >
-      <View
-        style={{
-          backgroundColor: colors.primary,
-          borderRadius: 50,
-          padding: 15,
-        }}
-      >
-        <MaterialCommunityIcons
-          name="alert-outline"
-          style={{ fontSize: 50, color: 'white' }}
-        />
+    <View style={styles.titleContainer}>
+      <View style={styles.alertIconContainer}>
+        <MaterialCommunityIcons name="alert-outline" style={styles.alertIcon} />
       </View>
-      <Text
-        style={[
-          textStyles.h1,
-          { padding: 5, paddingTop: 30, color: colors.charcoalGrey },
-        ]}
-      >
+      <Text style={[textStyles.h1, styles.title]}>
         {t('your_emergency_toolkit')}
       </Text>
-      <Text
-        style={[
-          textStyles.body1,
-          { color: colors.textLight, textAlign: 'center', padding: 5 },
-        ]}
-      >
+      <Text style={[textStyles.body1, styles.subtitle]}>
         {t('your_emergency_toolkit_note')}
       </Text>
     </View>
@@ -106,15 +64,7 @@ const ToolkitIntroScreen = ({ navigation }) => {
           subtitle={t('rights_card_note')}
           iconName="credit-card-outline"
         />
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            alignSelf: 'stretch',
-            justifyContent: 'center',
-            alignItems: 'flex-end',
-          }}
-        >
+        <View style={styles.circleIndicatorContainer}>
           <MaterialCommunityIcons
             name="circle"
             style={{ fontSize: 16, color: colors.border, padding: 8 }}
@@ -144,3 +94,53 @@ ToolkitIntroScreen.propTypes = {
 };
 
 export default ToolkitIntroScreen;
+
+const styles = StyleSheet.create({
+  circleIndicatorContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  titleContainer: {
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  alertIconContainer: {
+    backgroundColor: colors.primary,
+    borderRadius: 50,
+    padding: 15,
+  },
+  alertIcon: {
+    fontSize: 50,
+    color: 'white',
+  },
+  title: {
+    padding: 5,
+    paddingTop: 30,
+    color: colors.charcoalGrey,
+  },
+  subtitle: {
+    color: colors.textLight,
+    textAlign: 'center',
+    padding: 5,
+  },
+  infoTitle: {
+    color: colors.charcoalGrey,
+    paddingTop: 10,
+    paddingBottom: 5,
+  },
+  infoContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  infoIcon: {
+    color: colors.charcoalGrey,
+    fontSize: 20,
+    padding: 10,
+  },
+});

@@ -20,6 +20,25 @@ const onboardingRoutes = routes.onboarding;
 const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
 const DEFAULT_NUMBER = '2133531333';
 
+const ModalContent = () => {
+  const { t } = useTranslation();
+  return (
+    <View
+      style={{
+        justifyContent: 'flex-start',
+        paddingBottom: 20,
+      }}
+    >
+      <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
+        {t('attorney_default_title')}
+      </Text>
+      <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
+        {t('attorney_default_subtitle')}
+      </Text>
+    </View>
+  );
+};
+
 const AttorneyScreen = ({ navigation }) => {
   const { t } = useTranslation();
 
@@ -63,40 +82,19 @@ const AttorneyScreen = ({ navigation }) => {
               numberIsInvalid={numberIsInvalid}
               setNumberIsInvalid={setNumberIsInvalid}
             />
-            <View
-              style={{
-                flex: 1,
-                alignSelf: 'stretch',
-              }}
+            <CustomModal
+              isVisible={modalVisible}
+              setIsVisible={setModalVisible}
+              buttonTitle={t('no_attorney')}
             >
-              <CustomModal
-                isVisible={modalVisible}
-                setIsVisible={setModalVisible}
-                buttonTitle={t('no_attorney')}
-              >
-                <View
-                  style={{
-                    justifyContent: 'flex-start',
-                    paddingBottom: 20,
-                  }}
-                >
-                  <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
-                    {t('attorney_default_title')}
-                  </Text>
-                  <Text
-                    style={[textStyles.body1, { color: colors.charcoalGrey }]}
-                  >
-                    {t('attorney_default_subtitle')}
-                  </Text>
-                </View>
-                <ModalButtons
-                  onRightPress={() => setModalVisible(false)}
-                  onLeftPress={onModalSubmit}
-                  rightTitle={t('cancel')}
-                  leftTitle={t('use_chirla')}
-                />
-              </CustomModal>
-            </View>
+              <ModalContent />
+              <ModalButtons
+                onRightPress={() => setModalVisible(false)}
+                onLeftPress={onModalSubmit}
+                rightTitle={t('cancel')}
+                leftTitle={t('use_chirla')}
+              />
+            </CustomModal>
           </View>
           <View>
             <NavigationButtons
