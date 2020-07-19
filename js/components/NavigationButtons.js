@@ -9,6 +9,7 @@ const NavigationButtons = ({
   rightTitle,
   leftTitle,
   nextIsDisabled,
+  hasLongTitle,
 }) => {
   return (
     <View
@@ -22,6 +23,9 @@ const NavigationButtons = ({
             styles.button,
             {
               backgroundColor: 'white',
+            },
+            hasLongTitle && {
+              paddingHorizontal: 40,
             },
           ]}
         >
@@ -37,6 +41,9 @@ const NavigationButtons = ({
             styles.button,
             {
               backgroundColor: colors.primary,
+            },
+            hasLongTitle && {
+              paddingHorizontal: 40,
             },
             nextIsDisabled && {
               backgroundColor: colors.buttonDisabled,
@@ -56,6 +63,8 @@ NavigationButtons.propTypes = {
   nextIsDisabled: PropTypes.bool.isRequired,
   rightTitle: PropTypes.string.isRequired,
   leftTitle: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  hasLongTitle: PropTypes.bool,
 };
 
 export default NavigationButtons;

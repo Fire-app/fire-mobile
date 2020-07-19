@@ -14,7 +14,7 @@ import NavigationButtons from '../../components/NavigationButtons';
 import HotlineList from '../../components/HotlineList';
 import { DEFAULT_HOTLINE } from '../../../data/hotlineOptions';
 
-const onBoardingRoutes = routes.onboarding;
+const onboardingRoutes = routes.onboarding;
 
 const HotlineScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -28,7 +28,7 @@ const HotlineScreen = ({ navigation }) => {
   const saveHotlineNumber = () => {
     dispatch(setHotlineNameAction(hotlineName));
     dispatch(setHotlineNumberAction(hotlineNumber));
-    navigation.navigate(onBoardingRoutes.attorney);
+    navigation.navigate(onboardingRoutes.attorney);
   };
 
   return (

@@ -13,7 +13,7 @@ import OnboardingTitle from '../../components/OnboardingTitle';
 import NavigationButtons from '../../components/NavigationButtons';
 import AttorneyForm from '../../components/AttorneyForm';
 
-const onBoardingRoutes = routes.onboarding;
+const onboardingRoutes = routes.onboarding;
 
 const AttorneyScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ const AttorneyScreen = ({ navigation }) => {
   const onSubmit = () => {
     dispatch(setAttorneyNameAction(name));
     dispatch(setAttorneyNumberAction(number));
-    navigation.navigate(onBoardingRoutes.complete);
+    navigation.navigate(onboardingRoutes.complete);
   };
 
   const [nameIsInvalid, setNameIsInvalid] = useState(true);

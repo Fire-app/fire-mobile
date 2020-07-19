@@ -11,7 +11,7 @@ const PrimaryButton = ({ title, onPress, disabled }) => {
         style={{
           alignItems: 'center',
           justifyContent: 'center',
-          paddingHorizontal: 100,
+          paddingHorizontal: 120,
           paddingVertical: 20,
           borderRadius: 3,
           backgroundColor: colors.primary,
