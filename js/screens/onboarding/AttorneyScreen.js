@@ -1,19 +1,24 @@
 /* eslint-disable global-require */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, TouchableWithoutFeedback, Keyboard, Text } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import routes from '../../navigation/routes';
-import { screenStyles } from '../../styles';
+import { screenStyles, textStyles, colors } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
 import NavigationButtons from '../../components/NavigationButtons';
 import AttorneyForm from '../../components/AttorneyForm';
+import CustomModal from '../../components/CustomModal';
+import ModalButtons from '../../components/ModalButtons';
 
 const onboardingRoutes = routes.onboarding;
+
+const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
+const DEFAULT_NUMBER = '2133531333';
 
 const AttorneyScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -31,6 +36,13 @@ const AttorneyScreen = ({ navigation }) => {
 
   const [nameIsInvalid, setNameIsInvalid] = useState(true);
   const [numberIsInvalid, setNumberIsInvalid] = useState(true);
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const onModalSubmit = () => {
+    setName(DEFAULT_ATTORNEY);
+    setNumber(DEFAULT_NUMBER);
+    setModalVisible(false);
+  };
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
@@ -51,8 +63,42 @@ const AttorneyScreen = ({ navigation }) => {
               numberIsInvalid={numberIsInvalid}
               setNumberIsInvalid={setNumberIsInvalid}
             />
+            <View
+              style={{
+                flex: 1,
+                alignSelf: 'stretch',
+              }}
+            >
+              <CustomModal
+                isVisible={modalVisible}
+                setIsVisible={setModalVisible}
+                buttonTitle={t('no_attorney')}
+              >
+                <View
+                  style={{
+                    justifyContent: 'flex-start',
+                    paddingBottom: 20,
+                  }}
+                >
+                  <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
+                    {t('attorney_default_title')}
+                  </Text>
+                  <Text
+                    style={[textStyles.body1, { color: colors.charcoalGrey }]}
+                  >
+                    {t('attorney_default_subtitle')}
+                  </Text>
+                </View>
+                <ModalButtons
+                  onRightPress={() => setModalVisible(false)}
+                  onLeftPress={onModalSubmit}
+                  rightTitle={t('cancel')}
+                  leftTitle={t('use_chirla')}
+                />
+              </CustomModal>
+            </View>
           </View>
-          <View style={{}}>
+          <View>
             <NavigationButtons
               onRightPress={() => navigation.pop()}
               onLeftPress={onSubmit}

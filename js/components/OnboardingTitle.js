@@ -28,9 +28,9 @@ const styles = StyleSheet.create({
   },
   title: {
     paddingBottom: 5,
-    color: colors.text,
+    color: colors.charcoalGrey,
   },
   subtitle: {
-    color: colors.subtext,
+    color: colors.textLight,
   },
 });

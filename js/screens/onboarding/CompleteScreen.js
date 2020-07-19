@@ -50,13 +50,9 @@ export default CompleteScreen;
 
 const styles = StyleSheet.create({
   title: {
-    color: colors.text,
     textAlign: 'center',
     paddingBottom: 5,
-  },
-  subtitle: {
-    color: colors.subtext,
-    textAlign: 'center',
+    color: colors.charcoalGrey,
   },
   image: {
     height: Dimensions.get('window').width - 80,

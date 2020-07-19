@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { useTranslation } from 'react-i18next';
 import routes from '../../navigation/routes';
 import { screenStyles } from '../../styles';
 import LanguageList from '../../components/LanguageList';
@@ -12,7 +11,6 @@ import PrimaryButton from '../../components/PrimaryButton';
 const onboardingRoutes = routes.onboarding;
 
 const LanguageScreen = ({ navigation }) => {
-  const { t } = useTranslation();
   return (
     <View style={screenStyles.container}>
       <View style={screenStyles.contentContainer}>

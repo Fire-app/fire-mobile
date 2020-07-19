@@ -1,17 +1,19 @@
 /* eslint-disable global-require */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
 import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
 import routes from '../../navigation/routes';
-import { screenStyles } from '../../styles';
+import { screenStyles, textStyles, colors } from '../../styles';
 
 import OnboardingTitle from '../../components/OnboardingTitle';
 import NavigationButtons from '../../components/NavigationButtons';
 import HotlineList from '../../components/HotlineList';
+import CustomModal from '../../components/CustomModal';
+import PrimaryButton from '../../components/PrimaryButton';
 import { DEFAULT_HOTLINE } from '../../../data/hotlineOptions';
 
 const onboardingRoutes = routes.onboarding;
@@ -31,6 +33,8 @@ const HotlineScreen = ({ navigation }) => {
     navigation.navigate(onboardingRoutes.attorney);
   };
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View style={screenStyles.container}>
       <View style={screenStyles.contentContainer}>
@@ -38,6 +42,30 @@ const HotlineScreen = ({ navigation }) => {
           title={t('select_hotline')}
           subtitle={t('select_hotline_subtitle')}
         />
+        <CustomModal
+          isVisible={modalVisible}
+          setIsVisible={setModalVisible}
+          buttonTitle={t('what_is_hotline')}
+        >
+          <View
+            style={{
+              justifyContent: 'flex-start',
+              paddingBottom: 20,
+            }}
+          >
+            <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
+              {t('what_is_hotline')}
+            </Text>
+            <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
+              {t('hotline_note')}
+            </Text>
+          </View>
+          <PrimaryButton
+            title={t('got_it')}
+            onPress={() => setModalVisible(false)}
+            disabled={false}
+          />
+        </CustomModal>
         <HotlineList
           setHotlineName={setHotlineName}
           setHotlineNumber={setHotlineNumber}

@@ -18,11 +18,11 @@ const LanguageOption = ({ title, selected, onPress }) => (
         flex: 1,
         paddingVertical: 16,
         paddingHorizontal: 16,
-        backgroundColor: colors.primaryLighter,
+        backgroundColor: colors.primaryLight,
         borderRadius: 3,
         marginVertical: 4,
         borderWidth: 3,
-        borderColor: colors.primaryLighter,
+        borderColor: colors.primaryLight,
       },
       selected && {
         borderWidth: 3,
@@ -31,7 +31,9 @@ const LanguageOption = ({ title, selected, onPress }) => (
     ]}
     onPress={onPress}
   >
-    <Text style={textStyles.body1}>{title}</Text>
+    <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
+      {title}
+    </Text>
   </TouchableOpacity>
 );
 

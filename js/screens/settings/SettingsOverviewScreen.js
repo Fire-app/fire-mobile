@@ -20,7 +20,7 @@ const SettingsIcon = ({ name }) => (
       borderRadius: 34,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: colors.primaryLighter,
+      backgroundColor: colors.primaryLight,
       marginRight: 8,
     }}
   >
@@ -39,7 +39,7 @@ const Divider = () => (
 );
 
 const Row = ({ iconName, title, onPress }) => (
-  <TouchableHighlight underlayColor={colors.primaryLighter} onPress={onPress}>
+  <TouchableHighlight underlayColor={colors.primaryLight} onPress={onPress}>
     <View
       style={{
         flexDirection: 'row',

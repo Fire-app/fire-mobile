@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, Text, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { textStyles, colors } from '../styles';
-import NoAttorneyModal from './NoAttorneyModal';
-
-const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
-const DEFAULT_NUMBER = '2133531333';
 
 const AttorneyInput = ({
   label,
@@ -16,6 +12,7 @@ const AttorneyInput = ({
   validate,
   errorMessage,
   keyboardType,
+  placeholder,
 }) => {
   return (
     <View
@@ -29,7 +26,7 @@ const AttorneyInput = ({
       )}
       <TextInput
         style={[
-          textStyles.h2,
+          textStyles.h3,
           styles.textInput,
           isInvalid
             ? {
@@ -39,6 +36,7 @@ const AttorneyInput = ({
                 borderColor: 'gray',
               },
         ]}
+        placeholder={placeholder}
         keyboardType={keyboardType}
         onChangeText={(text) => setValue(text)}
         defaultValue={value}
@@ -56,6 +54,7 @@ AttorneyInput.propTypes = {
   validate: PropTypes.func.isRequired,
   errorMessage: PropTypes.string.isRequired,
   keyboardType: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };
 
 const AttorneyForm = ({
@@ -69,13 +68,6 @@ const AttorneyForm = ({
   setNumberIsInvalid,
 }) => {
   const { t } = useTranslation();
-
-  const [modalVisible, setModalVisible] = useState(false);
-  const onModalSubmit = () => {
-    setName(DEFAULT_ATTORNEY);
-    setNumber(DEFAULT_NUMBER);
-    setModalVisible(false);
-  };
 
   const validateName = (_name) => {
     if (_name.trim().length > 0) {
@@ -95,7 +87,7 @@ const AttorneyForm = ({
   };
 
   return (
-    <View style={{ flex: 1, flexDirection: 'row' }}>
+    <View style={{ flexDirection: 'row' }}>
       <View style={styles.container}>
         <AttorneyInput
           label={t('attorney_name')}
@@ -105,6 +97,7 @@ const AttorneyForm = ({
           validate={validateName}
           errorMessage={t('attorney_name_error')}
           keyboardType="default"
+          placeholder="Enter your attorney's name"
         />
         <AttorneyInput
           label={t('phone_number')}
@@ -114,11 +107,7 @@ const AttorneyForm = ({
           validate={validateNumber}
           errorMessage={t('phone_number_error')}
           keyboardType="numeric"
-        />
-        <NoAttorneyModal
-          isVisible={modalVisible}
-          setIsVisible={setModalVisible}
-          onSubmit={onModalSubmit}
+          placeholder="Enter your attorney's phone number"
         />
       </View>
     </View>
@@ -141,7 +130,8 @@ export default AttorneyForm;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 20,
+    paddingTop: 15,
+    paddingBottom: 5,
     paddingRight: 10,
   },
   textInput: {
@@ -154,10 +144,6 @@ const styles = StyleSheet.create({
   title: {
     paddingBottom: 5,
     color: colors.text,
-  },
-  noAttorney: {
-    alignItems: 'flex-end',
-    paddingRight: 10,
   },
   errorText: {
     color: 'red',

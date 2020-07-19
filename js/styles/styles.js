@@ -10,7 +10,7 @@ const screenStyles = StyleSheet.create({
   },
   contentContainer: {
     flex: 0.95,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
     paddingVertical: 10,
     // backgroundColor: 'yellow',
