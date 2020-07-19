@@ -6,11 +6,11 @@ import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import completeOnboardingAction from '../../store/actions/completeOnboarding';
 import { textStyles, colors, screenStyles } from '../../styles';
-import OnboardingButtons from '../../components/OnboardingButtons';
+import PrimaryButton from '../../components/PrimaryButton';
 
 const IMAGE = require('../../../assets/completedImage.png');
 
-const CompleteScreen = ({ navigation }) => {
+const CompleteScreen = () => {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
@@ -18,33 +18,23 @@ const CompleteScreen = ({ navigation }) => {
 
   return (
     <View style={screenStyles.container}>
-      <View
-        style={[
-          screenStyles.onboardingContentContainer,
-          { justifyContent: 'center' },
-        ]}
-      >
-        <Text style={[textStyles.h1, styles.title]}>
-          {t('completed_title')}
-        </Text>
-        <Text style={[textStyles.body1, styles.subtitle]}>
-          {t('completed_subtitle')}
-        </Text>
-        <Image
-          style={styles.image}
-          source={IMAGE}
-          accessibilityLabel="Illustration of a man sitting"
-        />
+      <View style={screenStyles.contentContainer}>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <Text style={[textStyles.h1, styles.title]}>
+            {t('completed_title')}
+          </Text>
+          <Image
+            style={styles.image}
+            source={IMAGE}
+            accessibilityLabel="Illustration of a man sitting"
+          />
+        </View>
       </View>
-      <View style={screenStyles.onboardingButtonContainer}>
-        <OnboardingButtons
-          onRightPress={() => navigation.pop()}
-          onLeftPress={exitOnboarding}
-          rightTitle={t('back')}
-          leftTitle={t('continue')}
-          nextIsDisabled={false}
-        />
-      </View>
+      <PrimaryButton
+        title="Continue"
+        onPress={exitOnboarding}
+        disabled={false}
+      />
     </View>
   );
 };

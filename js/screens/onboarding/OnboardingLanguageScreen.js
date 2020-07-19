@@ -7,7 +7,7 @@ import routes from '../../navigation/routes';
 import { screenStyles } from '../../styles';
 import LanguageList from '../../components/LanguageList';
 import OnboardingTitle from '../../components/OnboardingTitle';
-import OnboardingButtons from '../../components/OnboardingButtons';
+import NavigationButtons from '../../components/NavigationButtons';
 
 const onBoardingRoutes = routes.onboarding;
 
@@ -15,29 +15,20 @@ const LanguageScreen = ({ navigation }) => {
   const { t } = useTranslation();
   return (
     <View style={screenStyles.container}>
-      <View style={screenStyles.onboardingContentContainer}>
+      <View style={screenStyles.contentContainer}>
         <OnboardingTitle
           title="Select your language"
           subtitle="You can change your language later in settings too!"
         />
-        <View
-          style={{
-            flex: 1,
-            alignSelf: 'stretch',
-          }}
-        >
-          <LanguageList />
-        </View>
+        <LanguageList />
       </View>
-      <View style={screenStyles.onboardingButtonContainer}>
-        <OnboardingButtons
-          onRightPress={() => navigation.pop()}
-          onLeftPress={() => navigation.navigate(onBoardingRoutes.hotline)}
-          rightTitle={t('back')}
-          leftTitle={t('next')}
-          nextIsDisabled={false}
-        />
-      </View>
+      <NavigationButtons
+        onRightPress={() => navigation.pop()}
+        onLeftPress={() => navigation.navigate(onBoardingRoutes.hotline)}
+        rightTitle={t('back')}
+        leftTitle={t('next')}
+        nextIsDisabled={false}
+      />
     </View>
   );
 };

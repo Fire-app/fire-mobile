@@ -10,8 +10,8 @@ import routes from '../../navigation/routes';
 import { screenStyles } from '../../styles';
 
 import OnboardingTitle from '../../components/OnboardingTitle';
-import OnboardingButtons from '../../components/OnboardingButtons';
-import HotlineDropdownPicker from '../../components/HotlineDropdownPicker';
+import NavigationButtons from '../../components/NavigationButtons';
+import HotlineList from '../../components/HotlineList';
 import { DEFAULT_HOTLINE } from '../../../data/hotlineOptions';
 
 const onBoardingRoutes = routes.onboarding;
@@ -19,7 +19,7 @@ const onBoardingRoutes = routes.onboarding;
 const HotlineScreen = ({ navigation }) => {
   const { t } = useTranslation();
 
-  const [hotlineName, setHotlineName] = useState(DEFAULT_HOTLINE.label);
+  const [hotlineName, setHotlineName] = useState(DEFAULT_HOTLINE.name);
   const [hotlineNumber, setHotlineNumber] = useState(
     DEFAULT_HOTLINE.phoneNumber
   );
@@ -33,25 +33,23 @@ const HotlineScreen = ({ navigation }) => {
 
   return (
     <View style={screenStyles.container}>
-      <View style={screenStyles.onboardingContentContainer}>
+      <View style={screenStyles.contentContainer}>
         <OnboardingTitle
           title={t('select_hotline')}
           subtitle={t('select_hotline_subtitle')}
         />
-        <HotlineDropdownPicker
+        <HotlineList
           setHotlineName={setHotlineName}
           setHotlineNumber={setHotlineNumber}
         />
       </View>
-      <View style={screenStyles.onboardingButtonContainer}>
-        <OnboardingButtons
-          onRightPress={() => navigation.pop()}
-          onLeftPress={saveHotlineNumber}
-          rightTitle={t('back')}
-          leftTitle={t('next')}
-          nextIsDisabled={false}
-        />
-      </View>
+      <NavigationButtons
+        onRightPress={() => navigation.pop()}
+        onLeftPress={saveHotlineNumber}
+        rightTitle={t('back')}
+        leftTitle={t('next')}
+        nextIsDisabled={false}
+      />
     </View>
   );
 };

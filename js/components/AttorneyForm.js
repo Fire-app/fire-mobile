@@ -95,30 +95,32 @@ const AttorneyForm = ({
   };
 
   return (
-    <View style={styles.container}>
-      <AttorneyInput
-        label={t('attorney_name')}
-        value={name}
-        setValue={setName}
-        isInvalid={nameIsInvalid}
-        validate={validateName}
-        errorMessage={t('attorney_name_error')}
-        keyboardType="default"
-      />
-      <AttorneyInput
-        label={t('phone_number')}
-        value={number}
-        setValue={setNumber}
-        isInvalid={numberIsInvalid}
-        validate={validateNumber}
-        errorMessage={t('phone_number_error')}
-        keyboardType="numeric"
-      />
-      <NoAttorneyModal
-        isVisible={modalVisible}
-        setIsVisible={setModalVisible}
-        onSubmit={onModalSubmit}
-      />
+    <View style={{ flex: 1, flexDirection: 'row' }}>
+      <View style={styles.container}>
+        <AttorneyInput
+          label={t('attorney_name')}
+          value={name}
+          setValue={setName}
+          isInvalid={nameIsInvalid}
+          validate={validateName}
+          errorMessage={t('attorney_name_error')}
+          keyboardType="default"
+        />
+        <AttorneyInput
+          label={t('phone_number')}
+          value={number}
+          setValue={setNumber}
+          isInvalid={numberIsInvalid}
+          validate={validateNumber}
+          errorMessage={t('phone_number_error')}
+          keyboardType="numeric"
+        />
+        <NoAttorneyModal
+          isVisible={modalVisible}
+          setIsVisible={setModalVisible}
+          onSubmit={onModalSubmit}
+        />
+      </View>
     </View>
   );
 };
@@ -139,15 +141,13 @@ export default AttorneyForm;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 0,
     paddingVertical: 20,
     paddingRight: 10,
   },
   textInput: {
-    flexGrow: 1,
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 3,
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     paddingVertical: 12,
     color: colors.text,
   },

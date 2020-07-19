@@ -10,7 +10,7 @@ import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNum
 import routes from '../../navigation/routes';
 import { screenStyles } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
-import OnboardingButtons from '../../components/OnboardingButtons';
+import NavigationButtons from '../../components/NavigationButtons';
 import AttorneyForm from '../../components/AttorneyForm';
 
 const onBoardingRoutes = routes.onboarding;
@@ -36,7 +36,7 @@ const AttorneyScreen = ({ navigation }) => {
     <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={screenStyles.container}>
-          <View style={screenStyles.onboardingContentContainer}>
+          <View style={screenStyles.contentContainer}>
             <OnboardingTitle
               title={t('select_attorney')}
               subtitle={t('select_attorney_subtitle')}
@@ -52,12 +52,12 @@ const AttorneyScreen = ({ navigation }) => {
               setNumberIsInvalid={setNumberIsInvalid}
             />
           </View>
-          <View style={screenStyles.onboardingButtonContainer}>
-            <OnboardingButtons
+          <View style={{}}>
+            <NavigationButtons
               onRightPress={() => navigation.pop()}
               onLeftPress={onSubmit}
               rightTitle={t('back')}
-              leftTitle={t('next')}
+              leftTitle={t('finish')}
               nextIsDisabled={nameIsInvalid || numberIsInvalid}
             />
           </View>

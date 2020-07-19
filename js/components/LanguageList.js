@@ -15,6 +15,7 @@ const LanguageOption = ({ title, selected, onPress }) => (
   <TouchableOpacity
     style={[
       {
+        flex: 1,
         paddingVertical: 16,
         paddingHorizontal: 16,
         backgroundColor: colors.primaryLighter,
@@ -70,6 +71,7 @@ export default LanguageList;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     backgroundColor: 'white',
     paddingVertical: 15,
   },

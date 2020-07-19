@@ -2,24 +2,20 @@ import { StyleSheet } from 'react-native';
 
 const screenStyles = StyleSheet.create({
   container: {
-    flexGrow: 1,
+    flex: 1,
     padding: 20,
     backgroundColor: 'white',
-    alignItems: 'flex-start',
-  },
-  onboardingContentContainer: {
-    flex: 1,
-    flexGrow: 12,
-    justifyContent: 'flex-start',
-    alignSelf: 'stretch',
-  },
-  onboardingButtonContainer: {
+    alignItems: 'center',
     justifyContent: 'space-between',
-    flex: 1,
-    flexGrow: 1,
-    alignSelf: 'stretch',
-    margin: 10,
   },
+  contentContainer: {
+    flex: 0.95,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingVertical: 10,
+    // backgroundColor: 'yellow',
+  },
+  onboardingButtonContainer: {},
 });
 
 export default screenStyles;

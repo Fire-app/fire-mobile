@@ -1,31 +1,29 @@
 export const DEFAULT_HOTLINE = {
-  label: 'San Diego Rapid Response Network (San Diego County)',
-  value: '6195360823',
+  name: 'LA County (Boyle Heights/East LA)',
+  phoneNumber: '3239225644',
 };
 
 export const HOTLINE_OPTIONS = [
   DEFAULT_HOTLINE,
   {
-    label:
-      'Boyle Heights Immigrant Rights Network (Los Angeles City - Boyle Heights)',
-    value: '3239225644',
+    name: 'LA County (Koreatown)',
+    phoneNumber: '3238941504',
   },
   {
-    label:
-      'Southern Central Coast Rapid Response Network (Southern Central Coast Region - Santa Barbara County)',
-    value: '8058708855',
+    name: 'LA County (Long Beach)',
+    phoneNumber: '5622691083',
   },
   {
-    label: 'Long Beach Community Defense Network (Long Beach, CA)',
-    value: '5622691083',
+    name: 'Orange County',
+    phoneNumber: '6572100157',
+  },
+  { name: 'San Bernardino/Riverside County', phoneNumber: '9093614588' },
+  {
+    name: 'San Diego County',
+    phoneNumber: '6195360823',
   },
   {
-    label: 'The Koreatown Popular Assembly (Los Angeles City - Koreatown)',
-    value: '3238941504',
-  },
-  { label: 'IC4IJ (San Bernardino / Inland Empire)', value: '9093614588' },
-  {
-    label: 'Orange County Rapid Response Network (Orange County)',
-    value: '6572100157',
+    name: 'Santa Barbara County',
+    phoneNumber: '8058708855',
   },
 ];

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { View, StyleSheet, Text, Modal, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { textStyles, colors } from '../styles';
-import OnboardingButtons from './OnboardingButtons';
+import ModalButtons from './ModalButtons';
 
 const NoAttorneyModal = ({ isVisible, setIsVisible, onSubmit }) => {
   const { t } = useTranslation();
@@ -22,22 +22,19 @@ const NoAttorneyModal = ({ isVisible, setIsVisible, onSubmit }) => {
         <View style={styles.container}>
           <View style={styles.innerContainer}>
             <View style={styles.contentContainer}>
-              <Text style={[textStyles.h2, { paddingBottom: 20 }]}>
+              <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
                 {t('attorney_default_title')}
               </Text>
               <Text style={textStyles.body1}>
                 {t('attorney_default_subtitle')}
               </Text>
             </View>
-            <View style={styles.buttonContainer}>
-              <OnboardingButtons
-                onRightPress={() => setIsVisible(false)}
-                onLeftPress={onSubmit}
-                rightTitle={t('cancel')}
-                leftTitle={t('use_chirla')}
-                nextIsDisabled={false}
-              />
-            </View>
+            <ModalButtons
+              onRightPress={() => setIsVisible(false)}
+              onLeftPress={onSubmit}
+              rightTitle={t('cancel')}
+              leftTitle={t('use_chirla')}
+            />
           </View>
         </View>
       </Modal>
@@ -62,30 +59,19 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 20,
     backgroundColor: '#00000080',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'center',
   },
   innerContainer: {
-    height: '35%',
     paddingHorizontal: 30,
-    paddingTop: 30,
-    paddingBottom: 20,
-    justifyContent: 'space-around',
-    alignSelf: 'stretch',
+    paddingVertical: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'white',
     borderRadius: 3,
   },
   contentContainer: {
-    flex: 1,
-    flexGrow: 2.5,
     justifyContent: 'flex-start',
-    alignSelf: 'stretch',
-    paddingBottom: 10,
-  },
-  buttonContainer: {
-    justifyContent: 'space-between',
-    flex: 1,
-    alignSelf: 'stretch',
-    margin: 5,
+    paddingBottom: 20,
   },
 });
