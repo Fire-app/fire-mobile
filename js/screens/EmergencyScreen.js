@@ -19,32 +19,6 @@ export default function EmergencyScreen({ navigation }) {
   };
   return (
     <View style={localstyles.container}>
-      <Modal visible={modalVisible} animationType="slide">
-        {/* { backgroundColor: '#00000080' }] */}
-        <TouchableOpacity
-          style={{ alignSelf: 'flex-start', padding: 20 }}
-          onPress={() => setModalVisible(!modalVisible)}
-        >
-          <MaterialCommunityIcons name="close" color="black" size={40} />
-        </TouchableOpacity>
-        <View style={localstyles.rightsCard}>
-          <View style={localstyles.titleRow}>
-            <MaterialCommunityIcons
-              name="shield-half-full"
-              color="orange"
-              size={30}
-            />
-            <Text style={styles.h1}>{t('rights_card')}</Text>
-          </View>
-          <Text style={[styles.body1, { flexWrap: 'wrap' }]}>
-            {t('rights_card_content_1')}
-          </Text>
-          <Text style={[styles.body1, { flexWrap: 'wrap' }]}>
-            {t('rights_card_content_2')}
-          </Text>
-        </View>
-      </Modal>
-
       <View>
         <TouchableOpacity
           style={{ alignSelf: 'flex-start', padding: 20 }}
@@ -74,6 +48,37 @@ export default function EmergencyScreen({ navigation }) {
         </View>
       </View>
     </View>
+  );
+}
+
+function KYRModal({}) {
+  const { t } = useTranslation();
+  return (
+    <Modal visible={modalVisible} animationType="slide">
+      {/* { backgroundColor: '#00000080' }] */}
+      <TouchableOpacity
+        style={{ alignSelf: 'flex-start', padding: 20 }}
+        onPress={() => setModalVisible(!modalVisible)}
+      >
+        <MaterialCommunityIcons name="close" color="black" size={40} />
+      </TouchableOpacity>
+      <View style={localstyles.rightsCard}>
+        <View style={localstyles.titleRow}>
+          <MaterialCommunityIcons
+            name="shield-half-full"
+            color="orange"
+            size={30}
+          />
+          <Text style={styles.h1}>{t('rights_card')}</Text>
+        </View>
+        <Text style={[styles.body1, { flexWrap: 'wrap' }]}>
+          {t('rights_card_content_1')}
+        </Text>
+        <Text style={[styles.body1, { flexWrap: 'wrap' }]}>
+          {t('rights_card_content_2')}
+        </Text>
+      </View>
+    </Modal>
   );
 }
 
