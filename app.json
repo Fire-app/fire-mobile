@@ -1,18 +1,19 @@
 {
   "expo": {
-    "name": "fire",
+    "name": "Fire",
     "slug": "fire",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "privacy": "unlisted",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splashscreen.png",
-      "resizeMode": "cover",
+      "image": "./assets/icon_transparent.png",
+      "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -22,7 +23,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.firemobileapp.fire",
+      "buildNumber": "0.0.1"
+    },
+    "android": {
+      "package": "com.firemobileapp.fire",
+      "versionCode": 370000001
+    },
+    "hooks": {
+      "postPublish": []
     }
   }
 }

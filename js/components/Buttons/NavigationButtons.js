@@ -1,9 +1,16 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import { textStyles, colors } from '../styles';
+import { textStyles, colors } from '../../styles';
 
-const ModalButtons = ({ onRightPress, onLeftPress, rightTitle, leftTitle }) => {
+const NavigationButtons = ({
+  onRightPress,
+  onLeftPress,
+  rightTitle,
+  leftTitle,
+  nextIsDisabled,
+  hasLongTitle,
+}) => {
   return (
     <View
       style={{
@@ -17,6 +24,9 @@ const ModalButtons = ({ onRightPress, onLeftPress, rightTitle, leftTitle }) => {
             {
               backgroundColor: 'white',
             },
+            hasLongTitle && {
+              paddingHorizontal: 40,
+            },
           ]}
         >
           <Text style={[textStyles.h3, { color: colors.primary }]}>
@@ -25,12 +35,18 @@ const ModalButtons = ({ onRightPress, onLeftPress, rightTitle, leftTitle }) => {
         </View>
       </TouchableOpacity>
       <View style={{ padding: 10 }} />
-      <TouchableOpacity onPress={onLeftPress}>
+      <TouchableOpacity onPress={onLeftPress} disabled={nextIsDisabled}>
         <View
           style={[
             styles.button,
             {
               backgroundColor: colors.primary,
+            },
+            hasLongTitle && {
+              paddingHorizontal: 40,
+            },
+            nextIsDisabled && {
+              backgroundColor: colors.buttonDisabled,
             },
           ]}
         >
@@ -41,21 +57,28 @@ const ModalButtons = ({ onRightPress, onLeftPress, rightTitle, leftTitle }) => {
   );
 };
 
-ModalButtons.propTypes = {
+NavigationButtons.propTypes = {
   onRightPress: PropTypes.func.isRequired,
   onLeftPress: PropTypes.func.isRequired,
+  nextIsDisabled: PropTypes.bool,
   rightTitle: PropTypes.string.isRequired,
   leftTitle: PropTypes.string.isRequired,
+  hasLongTitle: PropTypes.bool,
 };
 
-export default ModalButtons;
+NavigationButtons.defaultProps = {
+  nextIsDisabled: false,
+  hasLongTitle: false,
+};
+
+export default NavigationButtons;
 
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 35,
-    paddingVertical: 20,
+    paddingHorizontal: 60,
+    paddingVertical: 16,
     borderRadius: 3,
   },
 });

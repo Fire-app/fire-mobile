@@ -10,10 +10,9 @@ import routes from '../../navigation/routes';
 import { screenStyles, textStyles, colors } from '../../styles';
 
 import OnboardingTitle from '../../components/OnboardingTitle';
-import NavigationButtons from '../../components/NavigationButtons';
 import HotlineList from '../../components/HotlineList';
 import CustomModal from '../../components/CustomModal';
-import PrimaryButton from '../../components/PrimaryButton';
+import { PrimaryButton, NavigationButtons } from '../../components/Buttons';
 import { DEFAULT_HOTLINE } from '../../../data/hotlineOptions';
 
 const onboardingRoutes = routes.onboarding;

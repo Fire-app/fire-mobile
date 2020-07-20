@@ -1,19 +1,26 @@
 /* eslint-disable global-require */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableWithoutFeedback, Keyboard, Text } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
+import {
+  View,
+  TouchableWithoutFeedback,
+  Keyboard,
+  KeyboardAvoidingView,
+  ScrollView,
+  LayoutAnimation,
+  Text,
+} from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import routes from '../../navigation/routes';
 import { screenStyles, textStyles, colors } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
-import NavigationButtons from '../../components/NavigationButtons';
+import { NavigationButtons, ModalButtons } from '../../components/Buttons';
 import AttorneyForm from '../../components/AttorneyForm';
 import CustomModal from '../../components/CustomModal';
-import ModalButtons from '../../components/ModalButtons';
+import useKeyboard from '../../hook/useKeyboard';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -42,8 +49,11 @@ const ModalContent = () => {
 const AttorneyScreen = ({ navigation }) => {
   const { t } = useTranslation();
 
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const savedName = useSelector((state) => state.settings.attorneyName);
+  const savedNumber = useSelector((state) => state.settings.attorneyNumber);
+
+  const [name, setName] = useState(savedName || '');
+  const [number, setNumber] = useState(savedNumber || '');
 
   const dispatch = useDispatch();
 
@@ -63,11 +73,22 @@ const AttorneyScreen = ({ navigation }) => {
     setModalVisible(false);
   };
 
+  // We don't want a ton of padding if the keyboard is up. This animates between paddings
+  const [visible] = useKeyboard({ useWillShow: true, useWillHide: true });
+  const paddingBottom = visible ? 10 : screenStyles.container.paddingBottom;
+  useEffect(() => {
+    LayoutAnimation.easeInEaseOut();
+  }, [visible]);
+
   return (
-    <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+    <KeyboardAvoidingView style={{ flexGrow: 1 }} behavior="padding">
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={screenStyles.container}>
-          <View style={screenStyles.contentContainer}>
+        <View style={[screenStyles.container, { paddingBottom }]}>
+          <ScrollView
+            alwaysBounceVertical={false}
+            style={{ flex: 1 }}
+            contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
+          >
             <OnboardingTitle
               title={t('select_attorney')}
               subtitle={t('select_attorney_subtitle')}
@@ -95,19 +116,17 @@ const AttorneyScreen = ({ navigation }) => {
                 leftTitle={t('use_chirla')}
               />
             </CustomModal>
-          </View>
-          <View>
-            <NavigationButtons
-              onRightPress={() => navigation.pop()}
-              onLeftPress={onSubmit}
-              rightTitle={t('back')}
-              leftTitle={t('finish')}
-              nextIsDisabled={nameIsInvalid || numberIsInvalid}
-            />
-          </View>
+          </ScrollView>
+          <NavigationButtons
+            onRightPress={() => navigation.pop()}
+            onLeftPress={onSubmit}
+            rightTitle={t('back')}
+            leftTitle={t('finish')}
+            nextIsDisabled={nameIsInvalid || numberIsInvalid}
+          />
         </View>
       </TouchableWithoutFeedback>
-    </KeyboardAwareScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

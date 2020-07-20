@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import routes from '../../navigation/routes';
 import { textStyles, screenStyles, colors } from '../../styles';
-import NavigationButtons from '../../components/NavigationButtons';
+import NavigationButtons from '../../components/Buttons/NavigationButtons';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -80,7 +80,6 @@ const ToolkitIntroScreen = ({ navigation }) => {
         onLeftPress={() => navigation.navigate(onboardingRoutes.hotline)}
         rightTitle={t('back')}
         leftTitle={t('next')}
-        nextIsDisabled={false}
       />
     </View>
   );

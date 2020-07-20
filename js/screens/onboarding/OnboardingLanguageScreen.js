@@ -6,7 +6,7 @@ import routes from '../../navigation/routes';
 import { screenStyles } from '../../styles';
 import LanguageList from '../../components/LanguageList';
 import OnboardingTitle from '../../components/OnboardingTitle';
-import PrimaryButton from '../../components/PrimaryButton';
+import PrimaryButton from '../../components/Buttons/PrimaryButton';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -23,7 +23,6 @@ const LanguageScreen = ({ navigation }) => {
       <PrimaryButton
         title="Continue"
         onPress={() => navigation.navigate(onboardingRoutes.welcome)}
-        disabled={false}
       />
     </View>
   );

@@ -1,11 +1,18 @@
 /* eslint-disable global-require */
 import React from 'react';
-import { View, Text, Image, Dimensions, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Dimensions,
+  StyleSheet,
+  StatusBar,
+} from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import routes from '../../navigation/routes';
 import { textStyles, screenStyles, colors } from '../../styles';
-import NavigationButtons from '../../components/NavigationButtons';
+import NavigationButtons from '../../components/Buttons/NavigationButtons';
 
 const IMAGE = require('../../../assets/welcomeImage.png');
 const LOGO = require('../../../assets/chirlaLogo.png');
@@ -58,6 +65,7 @@ const WelcomeScreen = ({ navigation }) => {
   return (
     <View style={screenStyles.container}>
       <View style={screenStyles.contentContainer}>
+        <StatusBar barStyle="dark-content" />
         <View style={styles.innerContainer}>
           <Image
             style={styles.image}
@@ -74,7 +82,6 @@ const WelcomeScreen = ({ navigation }) => {
         onLeftPress={() => navigation.navigate(onboardingRoutes.intro)}
         rightTitle={t('not_over_13')}
         leftTitle={t('continue')}
-        nextIsDisabled={false}
         hasLongTitle
       />
     </View>

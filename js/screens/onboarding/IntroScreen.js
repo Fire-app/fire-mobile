@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import routes from '../../navigation/routes';
 import { screenStyles, colors, textStyles } from '../../styles';
-import PrimaryButton from '../../components/PrimaryButton';
+import PrimaryButton from '../../components/Buttons/PrimaryButton';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -65,7 +65,6 @@ const IntroScreen = ({ navigation }) => {
       <PrimaryButton
         title={t('continue')}
         onPress={() => navigation.navigate(onboardingRoutes.toolkitIntro)}
-        disabled={false}
       />
     </View>
   );

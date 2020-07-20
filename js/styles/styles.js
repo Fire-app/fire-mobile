@@ -14,7 +14,6 @@ const screenStyles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingVertical: 10,
   },
-  onboardingButtonContainer: {},
 });
 
 export default screenStyles;

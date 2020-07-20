@@ -1,12 +1,12 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Text, Image, Dimensions } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import completeOnboardingAction from '../../store/actions/completeOnboarding';
 import { textStyles, colors, screenStyles } from '../../styles';
-import PrimaryButton from '../../components/PrimaryButton';
+import PrimaryButton from '../../components/Buttons/PrimaryButton';
 
 const IMAGE = require('../../../assets/completedImage.png');
 

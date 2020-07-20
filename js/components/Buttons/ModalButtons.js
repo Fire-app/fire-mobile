@@ -1,16 +1,9 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import { textStyles, colors } from '../styles';
+import { textStyles, colors } from '../../styles';
 
-const NavigationButtons = ({
-  onRightPress,
-  onLeftPress,
-  rightTitle,
-  leftTitle,
-  nextIsDisabled,
-  hasLongTitle,
-}) => {
+const ModalButtons = ({ onRightPress, onLeftPress, rightTitle, leftTitle }) => {
   return (
     <View
       style={{
@@ -24,9 +17,6 @@ const NavigationButtons = ({
             {
               backgroundColor: 'white',
             },
-            hasLongTitle && {
-              paddingHorizontal: 40,
-            },
           ]}
         >
           <Text style={[textStyles.h3, { color: colors.primary }]}>
@@ -35,18 +25,12 @@ const NavigationButtons = ({
         </View>
       </TouchableOpacity>
       <View style={{ padding: 10 }} />
-      <TouchableOpacity onPress={onLeftPress} disabled={nextIsDisabled}>
+      <TouchableOpacity onPress={onLeftPress}>
         <View
           style={[
             styles.button,
             {
               backgroundColor: colors.primary,
-            },
-            hasLongTitle && {
-              paddingHorizontal: 40,
-            },
-            nextIsDisabled && {
-              backgroundColor: colors.buttonDisabled,
             },
           ]}
         >
@@ -57,24 +41,21 @@ const NavigationButtons = ({
   );
 };
 
-NavigationButtons.propTypes = {
+ModalButtons.propTypes = {
   onRightPress: PropTypes.func.isRequired,
   onLeftPress: PropTypes.func.isRequired,
-  nextIsDisabled: PropTypes.bool.isRequired,
   rightTitle: PropTypes.string.isRequired,
   leftTitle: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  hasLongTitle: PropTypes.bool,
 };
 
-export default NavigationButtons;
+export default ModalButtons;
 
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 60,
-    paddingVertical: 20,
+    paddingHorizontal: 36,
+    paddingVertical: 16,
     borderRadius: 3,
   },
 });
