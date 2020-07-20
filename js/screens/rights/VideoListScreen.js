@@ -2,43 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, FlatList, View, Image } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import routes from '../../navigation/routes';
 import Card from '../../components/Card';
 import textStyles from '../../styles/textStyles';
+import VIDEOS from '../../../data/videos';
 import colors from '../../styles/colors';
 
-const caseRoutes = routes.scenarios.cases;
-
 const KNOW_YOUR_RIGHTS_IMAGE = require('../../../assets/videoCoverImages/know_your_rights.png');
-
-const VIDEOS = [
-  {
-    title: 'Know Your Rights (general tips)',
-    time: '1:11',
-    fileName: 'know_your_rights',
-    coverImage: KNOW_YOUR_RIGHTS_IMAGE,
-  },
-  {
-    title: 'Interrogated by an ICE agent in detention',
-    time: '1:56',
-    fileName: 'know_your_rights',
-  },
-  {
-    title: 'Consulting an attorney in detention',
-    time: '2:30',
-    fileName: 'know_your_rights',
-  },
-  {
-    title: 'Seeking legal relief with ISAP in detention',
-    time: '2:26',
-    fileName: 'know_your_rights',
-  },
-  {
-    title: 'Arrested in the street',
-    time: '2:30',
-    fileName: 'know_your_rights',
-  },
-];
 
 const VideoCard = ({ title, time, onPress, coverImage }) => (
   <Card onPress={onPress}>
@@ -50,7 +19,8 @@ const VideoCard = ({ title, time, onPress, coverImage }) => (
         }}
       >
         <Image
-          source={KNOW_YOUR_RIGHTS_IMAGE}
+          source={coverImage}
+          // Need to use absolute + percent for images to contain properly
           style={{ height: 80, width: '100%' }}
           resizeMode="contain"
         />
@@ -67,33 +37,32 @@ const VideoCard = ({ title, time, onPress, coverImage }) => (
   </Card>
 );
 
-export default function VideoListScreen({ navigation }) {
-  const { t } = useTranslation();
-  return (
-    <FlatList
-      keyExtractor={(_, i) => `${i}`}
-      style={styles.container}
-      contentContainerStyle={{ paddingVertical: 24 }}
-      data={VIDEOS}
-      renderItem={({ item: { title, image, time, coverImage } }) => (
-        <VideoCard
-          title={title}
-          image={image}
-          coverImage={coverImage}
-          time={time}
-          onPress={() => {}}
-        />
-      )}
-      ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
-    />
-  );
-}
-
-VideoListScreen.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-  }).isRequired,
+VideoCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
+  coverImage: Image.propTypes.source.isRequired,
 };
+
+const VideoListScreen = () => (
+  <FlatList
+    keyExtractor={(_, i) => `${i}`}
+    style={styles.container}
+    contentContainerStyle={{ paddingVertical: 24 }}
+    data={VIDEOS}
+    renderItem={({ item: { title, image, time } }) => (
+      <VideoCard
+        title={title}
+        image={image}
+        // TODO: image per video, or thumbnail
+        coverImage={KNOW_YOUR_RIGHTS_IMAGE}
+        time={time}
+        onPress={() => {}}
+      />
+    )}
+    ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+  />
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -102,3 +71,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundColor,
   },
 });
+
+export default VideoListScreen;
