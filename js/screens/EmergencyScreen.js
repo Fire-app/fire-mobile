@@ -3,42 +3,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, Text, Alert } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Constants from 'expo-constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
 import styles from '../styles/textStyles';
-import EmergencyButton from '../components/EmergencyButton';
+import PrimaryButton from '../components/Buttons/PrimaryButton';
 
 export default function EmergencyScreen({ navigation }) {
   const { t } = useTranslation();
   return (
-    <View style={localstyles.container}>
-      <View>
-        <TouchableOpacity
-          style={{ alignSelf: 'flex-start', padding: 20 }}
-          onPress={navigation.goBack}
-        >
-          <MaterialCommunityIcons name="close" color="black" size={40} />
-        </TouchableOpacity>
-        <View style={{ alignItems: 'center', paddingTop: 100 }}>
-          <View style={localstyles.titleRow}>
-            <MaterialCommunityIcons
-              name="alert-outline"
-              color="orange"
-              size={30}
-            />
-            <Text style={styles.h1}>{t('emergency_toolkit')}</Text>
-          </View>
-          <View style={localstyles.buttonStack}>
-            <EmergencyButton
-              title={t('emergency_hotline')}
-              onPress={() => Alert.alert('phone number pressed')}
-            />
-            <EmergencyButton
-              title={t('rights_card')}
-              onPress={() => Alert.alert('rights card pressed')}
-            />
-          </View>
+    <View style={localStyles.container}>
+      <TouchableOpacity
+        style={{ alignSelf: 'flex-start', padding: 20 }}
+        onPress={navigation.goBack}
+      >
+        <MaterialCommunityIcons name="close" color="black" size={40} />
+      </TouchableOpacity>
+      <View style={{ alignItems: 'center' }}>
+        <View style={localStyles.titleRow}>
+          <MaterialCommunityIcons
+            name="alert-outline"
+            color="orange"
+            size={28}
+          />
+          <Text style={styles.h1}>{t('emergency_toolkit')}</Text>
+        </View>
+        <View style={localStyles.buttonStack}>
+          <PrimaryButton
+            title={t('emergency_hotline')}
+            onPress={() => Alert.alert('phone number pressed')}
+            darkMode
+          />
+          <PrimaryButton
+            title={t('rights_card')}
+            onPress={() => Alert.alert('rights card pressed')}
+            darkMode
+          />
         </View>
       </View>
     </View>
@@ -52,18 +51,18 @@ EmergencyScreen.propTypes = {
   }).isRequired,
 };
 
-const localstyles = StyleSheet.create({
+const localStyles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: Constants.statusBarHeight,
+    marginHorizontal: 12,
+    marginVertical: 144,
   },
   titleRow: {
     flexDirection: 'row',
-    paddingVertical: 10,
+    paddingTop: 40,
   },
   buttonStack: {
     flexDirection: 'column',
-    paddingTop: 20,
+    paddingTop: 12,
   },
   text: {
     fontSize: 30,

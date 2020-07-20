@@ -25,7 +25,6 @@ const AppTabs = () => {
   const { t } = useTranslation();
   return (
     <Tabs.Navigator
-      // tabBar={(props) => <MyTabBar {...props} />}
       name="FOO"
       initialRouteName={routes.main.rights}
       tabBarOptions={{
@@ -90,7 +89,8 @@ const AppTabs = () => {
             // Prevent default action
             e.preventDefault();
 
-            navigation.navigate('emergency_modal');
+            // Uses MainTabs stack navigator to navigate to emergency modal
+            navigation.navigate(routes.emergencyModal);
           },
         })}
         name={routes.main.emergency}
@@ -146,7 +146,7 @@ const MainTabs = () => (
     mode="modal"
   >
     <Tabs.Screen name="tabs" component={AppTabs} />
-    <Tabs.Screen name="emergency_modal" component={EmergencyScreen} />
+    <Tabs.Screen name="EMERGENCY_MODAL" component={EmergencyScreen} />
   </Stack.Navigator>
 );
 
