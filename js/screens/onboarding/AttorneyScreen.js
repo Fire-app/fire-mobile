@@ -1,13 +1,8 @@
 /* eslint-disable global-require */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Text,
-  KeyboardAvoidingView,
-} from 'react-native';
+import { View, TouchableWithoutFeedback, Keyboard, Text } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
@@ -69,7 +64,7 @@ const AttorneyScreen = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView contentContainerStyle={{ flex: 1 }}>
+    <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={screenStyles.container}>
           <View style={screenStyles.contentContainer}>
@@ -112,7 +107,7 @@ const AttorneyScreen = ({ navigation }) => {
           </View>
         </View>
       </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 };
 

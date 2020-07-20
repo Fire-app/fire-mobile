@@ -13,7 +13,6 @@ const screenStyles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     paddingVertical: 10,
-    // backgroundColor: 'yellow',
   },
   onboardingButtonContainer: {},
 });
