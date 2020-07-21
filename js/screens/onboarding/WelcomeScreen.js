@@ -1,18 +1,12 @@
 /* eslint-disable global-require */
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  Dimensions,
-  StyleSheet,
-  StatusBar,
-} from 'react-native';
+import { View, Text, Image, StyleSheet, StatusBar } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import routes from '../../navigation/routes';
 import { textStyles, screenStyles, colors } from '../../styles';
 import NavigationButtons from '../../components/Buttons/NavigationButtons';
+import OnboardingTitle from '../../components/OnboardingTitle';
 
 const IMAGE = require('../../../assets/welcomeImage.png');
 const LOGO = require('../../../assets/chirlaLogo.png');
@@ -23,10 +17,11 @@ const WelcomeInfo = () => {
   const { t } = useTranslation();
   return (
     <View style={styles.welcomeInfoContainer}>
-      <Text style={[textStyles.h1, styles.title]}>{t('welcome_to_fire')}</Text>
-      <Text style={[textStyles.body1, styles.subtitle]}>
-        {t('welcome_message')}
-      </Text>
+      <OnboardingTitle
+        title={t('welcome_to_fire')}
+        subtitle={t('welcome_message')}
+        alignCenter
+      />
       <View style={styles.logoNameContainer}>
         <Image
           style={styles.logo}
@@ -99,8 +94,8 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   image: {
-    height: Dimensions.get('window').width - 150,
-    width: Dimensions.get('window').width,
+    height: 250,
+    width: 375,
     backgroundColor: 'white',
     alignSelf: 'center',
     resizeMode: 'cover',

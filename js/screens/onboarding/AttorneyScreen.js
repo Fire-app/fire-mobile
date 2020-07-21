@@ -17,7 +17,7 @@ import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNum
 import routes from '../../navigation/routes';
 import { screenStyles, textStyles, colors } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
-import { NavigationButtons, ModalButtons } from '../../components/Buttons';
+import { NavigationButtons } from '../../components/Buttons';
 import AttorneyForm from '../../components/AttorneyForm';
 import CustomModal from '../../components/CustomModal';
 import useKeyboard from '../../hook/useKeyboard';
@@ -109,11 +109,13 @@ const AttorneyScreen = ({ navigation }) => {
               buttonTitle={t('no_attorney')}
             >
               <ModalContent />
-              <ModalButtons
+              <NavigationButtons
+                // TODO: figure out what to display for not over 13
                 onRightPress={() => setModalVisible(false)}
                 onLeftPress={onModalSubmit}
                 rightTitle={t('cancel')}
                 leftTitle={t('use_chirla')}
+                hasLongTitle
               />
             </CustomModal>
           </ScrollView>

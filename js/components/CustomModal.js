@@ -1,23 +1,16 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Text, Modal, TouchableOpacity } from 'react-native';
-import { textStyles, colors } from '../styles';
+import { View, StyleSheet, Modal } from 'react-native';
+import { SecondaryButton } from './Buttons';
 
 const CustomModal = ({ children, buttonTitle, isVisible, setIsVisible }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.noAttorneyButton}
-        onPress={() => setIsVisible(true)}
-      >
-        <Text style={[textStyles.h3, { color: colors.primary }]}>
-          {buttonTitle}
-        </Text>
-      </TouchableOpacity>
+      <SecondaryButton title={buttonTitle} onPress={() => setIsVisible(true)} />
       <Modal transparent animationType="fade" visible={isVisible}>
         <View style={styles.modalContainer}>
-          <View style={styles.innerContainer}>{children}</View>
+          <View style={styles.contentContainer}>{children}</View>
         </View>
       </Modal>
     </View>
@@ -50,7 +43,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  innerContainer: {
+  contentContainer: {
     paddingHorizontal: 20,
     paddingVertical: 30,
     justifyContent: 'center',

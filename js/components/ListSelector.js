@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Text, FlatList } from 'react-native';
 
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { textStyles, colors } from '../styles';
-import i18n, { resources } from '../config/i18n';
 
-const LANGUAGE_OPTIONS = Object.keys(resources).map((locale) => ({
-  locale,
-  name: resources[locale].name,
-}));
-
-const LanguageOption = ({ title, selected, onPress }) => (
+const ListOption = ({ title, selected, onPress }) => (
   <TouchableOpacity
     style={[
       {
@@ -37,30 +31,39 @@ const LanguageOption = ({ title, selected, onPress }) => (
   </TouchableOpacity>
 );
 
-LanguageOption.propTypes = {
+ListOption.propTypes = {
   title: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
   onPress: PropTypes.func.isRequired,
 };
 
-const LanguageList = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+const ListSelector = ({
+  defaultKey,
+  onChange,
+  data,
+  keyExtractor,
+  selectedExtractor,
+  titleExtractor,
+}) => {
+  const [selectedKey, setSelectedKey] = useState(defaultKey);
 
-  useEffect(() => {
-    i18n.changeLanguage(selectedLanguage);
-  }, [selectedLanguage]);
+  const onPress = (item) => {
+    setSelectedKey(selectedExtractor(item));
+    onChange(item);
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
-        keyExtractor={({ locale }, i) => `${locale}:${i}`}
+        keyExtractor={(item) => keyExtractor(item)}
         alwaysBounceVertical={false}
-        data={LANGUAGE_OPTIONS}
-        extraData={{ selectedLanguage }}
-        renderItem={({ item: { locale, name } }) => (
-          <LanguageOption
-            title={name}
-            selected={locale === selectedLanguage}
-            onPress={() => setSelectedLanguage(locale)}
+        data={data}
+        extraData={{ selectedKey }}
+        renderItem={(item) => (
+          <ListOption
+            title={titleExtractor(item)}
+            selected={selectedExtractor(item) === selectedKey}
+            onPress={() => onPress(item)}
           />
         )}
       />
@@ -68,7 +71,16 @@ const LanguageList = () => {
   );
 };
 
-export default LanguageList;
+ListSelector.propTypes = {
+  defaultKey: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  keyExtractor: PropTypes.func.isRequired,
+  selectedExtractor: PropTypes.func.isRequired,
+  titleExtractor: PropTypes.func.isRequired,
+};
+
+export default ListSelector;
 
 const styles = StyleSheet.create({
   container: {

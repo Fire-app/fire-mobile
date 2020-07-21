@@ -30,11 +30,12 @@ const OnboardingTitle = ({ title, subtitle, alignCenter }) => {
 
 OnboardingTitle.propTypes = {
   title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
   alignCenter: PropTypes.bool,
 };
 
 OnboardingTitle.defaultProps = {
+  subtitle: '',
   alignCenter: false,
 };
 

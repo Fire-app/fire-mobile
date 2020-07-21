@@ -33,6 +33,8 @@
     "hotline_note": "Emergency hotlines serve different parts of Southern California in case you or your loved ones are detained by immigration authorities. You can also call to alert potential ICE sightings. These are 100% volunteer-operated, free, and confidential.",
     "use_chirla": "Use CHIRLA",
     "no_attorney": "Don't have an attorney?",
+    "select_language": "Select your language",
+    "select_language_subtitle": "You can change your language later in settings too!",
     "select_hotline": "Select an emergency hotline",
     "select_hotline_subtitle": "Select the emergency hotline closest to your most frequented location.",
     "attorney_default_title": "No attorney? No problem!",

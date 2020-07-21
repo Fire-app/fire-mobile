@@ -10,10 +10,10 @@ import routes from '../../navigation/routes';
 import { screenStyles, textStyles, colors } from '../../styles';
 
 import OnboardingTitle from '../../components/OnboardingTitle';
-import HotlineList from '../../components/HotlineList';
+import ListSelector from '../../components/ListSelector';
 import CustomModal from '../../components/CustomModal';
 import { PrimaryButton, NavigationButtons } from '../../components/Buttons';
-import { DEFAULT_HOTLINE } from '../../../data/hotlineOptions';
+import { DEFAULT_HOTLINE, HOTLINE_OPTIONS } from '../../../data/hotlineOptions';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -52,6 +52,11 @@ const HotlineScreen = ({ navigation }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
+  const onListChange = ({ item: { name, phoneNumber } }) => {
+    setHotlineName(name);
+    setHotlineNumber(phoneNumber);
+  };
+
   return (
     <View style={screenStyles.container}>
       <View style={screenStyles.contentContainer}>
@@ -71,9 +76,13 @@ const HotlineScreen = ({ navigation }) => {
             disabled={false}
           />
         </CustomModal>
-        <HotlineList
-          setHotlineName={setHotlineName}
-          setHotlineNumber={setHotlineNumber}
+        <ListSelector
+          defaultKey={DEFAULT_HOTLINE.phoneNumber}
+          onChange={onListChange}
+          data={HOTLINE_OPTIONS}
+          keyExtractor={(item) => item.phoneNumber}
+          selectedExtractor={({ item }) => item.phoneNumber}
+          titleExtractor={({ item }) => item.name}
         />
       </View>
       <NavigationButtons

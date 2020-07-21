@@ -1,12 +1,13 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Image, Dimensions, Text } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import completeOnboardingAction from '../../store/actions/completeOnboarding';
-import { textStyles, colors, screenStyles } from '../../styles';
+import { colors, screenStyles } from '../../styles';
 import PrimaryButton from '../../components/Buttons/PrimaryButton';
+import OnboardingTitle from '../../components/OnboardingTitle';
 
 const IMAGE = require('../../../assets/completedImage.png');
 
@@ -19,10 +20,11 @@ const CompleteScreen = () => {
   return (
     <View style={screenStyles.container}>
       <View style={screenStyles.contentContainer}>
-        <View style={{ flex: 1, justifyContent: 'center' }}>
-          <Text style={[textStyles.h1, styles.title]}>
-            {t('completed_title')}
-          </Text>
+        <View
+          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+        >
+          <OnboardingTitle title={t('completed_title')} alignCenter />
+          <View style={{ padding: 20 }} />
           <Image
             style={styles.image}
             source={IMAGE}
@@ -55,8 +57,8 @@ const styles = StyleSheet.create({
     color: colors.charcoalGrey,
   },
   image: {
-    height: Dimensions.get('window').width - 80,
-    width: Dimensions.get('window').width - 80,
+    height: 200,
+    width: 380,
     backgroundColor: 'white',
     padding: 30,
     alignSelf: 'center',
