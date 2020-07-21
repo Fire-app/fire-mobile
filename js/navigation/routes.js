@@ -22,6 +22,7 @@ const routes = {
   settings: {
     overview: 'SETTINGS_OVERVIEW',
     language: 'SETTINGS_LANGUAGE',
+    toolkit: 'SETTINGS_TOOLKIT',
   },
 
   rightsStack: 'RIGHTS',

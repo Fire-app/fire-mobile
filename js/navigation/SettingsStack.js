@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import SettingsOverviewScreen from '../screens/settings/SettingsOverviewScreen';
 import LanguageScreen from '../screens/settings/SettingsLanguageScreen';
+import EmergencyToolkitScreen from '../screens/settings/EmergencyToolkitScreen';
 
 import routes from './routes';
 
@@ -29,6 +30,13 @@ const SettingsStack = () => {
         component={LanguageScreen}
         options={{
           title: t('language'),
+        }}
+      />
+      <Stack.Screen
+        name={routes.settings.toolkit}
+        component={EmergencyToolkitScreen}
+        options={{
+          title: t('emergency_toolkit'),
         }}
       />
     </Stack.Navigator>
