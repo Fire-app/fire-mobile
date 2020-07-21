@@ -39,9 +39,7 @@ const ModalContent = () => {
       <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
         {t('attorney_default_title')}
       </Text>
-      <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
-        {t('attorney_default_subtitle')}
-      </Text>
+      <Text style={textStyles.body1}>{t('attorney_default_subtitle')}</Text>
     </View>
   );
 };

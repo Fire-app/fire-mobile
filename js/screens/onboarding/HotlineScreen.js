@@ -29,9 +29,7 @@ const ModalContent = () => {
       <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
         {t('what_is_hotline')}
       </Text>
-      <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
-        {t('hotline_note')}
-      </Text>
+      <Text style={textStyles.body1}>{t('hotline_note')}</Text>
     </View>
   );
 };

@@ -16,9 +16,7 @@ const ToolkitInfoSection = ({ title, subtitle, iconName }) => {
       <MaterialCommunityIcons name={iconName} style={styles.infoIcon} />
       <View>
         <Text style={[textStyles.h3, styles.infoTitle]}>{title}</Text>
-        <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
-          {subtitle}
-        </Text>
+        <Text style={textStyles.body1}>{subtitle}</Text>
       </View>
     </View>
   );
@@ -120,7 +118,6 @@ const styles = StyleSheet.create({
   title: {
     padding: 5,
     paddingTop: 30,
-    color: colors.charcoalGrey,
   },
   subtitle: {
     color: colors.textLight,
@@ -128,7 +125,6 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   infoTitle: {
-    color: colors.charcoalGrey,
     paddingTop: 10,
     paddingBottom: 5,
   },

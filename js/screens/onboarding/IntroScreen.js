@@ -99,8 +99,6 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   title: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    color: colors.charcoalGrey,
+    paddingVertical: 10,
   },
 });

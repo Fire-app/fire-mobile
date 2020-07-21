@@ -25,9 +25,7 @@ const ListOption = ({ title, selected, onPress }) => (
     ]}
     onPress={onPress}
   >
-    <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
-      {title}
-    </Text>
+    <Text style={textStyles.body1}>{title}</Text>
   </TouchableOpacity>
 );
 
