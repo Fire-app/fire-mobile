@@ -10,7 +10,7 @@ const LANGUAGE_OPTIONS = Object.keys(resources).map((locale) => ({
   name: resources[locale].name,
 }));
 
-const LanguageScreen = () => {
+const SettingsLanguageScreen = () => {
   const { t } = useTranslation();
 
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
@@ -42,7 +42,7 @@ const LanguageScreen = () => {
   );
 };
 
-export default LanguageScreen;
+export default SettingsLanguageScreen;
 
 const styles = StyleSheet.create({
   container: {

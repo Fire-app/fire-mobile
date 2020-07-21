@@ -2,9 +2,13 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
 
-import SettingsOverviewScreen from '../screens/settings/SettingsOverviewScreen';
-import LanguageScreen from '../screens/settings/SettingsLanguageScreen';
-import EmergencyToolkitScreen from '../screens/settings/EmergencyToolkitScreen';
+import {
+  SettingsOverviewScreen,
+  SettingsLanguageScreen,
+  EmergencyToolkitScreen,
+  HotlineSelectionScreen,
+  RightsCardScreen,
+} from '../screens/settings';
 
 import routes from './routes';
 
@@ -27,7 +31,7 @@ const SettingsStack = () => {
       />
       <Stack.Screen
         name={routes.settings.language}
-        component={LanguageScreen}
+        component={SettingsLanguageScreen}
         options={{
           title: t('language'),
         }}
@@ -37,6 +41,20 @@ const SettingsStack = () => {
         component={EmergencyToolkitScreen}
         options={{
           title: t('emergency_toolkit'),
+        }}
+      />
+      <Stack.Screen
+        name={routes.settings.hotline}
+        component={HotlineSelectionScreen}
+        options={{
+          title: t('emergency_hotline'),
+        }}
+      />
+      <Stack.Screen
+        name={routes.settings.rights_card}
+        component={RightsCardScreen}
+        options={{
+          title: t('rights_card'),
         }}
       />
     </Stack.Navigator>

@@ -23,6 +23,8 @@ const routes = {
     overview: 'SETTINGS_OVERVIEW',
     language: 'SETTINGS_LANGUAGE',
     toolkit: 'SETTINGS_TOOLKIT',
+    hotline: 'SETTINGS_HOTLINE',
+    rights_card: 'SETTINGS_RIGHTS_CARD',
   },
 
   rightsStack: 'RIGHTS',
