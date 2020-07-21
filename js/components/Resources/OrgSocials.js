@@ -11,6 +11,7 @@ export default function OrgSocials({ facebook, instagram, twitter, youtube }) {
       style={{
         flexDirection: 'row',
         paddingTop: 38,
+        paddingBottom: 58,
       }}
     >
       {facebook ? (
