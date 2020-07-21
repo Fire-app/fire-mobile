@@ -68,11 +68,11 @@ const WelcomeScreen = ({ navigation }) => {
       </View>
       <NavigationButtons
         // TODO: figure out what to display for not over 13
-        onRightPress={() => navigation.pop()}
-        onLeftPress={() => navigation.navigate(onboardingRoutes.intro)}
-        rightTitle={t('not_over_13')}
-        leftTitle={t('continue')}
-        hasLongTitle
+        onSecondaryPress={() => navigation.pop()}
+        onPrimaryPress={() => navigation.navigate(onboardingRoutes.intro)}
+        secondaryTitle={t('not_over_13')}
+        primaryTitle={t('continue')}
+        hasLongTitles
       />
     </View>
   );

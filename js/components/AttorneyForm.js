@@ -53,15 +53,6 @@ const AttorneyForm = ({
         errorMessage={t('phone_number_error')}
         keyboardType="numeric"
       />
-      {/* <SecondaryButton
-        title={t('no_attorney')}
-        onPress={() => setModalVisible(true)}
-      />
-      <NoAttorneyModal
-        isVisible={modalVisible}
-        setIsVisible={setModalVisible}
-        onSubmit={onModalSubmit}
-      /> */}
     </View>
   );
 };

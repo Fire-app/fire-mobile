@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import { textStyles, colors } from '../../styles';
 
 const NavigationButtons = ({
-  onRightPress,
-  onLeftPress,
-  rightTitle,
-  leftTitle,
-  nextIsDisabled,
-  hasLongTitle,
+  onSecondaryPress,
+  onPrimaryPress,
+  secondaryTitle,
+  primaryTitle,
+  primaryIsDisabled,
+  hasLongTitles,
 }) => {
   return (
     <View
@@ -17,40 +17,42 @@ const NavigationButtons = ({
         flexDirection: 'row',
       }}
     >
-      <TouchableOpacity onPress={onRightPress}>
+      <TouchableOpacity onPress={onSecondaryPress}>
         <View
           style={[
             styles.button,
             {
               backgroundColor: 'white',
             },
-            hasLongTitle && {
+            hasLongTitles && {
               paddingHorizontal: 40,
             },
           ]}
         >
           <Text style={[textStyles.h3, { color: colors.primary }]}>
-            {rightTitle}
+            {secondaryTitle}
           </Text>
         </View>
       </TouchableOpacity>
       <View style={{ padding: 10 }} />
-      <TouchableOpacity onPress={onLeftPress} disabled={nextIsDisabled}>
+      <TouchableOpacity onPress={onPrimaryPress} disabled={primaryIsDisabled}>
         <View
           style={[
             styles.button,
             {
               backgroundColor: colors.primary,
             },
-            hasLongTitle && {
+            hasLongTitles && {
               paddingHorizontal: 40,
             },
-            nextIsDisabled && {
+            primaryIsDisabled && {
               backgroundColor: colors.buttonDisabled,
             },
           ]}
         >
-          <Text style={[textStyles.h3, { color: 'white' }]}>{leftTitle}</Text>
+          <Text style={[textStyles.h3, { color: 'white' }]}>
+            {primaryTitle}
+          </Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -58,17 +60,17 @@ const NavigationButtons = ({
 };
 
 NavigationButtons.propTypes = {
-  onRightPress: PropTypes.func.isRequired,
-  onLeftPress: PropTypes.func.isRequired,
-  nextIsDisabled: PropTypes.bool,
-  rightTitle: PropTypes.string.isRequired,
-  leftTitle: PropTypes.string.isRequired,
-  hasLongTitle: PropTypes.bool,
+  onSecondaryPress: PropTypes.func.isRequired,
+  onPrimaryPress: PropTypes.func.isRequired,
+  primaryIsDisabled: PropTypes.bool,
+  secondaryTitle: PropTypes.string.isRequired,
+  primaryTitle: PropTypes.string.isRequired,
+  hasLongTitles: PropTypes.bool,
 };
 
 NavigationButtons.defaultProps = {
-  nextIsDisabled: false,
-  hasLongTitle: false,
+  primaryIsDisabled: false,
+  hasLongTitles: false,
 };
 
 export default NavigationButtons;

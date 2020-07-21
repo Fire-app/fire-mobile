@@ -19,7 +19,6 @@ const ListOption = ({ title, selected, onPress }) => (
         borderColor: colors.primaryLight,
       },
       selected && {
-        borderWidth: 3,
         borderColor: colors.primary,
       },
     ]}
