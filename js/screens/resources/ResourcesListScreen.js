@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import routes from '../../navigation/routes';
@@ -37,6 +37,11 @@ export default function ResourcesListScreen({ navigation }) {
       style={styles.container}
       contentContainerStyle={{ paddingVertical: 24 }}
       data={ORGANIZATIONS}
+      ListHeaderComponent={
+        <Text style={[textStyles.h2, { textAlign: 'left', paddingBottom: 16 }]}>
+          {t('resources_subtitle')}
+        </Text>
+      }
       renderItem={({ item: { title, description, route } }) => (
         <NavCard
           title={t(title)}

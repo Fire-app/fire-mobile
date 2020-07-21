@@ -8,6 +8,7 @@ const colors = {
   charcoalGrey: '#373643',
   warmGrey: '#a1a1a1',
   backgroundColor: '#f6f5f6',
+  white: '#ffffff',
 };
 
 export default colors;
