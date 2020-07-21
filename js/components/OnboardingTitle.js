@@ -9,8 +9,7 @@ const OnboardingTitle = ({ title, subtitle, alignCenter }) => {
       <Text
         style={[
           textStyles.h1,
-          styles.title,
-          alignCenter && { textAlign: 'center' },
+          alignCenter && { textAlign: 'center', paddingBottom: 5 },
         ]}
       >
         {title}
@@ -47,10 +46,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingRight: 10,
     width: '100%',
-  },
-  title: {
-    paddingBottom: 5,
-    color: colors.charcoalGrey,
   },
   subtitle: {
     color: colors.textLight,

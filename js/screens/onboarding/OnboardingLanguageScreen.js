@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import i18n, { resources } from '../../config/i18n';
+import i18n, { getLanguageOptions } from '../../config/i18n';
 import routes from '../../navigation/routes';
 import { screenStyles } from '../../styles';
 import ListSelector from '../../components/ListSelector';
@@ -11,11 +11,6 @@ import OnboardingTitle from '../../components/OnboardingTitle';
 import PrimaryButton from '../../components/Buttons/PrimaryButton';
 
 const onboardingRoutes = routes.onboarding;
-
-const LANGUAGE_OPTIONS = Object.keys(resources).map((locale) => ({
-  locale,
-  name: resources[locale].name,
-}));
 
 const LanguageScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -40,7 +35,7 @@ const LanguageScreen = ({ navigation }) => {
         <ListSelector
           defaultKey={i18n.language}
           onChange={onLanguageChange}
-          data={LANGUAGE_OPTIONS}
+          data={getLanguageOptions()}
           keyExtractor={({ locale }, i) => `${locale}:${i}`}
           selectedExtractor={({ item }) => item.locale}
           titleExtractor={({ item }) => item.name}

@@ -3,12 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { textStyles } from '../../styles';
 import ListSelector from '../../components/ListSelector';
-import i18n, { resources } from '../../config/i18n';
-
-const LANGUAGE_OPTIONS = Object.keys(resources).map((locale) => ({
-  locale,
-  name: resources[locale].name,
-}));
+import i18n, { getLanguageOptions } from '../../config/i18n';
 
 const SettingsLanguageScreen = () => {
   const { t } = useTranslation();
@@ -32,7 +27,7 @@ const SettingsLanguageScreen = () => {
         <ListSelector
           defaultKey={i18n.language}
           onChange={onLanguageChange}
-          data={LANGUAGE_OPTIONS}
+          data={getLanguageOptions()}
           keyExtractor={({ locale }, i) => `${locale}:${i}`}
           selectedExtractor={({ item }) => item.locale}
           titleExtractor={({ item }) => item.name}

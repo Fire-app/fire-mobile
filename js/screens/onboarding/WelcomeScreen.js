@@ -28,12 +28,7 @@ const WelcomeInfo = () => {
           source={LOGO}
           accessibilityLabel="CHIRLA Logo"
         />
-        <Text
-          style={[
-            textStyles.body2,
-            { paddingLeft: 10, color: colors.charcoalGrey },
-          ]}
-        >
+        <Text style={[textStyles.body2, { paddingLeft: 10 }]}>
           {t('a_chirla_project')}
         </Text>
       </View>
@@ -73,11 +68,11 @@ const WelcomeScreen = ({ navigation }) => {
       </View>
       <NavigationButtons
         // TODO: figure out what to display for not over 13
-        onRightPress={() => navigation.pop()}
-        onLeftPress={() => navigation.navigate(onboardingRoutes.intro)}
-        rightTitle={t('not_over_13')}
-        leftTitle={t('continue')}
-        hasLongTitle
+        onSecondaryPress={() => navigation.pop()}
+        onPrimaryPress={() => navigation.navigate(onboardingRoutes.intro)}
+        secondaryTitle={t('not_over_13')}
+        primaryTitle={t('continue')}
+        hasLongTitles
       />
     </View>
   );
@@ -115,7 +110,6 @@ const styles = StyleSheet.create({
   },
   legalText: {
     textAlign: 'center',
-    color: colors.charcoalGrey,
     paddingBottom: 15,
     paddingHorizontal: 5,
   },
@@ -131,14 +125,5 @@ const styles = StyleSheet.create({
   logo: {
     height: 25,
     width: 25,
-  },
-  title: {
-    paddingTop: 30,
-    color: colors.charcoalGrey,
-  },
-  subtitle: {
-    color: colors.textLight,
-    textAlign: 'center',
-    padding: 10,
   },
 });

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
 import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
 import routes from '../../navigation/routes';
-import { screenStyles, textStyles, colors } from '../../styles';
+import { screenStyles, textStyles } from '../../styles';
 
 import OnboardingTitle from '../../components/OnboardingTitle';
 import ListSelector from '../../components/ListSelector';
@@ -29,9 +29,7 @@ const ModalContent = () => {
       <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
         {t('what_is_hotline')}
       </Text>
-      <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
-        {t('hotline_note')}
-      </Text>
+      <Text style={textStyles.body1}>{t('hotline_note')}</Text>
     </View>
   );
 };
@@ -86,11 +84,11 @@ const HotlineScreen = ({ navigation }) => {
         />
       </View>
       <NavigationButtons
-        onRightPress={() => navigation.pop()}
-        onLeftPress={saveHotlineNumber}
-        rightTitle={t('back')}
-        leftTitle={t('next')}
-        nextIsDisabled={false}
+        onSecondaryPress={() => navigation.pop()}
+        onPrimaryPress={saveHotlineNumber}
+        secondaryTitle={t('back')}
+        primaryTitle={t('next')}
+        primaryIsDisabled={false}
       />
     </View>
   );

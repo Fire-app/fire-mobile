@@ -5,7 +5,7 @@ import { View, StyleSheet, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import completeOnboardingAction from '../../store/actions/completeOnboarding';
-import { colors, screenStyles } from '../../styles';
+import { screenStyles } from '../../styles';
 import PrimaryButton from '../../components/Buttons/PrimaryButton';
 import OnboardingTitle from '../../components/OnboardingTitle';
 
@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     paddingBottom: 5,
-    color: colors.charcoalGrey,
   },
   image: {
     height: 200,

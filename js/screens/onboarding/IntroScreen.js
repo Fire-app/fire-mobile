@@ -7,6 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import routes from '../../navigation/routes';
 import { screenStyles, colors, textStyles } from '../../styles';
 import PrimaryButton from '../../components/Buttons/PrimaryButton';
+import ProgressCircles from '../../components/ProgressCircles';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -51,16 +52,7 @@ const IntroScreen = ({ navigation }) => {
           subtitle={t('connect_with_orgs_sub')}
           iconName="file-document-outline"
         />
-        <View style={styles.circleIndicatorContainer}>
-          <MaterialCommunityIcons
-            name="circle"
-            style={{ fontSize: 16, color: colors.primary, padding: 8 }}
-          />
-          <MaterialCommunityIcons
-            name="circle"
-            style={{ fontSize: 16, color: colors.border, padding: 8 }}
-          />
-        </View>
+        <ProgressCircles numSteps={2} step={1} />
       </View>
       <PrimaryButton
         title={t('continue')}
@@ -99,8 +91,6 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   title: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    color: colors.charcoalGrey,
+    paddingVertical: 10,
   },
 });

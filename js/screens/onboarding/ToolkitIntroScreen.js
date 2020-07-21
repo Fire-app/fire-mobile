@@ -7,6 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import routes from '../../navigation/routes';
 import { textStyles, screenStyles, colors } from '../../styles';
 import NavigationButtons from '../../components/Buttons/NavigationButtons';
+import ProgressCircles from '../../components/ProgressCircles';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -16,9 +17,7 @@ const ToolkitInfoSection = ({ title, subtitle, iconName }) => {
       <MaterialCommunityIcons name={iconName} style={styles.infoIcon} />
       <View>
         <Text style={[textStyles.h3, styles.infoTitle]}>{title}</Text>
-        <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
-          {subtitle}
-        </Text>
+        <Text style={textStyles.body1}>{subtitle}</Text>
       </View>
     </View>
   );
@@ -64,22 +63,13 @@ const ToolkitIntroScreen = ({ navigation }) => {
           subtitle={t('rights_card_note')}
           iconName="credit-card-outline"
         />
-        <View style={styles.circleIndicatorContainer}>
-          <MaterialCommunityIcons
-            name="circle"
-            style={{ fontSize: 16, color: colors.border, padding: 8 }}
-          />
-          <MaterialCommunityIcons
-            name="circle"
-            style={{ fontSize: 16, color: colors.primary, padding: 8 }}
-          />
-        </View>
+        <ProgressCircles numSteps={2} step={2} />
       </View>
       <NavigationButtons
-        onRightPress={() => navigation.pop()}
-        onLeftPress={() => navigation.navigate(onboardingRoutes.hotline)}
-        rightTitle={t('back')}
-        leftTitle={t('next')}
+        onSecondaryPress={() => navigation.pop()}
+        onPrimaryPress={() => navigation.navigate(onboardingRoutes.hotline)}
+        secondaryTitle={t('back')}
+        primaryTitle={t('next')}
       />
     </View>
   );
@@ -120,7 +110,6 @@ const styles = StyleSheet.create({
   title: {
     padding: 5,
     paddingTop: 30,
-    color: colors.charcoalGrey,
   },
   subtitle: {
     color: colors.textLight,
@@ -128,7 +117,6 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   infoTitle: {
-    color: colors.charcoalGrey,
     paddingTop: 10,
     paddingBottom: 5,
   },

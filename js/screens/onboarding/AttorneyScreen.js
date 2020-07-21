@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import routes from '../../navigation/routes';
-import { screenStyles, textStyles, colors } from '../../styles';
+import { screenStyles, textStyles } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
 import { NavigationButtons } from '../../components/Buttons';
 import AttorneyForm from '../../components/AttorneyForm';
@@ -39,9 +39,7 @@ const ModalContent = () => {
       <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
         {t('attorney_default_title')}
       </Text>
-      <Text style={[textStyles.body1, { color: colors.charcoalGrey }]}>
-        {t('attorney_default_subtitle')}
-      </Text>
+      <Text style={textStyles.body1}>{t('attorney_default_subtitle')}</Text>
     </View>
   );
 };
@@ -111,20 +109,20 @@ const AttorneyScreen = ({ navigation }) => {
               <ModalContent />
               <NavigationButtons
                 // TODO: figure out what to display for not over 13
-                onRightPress={() => setModalVisible(false)}
-                onLeftPress={onModalSubmit}
-                rightTitle={t('cancel')}
-                leftTitle={t('use_chirla')}
-                hasLongTitle
+                onSecondaryPress={() => setModalVisible(false)}
+                onPrimaryPress={onModalSubmit}
+                secondaryTitle={t('cancel')}
+                primaryTitle={t('use_chirla')}
+                hasLongTitles
               />
             </CustomModal>
           </ScrollView>
           <NavigationButtons
-            onRightPress={() => navigation.pop()}
-            onLeftPress={onSubmit}
-            rightTitle={t('back')}
-            leftTitle={t('finish')}
-            nextIsDisabled={nameIsInvalid || numberIsInvalid}
+            onSecondaryPress={() => navigation.pop()}
+            onPrimaryPress={onSubmit}
+            secondaryTitle={t('back')}
+            primaryTitle={t('finish')}
+            primaryIsDisabled={nameIsInvalid || numberIsInvalid}
           />
         </View>
       </TouchableWithoutFeedback>
