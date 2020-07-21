@@ -59,6 +59,12 @@ const KYRModal = ({ isVisible, setModalVisible }) => {
     <View>
       <Modal transparent animationType="fade" visible={isVisible}>
         <View style={modalStyles.container}>
+          <TouchableOpacity
+            style={{ alignSelf: 'flex-start', padding: 20 }}
+            onPress={setModalVisible(!isVisible)}
+          >
+            <MaterialCommunityIcons name="close" color="black" size={40} />
+          </TouchableOpacity>
           <View style={modalStyles.innerContainer}>
             <View style={modalStyles.contentContainer}>
               <Text style={[styles.h2, { paddingBottom: 20 }]}>
@@ -89,6 +95,11 @@ EmergencyScreen.propTypes = {
   }).isRequired,
 };
 
+KYRModal.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  setModalVisible: PropTypes.func.isRequired,
+};
+
 const localStyles = StyleSheet.create({
   container: {
     marginHorizontal: 12,
@@ -112,10 +123,6 @@ const localStyles = StyleSheet.create({
 });
 
 const modalStyles = StyleSheet.create({
-  noAttorneyButton: {
-    alignItems: 'flex-end',
-    paddingRight: 10,
-  },
   container: {
     flexGrow: 1,
     padding: 20,
