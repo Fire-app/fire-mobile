@@ -9,8 +9,7 @@ const OnboardingTitle = ({ title, subtitle, alignCenter }) => {
       <Text
         style={[
           textStyles.h1,
-          styles.title,
-          alignCenter && { textAlign: 'center' },
+          alignCenter && { textAlign: 'center', paddingBottom: 5 },
         ]}
       >
         {title}
@@ -30,11 +29,12 @@ const OnboardingTitle = ({ title, subtitle, alignCenter }) => {
 
 OnboardingTitle.propTypes = {
   title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
   alignCenter: PropTypes.bool,
 };
 
 OnboardingTitle.defaultProps = {
+  subtitle: '',
   alignCenter: false,
 };
 
@@ -42,16 +42,12 @@ export default OnboardingTitle;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
+    paddingTop: 30,
     paddingBottom: 20,
     paddingRight: 10,
     width: '100%',
   },
-  title: {
-    paddingBottom: 5,
-    color: colors.text,
-  },
   subtitle: {
-    color: colors.subtext,
+    color: colors.textLight,
   },
 });

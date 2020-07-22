@@ -1,40 +1,49 @@
 /* eslint-disable global-require */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import i18n, { getLanguageOptions } from '../../config/i18n';
 import routes from '../../navigation/routes';
 import { screenStyles } from '../../styles';
-import LanguageList from '../../components/LanguageList';
+import ListSelector from '../../components/ListSelector';
 import OnboardingTitle from '../../components/OnboardingTitle';
-import OnboardingButtons from '../../components/OnboardingButtons';
+import PrimaryButton from '../../components/Buttons/PrimaryButton';
 
-const onBoardingRoutes = routes.onboarding;
+const onboardingRoutes = routes.onboarding;
 
 const LanguageScreen = ({ navigation }) => {
   const { t } = useTranslation();
+
+  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+
+  useEffect(() => {
+    i18n.changeLanguage(selectedLanguage);
+  }, [selectedLanguage]);
+
+  const onLanguageChange = ({ item }) => {
+    setSelectedLanguage(item.locale);
+  };
+
   return (
     <View style={screenStyles.container}>
-      <View style={screenStyles.onboardingContentContainer}>
+      <View style={screenStyles.contentContainer}>
         <OnboardingTitle
-          title="Select your language"
-          subtitle="You can change your language later in settings too!"
+          title={t('select_language')}
+          subtitle={t('select_language_subtitle')}
         />
-        <View
-          style={{
-            flex: 1,
-            alignSelf: 'stretch',
-          }}
-        >
-          <LanguageList />
-        </View>
+        <ListSelector
+          defaultKey={i18n.language}
+          onChange={onLanguageChange}
+          data={getLanguageOptions()}
+          keyExtractor={({ locale }, i) => `${locale}:${i}`}
+          selectedExtractor={({ item }) => item.locale}
+          titleExtractor={({ item }) => item.name}
+        />
       </View>
-      <OnboardingButtons
-        onRightPress={() => navigation.pop()}
-        onLeftPress={() => navigation.navigate(onBoardingRoutes.hotline)}
-        rightTitle={t('back')}
-        leftTitle={t('next')}
-        nextIsDisabled={false}
+      <PrimaryButton
+        title={t('continue')}
+        onPress={() => navigation.navigate(onboardingRoutes.welcome)}
       />
     </View>
   );
