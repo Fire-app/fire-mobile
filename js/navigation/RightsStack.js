@@ -34,7 +34,10 @@ const SettingsStack = () => {
       <Stack.Screen
         name={routes.scenarios.overviewList}
         component={ScenarioListScreen}
-        options={{ title: t('header_scenarios') }}
+        options={{
+          title: t('header_scenarios'),
+          headerBackTitle: t('tab_rights'),
+        }}
       />
 
       {/* SCENARIOS */}

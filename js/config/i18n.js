@@ -8,6 +8,12 @@ import klingonJson from '../../lang/tlh.json';
 const DEFAULT = 'en';
 export const fallback = DEFAULT;
 
+export const getLanguageOptions = () =>
+  Object.keys(resources).map((locale) => ({
+    locale,
+    name: resources[locale].name,
+  }));
+
 export const resources = {
   en: {
     name: 'English',

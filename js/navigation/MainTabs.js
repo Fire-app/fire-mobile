@@ -106,7 +106,7 @@ const AppTabs = () => {
                 height: 64,
                 width: 64,
                 borderRadius: 100,
-                backgroundColor: colors.primaryLighter,
+                backgroundColor: colors.primaryLight,
                 justifyContent: 'center',
                 alignItems: 'center',
                 shadowColor: 'black',

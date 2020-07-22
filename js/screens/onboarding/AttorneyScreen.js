@@ -8,19 +8,41 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   LayoutAnimation,
+  Text,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import routes from '../../navigation/routes';
-import { screenStyles } from '../../styles';
+import { screenStyles, textStyles } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
-import OnboardingButtons from '../../components/OnboardingButtons';
+import { NavigationButtons } from '../../components/Buttons';
 import AttorneyForm from '../../components/AttorneyForm';
+import CustomModal from '../../components/CustomModal';
 import useKeyboard from '../../hook/useKeyboard';
 
-const onBoardingRoutes = routes.onboarding;
+const onboardingRoutes = routes.onboarding;
+
+const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
+const DEFAULT_NUMBER = '2133531333';
+
+const ModalContent = () => {
+  const { t } = useTranslation();
+  return (
+    <View
+      style={{
+        justifyContent: 'flex-start',
+        paddingBottom: 20,
+      }}
+    >
+      <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
+        {t('attorney_default_title')}
+      </Text>
+      <Text style={textStyles.body1}>{t('attorney_default_subtitle')}</Text>
+    </View>
+  );
+};
 
 const AttorneyScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -36,11 +58,18 @@ const AttorneyScreen = ({ navigation }) => {
   const onSubmit = () => {
     dispatch(setAttorneyNameAction(name));
     dispatch(setAttorneyNumberAction(number));
-    navigation.navigate(onBoardingRoutes.complete);
+    navigation.navigate(onboardingRoutes.complete);
   };
 
   const [nameIsInvalid, setNameIsInvalid] = useState(true);
   const [numberIsInvalid, setNumberIsInvalid] = useState(true);
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const onModalSubmit = () => {
+    setName(DEFAULT_ATTORNEY);
+    setNumber(DEFAULT_NUMBER);
+    setModalVisible(false);
+  };
 
   // We don't want a ton of padding if the keyboard is up. This animates between paddings
   const [visible] = useKeyboard({ useWillShow: true, useWillHide: true });
@@ -72,13 +101,28 @@ const AttorneyScreen = ({ navigation }) => {
               numberIsInvalid={numberIsInvalid}
               setNumberIsInvalid={setNumberIsInvalid}
             />
+            <CustomModal
+              isVisible={modalVisible}
+              setIsVisible={setModalVisible}
+              buttonTitle={t('no_attorney')}
+            >
+              <ModalContent />
+              <NavigationButtons
+                // TODO: figure out what to display for not over 13
+                onSecondaryPress={() => setModalVisible(false)}
+                onPrimaryPress={onModalSubmit}
+                secondaryTitle={t('cancel')}
+                primaryTitle={t('use_chirla')}
+                hasLongTitles
+              />
+            </CustomModal>
           </ScrollView>
-          <OnboardingButtons
-            onRightPress={() => navigation.pop()}
-            onLeftPress={onSubmit}
-            rightTitle={t('back')}
-            leftTitle={t('next')}
-            nextIsDisabled={nameIsInvalid || numberIsInvalid}
+          <NavigationButtons
+            onSecondaryPress={() => navigation.pop()}
+            onPrimaryPress={onSubmit}
+            secondaryTitle={t('back')}
+            primaryTitle={t('finish')}
+            primaryIsDisabled={nameIsInvalid || numberIsInvalid}
           />
         </View>
       </TouchableWithoutFeedback>
