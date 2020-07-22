@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, FlatList } from 'react-native';
 
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { textStyles, colors } from '../styles';
 
 const ListOption = ({ title, selected, onPress }) => (
@@ -24,7 +25,20 @@ const ListOption = ({ title, selected, onPress }) => (
     ]}
     onPress={onPress}
   >
-    <Text style={textStyles.body1}>{title}</Text>
+    <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', flex: 1 }}>
+        <Text style={textStyles.body1}>{title}</Text>
+      </View>
+      {selected && (
+        <MaterialCommunityIcons
+          name="check-circle"
+          style={{
+            fontSize: 20,
+            color: colors.primary,
+          }}
+        />
+      )}
+    </View>
   </TouchableOpacity>
 );
 
