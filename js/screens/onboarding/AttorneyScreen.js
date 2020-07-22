@@ -19,7 +19,7 @@ import OnboardingTitle from '../../components/OnboardingTitle';
 import { NavigationButtons } from '../../components/Buttons';
 import AttorneyForm from '../../components/AttorneyForm';
 import CustomModal from '../../components/CustomModal';
-import NoAttorneyModalContent from '../../components/NoAttorneyModalContent';
+import ModalContent from '../../components/ModalContent';
 import useKeyboard from '../../hook/useKeyboard';
 import {
   DEFAULT_ATTORNEY,
@@ -90,7 +90,10 @@ const AttorneyScreen = ({ navigation }) => {
               setIsVisible={setModalVisible}
               buttonTitle={t('no_attorney')}
             >
-              <NoAttorneyModalContent />
+              <ModalContent
+                title={t('attorney_default_title')}
+                subtitle={t('attorney_default_subtitle')}
+              />
               <NavigationButtons
                 onSecondaryPress={() => setModalVisible(false)}
                 onPrimaryPress={onModalSubmit}

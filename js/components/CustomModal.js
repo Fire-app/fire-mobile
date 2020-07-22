@@ -7,6 +7,8 @@ import {
   Modal,
   KeyboardAvoidingView,
   ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 import { SecondaryButton } from './Buttons';
 
@@ -21,17 +23,19 @@ const CustomModal = ({ children, buttonTitle, isVisible, setIsVisible }) => {
       </View>
       <Modal transparent animationType="fade" visible={isVisible}>
         <KeyboardAvoidingView style={{ flexGrow: 1 }} behavior="padding">
-          <View style={{ flex: 1 }}>
-            <ScrollView
-              alwaysBounceVertical={false}
-              style={{ flex: 1 }}
-              contentContainerStyle={{ flexGrow: 1 }}
-            >
-              <View style={styles.modalContainer}>
-                <View style={styles.contentContainer}>{children}</View>
-              </View>
-            </ScrollView>
-          </View>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={{ flex: 1 }}>
+              <ScrollView
+                alwaysBounceVertical={false}
+                style={{ flex: 1 }}
+                contentContainerStyle={{ flexGrow: 1 }}
+              >
+                <View style={styles.modalContainer}>
+                  <View style={styles.contentContainer}>{children}</View>
+                </View>
+              </ScrollView>
+            </View>
+          </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
       </Modal>
     </View>
