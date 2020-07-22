@@ -25,6 +25,9 @@ const routes = {
     toolkit: 'SETTINGS_TOOLKIT',
     hotline: 'SETTINGS_HOTLINE',
     rights_card: 'SETTINGS_RIGHTS_CARD',
+    about: 'SETTINGS_ABOUT',
+    privacy_policy: 'SETTINGS_PRIVACY_POLICY',
+    terms_of_service: 'SETTINGS_TERMS_OF_SERVICE',
   },
 
   rightsStack: 'RIGHTS',

@@ -35,8 +35,9 @@ const HotlineSelectionScreen = () => {
         </View>
         <SecondaryButton
           title="Learn About Your Emergency Hotline"
-          // TODO:
-          onPress={() => {}}
+          onPress={() => {
+            // TODO:
+          }}
         />
       </View>
       <Text style={[textStyles.h3, { alignSelf: 'flex-start' }]}>

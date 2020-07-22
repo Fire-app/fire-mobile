@@ -8,6 +8,9 @@ import {
   EmergencyToolkitScreen,
   HotlineSelectionScreen,
   RightsCardScreen,
+  AboutScreen,
+  PrivacyPolicyScreen,
+  TermsOfServiceScreen,
 } from '../screens/settings';
 
 import routes from './routes';
@@ -55,6 +58,27 @@ const SettingsStack = () => {
         component={RightsCardScreen}
         options={{
           title: t('rights_card'),
+        }}
+      />
+      <Stack.Screen
+        name={routes.settings.about}
+        component={AboutScreen}
+        options={{
+          title: t('about'),
+        }}
+      />
+      <Stack.Screen
+        name={routes.settings.privacy_policy}
+        component={PrivacyPolicyScreen}
+        options={{
+          title: t('privacy_policy'),
+        }}
+      />
+      <Stack.Screen
+        name={routes.settings.terms_of_service}
+        component={TermsOfServiceScreen}
+        options={{
+          title: t('terms_of_service'),
         }}
       />
     </Stack.Navigator>

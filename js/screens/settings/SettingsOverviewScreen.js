@@ -36,18 +36,25 @@ const SettingsOverviewScreen = ({ navigation }) => {
       <Divider />
       <Row
         hasIcon
-        iconName="alarm"
+        iconName="bell"
         title={t('notifications')}
         onPress={() => {
           // TODO
         }}
       />
       <Divider />
+      <Row
+        hasIcon
+        iconName="information"
+        title={t('about')}
+        onPress={() => navigation.navigate(routes.settings.about)}
+      />
+      <Divider />
       {__DEV__ && (
         <>
           <Row
             hasIcon
-            iconName="backup-restore"
+            iconName="restart"
             title="Restart Set-Up"
             onPress={resetOnboarding}
           />
