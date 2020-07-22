@@ -52,6 +52,8 @@ const routes = {
       work: 'SCENARIOS__WORK',
     },
   },
+
+  emergencyModal: 'EMERGENCY_MODAL',
 };
 
 export default routes;
