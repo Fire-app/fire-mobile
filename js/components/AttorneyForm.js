@@ -34,7 +34,7 @@ const AttorneyForm = ({
   };
 
   return (
-    <View>
+    <View style={{ alignSelf: 'stretch' }}>
       <PrimaryInput
         label={t('attorney_name')}
         value={name}

@@ -25,7 +25,7 @@ const NavigationButtons = ({
               backgroundColor: 'white',
             },
             hasLongTitles && {
-              paddingHorizontal: 40,
+              paddingHorizontal: 30,
             },
           ]}
         >
@@ -43,7 +43,7 @@ const NavigationButtons = ({
               backgroundColor: colors.primary,
             },
             hasLongTitles && {
-              paddingHorizontal: 40,
+              paddingHorizontal: 30,
             },
             primaryIsDisabled && {
               backgroundColor: colors.buttonDisabled,

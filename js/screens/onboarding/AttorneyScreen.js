@@ -8,41 +8,25 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   LayoutAnimation,
-  Text,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import routes from '../../navigation/routes';
-import { screenStyles, textStyles } from '../../styles';
+import { screenStyles } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
 import { NavigationButtons } from '../../components/Buttons';
 import AttorneyForm from '../../components/AttorneyForm';
 import CustomModal from '../../components/CustomModal';
+import NoAttorneyModalContent from '../../components/NoAttorneyModalContent';
 import useKeyboard from '../../hook/useKeyboard';
+import {
+  DEFAULT_ATTORNEY,
+  DEFAULT_NUMBER,
+} from '../../../data/attorneyOptions';
 
 const onboardingRoutes = routes.onboarding;
-
-const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
-const DEFAULT_NUMBER = '2133531333';
-
-const ModalContent = () => {
-  const { t } = useTranslation();
-  return (
-    <View
-      style={{
-        justifyContent: 'flex-start',
-        paddingBottom: 20,
-      }}
-    >
-      <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
-        {t('attorney_default_title')}
-      </Text>
-      <Text style={textStyles.body1}>{t('attorney_default_subtitle')}</Text>
-    </View>
-  );
-};
 
 const AttorneyScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -106,9 +90,8 @@ const AttorneyScreen = ({ navigation }) => {
               setIsVisible={setModalVisible}
               buttonTitle={t('no_attorney')}
             >
-              <ModalContent />
+              <NoAttorneyModalContent />
               <NavigationButtons
-                // TODO: figure out what to display for not over 13
                 onSecondaryPress={() => setModalVisible(false)}
                 onPrimaryPress={onModalSubmit}
                 secondaryTitle={t('cancel')}
