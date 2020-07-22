@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { textStyles } from '../../styles';
-import LanguageList from '../../components/LanguageList';
+import ListSelector from '../../components/ListSelector';
+import i18n, { getLanguageOptions } from '../../config/i18n';
 
 const LanguageScreen = () => {
   const { t } = useTranslation();
+
+  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+
+  useEffect(() => {
+    i18n.changeLanguage(selectedLanguage);
+  }, [selectedLanguage]);
+
+  const onLanguageChange = ({ item }) => {
+    setSelectedLanguage(item.locale);
+  };
 
   return (
     <View style={styles.container}>
@@ -13,7 +24,14 @@ const LanguageScreen = () => {
         {t('choose_language')}
       </Text>
       <View style={styles.languageList}>
-        <LanguageList />
+        <ListSelector
+          defaultKey={i18n.language}
+          onChange={onLanguageChange}
+          data={getLanguageOptions()}
+          keyExtractor={({ locale }, i) => `${locale}:${i}`}
+          selectedExtractor={({ item }) => item.locale}
+          titleExtractor={({ item }) => item.name}
+        />
       </View>
     </View>
   );

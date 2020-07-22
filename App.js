@@ -21,10 +21,14 @@ import createPersistedStore from './js/store/createPersistedStore';
 import Navigation from './js/navigation';
 import './js/config'; // Load our build time configs
 
+const welcomeImage = require('./assets/welcomeImage.png');
+const completeImage = require('./assets/completedImage.png');
+const chirlaLogo = require('./assets/chirlaLogo.png');
+
 // Assets we need to load before app starts:
 const iconFonts = [FontAwesome.font];
 const textFonts = [];
-const localImages = []; // Ensure that you add all images here! Otherwise they flicker on load!
+const localImages = [welcomeImage, completeImage, chirlaLogo]; // Ensure that you add all images here! Otherwise they flicker on load!
 
 function cacheLocalImages() {
   return localImages.map((image) => Asset.fromModule(image).downloadAsync());
