@@ -44,25 +44,28 @@ VideoCard.propTypes = {
   coverImage: Image.propTypes.source.isRequired,
 };
 
-const VideoListScreen = () => (
-  <FlatList
-    keyExtractor={(_, i) => `${i}`}
-    style={styles.container}
-    contentContainerStyle={{ paddingVertical: 24 }}
-    data={VIDEOS}
-    renderItem={({ item: { title, image, time } }) => (
-      <VideoCard
-        title={title}
-        image={image}
-        // TODO: image per video, or thumbnail
-        coverImage={KNOW_YOUR_RIGHTS_IMAGE}
-        time={time}
-        onPress={() => {}}
-      />
-    )}
-    ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
-  />
-);
+const VideoListScreen = () => {
+  const { t } = useTranslation();
+  return (
+    <FlatList
+      keyExtractor={(_, i) => `${i}`}
+      style={styles.container}
+      contentContainerStyle={{ paddingVertical: 24 }}
+      data={VIDEOS}
+      renderItem={({ item: { title, image, time } }) => (
+        <VideoCard
+          title={t(title)}
+          image={image}
+          // TODO: image per video, or thumbnail
+          coverImage={KNOW_YOUR_RIGHTS_IMAGE}
+          time={time}
+          onPress={() => {}}
+        />
+      )}
+      ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+    />
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

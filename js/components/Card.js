@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, ViewPropTypes } from 'react-native';
+import { StyleSheet, ViewPropTypes } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
+import { colors } from '../styles';
 
 export default function Card({ children, onPress, style }) {
   return (
@@ -24,9 +25,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 12,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     borderRadius: 3,
     borderWidth: 2,
-    borderColor: '#eeeeee',
+    borderColor: colors.border,
   },
 });

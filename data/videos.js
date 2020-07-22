@@ -1,26 +1,26 @@
 const videos = [
   {
-    title: 'Know Your Rights (general tips)',
+    title: 'videos.general_tips',
     time: '1:11',
     fileName: 'know_your_rights',
   },
   {
-    title: 'Interrogated by an ICE agent in detention',
+    title: 'videos.interrogation',
     time: '1:56',
     fileName: 'know_your_rights',
   },
   {
-    title: 'Consulting an attorney in detention',
+    title: 'videos.consult_attorney',
     time: '2:30',
     fileName: 'know_your_rights',
   },
   {
-    title: 'Seeking legal relief with ISAP in detention',
+    title: 'videos.isap_detention',
     time: '2:26',
     fileName: 'know_your_rights',
   },
   {
-    title: 'Arrested in the street',
+    title: 'videos.arrested_street',
     time: '2:30',
     fileName: 'know_your_rights',
   },
