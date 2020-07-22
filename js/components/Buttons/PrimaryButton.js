@@ -15,6 +15,7 @@ const PrimaryButton = ({ title, onPress, disabled }) => (
       borderRadius: 3,
       backgroundColor: colors.primary,
       padding: 16,
+      minWidth: 250,
     }}
   />
 );
