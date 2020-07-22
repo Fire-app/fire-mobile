@@ -14,7 +14,7 @@ const PrimaryButton = ({ title, onPress, disabled }) => (
     buttonStyle={{
       borderRadius: 3,
       backgroundColor: colors.primary,
-      paddingVertical: 16,
+      padding: 16,
       minWidth: 250,
     }}
   />
