@@ -4,19 +4,20 @@ import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { ScrollView } from 'react-native-gesture-handler';
 import routes from '../../navigation/routes';
-import { screenStyles, colors, textStyles } from '../../styles';
-import PrimaryButton from '../../components/Buttons/PrimaryButton';
-import ProgressCircles from '../../components/ProgressCircles';
+import { colors, textStyles } from '../../styles';
+import OnboardingTemplate from './Template';
 
 const onboardingRoutes = routes.onboarding;
 
 const InfoSection = ({ title, subtitle, iconName }) => {
   return (
-    <View style={styles.infoSectionContainer}>
+    <View style={{ flexDirection: 'row' }}>
       <MaterialCommunityIcons name={iconName} style={styles.icon} />
-      <View>
-        <Text style={[textStyles.h1, styles.title]}>{title}</Text>
+      <View style={{ width: 12 }} />
+      <View style={{ flex: 1 }}>
+        <Text style={[textStyles.h1, { paddingBottom: 8 }]}>{title}</Text>
         <Text style={[textStyles.body1, { color: colors.textLight }]}>
           {subtitle}
         </Text>
@@ -34,31 +35,40 @@ InfoSection.propTypes = {
 const IntroScreen = ({ navigation }) => {
   const { t } = useTranslation();
   return (
-    <View style={screenStyles.container}>
-      <View style={screenStyles.contentContainer}>
-        <View style={{ padding: 20 }} />
+    <OnboardingTemplate
+      step={1}
+      primaryButton={{
+        title: t('continue'),
+        onPress: () => navigation.navigate(onboardingRoutes.toolkitIntro),
+      }}
+    >
+      <ScrollView
+        alwaysBounceVertical={false}
+        contentContainerStyle={{
+          justifyContent: 'center',
+          flexGrow: 1,
+        }}
+      >
         <InfoSection
           title={t('know_your_rights')}
           subtitle={t('know_your_rights_sub')}
           iconName="shield-home"
         />
+        <View style={{ height: 40 }} />
         <InfoSection
           title={t('protect_yourself')}
           subtitle={t('protect_yourself_sub')}
           iconName="alert-outline"
         />
+        <View style={{ height: 40 }} />
+
         <InfoSection
           title={t('connect_with_orgs')}
           subtitle={t('connect_with_orgs_sub')}
           iconName="file-document-outline"
         />
-        <ProgressCircles numSteps={2} step={1} />
-      </View>
-      <PrimaryButton
-        title={t('continue')}
-        onPress={() => navigation.navigate(onboardingRoutes.toolkitIntro)}
-      />
-    </View>
+      </ScrollView>
+    </OnboardingTemplate>
   );
 };
 
@@ -79,18 +89,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-end',
   },
-  infoSectionContainer: {
-    flexDirection: 'row',
-    paddingLeft: 40,
-    paddingRight: 50,
-    paddingVertical: 20,
-  },
   icon: {
     color: colors.primary,
     fontSize: 40,
-    padding: 15,
-  },
-  title: {
-    paddingVertical: 10,
   },
 });

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -14,7 +14,6 @@ const ListOption = ({ title, selected, onPress }) => (
         paddingHorizontal: 16,
         backgroundColor: colors.primaryLight,
         borderRadius: 3,
-        marginVertical: 4,
         borderWidth: 3,
         borderColor: colors.primaryLight,
       },
@@ -50,21 +49,20 @@ const ListSelector = ({
   };
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        keyExtractor={(item) => keyExtractor(item)}
-        alwaysBounceVertical={false}
-        data={data}
-        extraData={{ selectedKey }}
-        renderItem={(item) => (
-          <ListOption
-            title={titleExtractor(item)}
-            selected={selectedExtractor(item) === selectedKey}
-            onPress={() => onPress(item)}
-          />
-        )}
-      />
-    </View>
+    <FlatList
+      keyExtractor={(item) => keyExtractor(item)}
+      alwaysBounceVertical={false}
+      data={data}
+      extraData={{ selectedKey }}
+      renderItem={(item) => (
+        <ListOption
+          title={titleExtractor(item)}
+          selected={selectedExtractor(item) === selectedKey}
+          onPress={() => onPress(item)}
+        />
+      )}
+      ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+    />
   );
 };
 
@@ -78,12 +76,3 @@ ListSelector.propTypes = {
 };
 
 export default ListSelector;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    paddingVertical: 15,
-  },
-});
