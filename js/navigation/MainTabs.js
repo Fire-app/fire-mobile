@@ -2,11 +2,13 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { useTranslation } from 'react-i18next';
 
-import Emergency from '../screens/EmergencyScreen';
+import EmergencyScreen from '../screens/EmergencyScreen';
 import { textStyles, colors } from '../styles';
 
 import routes from './routes';
@@ -15,12 +17,15 @@ import SettingsStack from './SettingsStack';
 import ResourcesStack from './ResourcesStack';
 
 const Tabs = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-const MainTabs = () => {
+const FakeScreen = () => null;
+
+const AppTabs = () => {
   const { t } = useTranslation();
   return (
     <Tabs.Navigator
-      name={routes.mainTabs}
+      name="FOO"
       initialRouteName={routes.main.rights}
       tabBarOptions={{
         activeTintColor: colors.charcoalGrey,
@@ -79,12 +84,21 @@ const MainTabs = () => {
         }}
       />
       <Tabs.Screen
+        listeners={({ navigation }) => ({
+          tabPress: (e) => {
+            // Prevent default action
+            e.preventDefault();
+
+            // Uses MainTabs stack navigator to navigate to emergency modal
+            navigation.navigate(routes.emergencyModal);
+          },
+        })}
         name={routes.main.emergency}
-        component={Emergency}
+        component={FakeScreen}
         options={{
           tabBarLabel: '',
           // eslint-disable-next-line no-unused-vars
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: () => (
             <View
               style={{
                 position: 'absolute',
@@ -92,7 +106,7 @@ const MainTabs = () => {
                 height: 64,
                 width: 64,
                 borderRadius: 100,
-                backgroundColor: colors.primaryLighter,
+                backgroundColor: colors.primaryLight,
                 justifyContent: 'center',
                 alignItems: 'center',
                 shadowColor: 'black',
@@ -123,6 +137,18 @@ const MainTabs = () => {
     </Tabs.Navigator>
   );
 };
+
+const MainTabs = () => (
+  <Stack.Navigator
+    name={routes.mainTabs}
+    initialRouteName="tabs"
+    screenOptions={{ headerShown: false }}
+    mode="modal"
+  >
+    <Tabs.Screen name="tabs" component={AppTabs} />
+    <Tabs.Screen name="EMERGENCY_MODAL" component={EmergencyScreen} />
+  </Stack.Navigator>
+);
 
 const styles = StyleSheet.create({
   tabBar: {

@@ -7,6 +7,8 @@ import {
   HotlineScreen,
   AttorneyScreen,
   CompleteScreen,
+  IntroScreen,
+  ToolkitIntroScreen,
 } from '../screens/onboarding';
 
 import routes from './routes';
@@ -22,8 +24,13 @@ const OnboardingStack = () => (
       headerShown: false,
     }}
   >
-    <Stack.Screen name={onboardingRoutes.welcome} component={WelcomeScreen} />
     <Stack.Screen name={onboardingRoutes.language} component={LanguageScreen} />
+    <Stack.Screen name={onboardingRoutes.welcome} component={WelcomeScreen} />
+    <Stack.Screen name={onboardingRoutes.intro} component={IntroScreen} />
+    <Stack.Screen
+      name={onboardingRoutes.toolkitIntro}
+      component={ToolkitIntroScreen}
+    />
     <Stack.Screen name={onboardingRoutes.hotline} component={HotlineScreen} />
     <Stack.Screen name={onboardingRoutes.attorney} component={AttorneyScreen} />
     <Stack.Screen name={onboardingRoutes.complete} component={CompleteScreen} />

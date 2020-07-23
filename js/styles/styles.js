@@ -2,16 +2,17 @@ import { StyleSheet } from 'react-native';
 
 const screenStyles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    padding: 30,
-    paddingBottom: 50,
-    backgroundColor: 'white',
-  },
-  onboardingContentContainer: {
     flex: 1,
-    flexGrow: 1,
+    padding: 20,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  contentContainer: {
+    flex: 0.95,
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    alignSelf: 'stretch',
+    paddingVertical: 10,
   },
 });
 

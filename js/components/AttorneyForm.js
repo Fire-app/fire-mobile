@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import NoAttorneyModal from './NoAttorneyModal';
 import PrimaryInput from './PrimaryInput';
-import { SecondaryButton } from './Buttons';
-
-const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
-const DEFAULT_NUMBER = '2133531333';
 
 const AttorneyForm = ({
   name,
@@ -20,13 +15,6 @@ const AttorneyForm = ({
   setNumberIsInvalid,
 }) => {
   const { t } = useTranslation();
-
-  const [modalVisible, setModalVisible] = useState(false);
-  const onModalSubmit = () => {
-    setName(DEFAULT_ATTORNEY);
-    setNumber(DEFAULT_NUMBER);
-    setModalVisible(false);
-  };
 
   const validateName = (_name) => {
     if (_name.trim().length > 0) {
@@ -64,15 +52,6 @@ const AttorneyForm = ({
         validate={validateNumber}
         errorMessage={t('phone_number_error')}
         keyboardType="numeric"
-      />
-      <SecondaryButton
-        title={t('no_attorney')}
-        onPress={() => setModalVisible(true)}
-      />
-      <NoAttorneyModal
-        isVisible={modalVisible}
-        setIsVisible={setModalVisible}
-        onSubmit={onModalSubmit}
       />
     </View>
   );
