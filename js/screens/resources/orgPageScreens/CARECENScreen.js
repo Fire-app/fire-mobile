@@ -17,10 +17,10 @@ export default function CARECENScreen() {
       phone="tel://2133857800"
       description={t('CARECEN_description')}
       services={SERVICES}
-      facebook="https://www.facebook.com/Carecen.LA/"
-      instagram="https://www.instagram.com/carecen_la/"
-      twitter="https://twitter.com/Carecen_LA"
-      youtube={null}
+      facebookUrl="https://www.facebook.com/Carecen.LA/"
+      instagramUrl="https://www.instagram.com/carecen_la/"
+      twitterUrl="https://twitter.com/Carecen_LA"
+      youtubeUrl={null}
     />
   );
 }

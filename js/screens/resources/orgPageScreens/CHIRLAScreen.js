@@ -17,10 +17,10 @@ export default function CHIRLAScreen() {
       phone="tel://8886244752"
       description={t('CHIRLA_description')}
       services={SERVICES}
-      facebook="https://www.facebook.com/chirlausa/"
-      instagram="https://www.instagram.com/chirla_org/"
-      twitter="https://twitter.com/CHIRLA"
-      youtube="https://www.youtube.com/channel/UCkpuw8C5tb4RL8IwI-liMsA"
+      facebookUrl="https://www.facebook.com/chirlausa/"
+      instagramUrl="https://www.instagram.com/chirla_org/"
+      twitterUrl="https://twitter.com/CHIRLA"
+      youtubeUrl="https://www.youtube.com/channel/UCkpuw8C5tb4RL8IwI-liMsA"
     />
   );
 }

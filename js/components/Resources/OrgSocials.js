@@ -5,7 +5,12 @@ import { View } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 import * as WebBrowser from 'expo-web-browser';
 
-export default function OrgSocials({ facebook, instagram, twitter, youtube }) {
+export default function OrgSocials({
+  facebookUrl,
+  instagramUrl,
+  twitterUrl,
+  youtubeUrl,
+}) {
   return (
     <View
       style={{
@@ -14,28 +19,28 @@ export default function OrgSocials({ facebook, instagram, twitter, youtube }) {
         paddingBottom: 58,
       }}
     >
-      {facebook ? (
+      {facebookUrl ? (
         <SocialIcon
           type="facebook"
-          onPress={() => WebBrowser.openBrowserAsync(facebook)}
+          onPress={() => WebBrowser.openBrowserAsync(facebookUrl)}
         />
       ) : null}
-      {instagram ? (
+      {instagramUrl ? (
         <SocialIcon
           type="instagram"
-          onPress={() => WebBrowser.openBrowserAsync(instagram)}
+          onPress={() => WebBrowser.openBrowserAsync(instagramUrl)}
         />
       ) : null}
-      {twitter ? (
+      {twitterUrl ? (
         <SocialIcon
           type="twitter"
-          onPress={() => WebBrowser.openBrowserAsync(twitter)}
+          onPress={() => WebBrowser.openBrowserAsync(twitterUrl)}
         />
       ) : null}
-      {youtube ? (
+      {youtubeUrl ? (
         <SocialIcon
           type="youtube"
-          onPress={() => WebBrowser.openBrowserAsync(youtube)}
+          onPress={() => WebBrowser.openBrowserAsync(youtubeUrl)}
         />
       ) : null}
     </View>
@@ -43,8 +48,8 @@ export default function OrgSocials({ facebook, instagram, twitter, youtube }) {
 }
 
 OrgSocials.propTypes = {
-  facebook: PropTypes.string,
-  instagram: PropTypes.string,
-  twitter: PropTypes.string,
-  youtube: PropTypes.string,
+  facebookUrl: PropTypes.string,
+  instagramUrl: PropTypes.string,
+  twitterUrl: PropTypes.string,
+  youtubeUrl: PropTypes.string,
 };

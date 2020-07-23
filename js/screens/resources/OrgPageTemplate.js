@@ -18,10 +18,10 @@ export default function OrgPageTemplate({
   phone,
   description,
   services,
-  facebook,
-  instagram,
-  twitter,
-  youtube,
+  facebookUrl,
+  instagramUrl,
+  twitterUrl,
+  youtubeUrl,
 }) {
   const { t } = useTranslation();
   return (
@@ -40,10 +40,10 @@ export default function OrgPageTemplate({
         <OrgServices services={services} />
       </View>
       <OrgSocials
-        facebook={facebook}
-        instagram={instagram}
-        twitter={twitter}
-        youtube={youtube}
+        facebookUrl={facebookUrl}
+        instagramUrl={instagramUrl}
+        twitterUrl={twitterUrl}
+        youtubeUrl={youtubeUrl}
       />
     </ScrollView>
   );
@@ -55,10 +55,10 @@ OrgPageTemplate.propTypes = {
   phone: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   services: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  facebook: PropTypes.string,
-  instagram: PropTypes.string,
-  twitter: PropTypes.string,
-  youtube: PropTypes.string,
+  facebookUrl: PropTypes.string,
+  instagramUrl: PropTypes.string,
+  twitterUrl: PropTypes.string,
+  youtubeUrl: PropTypes.string,
 };
 
 const styles = StyleSheet.create({

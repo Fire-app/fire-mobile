@@ -25,5 +25,5 @@ export default function ServiceList({ services }) {
 }
 
 ServiceList.propTypes = {
-  services: PropTypes.arrayOf(PropTypes.string).isRequired,
+  services: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };

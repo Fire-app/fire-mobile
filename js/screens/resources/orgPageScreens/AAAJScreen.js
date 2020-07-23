@@ -17,10 +17,10 @@ export default function AAAJScreen() {
       phone="tel://8883499695"
       description={t('AAAJ_description')}
       services={SERVICES}
-      facebook="http://www.facebook.com/AdvancingJusticeLA"
-      instagram={null}
-      twitter="https://twitter.com/AAAJ_LA"
-      youtube={null}
+      facebookUrl="http://www.facebook.com/AdvancingJusticeLA"
+      instagramUrl={null}
+      twitterUrl="https://twitter.com/AAAJ_LA"
+      youtubeUrl={null}
     />
   );
 }

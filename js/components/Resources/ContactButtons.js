@@ -8,8 +8,8 @@ const ContactButtons = ({
   onLeftPress,
   rightTitle,
   leftTitle,
-  callDisabled,
-  websiteDisabled,
+  rightDisabled,
+  leftDisabled,
 }) => {
   return (
     <View style={{ flexDirection: 'row' }}>
@@ -17,7 +17,7 @@ const ContactButtons = ({
         <PrimaryButton
           title={leftTitle}
           onPress={onLeftPress}
-          disabled={callDisabled}
+          disabled={leftDisabled}
         />
       </View>
       <View style={{ width: 12 }} />
@@ -25,7 +25,7 @@ const ContactButtons = ({
         <PrimaryButton
           title={rightTitle}
           onPress={onRightPress}
-          disabled={websiteDisabled}
+          disabled={rightDisabled}
         />
       </View>
     </View>
@@ -37,8 +37,8 @@ ContactButtons.propTypes = {
   onLeftPress: PropTypes.func.isRequired,
   rightTitle: PropTypes.string.isRequired,
   leftTitle: PropTypes.string.isRequired,
-  callDisabled: PropTypes.bool.isRequired,
-  websiteDisabled: PropTypes.bool.isRequired,
+  rightDisabled: PropTypes.bool.isRequired,
+  leftDisabled: PropTypes.bool.isRequired,
 };
 
 export default ContactButtons;
