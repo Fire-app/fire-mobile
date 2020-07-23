@@ -47,8 +47,7 @@ const OnboardingTemplate = ({
         {!!step && (
           <>
             <ProgressCircles numSteps={NUM_STEPS} step={step} />
-            {/* This makes the spacing attempt to fill the available space between max and min */}
-            <View style={{ flexGrow: 1, maxHeight: 60, minHeight: 12 }} />
+            <View style={{ height: 20 }} />
           </>
         )}
         <PrimarySecondaryOptions

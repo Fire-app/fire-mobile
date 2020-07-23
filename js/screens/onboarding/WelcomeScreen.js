@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import routes from '../../navigation/routes';
@@ -63,13 +63,21 @@ const WelcomeScreen = ({ navigation }) => {
         onPress: () => navigation.pop(),
       }}
     >
-      <Image
-        style={styles.image}
-        source={IMAGE}
-        accessibilityLabel="Illustration of people"
-      />
-      <WelcomeInfo />
-      <LegalInfo />
+      <ScrollView
+        alwaysBounceVertical={false}
+        contentContainerStyle={{
+          justifyContent: 'center',
+          flexGrow: 1,
+        }}
+      >
+        <Image
+          style={styles.image}
+          source={IMAGE}
+          accessibilityLabel="Illustration of people"
+        />
+        <WelcomeInfo />
+        <LegalInfo />
+      </ScrollView>
     </OnboardingTemplate>
   );
 };
