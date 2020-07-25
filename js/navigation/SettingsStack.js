@@ -11,6 +11,8 @@ import {
   AboutScreen,
   PrivacyPolicyScreen,
   TermsOfServiceScreen,
+  PartnersInfoScreen,
+  AcknowledgementsScreen,
 } from '../screens/settings';
 
 import routes from './routes';
@@ -79,6 +81,20 @@ const SettingsStack = () => {
         component={TermsOfServiceScreen}
         options={{
           title: t('terms_of_service'),
+        }}
+      />
+      <Stack.Screen
+        name={routes.settings.acknowledgements}
+        component={AcknowledgementsScreen}
+        options={{
+          title: t('acknowledgements'),
+        }}
+      />
+      <Stack.Screen
+        name={routes.settings.partners}
+        component={PartnersInfoScreen}
+        options={{
+          title: t('partners'),
         }}
       />
     </Stack.Navigator>

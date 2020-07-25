@@ -25,7 +25,7 @@ const HotlineSelectionScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={{ paddingVertical: 15, flexDirection: 'row' }}>
+      <View style={{ paddingBottom: 15, flexDirection: 'row' }}>
         <View style={{ paddingRight: 5 }}>
           <MaterialCommunityIcons
             name="help-circle"
@@ -40,7 +40,7 @@ const HotlineSelectionScreen = () => {
           }}
         />
       </View>
-      <Text style={[textStyles.h3, { alignSelf: 'flex-start' }]}>
+      <Text style={[textStyles.settingsText, { alignSelf: 'flex-start' }]}>
         {t('choose_hotline')}
       </Text>
       <ListSelector
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     padding: 20,
+    paddingTop: 30,
     justifyContent: 'space-between',
   },
 });

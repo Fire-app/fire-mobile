@@ -28,6 +28,8 @@ const routes = {
     about: 'SETTINGS_ABOUT',
     privacy_policy: 'SETTINGS_PRIVACY_POLICY',
     terms_of_service: 'SETTINGS_TERMS_OF_SERVICE',
+    acknowledgements: 'SETTINGS_ACKNOWLEDGEMENTS',
+    partners: 'SETTINGS_PARTNERS',
   },
 
   rightsStack: 'RIGHTS',

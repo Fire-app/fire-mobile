@@ -44,6 +44,11 @@ const textStyles = StyleSheet.create({
     letterSpacing: 0.5,
     color: colors.charcoalGrey,
   },
+  settingsText: {
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 16,
+    color: colors.charcoalGrey,
+  },
 });
 
 export default textStyles;

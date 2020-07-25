@@ -20,7 +20,7 @@ const SettingsLanguageScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={[textStyles.h3, { alignSelf: 'flex-start' }]}>
+      <Text style={[textStyles.settingsText, { alignSelf: 'flex-start' }]}>
         {t('choose_language')}
       </Text>
       <View style={styles.languageList}>
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    paddingTop: 30,
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: 'white',

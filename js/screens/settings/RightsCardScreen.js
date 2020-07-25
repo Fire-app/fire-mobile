@@ -155,7 +155,7 @@ const RightsCardScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={[textStyles.h3, { alignSelf: 'flex-start' }]}>
+      <Text style={[textStyles.settingsText, { alignSelf: 'flex-start' }]}>
         {t('rights_card_contact')}
       </Text>
       <AttorneyInformationBox
@@ -163,6 +163,20 @@ const RightsCardScreen = () => {
         number={savedNumber}
         onPress={() => setEditModalVisible(true)}
       />
+      <CustomModal
+        isVisible={editModalVisible}
+        setIsVisible={setEditModalVisible}
+        buttonTitle=""
+      >
+        <EditAttorneyModalContent
+          name={name}
+          setName={setName}
+          number={number}
+          setNumber={setNumber}
+          onSubmit={onEditModalSubmit}
+          setModalVisible={setEditModalVisible}
+        />
+      </CustomModal>
       {defaultIsSet || (
         <CustomModal
           isVisible={useDefaultModalVisible}
@@ -175,20 +189,6 @@ const RightsCardScreen = () => {
           />
         </CustomModal>
       )}
-      <CustomModal
-        isVisible={editModalVisible}
-        setIsVisible={setEditModalVisible}
-        buttonTitle={defaultIsSet ? t('have_attorney') : ''}
-      >
-        <EditAttorneyModalContent
-          name={name}
-          setName={setName}
-          number={number}
-          setNumber={setNumber}
-          onSubmit={onEditModalSubmit}
-          setModalVisible={setEditModalVisible}
-        />
-      </CustomModal>
     </View>
   );
 };
@@ -206,6 +206,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     padding: 20,
+    paddingTop: 30,
     justifyContent: 'flex-start',
   },
   modalContentContainer: {

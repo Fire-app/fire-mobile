@@ -21,6 +21,16 @@ const EmergencyToolkitScreen = ({ navigation }) => {
         onPress={() => navigation.navigate(routes.settings.terms_of_service)}
       />
       <Divider />
+      <Row
+        title={t('rrn_partners')}
+        onPress={() => navigation.navigate(routes.settings.partners)}
+      />
+      <Divider />
+      <Row
+        title={t('acknowledgements')}
+        onPress={() => navigation.navigate(routes.settings.acknowledgements)}
+      />
+      <Divider />
     </View>
   );
 };

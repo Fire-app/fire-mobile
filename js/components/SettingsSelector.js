@@ -29,7 +29,10 @@ SettingsIcon.propTypes = {
 
 export const Divider = () => (
   <View
-    style={{ borderColor: 'gray', borderWidth: StyleSheet.hairlineWidth }}
+    style={{
+      borderColor: colors.border,
+      borderWidth: StyleSheet.hairlineWidth,
+    }}
   />
 );
 
@@ -39,14 +42,14 @@ export const Row = ({ hasIcon, iconName, title, onPress }) => (
       style={{
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 16,
+        paddingVertical: 14,
         paddingHorizontal: 24,
       }}
     >
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
         {/* TODO: real icons */}
         {hasIcon && <SettingsIcon name={iconName} />}
-        <Text style={textStyles.h3}>{title}</Text>
+        <Text style={textStyles.settingsText}>{title}</Text>
       </View>
       <MaterialCommunityIcons
         name="chevron-right"
