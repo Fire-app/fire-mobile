@@ -6,31 +6,40 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
 import call from 'react-native-phone-call';
+import { useSelector } from 'react-redux';
 import styles from '../styles/textStyles';
+import colors from '../styles/colors';
 import PrimaryButton from '../components/Buttons/PrimaryButton';
 
 export default function EmergencyScreen({ navigation }) {
   const { t } = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
+  const savedNumber = useSelector((state) => state.settings.hotlineNumber);
+  const savedHotlineName = useSelector((state) => state.settings.hotlineName);
   const phoneNum = {
-    number: '5105550199',
+    number: savedNumber,
     prompt: false,
   };
   return (
     <>
-      <KYRModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+      <KYRModal
+        isVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        hotlineName={savedHotlineName}
+        hotlineNumber={savedNumber}
+      />
       <View style={localStyles.container}>
         <TouchableOpacity
           style={{ alignSelf: 'flex-start', padding: 20 }}
           onPress={navigation.goBack}
         >
-          <MaterialCommunityIcons name="close" color="black" size={40} />
+          <MaterialCommunityIcons name="close" color="black" size={32} />
         </TouchableOpacity>
         <View style={{ alignItems: 'center' }}>
           <View style={localStyles.titleRow}>
             <MaterialCommunityIcons
               name="alert-outline"
-              color="orange"
+              color={colors.primary}
               size={28}
             />
             <Text style={styles.h1}>{t('emergency_toolkit')}</Text>
@@ -53,33 +62,47 @@ export default function EmergencyScreen({ navigation }) {
   );
 }
 /* Modal code adapted from NoAttorneyModal */
-const KYRModal = ({ isVisible, setModalVisible }) => {
+const KYRModal = ({
+  isVisible,
+  setModalVisible,
+  hotlineName,
+  hotlineNumber,
+}) => {
   const { t } = useTranslation();
   return (
     <View>
       <Modal transparent animationType="fade" visible={isVisible}>
         <View style={modalStyles.container}>
-          <TouchableOpacity
-            style={{ alignSelf: 'flex-start', padding: 20 }}
-            onPress={setModalVisible(!isVisible)}
-          >
-            <MaterialCommunityIcons name="close" color="black" size={40} />
-          </TouchableOpacity>
           <View style={modalStyles.innerContainer}>
+            <TouchableOpacity
+              style={{ paddingBottom: 12 }}
+              onPress={() => setModalVisible(!isVisible)}
+            >
+              <MaterialCommunityIcons name="close" color="black" size={32} />
+            </TouchableOpacity>
             <View style={modalStyles.contentContainer}>
-              <Text style={[styles.h2, { paddingBottom: 20 }]}>
-                {t('attorney_default_title')}
+              <View style={[modalStyles.rightsRow, { paddingBottom: 12 }]}>
+                <MaterialCommunityIcons
+                  name="shield-half-full"
+                  color="orange"
+                  size={20}
+                />
+                <Text style={[styles.h2, { paddingLeft: 8 }]}>
+                  {t('rights_card_title')}
+                </Text>
+              </View>
+              <Text style={styles.body1}>{t('rights_card_content_1')}</Text>
+              <Text style={[styles.body1, { paddingTop: 20 }]}>
+                {t('rights_card_content_2')}
               </Text>
-              <Text style={styles.body1}>{t('attorney_default_subtitle')}</Text>
-            </View>
-            <View style={modalStyles.buttonContainer}>
-              {/* <OnboardingButtons
-                onRightPress={() => setIsVisible(false)}
-                onLeftPress={onSubmit}
-                rightTitle={t('cancel')}
-                leftTitle={t('use_chirla')}
-                nextIsDisabled={false}
-              /> */}
+              <View style={localStyles.emergencyInfo}>
+                <Text style={(styles.h4, localStyles.emergencyInfoItem)}>
+                  {hotlineName}
+                </Text>
+                <Text style={(styles.h4, localStyles.emergencyInfoItem)}>
+                  {hotlineNumber}
+                </Text>
+              </View>
             </View>
           </View>
         </View>
@@ -98,16 +121,18 @@ EmergencyScreen.propTypes = {
 KYRModal.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   setModalVisible: PropTypes.func.isRequired,
+  hotlineName: PropTypes.string.isRequired,
+  hotlineNumber: PropTypes.string.isRequired,
 };
 
 const localStyles = StyleSheet.create({
   container: {
     marginHorizontal: 12,
-    marginVertical: 144,
+    marginVertical: 100,
   },
   titleRow: {
     flexDirection: 'row',
-    paddingTop: 40,
+    paddingTop: 80,
   },
   buttonStack: {
     flexDirection: 'column',
@@ -120,6 +145,13 @@ const localStyles = StyleSheet.create({
   rightsCard: {
     padding: 30,
   },
+  emergencyInfo: {
+    padding: 4,
+  },
+  emergencyInfoItem: {
+    fontWeight: 'bold',
+    paddingVertical: 4,
+  },
 });
 
 const modalStyles = StyleSheet.create({
@@ -131,26 +163,29 @@ const modalStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   innerContainer: {
-    height: '35%',
-    paddingHorizontal: 30,
-    paddingTop: 30,
-    paddingBottom: 20,
+    padding: 12,
+    height: '72%',
     justifyContent: 'space-around',
     alignSelf: 'stretch',
     backgroundColor: 'white',
     borderRadius: 3,
   },
   contentContainer: {
+    paddingHorizontal: 30,
+    paddingBottom: 20,
+    paddingTop: 0,
     flex: 1,
     flexGrow: 2.5,
     justifyContent: 'flex-start',
     alignSelf: 'stretch',
-    paddingBottom: 10,
   },
   buttonContainer: {
     justifyContent: 'space-between',
     flex: 1,
     alignSelf: 'stretch',
     margin: 5,
+  },
+  rightsRow: {
+    flexDirection: 'row',
   },
 });
