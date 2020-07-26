@@ -12,11 +12,8 @@ const ProgressCircles = ({ numSteps, step }) => {
   return (
     <View
       style={{
-        flex: 1,
         flexDirection: 'row',
-        alignSelf: 'stretch',
         justifyContent: 'center',
-        alignItems: 'flex-end',
       }}
     >
       {array.map((n) => {

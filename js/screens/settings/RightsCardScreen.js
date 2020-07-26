@@ -9,12 +9,12 @@ import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameA
 import CustomModal from '../../components/CustomModal';
 import AttorneyForm from '../../components/AttorneyForm';
 import ModalContent from '../../components/ModalContent';
-import { NavigationButtons } from '../../components/Buttons';
 import { textStyles, colors } from '../../styles';
 import {
   DEFAULT_ATTORNEY,
   DEFAULT_NUMBER,
 } from '../../../data/attorneyOptions';
+import { SecondaryButton } from '../../components/Buttons';
 
 const AttorneyInformationBox = ({ name, number, onPress }) => {
   return (
@@ -49,43 +49,26 @@ AttorneyInformationBox.propTypes = {
   onPress: PropTypes.func.isRequired,
 };
 
-const EditAttorneyModalContent = ({
-  name,
-  setName,
-  number,
-  setNumber,
-  setModalVisible,
-  onSubmit,
-}) => {
+const EditAttorneyModalContent = ({ name, setName, number, setNumber }) => {
   const { t } = useTranslation();
 
   const [nameIsInvalid, setNameIsInvalid] = useState(true);
   const [numberIsInvalid, setNumberIsInvalid] = useState(true);
 
   return (
-    <View>
-      <View style={styles.modalContentContainer}>
-        <Text style={[textStyles.h2, { paddingBottom: 15 }]}>
-          {t('edit_attorney_contact')}
-        </Text>
-        <AttorneyForm
-          name={name}
-          setName={setName}
-          number={number}
-          setNumber={setNumber}
-          nameIsInvalid={nameIsInvalid}
-          setNameIsInvalid={setNameIsInvalid}
-          numberIsInvalid={numberIsInvalid}
-          setNumberIsInvalid={setNumberIsInvalid}
-        />
-      </View>
-      <NavigationButtons
-        onSecondaryPress={() => setModalVisible(false)}
-        onPrimaryPress={onSubmit}
-        secondaryTitle={t('cancel')}
-        primaryTitle={t('set_contact')}
-        hasLongTitles
-        primaryIsDisabled={nameIsInvalid || numberIsInvalid}
+    <View style={styles.modalContentContainer}>
+      <Text style={[textStyles.h2, { paddingBottom: 15 }]}>
+        {t('edit_attorney_contact')}
+      </Text>
+      <AttorneyForm
+        name={name}
+        setName={setName}
+        number={number}
+        setNumber={setNumber}
+        nameIsInvalid={nameIsInvalid}
+        setNameIsInvalid={setNameIsInvalid}
+        numberIsInvalid={numberIsInvalid}
+        setNumberIsInvalid={setNumberIsInvalid}
       />
     </View>
   );
@@ -96,32 +79,6 @@ EditAttorneyModalContent.propTypes = {
   setName: PropTypes.func.isRequired,
   number: PropTypes.string.isRequired,
   setNumber: PropTypes.func.isRequired,
-  setModalVisible: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-};
-
-const NoAttorneyModalContent = ({ setModalVisible, onSubmit }) => {
-  const { t } = useTranslation();
-  return (
-    <View>
-      <ModalContent
-        title={t('attorney_default_title')}
-        subtitle={t('attorney_default_subtitle')}
-      />
-      <NavigationButtons
-        onSecondaryPress={() => setModalVisible(false)}
-        onPrimaryPress={onSubmit}
-        secondaryTitle={t('cancel')}
-        primaryTitle={t('use_chirla')}
-        hasLongTitles
-      />
-    </View>
-  );
-};
-
-NoAttorneyModalContent.propTypes = {
-  setModalVisible: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
 };
 
 const RightsCardScreen = () => {
@@ -165,7 +122,14 @@ const RightsCardScreen = () => {
       />
       <CustomModal
         isVisible={editModalVisible}
-        setIsVisible={setEditModalVisible}
+        primaryButton={{
+          title: t(t('set_contact')),
+          onPress: onEditModalSubmit,
+        }}
+        secondaryButton={{
+          title: t('cancel'),
+          onPress: () => setEditModalVisible(false),
+        }}
         buttonTitle=""
       >
         <EditAttorneyModalContent
@@ -177,17 +141,28 @@ const RightsCardScreen = () => {
           setModalVisible={setEditModalVisible}
         />
       </CustomModal>
+      <CustomModal
+        isVisible={useDefaultModalVisible}
+        primaryButton={{
+          title: t('use_chirla'),
+          onPress: onNoAttorneyModalSubmit,
+        }}
+        secondaryButton={{
+          title: t('cancel'),
+          onPress: () => setUseDefaultModalVisible(false),
+        }}
+        buttonTitle={t('no_attorney')}
+      >
+        <ModalContent
+          title={t('attorney_default_title')}
+          subtitle={t('attorney_default_subtitle')}
+        />
+      </CustomModal>
       {defaultIsSet || (
-        <CustomModal
-          isVisible={useDefaultModalVisible}
-          setIsVisible={setUseDefaultModalVisible}
-          buttonTitle={t('no_attorney')}
-        >
-          <NoAttorneyModalContent
-            onSubmit={onNoAttorneyModalSubmit}
-            setModalVisible={setUseDefaultModalVisible}
-          />
-        </CustomModal>
+        <SecondaryButton
+          title={t('no_attorney')}
+          onPress={() => setUseDefaultModalVisible(true)}
+        />
       )}
     </View>
   );

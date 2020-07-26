@@ -1,27 +1,59 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-  StyleSheet,
-  Modal,
-  KeyboardAvoidingView,
-  ScrollView,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from 'react-native';
-import { SecondaryButton } from './Buttons';
+import { View, StyleSheet, Modal } from 'react-native';
+import { ButtonProp, PrimarySecondaryOptions } from './Buttons';
 
-const CustomModal = ({ children, buttonTitle, isVisible, setIsVisible }) => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.modalRevealButton}>
-        <SecondaryButton
-          title={buttonTitle}
-          onPress={() => setIsVisible(true)}
+const CustomModal = ({
+  children,
+  isVisible,
+  primaryButton,
+  secondaryButton,
+}) => (
+  <Modal transparent animationType="fade" visible={isVisible}>
+    <View style={styles.modalContainer}>
+      <View style={styles.contentContainer}>
+        {children}
+        <PrimarySecondaryOptions
+          primaryButton={primaryButton}
+          secondaryButton={secondaryButton}
         />
       </View>
-      <Modal transparent animationType="fade" visible={isVisible}>
+    </View>
+  </Modal>
+);
+
+CustomModal.propTypes = {
+  children: PropTypes.node.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  primaryButton: ButtonProp.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  secondaryButton: ButtonProp,
+};
+
+export default CustomModal;
+
+const styles = StyleSheet.create({
+  modalContainer: {
+    padding: 20,
+    backgroundColor: '#00000080',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // explicitly defined to be full screen without flex
+    width: '100%',
+    height: '100%',
+  },
+  contentContainer: {
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderRadius: 3,
+    position: 'absolute',
+  },
+});
+
+/* <Modal transparent animationType="fade" visible={isVisible}>
         <KeyboardAvoidingView style={{ flexGrow: 1 }} behavior="padding">
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={{ flex: 1 }}>
@@ -37,44 +69,4 @@ const CustomModal = ({ children, buttonTitle, isVisible, setIsVisible }) => {
             </View>
           </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
-      </Modal>
-    </View>
-  );
-};
-
-CustomModal.propTypes = {
-  children: PropTypes.node.isRequired,
-  buttonTitle: PropTypes.string.isRequired,
-  isVisible: PropTypes.bool.isRequired,
-  setIsVisible: PropTypes.func.isRequired,
-};
-
-export default CustomModal;
-
-const styles = StyleSheet.create({
-  modalRevealButton: {
-    alignItems: 'flex-end',
-    padding: 10,
-  },
-  container: {
-    alignSelf: 'stretch',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  modalContainer: {
-    flexGrow: 1,
-    padding: 20,
-    backgroundColor: '#00000080',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  contentContainer: {
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    borderRadius: 3,
-  },
-});
+      </Modal> */
