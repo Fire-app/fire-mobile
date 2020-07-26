@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.border,
     paddingVertical: 20,
     paddingHorizontal: 30,
-    marginBottom: 35,
+    marginBottom: 10,
   },
   legalText: {
     textAlign: 'center',
