@@ -58,6 +58,7 @@ const OnboardingTemplate = ({
           secondaryButton={secondaryButton}
         />
         {keyboardVisible && <View style={{ height: 12 }} />}
+        {keyboardAvoiding && <View style={{ height: 10 }} />}
       </ContentView>
     </SafeAreaView>
   );
