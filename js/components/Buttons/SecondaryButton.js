@@ -9,11 +9,15 @@ const SecondaryButton = ({ title, onPress, alignRight }) => (
     title={title}
     onPress={onPress}
     containerStyle={({ flexGrow: 1 }, alignRight && { alignSelf: 'flex-end' })}
-    titleStyle={StyleSheet.flatten([textStyles.h3, { color: colors.primary }])}
-    buttonStyle={[
+    titleStyle={StyleSheet.flatten([
+      textStyles.h2,
+      alignRight && textStyles.h3,
+      { color: colors.primary },
+    ])}
+    buttonStyle={StyleSheet.flatten([
       { backgroundColor: 'white', padding: 15, borderRadius: 3 },
       alignRight && { padding: 6 },
-    ]}
+    ])}
   />
 );
 

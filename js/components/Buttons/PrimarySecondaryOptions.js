@@ -6,13 +6,16 @@ import SecondaryButton from './SecondaryButton';
 
 const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
   <View
-    style={{
-      paddingHorizontal: 15,
-      flexDirection: 'row',
-      // If font size scaled up, allow these to wrap with primary button on top
-      flexWrap: 'wrap-reverse',
-      justifyContent: 'space-between',
-    }}
+    style={[
+      {
+        paddingHorizontal: 40,
+        flexDirection: 'row',
+        // If font size scaled up, allow these to wrap with primary button on top
+        flexWrap: 'wrap-reverse',
+        justifyContent: 'space-between',
+      },
+      secondaryButton && { paddingHorizontal: 15 },
+    ]}
   >
     {secondaryButton && (
       <View style={{ flexGrow: 1 }}>
@@ -22,7 +25,7 @@ const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
         />
       </View>
     )}
-    {secondaryButton && primaryButton && <View style={{ width: 10 }} />}
+    {secondaryButton && <View style={{ width: 10 }} />}
     {primaryButton && (
       <View style={{ flexGrow: 1 }}>
         <PrimaryButton

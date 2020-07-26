@@ -42,10 +42,7 @@ const HotlineSelectionScreen = () => {
         />
       </View>
       <Text
-        style={[
-          textStyles.settingsText,
-          { alignSelf: 'flex-start', paddingBottom: 12 },
-        ]}
+        style={[textStyles.h5, { alignSelf: 'flex-start', paddingBottom: 12 }]}
       >
         {t('choose_hotline')}
       </Text>

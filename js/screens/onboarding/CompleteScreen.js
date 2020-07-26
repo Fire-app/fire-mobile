@@ -24,7 +24,9 @@ const CompleteScreen = () => {
       }}
     >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <OnboardingTitle title={t('completed_title')} alignCenter />
+        <View style={{ padding: 20 }}>
+          <OnboardingTitle title={t('completed_title')} alignCenter />
+        </View>
         <View style={{ height: 40 }} />
         <Image
           style={styles.image}

@@ -116,7 +116,7 @@ const RightsCardScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={[textStyles.settingsText, { alignSelf: 'flex-start' }]}>
+      <Text style={[textStyles.h5, { alignSelf: 'flex-start' }]}>
         {t('rights_card_contact')}
       </Text>
       <AttorneyInformationBox

@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     width: '100%',
-    paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingHorizontal: 30,
+    paddingVertical: 30,
     justifyContent: 'center',
     backgroundColor: 'white',
     borderRadius: 3,

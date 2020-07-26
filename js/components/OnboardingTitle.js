@@ -1,15 +1,21 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { textStyles, colors } from '../styles';
 
 const OnboardingTitle = ({ title, subtitle, alignCenter }) => {
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        { paddingVertical: 30, width: '100%' },
+        alignCenter && { paddingVertical: 0 },
+      ]}
+    >
       <Text
         style={[
           textStyles.h1,
-          alignCenter && { textAlign: 'center', paddingBottom: 5 },
+          { paddingBottom: 5 },
+          alignCenter && { textAlign: 'center' },
         ]}
       >
         {title}
@@ -17,7 +23,7 @@ const OnboardingTitle = ({ title, subtitle, alignCenter }) => {
       <Text
         style={[
           textStyles.body1,
-          styles.subtitle,
+          { color: colors.textLight },
           alignCenter && { textAlign: 'center' },
         ]}
       >
@@ -39,15 +45,3 @@ OnboardingTitle.defaultProps = {
 };
 
 export default OnboardingTitle;
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 30,
-    paddingBottom: 20,
-    paddingRight: 10,
-    width: '100%',
-  },
-  subtitle: {
-    color: colors.textLight,
-  },
-});

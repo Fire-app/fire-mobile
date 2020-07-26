@@ -49,7 +49,7 @@ export const Row = ({ hasIcon, iconName, title, onPress }) => (
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
         {/* TODO: real icons */}
         {hasIcon && <SettingsIcon name={iconName} />}
-        <Text style={textStyles.settingsText}>{title}</Text>
+        <Text style={textStyles.h5}>{title}</Text>
       </View>
       <MaterialCommunityIcons
         name="chevron-right"

@@ -59,13 +59,13 @@ const styles = StyleSheet.create({
   textInput: {
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 3,
-    paddingHorizontal: 10,
-    paddingVertical: 12,
-    color: colors.text,
+    paddingHorizontal: 12,
+    paddingVertical: 15,
+    color: colors.charcoalGrey,
   },
   title: {
     paddingBottom: 5,
-    color: colors.text,
+    color: colors.charcoalGrey,
   },
   noAttorney: {
     alignItems: 'flex-end',
