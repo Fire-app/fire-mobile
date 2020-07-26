@@ -43,7 +43,6 @@ const OnboardingTemplate = ({
       <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       <ContentView style={{ padding: 20, flexGrow: 1 }} behavior="padding">
         <View style={{ flex: 1 }}>{children}</View>
-
         {!!step && (
           <>
             <ProgressCircles numSteps={NUM_STEPS} step={step} />

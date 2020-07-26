@@ -52,6 +52,7 @@ const AttorneyScreen = ({ navigation }) => {
       primaryButton={{
         title: t('finish'),
         onPress: onSubmit,
+        disabled: nameIsInvalid || numberIsInvalid,
       }}
       secondaryButton={{
         title: t('back'),
@@ -80,6 +81,7 @@ const AttorneyScreen = ({ navigation }) => {
         <SecondaryButton
           title={t('no_attorney')}
           onPress={() => setModalVisible(true)}
+          alignRight
         />
 
         <CustomModal

@@ -1,7 +1,15 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Modal } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Modal,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  ScrollView,
+} from 'react-native';
 import { ButtonProp, PrimarySecondaryOptions } from './Buttons';
 
 const CustomModal = ({
@@ -11,15 +19,27 @@ const CustomModal = ({
   secondaryButton,
 }) => (
   <Modal transparent animationType="fade" visible={isVisible}>
-    <View style={styles.modalContainer}>
-      <View style={styles.contentContainer}>
-        {children}
-        <PrimarySecondaryOptions
-          primaryButton={primaryButton}
-          secondaryButton={secondaryButton}
-        />
-      </View>
-    </View>
+    <KeyboardAvoidingView style={{ flexGrow: 1 }} behavior="padding">
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={{ flex: 1 }}>
+          <ScrollView
+            alwaysBounceVertical={false}
+            style={{ flex: 1 }}
+            contentContainerStyle={{ flexGrow: 1 }}
+          >
+            <View style={styles.modalContainer}>
+              <View style={styles.contentContainer}>
+                {children}
+                <PrimarySecondaryOptions
+                  primaryButton={primaryButton}
+                  secondaryButton={secondaryButton}
+                />
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   </Modal>
 );
 
@@ -44,6 +64,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   contentContainer: {
+    width: '100%',
     paddingHorizontal: 20,
     paddingVertical: 20,
     justifyContent: 'center',

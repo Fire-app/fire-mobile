@@ -11,7 +11,7 @@ const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
     disabled={disabled}
     darkMode={darkMode}
     containerStyle={{ flexGrow: 1 }}
-    titleStyle={StyleSheet.flatten([textStyles.h2, { color: 'white' }])}
+    titleStyle={StyleSheet.flatten([textStyles.h3, { color: 'white' }])}
     buttonStyle={
       darkMode
         ? {
@@ -21,11 +21,7 @@ const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
             paddingVertical: 16,
             marginBottom: 10,
           }
-        : {
-            borderRadius: 3,
-            backgroundColor: colors.primary,
-            padding: 16,
-          }
+        : { borderRadius: 3, backgroundColor: colors.primary, padding: 15 }
     }
   />
 );

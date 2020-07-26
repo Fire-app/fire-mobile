@@ -49,37 +49,37 @@ AttorneyInformationBox.propTypes = {
   onPress: PropTypes.func.isRequired,
 };
 
-const EditAttorneyModalContent = ({ name, setName, number, setNumber }) => {
-  const { t } = useTranslation();
+// const EditAttorneyModalContent = ({ name, setName, number, setNumber }) => {
+//   const { t } = useTranslation();
 
-  const [nameIsInvalid, setNameIsInvalid] = useState(true);
-  const [numberIsInvalid, setNumberIsInvalid] = useState(true);
+//   const [nameIsInvalid, setNameIsInvalid] = useState(true);
+//   const [numberIsInvalid, setNumberIsInvalid] = useState(true);
 
-  return (
-    <View style={styles.modalContentContainer}>
-      <Text style={[textStyles.h2, { paddingBottom: 15 }]}>
-        {t('edit_attorney_contact')}
-      </Text>
-      <AttorneyForm
-        name={name}
-        setName={setName}
-        number={number}
-        setNumber={setNumber}
-        nameIsInvalid={nameIsInvalid}
-        setNameIsInvalid={setNameIsInvalid}
-        numberIsInvalid={numberIsInvalid}
-        setNumberIsInvalid={setNumberIsInvalid}
-      />
-    </View>
-  );
-};
+//   return (
+//     <View style={styles.modalContentContainer}>
+//       <Text style={[textStyles.h2, { paddingBottom: 15 }]}>
+//         {t('edit_attorney_contact')}
+//       </Text>
+//       <AttorneyForm
+//         name={name}
+//         setName={setName}
+//         number={number}
+//         setNumber={setNumber}
+//         nameIsInvalid={nameIsInvalid}
+//         setNameIsInvalid={setNameIsInvalid}
+//         numberIsInvalid={numberIsInvalid}
+//         setNumberIsInvalid={setNumberIsInvalid}
+//       />
+//     </View>
+//   );
+// };
 
-EditAttorneyModalContent.propTypes = {
-  name: PropTypes.string.isRequired,
-  setName: PropTypes.func.isRequired,
-  number: PropTypes.string.isRequired,
-  setNumber: PropTypes.func.isRequired,
-};
+// EditAttorneyModalContent.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   setName: PropTypes.func.isRequired,
+//   number: PropTypes.string.isRequired,
+//   setNumber: PropTypes.func.isRequired,
+// };
 
 const RightsCardScreen = () => {
   const { t } = useTranslation();
@@ -90,6 +90,9 @@ const RightsCardScreen = () => {
 
   const [name, setName] = useState(savedName || '');
   const [number, setNumber] = useState(savedNumber || '');
+
+  const [nameIsInvalid, setNameIsInvalid] = useState(true);
+  const [numberIsInvalid, setNumberIsInvalid] = useState(true);
 
   const [editModalVisible, setEditModalVisible] = useState(false);
   const onEditModalSubmit = () => {
@@ -107,6 +110,7 @@ const RightsCardScreen = () => {
     setUseDefaultModalVisible(false);
   };
 
+  // TODO:
   const defaultIsSet =
     savedName === DEFAULT_ATTORNEY && savedNumber === DEFAULT_NUMBER;
 
@@ -120,11 +124,20 @@ const RightsCardScreen = () => {
         number={savedNumber}
         onPress={() => setEditModalVisible(true)}
       />
+      {defaultIsSet || (
+        <SecondaryButton
+          title={t('no_attorney')}
+          onPress={() => setUseDefaultModalVisible(true)}
+          alignRight
+        />
+      )}
+      {/* Modals */}
       <CustomModal
         isVisible={editModalVisible}
         primaryButton={{
           title: t(t('set_contact')),
           onPress: onEditModalSubmit,
+          disabled: nameIsInvalid || numberIsInvalid,
         }}
         secondaryButton={{
           title: t('cancel'),
@@ -132,14 +145,21 @@ const RightsCardScreen = () => {
         }}
         buttonTitle=""
       >
-        <EditAttorneyModalContent
-          name={name}
-          setName={setName}
-          number={number}
-          setNumber={setNumber}
-          onSubmit={onEditModalSubmit}
-          setModalVisible={setEditModalVisible}
-        />
+        <View style={styles.modalContentContainer}>
+          <Text style={[textStyles.h2, { paddingBottom: 15 }]}>
+            {t('edit_attorney_contact')}
+          </Text>
+          <AttorneyForm
+            name={name}
+            setName={setName}
+            number={number}
+            setNumber={setNumber}
+            nameIsInvalid={nameIsInvalid}
+            setNameIsInvalid={setNameIsInvalid}
+            numberIsInvalid={numberIsInvalid}
+            setNumberIsInvalid={setNumberIsInvalid}
+          />
+        </View>
       </CustomModal>
       <CustomModal
         isVisible={useDefaultModalVisible}
@@ -158,12 +178,6 @@ const RightsCardScreen = () => {
           subtitle={t('attorney_default_subtitle')}
         />
       </CustomModal>
-      {defaultIsSet || (
-        <SecondaryButton
-          title={t('no_attorney')}
-          onPress={() => setUseDefaultModalVisible(true)}
-        />
-      )}
     </View>
   );
 };
