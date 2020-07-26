@@ -1,12 +1,12 @@
 /* eslint-disable global-require */
 import React from 'react';
-import { View, Text, Image, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import routes from '../../navigation/routes';
-import { textStyles, screenStyles, colors } from '../../styles';
-import NavigationButtons from '../../components/Buttons/NavigationButtons';
+import { textStyles, colors } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
+import OnboardingTemplate from './Template';
 
 const IMAGE = require('../../../assets/welcomeImage.png');
 const LOGO = require('../../../assets/chirlaLogo.png');
@@ -53,28 +53,32 @@ const LegalInfo = () => {
 const WelcomeScreen = ({ navigation }) => {
   const { t } = useTranslation();
   return (
-    <View style={screenStyles.container}>
-      <View style={screenStyles.contentContainer}>
-        <StatusBar barStyle="dark-content" />
-        <View style={styles.innerContainer}>
-          <Image
-            style={styles.image}
-            source={IMAGE}
-            accessibilityLabel="Illustration of people"
-          />
-          <WelcomeInfo />
-          <LegalInfo />
-        </View>
-      </View>
-      <NavigationButtons
-        // TODO: figure out what to display for not over 13
-        onSecondaryPress={() => navigation.pop()}
-        onPrimaryPress={() => navigation.navigate(onboardingRoutes.intro)}
-        secondaryTitle={t('not_over_13')}
-        primaryTitle={t('continue')}
-        hasLongTitles
-      />
-    </View>
+    <OnboardingTemplate
+      primaryButton={{
+        title: t('continue'),
+        onPress: () => navigation.navigate(onboardingRoutes.intro),
+      }}
+      secondaryButton={{
+        title: t('not_over_13'),
+        onPress: () => navigation.pop(),
+      }}
+    >
+      <ScrollView
+        alwaysBounceVertical={false}
+        contentContainerStyle={{
+          justifyContent: 'center',
+          flexGrow: 1,
+        }}
+      >
+        <Image
+          style={styles.image}
+          source={IMAGE}
+          accessibilityLabel="Illustration of people"
+        />
+        <WelcomeInfo />
+        <LegalInfo />
+      </ScrollView>
+    </OnboardingTemplate>
   );
 };
 
