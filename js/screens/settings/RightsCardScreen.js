@@ -31,8 +31,8 @@ const AttorneyInformationBox = ({ name, number, onPress }) => {
       onPress={onPress}
     >
       <View style={{ flexDirection: 'column' }}>
-        <Text style={[textStyles.h3, { padding: 2 }]}>{name}</Text>
-        <Text style={[textStyles.h3, { padding: 2 }]}>{number}</Text>
+        <Text style={[textStyles.h3, { padding: 4 }]}>{name}</Text>
+        <Text style={[textStyles.h3, { padding: 4 }]}>{number}</Text>
       </View>
       <MaterialCommunityIcons
         name="pencil-outline"
@@ -48,38 +48,6 @@ AttorneyInformationBox.propTypes = {
   number: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
 };
-
-// const EditAttorneyModalContent = ({ name, setName, number, setNumber }) => {
-//   const { t } = useTranslation();
-
-//   const [nameIsInvalid, setNameIsInvalid] = useState(true);
-//   const [numberIsInvalid, setNumberIsInvalid] = useState(true);
-
-//   return (
-//     <View style={styles.modalContentContainer}>
-//       <Text style={[textStyles.h2, { paddingBottom: 15 }]}>
-//         {t('edit_attorney_contact')}
-//       </Text>
-//       <AttorneyForm
-//         name={name}
-//         setName={setName}
-//         number={number}
-//         setNumber={setNumber}
-//         nameIsInvalid={nameIsInvalid}
-//         setNameIsInvalid={setNameIsInvalid}
-//         numberIsInvalid={numberIsInvalid}
-//         setNumberIsInvalid={setNumberIsInvalid}
-//       />
-//     </View>
-//   );
-// };
-
-// EditAttorneyModalContent.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   setName: PropTypes.func.isRequired,
-//   number: PropTypes.string.isRequired,
-//   setNumber: PropTypes.func.isRequired,
-// };
 
 const RightsCardScreen = () => {
   const { t } = useTranslation();
@@ -110,9 +78,9 @@ const RightsCardScreen = () => {
     setUseDefaultModalVisible(false);
   };
 
-  // TODO:
   const defaultIsSet =
-    savedName === DEFAULT_ATTORNEY && savedNumber === DEFAULT_NUMBER;
+    savedName.trim() === DEFAULT_ATTORNEY &&
+    savedNumber.trim() === DEFAULT_NUMBER;
 
   return (
     <View style={styles.container}>
