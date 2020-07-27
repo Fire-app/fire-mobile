@@ -16,6 +16,7 @@ import {
 } from '../screens/settings';
 
 import routes from './routes';
+import textStyles from '../styles/textStyles';
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,10 @@ const SettingsStack = () => {
     <Stack.Navigator
       name={routes.settingsStack}
       initialRouteName={routes.settings.overview}
+      screenOptions={{
+        headerTitleStyle: textStyles.h2,
+        headerBackTitleStyle: textStyles.headerBackStyle,
+      }}
     >
       <Stack.Screen
         name={routes.settings.overview}

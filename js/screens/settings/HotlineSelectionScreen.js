@@ -31,7 +31,7 @@ const HotlineSelectionScreen = () => {
         }}
       />
       <Text
-        style={[textStyles.h5, { alignSelf: 'flex-start', paddingBottom: 12 }]}
+        style={[textStyles.h5, { alignSelf: 'flex-start', paddingBottom: 16 }]}
       >
         {t('choose_hotline')}
       </Text>
@@ -59,8 +59,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    padding: 20,
-    paddingTop: 30,
+    // paddingTop technically 44 but HelpButton has some unspecified top padding
+    paddingTop: 34,
+    padding: 28,
     justifyContent: 'space-between',
   },
 });

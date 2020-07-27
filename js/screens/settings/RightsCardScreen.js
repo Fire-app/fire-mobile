@@ -165,8 +165,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    padding: 20,
-    paddingTop: 30,
+    // paddingTop technically 44 but HelpButton has some unspecified top padding
+    paddingTop: 34,
+    padding: 28,
     justifyContent: 'flex-start',
   },
   modalContentContainer: {
