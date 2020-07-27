@@ -14,10 +14,15 @@ import PrimaryButton from '../components/Buttons/PrimaryButton';
 export default function EmergencyScreen({ navigation }) {
   const { t } = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
-  const savedNumber = useSelector((state) => state.settings.hotlineNumber);
-  const savedHotlineName = useSelector((state) => state.settings.hotlineName);
+  const savedHotlineNumber = useSelector(
+    (state) => state.settings.hotlineNumber
+  );
+  const savedAttorneyName = useSelector((state) => state.settings.attorneyName);
+  const savedAttorneyNumber = useSelector(
+    (state) => state.settings.attorneyNumber
+  );
   const phoneNum = {
-    number: savedNumber,
+    number: savedHotlineNumber,
     prompt: false,
   };
   return (
@@ -25,8 +30,8 @@ export default function EmergencyScreen({ navigation }) {
       <KYRModal
         isVisible={modalVisible}
         setModalVisible={setModalVisible}
-        hotlineName={savedHotlineName}
-        hotlineNumber={savedNumber}
+        attorneyName={savedAttorneyName}
+        attorneyNumber={savedAttorneyNumber}
       />
       <View style={localStyles.container}>
         <TouchableOpacity
@@ -35,14 +40,16 @@ export default function EmergencyScreen({ navigation }) {
         >
           <MaterialCommunityIcons name="close" color="black" size={32} />
         </TouchableOpacity>
-        <View style={{ alignItems: 'center' }}>
+        <View style={localStyles.rightsSuiteContainer}>
           <View style={localStyles.titleRow}>
             <MaterialCommunityIcons
               name="alert-outline"
               color={colors.primary}
               size={28}
             />
-            <Text style={styles.h1}>{t('emergency_toolkit')}</Text>
+            <Text style={[styles.h1, { paddingLeft: 4 }]}>
+              {t('emergency_toolkit')}
+            </Text>
           </View>
           <View style={localStyles.buttonStack}>
             <PrimaryButton
@@ -65,45 +72,45 @@ export default function EmergencyScreen({ navigation }) {
 const KYRModal = ({
   isVisible,
   setModalVisible,
-  hotlineName,
-  hotlineNumber,
+  attorneyName,
+  attorneyNumber,
 }) => {
   const { t } = useTranslation();
   return (
     <View>
-      <Modal transparent animationType="fade" visible={isVisible}>
+      <Modal animationType="slide" visible={isVisible}>
+        {/* <View style={modalStyles.container}> */}
         <View style={modalStyles.container}>
-          <View style={modalStyles.innerContainer}>
-            <TouchableOpacity
-              style={{ paddingBottom: 12 }}
-              onPress={() => setModalVisible(!isVisible)}
-            >
-              <MaterialCommunityIcons name="close" color="black" size={32} />
-            </TouchableOpacity>
-            <View style={modalStyles.contentContainer}>
-              <View style={[modalStyles.rightsRow, { paddingBottom: 12 }]}>
-                <MaterialCommunityIcons
-                  name="shield-half-full"
-                  color="orange"
-                  size={20}
-                />
-                <Text style={[styles.h2, { paddingLeft: 8 }]}>
-                  {t('rights_card_title')}
-                </Text>
-              </View>
-              <Text style={styles.body1}>{t('rights_card_content_1')}</Text>
-              <Text style={[styles.body1, { paddingTop: 20 }]}>
-                {t('rights_card_content_2')}
+          <TouchableOpacity
+            style={{ paddingBottom: 12 }}
+            onPress={() => setModalVisible(!isVisible)}
+          >
+            <MaterialCommunityIcons name="close" color="black" size={32} />
+          </TouchableOpacity>
+          <View style={modalStyles.contentContainer}>
+            <View style={[modalStyles.rightsRow, { paddingBottom: 12 }]}>
+              <MaterialCommunityIcons
+                name="shield-half-full"
+                color="orange"
+                size={20}
+              />
+              <Text style={[styles.h2, { paddingLeft: 8 }]}>
+                {t('rights_card_title')}
               </Text>
-              <View style={localStyles.emergencyInfo}>
-                <Text style={(styles.h4, localStyles.emergencyInfoItem)}>
-                  {hotlineName}
-                </Text>
-                <Text style={(styles.h4, localStyles.emergencyInfoItem)}>
-                  {hotlineNumber}
-                </Text>
-              </View>
             </View>
+            <Text style={styles.body1}>{t('rights_card_content_1')}</Text>
+            <Text style={[styles.body1, { paddingTop: 20 }]}>
+              {t('rights_card_content_2')}
+            </Text>
+            <View style={localStyles.emergencyInfo}>
+              <Text style={(styles.h4, localStyles.emergencyInfoItem)}>
+                {attorneyName}
+              </Text>
+              <Text style={(styles.h4, localStyles.emergencyInfoItem)}>
+                {attorneyNumber}
+              </Text>
+            </View>
+            {/* </View> */}
           </View>
         </View>
       </Modal>
@@ -121,14 +128,18 @@ EmergencyScreen.propTypes = {
 KYRModal.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   setModalVisible: PropTypes.func.isRequired,
-  hotlineName: PropTypes.string.isRequired,
-  hotlineNumber: PropTypes.string.isRequired,
+  attorneyName: PropTypes.string.isRequired,
+  attorneyNumber: PropTypes.string.isRequired,
 };
 
 const localStyles = StyleSheet.create({
   container: {
-    marginHorizontal: 12,
-    marginVertical: 100,
+    // marginHorizontal: 12,
+    paddingVertical: 12,
+  },
+  rightsSuiteContainer: {
+    alignItems: 'center',
+    paddingTop: 80,
   },
   titleRow: {
     flexDirection: 'row',
@@ -138,52 +149,32 @@ const localStyles = StyleSheet.create({
     flexDirection: 'column',
     paddingTop: 12,
   },
-  text: {
-    fontSize: 30,
-    textAlign: 'center',
-  },
-  rightsCard: {
-    padding: 30,
-  },
   emergencyInfo: {
     padding: 4,
   },
   emergencyInfoItem: {
     fontWeight: 'bold',
     paddingVertical: 4,
+    fontSize: 16,
   },
 });
 
 const modalStyles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    padding: 20,
-    backgroundColor: '#00000080',
+    paddingVertical: 32,
+    paddingHorizontal: 20,
     alignItems: 'flex-start',
     justifyContent: 'center',
-  },
-  innerContainer: {
-    padding: 12,
-    height: '72%',
-    justifyContent: 'space-around',
-    alignSelf: 'stretch',
-    backgroundColor: 'white',
-    borderRadius: 3,
   },
   contentContainer: {
     paddingHorizontal: 30,
     paddingBottom: 20,
-    paddingTop: 0,
+    paddingTop: 92,
     flex: 1,
     flexGrow: 2.5,
     justifyContent: 'flex-start',
     alignSelf: 'stretch',
-  },
-  buttonContainer: {
-    justifyContent: 'space-between',
-    flex: 1,
-    alignSelf: 'stretch',
-    margin: 5,
   },
   rightsRow: {
     flexDirection: 'row',
