@@ -3,7 +3,7 @@ import { View, Text, FlatList } from 'react-native';
 
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Ionicons } from '@expo/vector-icons';
 import { textStyles, colors } from '../styles';
 
 const ListOption = ({ title, selected, onPress }) => (
@@ -29,10 +29,10 @@ const ListOption = ({ title, selected, onPress }) => (
         <Text style={textStyles.body1}>{title}</Text>
       </View>
       {selected && (
-        <MaterialCommunityIcons
-          name="check-circle"
+        <Ionicons
+          name="ios-checkmark-circle"
           style={{
-            fontSize: 20,
+            fontSize: 26,
             color: colors.primary,
           }}
         />

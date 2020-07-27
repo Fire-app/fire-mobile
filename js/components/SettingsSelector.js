@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-
-import { TouchableHighlight } from 'react-native-gesture-handler';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
+import { View, StyleSheet, Text } from 'react-native';
+import { Feather, Ionicons } from '@expo/vector-icons';
+import { TouchableHighlight } from 'react-native-gesture-handler';
+import { FEATHER, IconProp } from '../../data/fontFamilies';
 
 import { textStyles, colors } from '../styles';
 
-const SettingsIcon = ({ name }) => (
+const SettingsIcon = ({ name, family }) => (
   <View
     style={{
       height: 34,
@@ -19,12 +19,17 @@ const SettingsIcon = ({ name }) => (
       marginRight: 8,
     }}
   >
-    <MaterialCommunityIcons name={name} size={24} color={colors.primary} />
+    {family === FEATHER ? (
+      <Feather name={name} size={24} color={colors.primary} />
+    ) : (
+      <Ionicons name={name} size={24} color={colors.primary} />
+    )}
   </View>
 );
 
 SettingsIcon.propTypes = {
   name: PropTypes.string.isRequired,
+  family: PropTypes.string.isRequired,
 };
 
 export const Divider = () => (
@@ -36,7 +41,7 @@ export const Divider = () => (
   />
 );
 
-export const Row = ({ hasIcon, iconName, title, onPress }) => (
+export const Row = ({ hasIcon, icon, title, onPress }) => (
   <TouchableHighlight underlayColor={colors.primaryLight} onPress={onPress}>
     <View
       style={{
@@ -47,15 +52,10 @@ export const Row = ({ hasIcon, iconName, title, onPress }) => (
       }}
     >
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-        {/* TODO: real icons */}
-        {hasIcon && <SettingsIcon name={iconName} />}
+        {hasIcon && <SettingsIcon name={icon.name} family={icon.family} />}
         <Text style={textStyles.h5}>{title}</Text>
       </View>
-      <MaterialCommunityIcons
-        name="chevron-right"
-        size={34}
-        color={colors.primary}
-      />
+      <Feather name="chevron-right" size={34} color="blue" />
     </View>
   </TouchableHighlight>
 );
@@ -63,10 +63,10 @@ Row.propTypes = {
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
   hasIcon: PropTypes.bool,
-  iconName: PropTypes.string,
+  // eslint-disable-next-line react/require-default-props
+  icon: IconProp,
 };
 
 Row.defaultProps = {
   hasIcon: false,
-  iconName: '',
 };

@@ -4,7 +4,8 @@ import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Feather } from '@expo/vector-icons';
 
 import { useTranslation } from 'react-i18next';
 
@@ -42,8 +43,8 @@ const AppTabs = () => {
           tabBarLabel: t('tab_rights'),
           // eslint-disable-next-line react/prop-types
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="shield-half-full"
+            <Feather
+              name="shield"
               color={color}
               size={size}
               style={styles.icon}
@@ -58,8 +59,8 @@ const AppTabs = () => {
           tabBarLabel: t('tab_resources'),
           // eslint-disable-next-line react/prop-types
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="file-document-outline"
+            <Feather
+              name="users"
               color={color}
               size={size}
               style={styles.icon}
@@ -74,7 +75,7 @@ const AppTabs = () => {
           tabBarLabel: t('settings'),
           // eslint-disable-next-line react/prop-types
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
+            <Feather
               name="settings"
               color={color}
               size={size}
@@ -118,8 +119,8 @@ const AppTabs = () => {
                 shadowRadius: 7,
               }}
             >
-              <MaterialCommunityIcons
-                name="alert-outline"
+              <Feather
+                name="alert-triangle"
                 color={colors.primary}
                 size={40}
                 style={{

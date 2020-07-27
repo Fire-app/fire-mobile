@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import resetOnboardingAction from '../../store/actions/resetOnboarding';
 import { Row, Divider } from '../../components/SettingsSelector';
+import { FEATHER, IONICONS } from '../../../data/fontFamilies';
 import { textStyles } from '../../styles';
 import routes from '../../navigation/routes';
 import formattedVersionInfo from '../../util/versionInfo';
@@ -22,21 +23,30 @@ const SettingsOverviewScreen = ({ navigation }) => {
       <Divider />
       <Row
         hasIcon
-        iconName="alert"
+        icon={{
+          name: 'alert-triangle',
+          family: FEATHER,
+        }}
         title={t('emergency_toolkit')}
         onPress={() => navigation.navigate(routes.settings.toolkit)}
       />
       <Divider />
       <Row
         hasIcon
-        iconName="earth"
+        icon={{
+          name: 'md-globe',
+          family: IONICONS,
+        }}
         title={t('language')}
         onPress={() => navigation.navigate(routes.settings.language)}
       />
       <Divider />
       <Row
         hasIcon
-        iconName="bell"
+        icon={{
+          name: 'bell',
+          family: FEATHER,
+        }}
         title={t('notifications')}
         onPress={() => {
           // TODO
@@ -45,7 +55,10 @@ const SettingsOverviewScreen = ({ navigation }) => {
       <Divider />
       <Row
         hasIcon
-        iconName="information"
+        icon={{
+          name: 'info',
+          family: FEATHER,
+        }}
         title={t('about')}
         onPress={() => navigation.navigate(routes.settings.about)}
       />
@@ -54,7 +67,10 @@ const SettingsOverviewScreen = ({ navigation }) => {
         <>
           <Row
             hasIcon
-            iconName="restart"
+            icon={{
+              name: 'refresh-cw',
+              family: FEATHER,
+            }}
             title="Restart Set-Up"
             onPress={resetOnboarding}
           />
