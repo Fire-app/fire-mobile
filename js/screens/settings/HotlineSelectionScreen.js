@@ -3,13 +3,12 @@ import { View, StyleSheet, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
 import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
 import ListSelector from '../../components/ListSelector';
-import { SecondaryButton } from '../../components/Buttons';
+import { HelpButton } from '../../components/Buttons';
 
-import { textStyles, colors } from '../../styles';
+import { textStyles } from '../../styles';
 import { HOTLINE_OPTIONS } from '../../../data/hotlineOptions';
 
 const HotlineSelectionScreen = () => {
@@ -25,22 +24,12 @@ const HotlineSelectionScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={{ paddingBottom: 15, flexDirection: 'row' }}>
-        <View style={{ paddingVertical: 6 }}>
-          <MaterialCommunityIcons
-            name="help-circle"
-            size={22}
-            color={colors.primary}
-          />
-        </View>
-        <SecondaryButton
-          title="Learn About Your Emergency Hotline"
-          onPress={() => {
-            // TODO:
-          }}
-          alignRight
-        />
-      </View>
+      <HelpButton
+        title={t('learn_about_hotline')}
+        onPress={() => {
+          /* TODO: */
+        }}
+      />
       <Text
         style={[textStyles.h5, { alignSelf: 'flex-start', paddingBottom: 12 }]}
       >

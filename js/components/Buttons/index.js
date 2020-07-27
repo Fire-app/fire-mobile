@@ -4,3 +4,4 @@ export {
   default as PrimarySecondaryOptions,
   ButtonProp,
 } from './PrimarySecondaryOptions';
+export { default as HelpButton } from './HelpButton';

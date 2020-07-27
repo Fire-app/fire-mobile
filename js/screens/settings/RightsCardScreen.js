@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import CustomModal from '../../components/CustomModal';
@@ -14,16 +13,16 @@ import {
   DEFAULT_ATTORNEY,
   DEFAULT_NUMBER,
 } from '../../../data/attorneyOptions';
-import { SecondaryButton } from '../../components/Buttons';
+import { SecondaryButton, HelpButton } from '../../components/Buttons';
 
 const AttorneyInformationBox = ({ name, number, onPress }) => {
+  const { t } = useTranslation();
   return (
     <TouchableOpacity
       style={{
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingVertical: 12,
-        paddingHorizontal: 16,
+        padding: 15,
         backgroundColor: colors.primaryLight,
         borderRadius: 3,
         marginTop: 15,
@@ -31,14 +30,12 @@ const AttorneyInformationBox = ({ name, number, onPress }) => {
       onPress={onPress}
     >
       <View style={{ flexDirection: 'column' }}>
-        <Text style={[textStyles.h3, { padding: 4 }]}>{name}</Text>
-        <Text style={[textStyles.h3, { padding: 4 }]}>{number}</Text>
+        <Text style={[textStyles.h3, { paddingBottom: 10 }]}>{name}</Text>
+        <Text style={textStyles.h3}>{number}</Text>
       </View>
-      <MaterialCommunityIcons
-        name="pencil-outline"
-        size={24}
-        color={colors.primary}
-      />
+      <Text style={[textStyles.h3, { color: colors.primary, padding: 4 }]}>
+        {t('edit')}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -84,6 +81,12 @@ const RightsCardScreen = () => {
 
   return (
     <View style={styles.container}>
+      <HelpButton
+        title={t('what_is_attorney')}
+        onPress={() => {
+          /* TODO: */
+        }}
+      />
       <Text style={[textStyles.h5, { alignSelf: 'flex-start' }]}>
         {t('rights_card_contact')}
       </Text>
