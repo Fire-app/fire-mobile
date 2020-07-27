@@ -1,2 +1,2 @@
-export const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
-export const DEFAULT_NUMBER = '2133531333';
+export const DEFAULT_ATTORNEY = 'CHIRLA Legal Services';
+export const DEFAULT_NUMBER = '18886244752';

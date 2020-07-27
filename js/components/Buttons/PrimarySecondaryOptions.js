@@ -8,13 +8,12 @@ const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
   <View
     style={[
       {
-        paddingHorizontal: 40,
         flexDirection: 'row',
         // If font size scaled up, allow these to wrap with primary button on top
         flexWrap: 'wrap-reverse',
         justifyContent: 'space-between',
       },
-      secondaryButton && { paddingHorizontal: 15 },
+      secondaryButton && { paddingBottom: 24 },
     ]}
   >
     {secondaryButton && (
@@ -25,7 +24,15 @@ const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
         />
       </View>
     )}
-    {secondaryButton && <View style={{ width: 10 }} />}
+    {secondaryButton && (
+      <View
+        style={{
+          // actually 8 but secondary btn not centered otherwise. flexGrow: 1 doesn't work either
+          // spacing is not *super* weird w/ larger text sizes.
+          width: 14,
+        }}
+      />
+    )}
     {primaryButton && (
       <View style={{ flexGrow: 1 }}>
         <PrimaryButton

@@ -55,7 +55,7 @@ export default CustomModal;
 
 const styles = StyleSheet.create({
   modalContainer: {
-    padding: 20,
+    padding: 28,
     backgroundColor: '#00000080',
     alignItems: 'center',
     justifyContent: 'center',
