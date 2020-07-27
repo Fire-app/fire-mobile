@@ -5,9 +5,8 @@ import { View, StyleSheet, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import completeOnboardingAction from '../../store/actions/completeOnboarding';
-import { screenStyles } from '../../styles';
-import PrimaryButton from '../../components/Buttons/PrimaryButton';
 import OnboardingTitle from '../../components/OnboardingTitle';
+import OnboardingTemplate from './Template';
 
 const IMAGE = require('../../../assets/completedImage.png');
 
@@ -18,26 +17,22 @@ const CompleteScreen = () => {
   const exitOnboarding = () => dispatch(completeOnboardingAction());
 
   return (
-    <View style={screenStyles.container}>
-      <View style={screenStyles.contentContainer}>
-        <View
-          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-        >
-          <OnboardingTitle title={t('completed_title')} alignCenter />
-          <View style={{ padding: 20 }} />
-          <Image
-            style={styles.image}
-            source={IMAGE}
-            accessibilityLabel="Illustration of a man sitting"
-          />
-        </View>
+    <OnboardingTemplate
+      primaryButton={{
+        title: t('continue'),
+        onPress: exitOnboarding,
+      }}
+    >
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <OnboardingTitle title={t('completed_title')} alignCenter />
+        <View style={{ height: 40 }} />
+        <Image
+          style={styles.image}
+          source={IMAGE}
+          accessibilityLabel="Illustration of a man sitting"
+        />
       </View>
-      <PrimaryButton
-        title="Continue"
-        onPress={exitOnboarding}
-        disabled={false}
-      />
-    </View>
+    </OnboardingTemplate>
   );
 };
 

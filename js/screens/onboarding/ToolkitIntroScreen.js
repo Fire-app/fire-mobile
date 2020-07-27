@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { ScrollView } from 'react-native-gesture-handler';
 import routes from '../../navigation/routes';
-import { textStyles, screenStyles, colors } from '../../styles';
-import NavigationButtons from '../../components/Buttons/NavigationButtons';
-import ProgressCircles from '../../components/ProgressCircles';
+import { textStyles, colors } from '../../styles';
+import OnboardingTemplate from './Template';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -49,9 +49,24 @@ const ToolkitTitleInfo = () => {
 const ToolkitIntroScreen = ({ navigation }) => {
   const { t } = useTranslation();
   return (
-    <View style={screenStyles.container}>
-      <View style={screenStyles.contentContainer}>
-        <View style={{ padding: 20 }} />
+    <OnboardingTemplate
+      step={2}
+      primaryButton={{
+        title: t('next'),
+        onPress: () => navigation.navigate(onboardingRoutes.hotline),
+      }}
+      secondaryButton={{
+        title: t('back'),
+        onPress: () => navigation.pop(),
+      }}
+    >
+      <ScrollView
+        alwaysBounceVertical={false}
+        contentContainerStyle={{
+          justifyContent: 'center',
+          flexGrow: 1,
+        }}
+      >
         <ToolkitTitleInfo />
         <ToolkitInfoSection
           title={t('emergency_hotline')}
@@ -63,15 +78,8 @@ const ToolkitIntroScreen = ({ navigation }) => {
           subtitle={t('rights_card_note')}
           iconName="credit-card-outline"
         />
-        <ProgressCircles numSteps={2} step={2} />
-      </View>
-      <NavigationButtons
-        onSecondaryPress={() => navigation.pop()}
-        onPrimaryPress={() => navigation.navigate(onboardingRoutes.hotline)}
-        secondaryTitle={t('back')}
-        primaryTitle={t('next')}
-      />
-    </View>
+      </ScrollView>
+    </OnboardingTemplate>
   );
 };
 

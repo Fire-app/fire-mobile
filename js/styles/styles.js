@@ -6,10 +6,9 @@ const screenStyles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'white',
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
   contentContainer: {
-    flex: 0.95,
+    flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     paddingVertical: 10,
