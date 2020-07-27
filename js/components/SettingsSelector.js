@@ -55,7 +55,7 @@ export const Row = ({ hasIcon, icon, title, onPress }) => (
         {hasIcon && <SettingsIcon name={icon.name} family={icon.family} />}
         <Text style={textStyles.h5}>{title}</Text>
       </View>
-      <Feather name="chevron-right" size={34} color="blue" />
+      <Feather name="chevron-right" size={34} color={colors.primary} />
     </View>
   </TouchableHighlight>
 );
