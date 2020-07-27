@@ -35,10 +35,18 @@ export default function ResourcesListScreen({ navigation }) {
     <FlatList
       keyExtractor={(_, i) => `${i}`}
       style={styles.container}
-      contentContainerStyle={{ paddingVertical: 24 }}
+      contentContainerStyle={{ paddingVertical: 36 }}
       data={ORGANIZATIONS}
       ListHeaderComponent={
-        <Text style={[textStyles.h2, { textAlign: 'left', paddingBottom: 16 }]}>
+        <Text
+          style={[
+            textStyles.h2,
+            {
+              textAlign: 'left',
+              paddingBottom: 16,
+            },
+          ]}
+        >
           {t('resources_subtitle')}
         </Text>
       }

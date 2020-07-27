@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -25,7 +25,7 @@ const AppTabs = () => {
   const { t } = useTranslation();
   return (
     <Tabs.Navigator
-      name="FOO"
+      name="FOO" // TODO: what is this
       initialRouteName={routes.main.rights}
       tabBarOptions={{
         activeTintColor: colors.charcoalGrey,
@@ -33,6 +33,15 @@ const AppTabs = () => {
         style: styles.tabBar,
         labelStyle: textStyles.tabLabel,
         tabStyle: styles.tabs,
+        tabBarLabel: ({ tintColor, focused, item }) => {
+          return focused ? (
+            <Text style={{ fontWeight: 'bold' }}>{routes.name}</Text>
+          ) : (
+            <Text style={{ fontWeight: 'normal', fontSize: 15 }}>
+              {routes.name}
+            </Text>
+          );
+        },
       }}
     >
       <Tabs.Screen

@@ -13,7 +13,6 @@ const colors = {
   buttonDisabled: '#9a9a9a',
   warmGrey: '#a1a1a1',
   backgroundColor: '#f9f9f9',
-  white: '#ffffff',
 };
 
 export default colors;

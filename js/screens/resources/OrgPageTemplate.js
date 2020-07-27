@@ -12,6 +12,8 @@ import OrgDescription from '../../components/Resources/OrgDescription';
 import OrgServices from '../../components/Resources/OrgServices/ServiceList';
 import OrgSocials from '../../components/Resources/OrgSocials';
 
+import colors from '../../styles/colors';
+
 export default function OrgPageTemplate({
   name,
   website,
@@ -66,6 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 36,
     padding: 26,
+    backgroundColor: colors.backgroundColor,
   },
   services: {
     flex: 1,
