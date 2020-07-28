@@ -13,11 +13,11 @@ const onboardingRoutes = routes.onboarding;
 
 const InfoSection = ({ title, subtitle, iconName }) => {
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
       <MaterialCommunityIcons name={iconName} style={styles.icon} />
       <View style={{ width: 12 }} />
       <View style={{ flex: 1 }}>
-        <Text style={[textStyles.h1, { paddingBottom: 8 }]}>{title}</Text>
+        <Text style={[textStyles.h1, { paddingBottom: 5 }]}>{title}</Text>
         <Text style={[textStyles.body1, { color: colors.textLight }]}>
           {subtitle}
         </Text>
@@ -47,12 +47,13 @@ const IntroScreen = ({ navigation }) => {
         contentContainerStyle={{
           justifyContent: 'center',
           flexGrow: 1,
+          paddingTop: 50,
         }}
       >
         <InfoSection
           title={t('know_your_rights')}
           subtitle={t('know_your_rights_sub')}
-          iconName="shield-home"
+          iconName="shield-half-full"
         />
         <View style={{ height: 40 }} />
         <InfoSection
@@ -61,11 +62,10 @@ const IntroScreen = ({ navigation }) => {
           iconName="alert-outline"
         />
         <View style={{ height: 40 }} />
-
         <InfoSection
           title={t('connect_with_orgs')}
           subtitle={t('connect_with_orgs_sub')}
-          iconName="file-document-outline"
+          iconName="account-supervisor-circle"
         />
       </ScrollView>
     </OnboardingTemplate>
@@ -82,15 +82,9 @@ IntroScreen.propTypes = {
 export default IntroScreen;
 
 const styles = StyleSheet.create({
-  circleIndicatorContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignSelf: 'stretch',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-  },
   icon: {
     color: colors.primary,
     fontSize: 40,
+    paddingTop: 5,
   },
 });

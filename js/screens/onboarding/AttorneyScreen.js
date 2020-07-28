@@ -1,39 +1,23 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import routes from '../../navigation/routes';
-import { textStyles } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
 import { SecondaryButton } from '../../components/Buttons';
 import AttorneyForm from '../../components/AttorneyForm';
 import CustomModal from '../../components/CustomModal';
+import ModalContent from '../../components/ModalContent';
 import OnboardingTemplate from './Template';
+import {
+  DEFAULT_ATTORNEY,
+  DEFAULT_NUMBER,
+} from '../../../data/attorneyOptions';
 
 const onboardingRoutes = routes.onboarding;
-
-const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
-const DEFAULT_NUMBER = '2133531333';
-
-const ModalContent = () => {
-  const { t } = useTranslation();
-  return (
-    <View
-      style={{
-        justifyContent: 'flex-start',
-        paddingBottom: 20,
-      }}
-    >
-      <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
-        {t('attorney_default_title')}
-      </Text>
-      <Text style={textStyles.body1}>{t('attorney_default_subtitle')}</Text>
-    </View>
-  );
-};
 
 const AttorneyScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -68,6 +52,7 @@ const AttorneyScreen = ({ navigation }) => {
       primaryButton={{
         title: t('finish'),
         onPress: onSubmit,
+        disabled: nameIsInvalid || numberIsInvalid,
       }}
       secondaryButton={{
         title: t('back'),
@@ -96,6 +81,7 @@ const AttorneyScreen = ({ navigation }) => {
         <SecondaryButton
           title={t('no_attorney')}
           onPress={() => setModalVisible(true)}
+          alignRight
         />
 
         <CustomModal
@@ -104,14 +90,16 @@ const AttorneyScreen = ({ navigation }) => {
             title: t('use_chirla'),
             onPress: onModalSubmit,
           }}
-          // TODO: figure out what to display for not over 13
           secondaryButton={{
             title: t('cancel'),
             onPress: () => setModalVisible(false),
           }}
           buttonTitle={t('no_attorney')}
         >
-          <ModalContent />
+          <ModalContent
+            title={t('attorney_default_title')}
+            subtitle={t('attorney_default_subtitle')}
+          />
         </CustomModal>
       </ScrollView>
     </OnboardingTemplate>

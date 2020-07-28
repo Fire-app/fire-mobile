@@ -1,15 +1,23 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { textStyles, colors } from '../styles';
 
-const OnboardingTitle = ({ title, subtitle, alignCenter }) => {
+const OnboardingTitle = ({
+  title,
+  subtitle,
+  // the following props only used for welcome screen and toolkit intro screen
+  alignCenter,
+  paddingHorizontal,
+  paddingVertical,
+}) => {
   return (
-    <View style={styles.container}>
+    <View style={{ paddingHorizontal, paddingVertical, width: '100%' }}>
       <Text
         style={[
           textStyles.h1,
-          alignCenter && { textAlign: 'center', paddingBottom: 5 },
+          { paddingBottom: 6 },
+          alignCenter && { textAlign: 'center' },
         ]}
       >
         {title}
@@ -17,7 +25,7 @@ const OnboardingTitle = ({ title, subtitle, alignCenter }) => {
       <Text
         style={[
           textStyles.body1,
-          styles.subtitle,
+          { color: colors.textLight },
           alignCenter && { textAlign: 'center' },
         ]}
       >
@@ -31,23 +39,15 @@ OnboardingTitle.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   alignCenter: PropTypes.bool,
+  paddingHorizontal: PropTypes.number,
+  paddingVertical: PropTypes.number,
 };
 
 OnboardingTitle.defaultProps = {
   subtitle: '',
   alignCenter: false,
+  paddingHorizontal: 0,
+  paddingVertical: 40,
 };
 
 export default OnboardingTitle;
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 30,
-    paddingBottom: 20,
-    paddingRight: 10,
-    width: '100%',
-  },
-  subtitle: {
-    color: colors.textLight,
-  },
-});
