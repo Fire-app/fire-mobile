@@ -14,7 +14,6 @@ import formattedVersionInfo from '../../util/versionInfo';
 const SettingsOverviewScreen = ({ navigation }) => {
   const { t } = useTranslation();
 
-  // TODO: temporary hack to test onboarding
   const dispatch = useDispatch();
   const resetOnboarding = () => dispatch(resetOnboardingAction());
 

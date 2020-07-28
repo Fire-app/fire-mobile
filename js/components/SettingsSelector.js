@@ -7,7 +7,7 @@ import { FEATHER, IconProp } from '../../data/fontFamilies';
 
 import { textStyles, colors } from '../styles';
 
-const SettingsIcon = ({ name, family }) => (
+const SettingsIcon = ({ icon }) => (
   <View
     style={{
       height: 34,
@@ -19,17 +19,16 @@ const SettingsIcon = ({ name, family }) => (
       marginRight: 8,
     }}
   >
-    {family === FEATHER ? (
-      <Feather name={name} size={24} color={colors.primary} />
+    {icon.family === FEATHER ? (
+      <Feather name={icon.name} size={24} color={colors.primary} />
     ) : (
-      <Ionicons name={name} size={24} color={colors.primary} />
+      <Ionicons name={icon.name} size={24} color={colors.primary} />
     )}
   </View>
 );
 
 SettingsIcon.propTypes = {
-  name: PropTypes.string.isRequired,
-  family: PropTypes.string.isRequired,
+  icon: IconProp.isRequired,
 };
 
 export const Divider = () => (
@@ -52,7 +51,7 @@ export const Row = ({ hasIcon, icon, title, onPress }) => (
       }}
     >
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-        {hasIcon && <SettingsIcon name={icon.name} family={icon.family} />}
+        {hasIcon && <SettingsIcon icon={icon} />}
         <Text style={textStyles.h5}>{title}</Text>
       </View>
       <Feather name="chevron-right" size={34} color={colors.primary} />
