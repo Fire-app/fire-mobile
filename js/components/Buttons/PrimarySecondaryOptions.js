@@ -13,7 +13,7 @@ const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
         flexWrap: 'wrap-reverse',
         justifyContent: 'space-between',
       },
-      secondaryButton && { paddingBottom: 24 },
+      // secondaryButton && { paddingBottom: 24 },
     ]}
   >
     {secondaryButton && (

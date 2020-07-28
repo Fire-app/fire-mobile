@@ -165,8 +165,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    // paddingTop technically 44 but HelpButton has some unspecified top padding
-    paddingTop: 34,
+    // paddingTop technically 44 but HelpButton has padding 16 (from SecondaryButton)
     padding: 28,
     justifyContent: 'flex-start',
   },

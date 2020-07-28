@@ -22,7 +22,7 @@ const WelcomeInfo = () => {
         subtitle={t('welcome_message')}
         alignCenter
         paddingHorizontal={20}
-        paddingBottom={0}
+        paddingVertical={0}
       />
       <View style={styles.logoNameContainer}>
         <Image

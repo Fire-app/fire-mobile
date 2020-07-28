@@ -6,18 +6,13 @@ import { textStyles, colors } from '../styles';
 const OnboardingTitle = ({
   title,
   subtitle,
-  // the following props only used for welcome screen
+  // the following props only used for welcome screen and toolkit intro screen
   alignCenter,
   paddingHorizontal,
-  paddingBottom,
+  paddingVertical,
 }) => {
   return (
-    <View
-      style={[
-        { paddingVertical: 52, paddingBottom, width: '100%' },
-        alignCenter && { paddingVertical: 0 },
-      ]}
-    >
+    <View style={{ paddingHorizontal, paddingVertical, width: '100%' }}>
       <Text
         style={[
           textStyles.h1,
@@ -32,7 +27,6 @@ const OnboardingTitle = ({
           textStyles.body1,
           { color: colors.textLight },
           alignCenter && { textAlign: 'center' },
-          { paddingHorizontal },
         ]}
       >
         {subtitle}
@@ -46,14 +40,14 @@ OnboardingTitle.propTypes = {
   subtitle: PropTypes.string,
   alignCenter: PropTypes.bool,
   paddingHorizontal: PropTypes.number,
-  paddingBottom: PropTypes.number,
+  paddingVertical: PropTypes.number,
 };
 
 OnboardingTitle.defaultProps = {
   subtitle: '',
   alignCenter: false,
   paddingHorizontal: 0,
-  paddingBottom: 40,
+  paddingVertical: 40,
 };
 
 export default OnboardingTitle;

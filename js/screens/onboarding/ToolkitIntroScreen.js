@@ -25,6 +25,8 @@ const ToolkitTitleInfo = () => {
         title={t('your_emergency_toolkit')}
         subtitle={t('your_emergency_toolkit_note')}
         alignCenter
+        paddingHorizontal={10}
+        paddingVertical={0}
       />
     </View>
   );
