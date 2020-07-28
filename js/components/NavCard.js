@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import textStyles from '../styles/textStyles';
 import { colors } from '../styles';
 
@@ -27,12 +27,7 @@ export default function NavCard({ title, description, onPress, icon }) {
           )}
         </View>
       </View>
-
-      <MaterialCommunityIcons
-        name="chevron-right"
-        size={40}
-        color={colors.primary}
-      />
+      <Feather name="chevron-right" size={34} color={colors.primary} />
     </TouchableOpacity>
   );
 }

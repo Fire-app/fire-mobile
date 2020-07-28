@@ -68,7 +68,7 @@ const SettingsOverviewScreen = ({ navigation }) => {
           <Row
             hasIcon
             icon={{
-              name: 'repeat',
+              name: 'rotate-ccw',
               family: FEATHER,
             }}
             title="Restart Set-Up"
