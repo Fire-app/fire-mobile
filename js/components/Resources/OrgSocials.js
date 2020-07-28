@@ -11,6 +11,10 @@ export default function OrgSocials({
   twitterUrl,
   youtubeUrl,
 }) {
+  // returns null instead of padding space if no props passed
+  if (!(facebookUrl || instagramUrl || twitterUrl || youtubeUrl)) {
+    return null;
+  }
   return (
     <View
       style={{
