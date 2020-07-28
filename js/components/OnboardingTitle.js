@@ -14,7 +14,7 @@ const OnboardingTitle = ({
   return (
     <View
       style={[
-        { paddingTop: 52, paddingBottom, width: '100%' },
+        { paddingVertical: 52, paddingBottom, width: '100%' },
         alignCenter && { paddingVertical: 0 },
       ]}
     >
