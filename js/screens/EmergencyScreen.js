@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, Text, Modal } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+// import { feather } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
 import call from 'react-native-phone-call';
@@ -78,14 +79,18 @@ const KYRModal = ({
   const { t } = useTranslation();
   return (
     <View>
-      <Modal animationType="slide" visible={isVisible}>
+      <Modal animationType="none" visible={isVisible}>
         {/* <View style={modalStyles.container}> */}
         <View style={modalStyles.container}>
           <TouchableOpacity
             style={{ paddingBottom: 12 }}
             onPress={() => setModalVisible(!isVisible)}
           >
-            <MaterialCommunityIcons name="close" color="black" size={32} />
+            <MaterialCommunityIcons
+              name="chevron-left"
+              color="black"
+              size={32}
+            />
           </TouchableOpacity>
           <View style={modalStyles.contentContainer}>
             <View style={[modalStyles.rightsRow, { paddingBottom: 12 }]}>
