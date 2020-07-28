@@ -27,7 +27,8 @@ const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
     {secondaryButton && (
       <View
         style={{
-          // actually 8 but secondary btn not centered otherwise. flexGrow: 1 doesn't work either
+          // actually 8 but secondary btn not centered in modal otherwise.
+          // flexGrow: 1 doesn't work either.
           // spacing is not *super* weird w/ larger text sizes.
           width: 14,
         }}

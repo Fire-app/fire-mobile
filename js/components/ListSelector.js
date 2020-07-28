@@ -11,8 +11,8 @@ const ListOption = ({ title, selected, onPress }) => (
     style={[
       {
         flex: 1,
-        paddingVertical: 15,
-        paddingHorizontal: 15,
+        paddingVertical: 16,
+        paddingHorizontal: 16,
         backgroundColor: colors.primaryLight,
         borderRadius: 3,
         borderWidth: 3,

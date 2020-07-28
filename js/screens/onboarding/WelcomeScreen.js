@@ -21,6 +21,8 @@ const WelcomeInfo = () => {
         title={t('welcome_to_fire')}
         subtitle={t('welcome_message')}
         alignCenter
+        paddingHorizontal={20}
+        paddingBottom={0}
       />
       <View style={styles.logoNameContainer}>
         <Image
@@ -117,6 +119,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     paddingTop: 20,
+    paddingBottom: 20,
   },
   logo: {
     height: 25,

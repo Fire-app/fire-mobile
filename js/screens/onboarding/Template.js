@@ -42,7 +42,8 @@ const OnboardingTemplate = ({
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       <ContentView
-        style={{ paddingHorizontal: 25, paddingBottom: 10, flexGrow: 1 }}
+        // TODO: check paddingBottom on other devices
+        style={{ paddingHorizontal: 28, paddingBottom: 16, flexGrow: 1 }}
         behavior="padding"
       >
         <View style={{ flex: 1 }}>{children}</View>

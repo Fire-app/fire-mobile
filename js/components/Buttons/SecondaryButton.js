@@ -15,7 +15,7 @@ const SecondaryButton = ({ title, onPress, alignRight }) => (
       { color: colors.primary },
     ])}
     buttonStyle={StyleSheet.flatten([
-      { backgroundColor: 'white', padding: 15, borderRadius: 3 },
+      { backgroundColor: 'white', padding: 16, borderRadius: 3 },
       alignRight && { padding: 6 },
     ])}
   />
