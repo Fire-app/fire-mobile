@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ScrollView,
+  Platform,
 } from 'react-native';
 import { ButtonProp, PrimarySecondaryOptions } from './Buttons';
 
@@ -19,7 +20,10 @@ const CustomModal = ({
   secondaryButton,
 }) => (
   <Modal transparent animationType="fade" visible={isVisible}>
-    <KeyboardAvoidingView style={{ flexGrow: 1 }} behavior="padding">
+    <KeyboardAvoidingView
+      style={{ flexGrow: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : null}
+    >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={{ flex: 1 }}>
           <ScrollView
