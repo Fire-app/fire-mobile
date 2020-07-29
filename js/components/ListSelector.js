@@ -25,14 +25,14 @@ const ListOption = ({ title, selected, onPress }) => (
     onPress={onPress}
   >
     <View style={{ flexDirection: 'row' }}>
-      <View style={{ flexDirection: 'row', flex: 1 }}>
+      <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center' }}>
         <Text style={textStyles.body1}>{title}</Text>
       </View>
       {selected && (
         <Ionicons
           name="ios-checkmark-circle"
           style={{
-            fontSize: 26,
+            fontSize: 24,
             color: colors.primary,
           }}
         />
@@ -89,6 +89,8 @@ ListSelector.propTypes = {
   keyExtractor: PropTypes.func.isRequired,
   selectedExtractor: PropTypes.func.isRequired,
   titleExtractor: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  listHeaderComponent: PropTypes.node,
 };
 
 export default ListSelector;
