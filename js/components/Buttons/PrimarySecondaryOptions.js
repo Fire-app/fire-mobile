@@ -35,6 +35,15 @@ const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
         />
       </View>
     )}
+    {primaryButton && (
+      <View style={{ flexGrow: 1 }}>
+        <PrimaryButton
+          title={primaryButton.title}
+          onPress={primaryButton.onPress}
+          disabled={primaryButton.disabled}
+        />
+      </View>
+    )}
   </View>
 );
 

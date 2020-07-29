@@ -21,6 +21,8 @@ const WelcomeInfo = () => {
         title={t('welcome_to_fire')}
         subtitle={t('welcome_message')}
         alignCenter
+        paddingHorizontal={20}
+        paddingVertical={0}
       />
       <View style={styles.logoNameContainer}>
         <Image

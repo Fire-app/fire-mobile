@@ -175,8 +175,8 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: 'white',
-    padding: 20,
-    paddingTop: 30,
+    // paddingTop technically 44 but HelpButton has padding 16 (from SecondaryButton)
+    padding: 28,
     justifyContent: 'flex-start',
   },
   modalContentContainer: {

@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet, Text, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-
 import { useDispatch } from 'react-redux';
 import resetOnboardingAction from '../../store/actions/resetOnboarding';
 import { Row, Divider } from '../../components/SettingsSelector';

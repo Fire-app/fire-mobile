@@ -47,6 +47,7 @@ const IntroScreen = ({ navigation }) => {
         contentContainerStyle={{
           justifyContent: 'center',
           flexGrow: 1,
+          paddingTop: 50,
         }}
       >
         <InfoSection

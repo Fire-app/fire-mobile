@@ -53,6 +53,11 @@ const textStyles = StyleSheet.create({
     color: colors.charcoalGrey,
     lineHeight: 14.1,
   },
+  headerBackStyle: {
+    fontFamily: 'Roboto_400Regular',
+    fontSize: 16,
+    fontStyle: 'normal',
+  },
 });
 
 export default textStyles;
