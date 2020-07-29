@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { AsYouType } from 'libphonenumber-js';
 import PrimaryInput from './PrimaryInput';
 
 const AttorneyForm = ({
@@ -25,8 +26,9 @@ const AttorneyForm = ({
   };
 
   const validateNumber = (_number) => {
-    // eslint-disable-next-line no-restricted-globals
-    if (_number.trim().length === 10 && !isNaN(_number.replace('.', ''))) {
+    const phoneNumber = new AsYouType('US');
+    phoneNumber.input(_number);
+    if (phoneNumber.isValid()) {
       setNumberIsInvalid(false);
     } else {
       setNumberIsInvalid(true);

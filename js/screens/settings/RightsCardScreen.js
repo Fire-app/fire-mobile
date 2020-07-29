@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { AsYouType } from 'libphonenumber-js';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import CustomModal from '../../components/CustomModal';
@@ -62,6 +63,11 @@ const RightsCardScreen = () => {
 
   const [name, setName] = useState(savedName || '');
   const [number, setNumber] = useState(savedNumber || '');
+
+  const setFormattedNumber = (_number) => {
+    const phoneNumber = new AsYouType('US');
+    setNumber(phoneNumber.input(_number));
+  };
 
   const [nameIsInvalid, setNameIsInvalid] = useState(true);
   const [numberIsInvalid, setNumberIsInvalid] = useState(true);
@@ -134,7 +140,7 @@ const RightsCardScreen = () => {
             name={name}
             setName={setName}
             number={number}
-            setNumber={setNumber}
+            setNumber={setFormattedNumber}
             nameIsInvalid={nameIsInvalid}
             setNameIsInvalid={setNameIsInvalid}
             numberIsInvalid={numberIsInvalid}
