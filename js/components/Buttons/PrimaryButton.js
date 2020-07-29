@@ -5,14 +5,14 @@ import { StyleSheet } from 'react-native';
 import { textStyles, colors } from '../../styles';
 
 const titleStyle = StyleSheet.flatten([textStyles.h3, { color: 'white' }]);
-const darkTitleStyle = StyleSheet.flatten([textStyles.h1, { color: 'white' }]);
+const darkTitleStyle = StyleSheet.flatten([textStyles.h2, { color: 'white' }]);
 const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
   <Button
     title={title}
     onPress={onPress}
     disabled={disabled}
     darkMode={darkMode}
-    titleStyle={darkMode ? { titleStyle } : { darkTitleStyle }}
+    titleStyle={darkMode ? { darkTitleStyle } : { titleStyle }}
     buttonStyle={
       darkMode
         ? {

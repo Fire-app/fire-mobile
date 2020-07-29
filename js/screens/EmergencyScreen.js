@@ -3,18 +3,19 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, Text, Modal } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-// import { feather } from '@expo/vector-icons';
+import { Feather, Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
 import call from 'react-native-phone-call';
 import { useSelector } from 'react-redux';
-import styles from '../styles/textStyles';
 import colors from '../styles/colors';
 import PrimaryButton from '../components/Buttons/PrimaryButton';
+import textStyles from '../styles/textStyles';
 
 export default function EmergencyScreen({ navigation }) {
   const { t } = useTranslation();
-  const [modalVisible, setModalVisible] = useState(false);
+  const [KYRModalVisible, setKYRModalVisible] = useState(false);
+  const [InfoModalVisible, setInfoModalVisible] = useState(false);
   const savedHotlineNumber = useSelector(
     (state) => state.settings.hotlineNumber
   );
@@ -28,9 +29,13 @@ export default function EmergencyScreen({ navigation }) {
   };
   return (
     <>
+      <InfoModal
+        isVisible={InfoModalVisible}
+        setModalVisible={setInfoModalVisible}
+      />
       <KYRModal
-        isVisible={modalVisible}
-        setModalVisible={setModalVisible}
+        isVisible={KYRModalVisible}
+        setModalVisible={setKYRModalVisible}
         attorneyName={savedAttorneyName}
         attorneyNumber={savedAttorneyNumber}
       />
@@ -39,16 +44,16 @@ export default function EmergencyScreen({ navigation }) {
           style={{ alignSelf: 'flex-start', padding: 20 }}
           onPress={navigation.goBack}
         >
-          <MaterialCommunityIcons name="close" color="black" size={32} />
+          <MaterialCommunityIcons
+            name="close"
+            color={colors.charcoalGrey}
+            size={32}
+          />
         </TouchableOpacity>
         <View style={localStyles.rightsSuiteContainer}>
           <View style={localStyles.titleRow}>
-            <MaterialCommunityIcons
-              name="alert-outline"
-              color={colors.primary}
-              size={28}
-            />
-            <Text style={[styles.h1, { paddingLeft: 4 }]}>
+            <Feather name="alert-triangle" color={colors.primary} size={26} />
+            <Text style={[textStyles.h1, { paddingLeft: 4 }]}>
               {t('emergency_toolkit')}
             </Text>
           </View>
@@ -60,11 +65,22 @@ export default function EmergencyScreen({ navigation }) {
             />
             <PrimaryButton
               title={t('rights_card')}
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={() => setKYRModalVisible(!KYRModalVisible)}
               darkMode
             />
           </View>
         </View>
+        <TouchableOpacity
+          style={localStyles.whatsThisRow}
+          onPress={() => setInfoModalVisible(!InfoModalVisible)}
+        >
+          <Ionicons name="ios-help-circle" color={colors.primary} size={16} />
+          <Text
+            style={[textStyles.h4, { paddingLeft: 4, color: colors.primary }]}
+          >
+            {t('rights_card_what_is_this')}
+          </Text>
+        </TouchableOpacity>
       </View>
     </>
   );
@@ -80,42 +96,72 @@ const KYRModal = ({
   return (
     <View>
       <Modal animationType="none" visible={isVisible}>
+        <View style={modalStyles.container}>
+          <TouchableOpacity
+            style={{ paddingBottom: 12 }}
+            onPress={() => setModalVisible(!isVisible)}
+          >
+            <Feather
+              name="chevron-left"
+              color={colors.charcoalGrey}
+              size={32}
+            />
+          </TouchableOpacity>
+          <View style={modalStyles.contentContainer}>
+            <View style={[modalStyles.rightsRow, { paddingBottom: 12 }]}>
+              <Feather name="credit-card" color={colors.primary} size={20} />
+              <Text style={[textStyles.h2, { paddingLeft: 8 }]}>
+                {t('rights_card_title')}
+              </Text>
+            </View>
+            <Text style={textStyles.body1}>{t('rights_card_content_1')}</Text>
+            <Text style={[textStyles.body1, { paddingTop: 20 }]}>
+              {t('rights_card_content_2')}
+            </Text>
+            <View style={localStyles.emergencyInfo}>
+              <Text style={(textStyles.h4, localStyles.emergencyInfoItem)}>
+                {attorneyName}
+              </Text>
+              <Text style={(textStyles.h4, localStyles.emergencyInfoItem)}>
+                {attorneyNumber}
+              </Text>
+            </View>
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+};
+
+const InfoModal = ({ isVisible, setModalVisible }) => {
+  const { t } = useTranslation();
+  return (
+    <View>
+      <Modal animationType="none" visible={isVisible}>
         {/* <View style={modalStyles.container}> */}
         <View style={modalStyles.container}>
           <TouchableOpacity
             style={{ paddingBottom: 12 }}
             onPress={() => setModalVisible(!isVisible)}
           >
-            <MaterialCommunityIcons
+            <Feather
               name="chevron-left"
-              color="black"
+              color={colors.charcoalGrey}
               size={32}
             />
           </TouchableOpacity>
           <View style={modalStyles.contentContainer}>
-            <View style={[modalStyles.rightsRow, { paddingBottom: 12 }]}>
-              <MaterialCommunityIcons
-                name="shield-half-full"
-                color="orange"
-                size={20}
-              />
-              <Text style={[styles.h2, { paddingLeft: 8 }]}>
-                {t('rights_card_title')}
-              </Text>
-            </View>
-            <Text style={styles.body1}>{t('rights_card_content_1')}</Text>
-            <Text style={[styles.body1, { paddingTop: 20 }]}>
-              {t('rights_card_content_2')}
+            <Text style={textStyles.h2}>
+              {t('info_modal_whats_my_emergency_toolkit?')}
             </Text>
-            <View style={localStyles.emergencyInfo}>
-              <Text style={(styles.h4, localStyles.emergencyInfoItem)}>
-                {attorneyName}
-              </Text>
-              <Text style={(styles.h4, localStyles.emergencyInfoItem)}>
-                {attorneyNumber}
-              </Text>
-            </View>
-            {/* </View> */}
+            <Text style={textStyles.body1} color={colors.textLight}>
+              {t('info_modal_emergency_toolkit_explanation')}
+            </Text>
+
+            <PrimaryButton
+              title={t('got_it')}
+              onPress={() => setModalVisible(!isVisible)}
+            />
           </View>
         </View>
       </Modal>
@@ -137,9 +183,14 @@ KYRModal.propTypes = {
   attorneyNumber: PropTypes.string.isRequired,
 };
 
+InfoModal.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  setModalVisible: PropTypes.func.isRequired,
+};
+
 const localStyles = StyleSheet.create({
   container: {
-    // marginHorizontal: 12,
+    flex: 1,
     paddingVertical: 12,
   },
   rightsSuiteContainer: {
@@ -148,7 +199,13 @@ const localStyles = StyleSheet.create({
   },
   titleRow: {
     flexDirection: 'row',
+    justifyContent: 'center',
     paddingTop: 80,
+  },
+  whatsThisRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 80,
   },
   buttonStack: {
     flexDirection: 'column',
