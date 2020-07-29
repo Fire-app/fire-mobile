@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
@@ -18,7 +18,10 @@ const SettingsOverviewScreen = ({ navigation }) => {
   const resetOnboarding = () => dispatch(resetOnboardingAction());
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      alwaysBounceVertical={false}
+      contentContainerStyle={styles.container}
+    >
       <Divider />
       <Row
         hasIcon
@@ -83,7 +86,7 @@ const SettingsOverviewScreen = ({ navigation }) => {
           </Text>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -97,7 +100,7 @@ export default SettingsOverviewScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: 'white',
   },
 });
