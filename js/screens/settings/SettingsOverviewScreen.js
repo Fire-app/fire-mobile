@@ -18,75 +18,77 @@ const SettingsOverviewScreen = ({ navigation }) => {
   const resetOnboarding = () => dispatch(resetOnboardingAction());
 
   return (
-    <ScrollView
-      alwaysBounceVertical={false}
-      contentContainerStyle={styles.container}
-    >
-      <Divider />
-      <Row
-        hasIcon
-        icon={{
-          name: 'alert-triangle',
-          family: FEATHER,
-        }}
-        title={t('emergency_toolkit')}
-        onPress={() => navigation.navigate(routes.settings.toolkit)}
-      />
-      <Divider />
-      <Row
-        hasIcon
-        icon={{
-          name: 'md-globe',
-          family: IONICONS,
-        }}
-        title={t('language')}
-        onPress={() => navigation.navigate(routes.settings.language)}
-      />
-      <Divider />
-      <Row
-        hasIcon
-        icon={{
-          name: 'bell',
-          family: FEATHER,
-        }}
-        title={t('notifications')}
-        onPress={() => {
-          // TODO
-        }}
-      />
-      <Divider />
-      <Row
-        hasIcon
-        icon={{
-          name: 'info',
-          family: FEATHER,
-        }}
-        title={t('about')}
-        onPress={() => navigation.navigate(routes.settings.about)}
-      />
-      <Divider />
-      {__DEV__ && (
-        <>
-          <Row
-            hasIcon
-            icon={{
-              name: 'rotate-ccw',
-              family: FEATHER,
-            }}
-            title="Restart Set-Up"
-            onPress={resetOnboarding}
-          />
-          <Divider />
-        </>
-      )}
-      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-        <View style={{ paddingVertical: 8, marginBottom: 30 }}>
-          <Text style={[textStyles.h3, { textAlign: 'center' }]}>
-            {formattedVersionInfo()}
-          </Text>
+    <View style={{ flexGrow: 1 }}>
+      <ScrollView
+        alwaysBounceVertical={false}
+        contentContainerStyle={styles.container}
+      >
+        <Divider />
+        <Row
+          hasIcon
+          icon={{
+            name: 'alert-triangle',
+            family: FEATHER,
+          }}
+          title={t('emergency_toolkit')}
+          onPress={() => navigation.navigate(routes.settings.toolkit)}
+        />
+        <Divider />
+        <Row
+          hasIcon
+          icon={{
+            name: 'md-globe',
+            family: IONICONS,
+          }}
+          title={t('language')}
+          onPress={() => navigation.navigate(routes.settings.language)}
+        />
+        <Divider />
+        <Row
+          hasIcon
+          icon={{
+            name: 'bell',
+            family: FEATHER,
+          }}
+          title={t('notifications')}
+          onPress={() => {
+            // TODO
+          }}
+        />
+        <Divider />
+        <Row
+          hasIcon
+          icon={{
+            name: 'info',
+            family: FEATHER,
+          }}
+          title={t('about')}
+          onPress={() => navigation.navigate(routes.settings.about)}
+        />
+        <Divider />
+        {__DEV__ && (
+          <>
+            <Row
+              hasIcon
+              icon={{
+                name: 'rotate-ccw',
+                family: FEATHER,
+              }}
+              title="Restart Set-Up"
+              onPress={resetOnboarding}
+            />
+            <Divider />
+          </>
+        )}
+        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+          <View style={{ paddingVertical: 8, marginBottom: 30 }}>
+            <Text style={[textStyles.h3, { textAlign: 'center' }]}>
+              {formattedVersionInfo()}
+            </Text>
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
