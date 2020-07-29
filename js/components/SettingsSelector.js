@@ -40,7 +40,6 @@ export const Divider = () => (
   />
 );
 
-
 export const Row = ({ hasIcon, icon, title, onPress }) => (
   <TouchableHighlight underlayColor={colors.primaryLight} onPress={onPress}>
     <View
@@ -57,7 +56,6 @@ export const Row = ({ hasIcon, icon, title, onPress }) => (
         <Text style={[textStyles.h5, { flex: 1 }]}>{title}</Text>
       </View>
       <Feather name="chevron-right" size={34} color={colors.primary} />
-
     </View>
   </TouchableHighlight>
 );

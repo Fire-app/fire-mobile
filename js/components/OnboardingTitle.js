@@ -12,12 +12,7 @@ const OnboardingTitle = ({
   paddingVertical,
 }) => {
   return (
-    <View
-      style={[
-        { paddingVertical: 30, width: '100%' },
-        alignCenter && { paddingVertical: 0 },
-      ]}
-    >
+    <View style={[{ paddingVertical, paddingHorizontal, width: '100%' }]}>
       <Text
         style={[
           textStyles.h1,
