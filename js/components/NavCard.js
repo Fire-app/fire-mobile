@@ -9,8 +9,8 @@ import { IconProp, FEATHER } from '../../data/fontFamilies';
 
 export default function NavCard({ title, description, onPress, icon }) {
   return (
-    <TouchableOpacity style={styles.navCard} onPress={() => onPress()}>
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+    <TouchableOpacity onPress={() => onPress()}>
+      <View style={styles.navCard}>
         {icon && (
           <View style={{ minWidth: 30, alignItems: 'center', marginRight: 14 }}>
             {icon.family === FEATHER ? (
@@ -24,7 +24,7 @@ export default function NavCard({ title, description, onPress, icon }) {
             )}
           </View>
         )}
-        <View>
+        <View style={{ flex: 1 }}>
           <Text style={textStyles.h2}>{title}</Text>
           {description && (
             <Text style={[textStyles.body2, { paddingTop: 4 }]}>
@@ -32,8 +32,8 @@ export default function NavCard({ title, description, onPress, icon }) {
             </Text>
           )}
         </View>
+        <Feather name="chevron-right" size={34} color={colors.primary} />
       </View>
-      <Feather name="chevron-right" size={34} color={colors.primary} />
     </TouchableOpacity>
   );
 }
@@ -52,10 +52,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 25,
     backgroundColor: '#FFFFFF',
     borderRadius: 3,
     borderWidth: 2,
     borderColor: '#eeeeee',
+    padding: 24,
   },
 });

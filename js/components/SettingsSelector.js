@@ -48,11 +48,12 @@ export const Row = ({ hasIcon, icon, title, onPress }) => (
         alignItems: 'center',
         paddingVertical: 14,
         paddingHorizontal: 24,
+        justifyContent: 'space-between',
       }}
     >
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
         {hasIcon && <SettingsIcon icon={icon} />}
-        <Text style={textStyles.h5}>{title}</Text>
+        <Text style={[textStyles.h5, { flex: 1 }]}>{title}</Text>
       </View>
       <Feather name="chevron-right" size={34} color={colors.primary} />
     </View>
