@@ -10,7 +10,6 @@ const colors = {
   charcoalGrey: '#373643',
 
   // Colors not included in Zeplin: Check wireframes and replace with right colors
-  buttonDisabled: '#9a9a9a',
   warmGrey: '#a1a1a1',
   backgroundColor: '#f6f5f6',
 };

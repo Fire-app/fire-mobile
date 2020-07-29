@@ -12,11 +12,8 @@ const ProgressCircles = ({ numSteps, step }) => {
   return (
     <View
       style={{
-        flex: 1,
         flexDirection: 'row',
-        alignSelf: 'stretch',
         justifyContent: 'center',
-        alignItems: 'flex-end',
       }}
     >
       {array.map((n) => {
@@ -25,7 +22,7 @@ const ProgressCircles = ({ numSteps, step }) => {
             <MaterialCommunityIcons
               key={n}
               name="circle"
-              style={{ fontSize: 16, color: colors.primary, padding: 8 }}
+              style={{ fontSize: 18, color: colors.primary, padding: 8 }}
             />
           );
         }
@@ -33,7 +30,7 @@ const ProgressCircles = ({ numSteps, step }) => {
           <MaterialCommunityIcons
             key={n}
             name="circle"
-            style={{ fontSize: 16, color: colors.border, padding: 8 }}
+            style={{ fontSize: 18, color: colors.border, padding: 8 }}
           />
         );
       })}

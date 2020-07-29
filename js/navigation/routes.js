@@ -14,7 +14,7 @@ const routes = {
   main: {
     resources: 'TAB_RESOURCES',
     rights: 'TAB_RIGHTS',
-    settings: 'TAB_SETTINGS', // TODO: Move elsewhere (not a tab eventually)
+    settings: 'TAB_SETTINGS',
     emergency: 'TAB_EMERGENCY',
   },
 
@@ -22,6 +22,14 @@ const routes = {
   settings: {
     overview: 'SETTINGS_OVERVIEW',
     language: 'SETTINGS_LANGUAGE',
+    toolkit: 'SETTINGS_TOOLKIT',
+    hotline: 'SETTINGS_HOTLINE',
+    rights_card: 'SETTINGS_RIGHTS_CARD',
+    about: 'SETTINGS_ABOUT',
+    privacy_policy: 'SETTINGS_PRIVACY_POLICY',
+    terms_of_service: 'SETTINGS_TERMS_OF_SERVICE',
+    acknowledgements: 'SETTINGS_ACKNOWLEDGEMENTS',
+    partners: 'SETTINGS_PARTNERS',
   },
 
   rightsStack: 'RIGHTS',

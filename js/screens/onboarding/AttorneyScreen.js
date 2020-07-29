@@ -1,48 +1,23 @@
-/* eslint-disable global-require */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-  TouchableWithoutFeedback,
-  Keyboard,
-  KeyboardAvoidingView,
-  ScrollView,
-  LayoutAnimation,
-  Text,
-} from 'react-native';
+import { ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import routes from '../../navigation/routes';
-import { screenStyles, textStyles } from '../../styles';
 import OnboardingTitle from '../../components/OnboardingTitle';
-import { NavigationButtons } from '../../components/Buttons';
+import { SecondaryButton } from '../../components/Buttons';
 import AttorneyForm from '../../components/AttorneyForm';
 import CustomModal from '../../components/CustomModal';
-import useKeyboard from '../../hook/useKeyboard';
+import ModalContent from '../../components/ModalContent';
+import OnboardingTemplate from './Template';
+import {
+  DEFAULT_ATTORNEY,
+  DEFAULT_NUMBER,
+} from '../../../data/attorneyOptions';
 
 const onboardingRoutes = routes.onboarding;
-
-const DEFAULT_ATTORNEY = 'CHIRLA Hotline';
-const DEFAULT_NUMBER = '2133531333';
-
-const ModalContent = () => {
-  const { t } = useTranslation();
-  return (
-    <View
-      style={{
-        justifyContent: 'flex-start',
-        paddingBottom: 20,
-      }}
-    >
-      <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
-        {t('attorney_default_title')}
-      </Text>
-      <Text style={textStyles.body1}>{t('attorney_default_subtitle')}</Text>
-    </View>
-  );
-};
 
 const AttorneyScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -71,62 +46,63 @@ const AttorneyScreen = ({ navigation }) => {
     setModalVisible(false);
   };
 
-  // We don't want a ton of padding if the keyboard is up. This animates between paddings
-  const [visible] = useKeyboard({ useWillShow: true, useWillHide: true });
-  const paddingBottom = visible ? 10 : screenStyles.container.paddingBottom;
-  useEffect(() => {
-    LayoutAnimation.easeInEaseOut();
-  }, [visible]);
-
   return (
-    <KeyboardAvoidingView style={{ flexGrow: 1 }} behavior="padding">
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={[screenStyles.container, { paddingBottom }]}>
-          <ScrollView
-            alwaysBounceVertical={false}
-            style={{ flex: 1 }}
-            contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
-          >
-            <OnboardingTitle
-              title={t('select_attorney')}
-              subtitle={t('select_attorney_subtitle')}
-            />
-            <AttorneyForm
-              name={name}
-              setName={setName}
-              number={number}
-              setNumber={setNumber}
-              nameIsInvalid={nameIsInvalid}
-              setNameIsInvalid={setNameIsInvalid}
-              numberIsInvalid={numberIsInvalid}
-              setNumberIsInvalid={setNumberIsInvalid}
-            />
-            <CustomModal
-              isVisible={modalVisible}
-              setIsVisible={setModalVisible}
-              buttonTitle={t('no_attorney')}
-            >
-              <ModalContent />
-              <NavigationButtons
-                // TODO: figure out what to display for not over 13
-                onSecondaryPress={() => setModalVisible(false)}
-                onPrimaryPress={onModalSubmit}
-                secondaryTitle={t('cancel')}
-                primaryTitle={t('use_chirla')}
-                hasLongTitles
-              />
-            </CustomModal>
-          </ScrollView>
-          <NavigationButtons
-            onSecondaryPress={() => navigation.pop()}
-            onPrimaryPress={onSubmit}
-            secondaryTitle={t('back')}
-            primaryTitle={t('finish')}
-            primaryIsDisabled={nameIsInvalid || numberIsInvalid}
+    <OnboardingTemplate
+      keyboardAvoiding
+      primaryButton={{
+        title: t('finish'),
+        onPress: onSubmit,
+        disabled: nameIsInvalid || numberIsInvalid,
+      }}
+      secondaryButton={{
+        title: t('back'),
+        onPress: () => navigation.pop(),
+      }}
+    >
+      <ScrollView
+        alwaysBounceVertical={false}
+        style={{ flex: 1 }}
+        contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
+      >
+        <OnboardingTitle
+          title={t('select_attorney')}
+          subtitle={t('select_attorney_subtitle')}
+        />
+        <AttorneyForm
+          name={name}
+          setName={setName}
+          number={number}
+          setNumber={setNumber}
+          nameIsInvalid={nameIsInvalid}
+          setNameIsInvalid={setNameIsInvalid}
+          numberIsInvalid={numberIsInvalid}
+          setNumberIsInvalid={setNumberIsInvalid}
+        />
+        <SecondaryButton
+          title={t('no_attorney')}
+          onPress={() => setModalVisible(true)}
+          alignRight
+        />
+
+        <CustomModal
+          isVisible={modalVisible}
+          primaryButton={{
+            title: t('use_chirla'),
+            onPress: onModalSubmit,
+          }}
+          secondaryButton={{
+            title: t('cancel'),
+            onPress: () => setModalVisible(false),
+          }}
+          buttonTitle={t('no_attorney')}
+        >
+          <ModalContent
+            title={t('attorney_default_title')}
+            subtitle={t('attorney_default_subtitle')}
           />
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        </CustomModal>
+      </ScrollView>
+    </OnboardingTemplate>
   );
 };
 

@@ -4,19 +4,40 @@ import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { ScrollView } from 'react-native-gesture-handler';
 import routes from '../../navigation/routes';
-import { textStyles, screenStyles, colors } from '../../styles';
-import NavigationButtons from '../../components/Buttons/NavigationButtons';
-import ProgressCircles from '../../components/ProgressCircles';
+import { textStyles, colors } from '../../styles';
+import OnboardingTemplate from './Template';
+import OnboardingTitle from '../../components/OnboardingTitle';
 
 const onboardingRoutes = routes.onboarding;
+
+const ToolkitTitleInfo = () => {
+  const { t } = useTranslation();
+  return (
+    <View style={styles.titleContainer}>
+      <View style={{ height: 30 }} />
+      <View style={styles.alertIconContainer}>
+        <MaterialCommunityIcons name="alert-outline" style={styles.alertIcon} />
+      </View>
+      <View style={{ height: 30 }} />
+      <OnboardingTitle
+        title={t('your_emergency_toolkit')}
+        subtitle={t('your_emergency_toolkit_note')}
+        alignCenter
+        paddingHorizontal={10}
+        paddingVertical={0}
+      />
+    </View>
+  );
+};
 
 const ToolkitInfoSection = ({ title, subtitle, iconName }) => {
   return (
     <View style={styles.infoContainer}>
       <MaterialCommunityIcons name={iconName} style={styles.infoIcon} />
-      <View>
-        <Text style={[textStyles.h3, styles.infoTitle]}>{title}</Text>
+      <View style={{ flex: 1, paddingRight: 10 }}>
+        <Text style={[textStyles.h5, styles.infoTitle]}>{title}</Text>
         <Text style={textStyles.body1}>{subtitle}</Text>
       </View>
     </View>
@@ -29,29 +50,24 @@ ToolkitInfoSection.propTypes = {
   iconName: PropTypes.string.isRequired,
 };
 
-const ToolkitTitleInfo = () => {
-  const { t } = useTranslation();
-  return (
-    <View style={styles.titleContainer}>
-      <View style={styles.alertIconContainer}>
-        <MaterialCommunityIcons name="alert-outline" style={styles.alertIcon} />
-      </View>
-      <Text style={[textStyles.h1, styles.title]}>
-        {t('your_emergency_toolkit')}
-      </Text>
-      <Text style={[textStyles.body1, styles.subtitle]}>
-        {t('your_emergency_toolkit_note')}
-      </Text>
-    </View>
-  );
-};
-
 const ToolkitIntroScreen = ({ navigation }) => {
   const { t } = useTranslation();
   return (
-    <View style={screenStyles.container}>
-      <View style={screenStyles.contentContainer}>
-        <View style={{ padding: 20 }} />
+    <OnboardingTemplate
+      step={2}
+      primaryButton={{
+        title: t('next'),
+        onPress: () => navigation.navigate(onboardingRoutes.hotline),
+      }}
+      secondaryButton={{
+        title: t('back'),
+        onPress: () => navigation.pop(),
+      }}
+    >
+      <ScrollView
+        alwaysBounceVertical={false}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
         <ToolkitTitleInfo />
         <ToolkitInfoSection
           title={t('emergency_hotline')}
@@ -63,15 +79,8 @@ const ToolkitIntroScreen = ({ navigation }) => {
           subtitle={t('rights_card_note')}
           iconName="credit-card-outline"
         />
-        <ProgressCircles numSteps={2} step={2} />
-      </View>
-      <NavigationButtons
-        onSecondaryPress={() => navigation.pop()}
-        onPrimaryPress={() => navigation.navigate(onboardingRoutes.hotline)}
-        secondaryTitle={t('back')}
-        primaryTitle={t('next')}
-      />
-    </View>
+      </ScrollView>
+    </OnboardingTemplate>
   );
 };
 
@@ -85,13 +94,6 @@ ToolkitIntroScreen.propTypes = {
 export default ToolkitIntroScreen;
 
 const styles = StyleSheet.create({
-  circleIndicatorContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignSelf: 'stretch',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-  },
   titleContainer: {
     alignSelf: 'stretch',
     alignItems: 'center',
@@ -100,21 +102,12 @@ const styles = StyleSheet.create({
   },
   alertIconContainer: {
     backgroundColor: colors.primary,
-    borderRadius: 50,
-    padding: 15,
+    borderRadius: 30,
+    padding: 12,
   },
   alertIcon: {
-    fontSize: 50,
+    fontSize: 35,
     color: 'white',
-  },
-  title: {
-    padding: 5,
-    paddingTop: 30,
-  },
-  subtitle: {
-    color: colors.textLight,
-    textAlign: 'center',
-    padding: 5,
   },
   infoTitle: {
     paddingTop: 10,
@@ -122,8 +115,8 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     flexDirection: 'row',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingVertical: 15,
+    justifyContent: 'flex-start',
   },
   infoIcon: {
     color: colors.charcoalGrey,

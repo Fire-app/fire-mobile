@@ -1,38 +1,20 @@
 /* eslint-disable global-require */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
 import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
 import routes from '../../navigation/routes';
-import { screenStyles, textStyles } from '../../styles';
-
 import OnboardingTitle from '../../components/OnboardingTitle';
 import ListSelector from '../../components/ListSelector';
 import CustomModal from '../../components/CustomModal';
-import { PrimaryButton, NavigationButtons } from '../../components/Buttons';
+import ModalContent from '../../components/ModalContent';
+import { SecondaryButton } from '../../components/Buttons';
 import { DEFAULT_HOTLINE, HOTLINE_OPTIONS } from '../../../data/hotlineOptions';
+import OnboardingTemplate from './Template';
 
 const onboardingRoutes = routes.onboarding;
-
-const ModalContent = () => {
-  const { t } = useTranslation();
-  return (
-    <View
-      style={{
-        justifyContent: 'flex-start',
-        paddingBottom: 20,
-      }}
-    >
-      <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
-        {t('what_is_hotline')}
-      </Text>
-      <Text style={textStyles.body1}>{t('hotline_note')}</Text>
-    </View>
-  );
-};
 
 const HotlineScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -56,41 +38,47 @@ const HotlineScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={screenStyles.container}>
-      <View style={screenStyles.contentContainer}>
-        <OnboardingTitle
-          title={t('select_hotline')}
-          subtitle={t('select_hotline_subtitle')}
-        />
-        <CustomModal
-          isVisible={modalVisible}
-          setIsVisible={setModalVisible}
-          buttonTitle={t('what_is_hotline')}
-        >
-          <ModalContent />
-          <PrimaryButton
-            title={t('got_it')}
-            onPress={() => setModalVisible(false)}
-            disabled={false}
-          />
-        </CustomModal>
-        <ListSelector
-          defaultKey={DEFAULT_HOTLINE.phoneNumber}
-          onChange={onListChange}
-          data={HOTLINE_OPTIONS}
-          keyExtractor={(item) => item.phoneNumber}
-          selectedExtractor={({ item }) => item.phoneNumber}
-          titleExtractor={({ item }) => item.name}
-        />
-      </View>
-      <NavigationButtons
-        onSecondaryPress={() => navigation.pop()}
-        onPrimaryPress={saveHotlineNumber}
-        secondaryTitle={t('back')}
-        primaryTitle={t('next')}
-        primaryIsDisabled={false}
+    <OnboardingTemplate
+      primaryButton={{
+        title: t('next'),
+        onPress: saveHotlineNumber,
+      }}
+      secondaryButton={{
+        title: t('back'),
+        onPress: () => navigation.pop(),
+      }}
+    >
+      <OnboardingTitle
+        title={t('select_hotline')}
+        subtitle={t('select_hotline_subtitle')}
       />
-    </View>
+      <SecondaryButton
+        title={t('what_is_hotline')}
+        onPress={() => setModalVisible(true)}
+        alignRight
+      />
+      <ListSelector
+        defaultKey={DEFAULT_HOTLINE.phoneNumber}
+        onChange={onListChange}
+        data={HOTLINE_OPTIONS}
+        keyExtractor={(item) => item.phoneNumber}
+        selectedExtractor={({ item }) => item.phoneNumber}
+        titleExtractor={({ item }) => item.name}
+      />
+      {/* Modal */}
+      <CustomModal
+        isVisible={modalVisible}
+        primaryButton={{
+          title: t('got_it'),
+          onPress: () => setModalVisible(false),
+        }}
+      >
+        <ModalContent
+          title={t('what_is_hotline')}
+          subtitle={t('hotline_note')}
+        />
+      </CustomModal>
+    </OnboardingTemplate>
   );
 };
 

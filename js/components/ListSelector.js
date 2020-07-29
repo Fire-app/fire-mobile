@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { textStyles, colors } from '../styles';
 
 const ListOption = ({ title, selected, onPress }) => (
@@ -14,7 +15,6 @@ const ListOption = ({ title, selected, onPress }) => (
         paddingHorizontal: 16,
         backgroundColor: colors.primaryLight,
         borderRadius: 3,
-        marginVertical: 4,
         borderWidth: 3,
         borderColor: colors.primaryLight,
       },
@@ -24,7 +24,20 @@ const ListOption = ({ title, selected, onPress }) => (
     ]}
     onPress={onPress}
   >
-    <Text style={textStyles.body1}>{title}</Text>
+    <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', flex: 1 }}>
+        <Text style={textStyles.body1}>{title}</Text>
+      </View>
+      {selected && (
+        <MaterialCommunityIcons
+          name="check-circle"
+          style={{
+            fontSize: 20,
+            color: colors.primary,
+          }}
+        />
+      )}
+    </View>
   </TouchableOpacity>
 );
 
@@ -50,21 +63,20 @@ const ListSelector = ({
   };
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        keyExtractor={(item) => keyExtractor(item)}
-        alwaysBounceVertical={false}
-        data={data}
-        extraData={{ selectedKey }}
-        renderItem={(item) => (
-          <ListOption
-            title={titleExtractor(item)}
-            selected={selectedExtractor(item) === selectedKey}
-            onPress={() => onPress(item)}
-          />
-        )}
-      />
-    </View>
+    <FlatList
+      keyExtractor={(item) => keyExtractor(item)}
+      alwaysBounceVertical={false}
+      data={data}
+      extraData={{ selectedKey }}
+      renderItem={(item) => (
+        <ListOption
+          title={titleExtractor(item)}
+          selected={selectedExtractor(item) === selectedKey}
+          onPress={() => onPress(item)}
+        />
+      )}
+      ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+    />
   );
 };
 
@@ -78,12 +90,3 @@ ListSelector.propTypes = {
 };
 
 export default ListSelector;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    paddingVertical: 15,
-  },
-});

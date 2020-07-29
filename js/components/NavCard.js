@@ -14,7 +14,7 @@ export default function NavCard({ title, description, onPress, icon }) {
           <MaterialCommunityIcons
             name={icon}
             size={24}
-            color={colors.text}
+            color={colors.charcoalGrey}
             style={{ paddingRight: 14 }}
           />
         )}

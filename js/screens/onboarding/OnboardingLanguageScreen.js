@@ -1,14 +1,11 @@
-/* eslint-disable global-require */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import i18n, { getLanguageOptions } from '../../config/i18n';
 import routes from '../../navigation/routes';
-import { screenStyles } from '../../styles';
 import ListSelector from '../../components/ListSelector';
+import OnboardingTemplate from './Template';
 import OnboardingTitle from '../../components/OnboardingTitle';
-import PrimaryButton from '../../components/Buttons/PrimaryButton';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -26,26 +23,25 @@ const LanguageScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={screenStyles.container}>
-      <View style={screenStyles.contentContainer}>
-        <OnboardingTitle
-          title={t('select_language')}
-          subtitle={t('select_language_subtitle')}
-        />
-        <ListSelector
-          defaultKey={i18n.language}
-          onChange={onLanguageChange}
-          data={getLanguageOptions()}
-          keyExtractor={({ locale }, i) => `${locale}:${i}`}
-          selectedExtractor={({ item }) => item.locale}
-          titleExtractor={({ item }) => item.name}
-        />
-      </View>
-      <PrimaryButton
-        title={t('continue')}
-        onPress={() => navigation.navigate(onboardingRoutes.welcome)}
+    <OnboardingTemplate
+      primaryButton={{
+        onPress: () => navigation.navigate(onboardingRoutes.welcome),
+        title: t('continue'),
+      }}
+    >
+      <OnboardingTitle
+        title={t('select_language')}
+        subtitle={t('select_language_subtitle')}
       />
-    </View>
+      <ListSelector
+        defaultKey={i18n.language}
+        onChange={onLanguageChange}
+        data={getLanguageOptions()}
+        keyExtractor={({ locale }, i) => `${locale}:${i}`}
+        selectedExtractor={({ item }) => item.locale}
+        titleExtractor={({ item }) => item.name}
+      />
+    </OnboardingTemplate>
   );
 };
 

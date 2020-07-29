@@ -4,15 +4,14 @@ import { Button } from 'react-native-elements';
 import { StyleSheet } from 'react-native';
 import { textStyles, colors } from '../../styles';
 
-const titleStyle = StyleSheet.flatten([textStyles.h3, { color: 'white' }]);
-const darkTitleStyle = StyleSheet.flatten([textStyles.h2, { color: 'white' }]);
 const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
   <Button
     title={title}
     onPress={onPress}
     disabled={disabled}
     darkMode={darkMode}
-    titleStyle={darkMode ? { darkTitleStyle } : { titleStyle }}
+    containerStyle={{ flexGrow: 1 }}
+    titleStyle={StyleSheet.flatten([textStyles.h2, { color: 'white' }])}
     buttonStyle={
       darkMode
         ? {
@@ -22,11 +21,7 @@ const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
             paddingVertical: 16,
             marginBottom: 10,
           }
-        : {
-            borderRadius: 3,
-            backgroundColor: colors.primary,
-            padding: 16,
-          }
+        : { borderRadius: 3, backgroundColor: colors.primary, padding: 16 }
     }
   />
 );
