@@ -54,6 +54,7 @@ const ListSelector = ({
   keyExtractor,
   selectedExtractor,
   titleExtractor,
+  listHeaderComponent,
 }) => {
   const [selectedKey, setSelectedKey] = useState(defaultKey);
 
@@ -64,6 +65,7 @@ const ListSelector = ({
 
   return (
     <FlatList
+      ListHeaderComponent={listHeaderComponent}
       keyExtractor={(item) => keyExtractor(item)}
       alwaysBounceVertical={false}
       data={data}

@@ -11,22 +11,19 @@ export default function NavCard({ title, description, onPress, icon }) {
   return (
     <TouchableOpacity style={styles.navCard} onPress={() => onPress()}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        {icon &&
-          (icon.family === FEATHER ? (
-            <Feather
-              name={icon.name}
-              size={24}
-              color={colors.charcoalGrey}
-              style={{ paddingRight: 14 }}
-            />
-          ) : (
-            <Ionicons
-              name={icon.name}
-              size={24}
-              color={colors.charcoalGrey}
-              style={{ paddingRight: 14 }}
-            />
-          ))}
+        {icon && (
+          <View style={{ minWidth: 30, alignItems: 'center', marginRight: 14 }}>
+            {icon.family === FEATHER ? (
+              <Feather name={icon.name} size={24} color={colors.charcoalGrey} />
+            ) : (
+              <Ionicons
+                name={icon.name}
+                size={24}
+                color={colors.charcoalGrey}
+              />
+            )}
+          </View>
+        )}
         <View>
           <Text style={textStyles.h2}>{title}</Text>
           {description && (
