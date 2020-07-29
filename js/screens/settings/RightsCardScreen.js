@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import {
+  ScrollView,
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
@@ -26,6 +32,7 @@ const AttorneyInformationBox = ({ name, number, onPress }) => {
         backgroundColor: colors.primaryLight,
         borderRadius: 3,
         marginTop: 15,
+        flexWrap: 'wrap',
       }}
       onPress={onPress}
     >
@@ -80,7 +87,10 @@ const RightsCardScreen = () => {
     savedNumber.trim() === DEFAULT_NUMBER;
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      alwaysBounceVertical={false}
+      contentContainerStyle={styles.container}
+    >
       <HelpButton
         title={t('what_is_attorney')}
         onPress={() => {
@@ -149,7 +159,7 @@ const RightsCardScreen = () => {
           subtitle={t('attorney_default_subtitle')}
         />
       </CustomModal>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -163,7 +173,7 @@ export default RightsCardScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: 'white',
     padding: 20,
     paddingTop: 30,

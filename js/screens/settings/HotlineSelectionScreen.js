@@ -24,17 +24,6 @@ const HotlineSelectionScreen = () => {
 
   return (
     <View style={styles.container}>
-      <HelpButton
-        title={t('learn_about_hotline')}
-        onPress={() => {
-          /* TODO: */
-        }}
-      />
-      <Text
-        style={[textStyles.h5, { alignSelf: 'flex-start', paddingBottom: 12 }]}
-      >
-        {t('choose_hotline')}
-      </Text>
       <ListSelector
         defaultKey={savedNumber}
         onChange={onListChange}
@@ -42,6 +31,24 @@ const HotlineSelectionScreen = () => {
         keyExtractor={(item) => item.phoneNumber}
         selectedExtractor={({ item }) => item.phoneNumber}
         titleExtractor={({ item }) => item.name}
+        listHeaderComponent={
+          <>
+            <HelpButton
+              title={t('learn_about_hotline')}
+              onPress={() => {
+                /* TODO: */
+              }}
+            />
+            <Text
+              style={[
+                textStyles.h5,
+                { alignSelf: 'flex-start', paddingBottom: 12 },
+              ]}
+            >
+              {t('choose_hotline')}
+            </Text>
+          </>
+        }
       />
     </View>
   );
