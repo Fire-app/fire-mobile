@@ -52,7 +52,7 @@ export default function EmergencyScreen({ navigation }) {
         </TouchableOpacity>
         <View style={localStyles.rightsSuiteContainer}>
           <View style={localStyles.titleRow}>
-            <Feather name="alert-triangle" color={colors.primary} size={26} />
+            <Feather name="alert-triangle" color={colors.primary} size={32} />
             <Text style={[textStyles.h1, { paddingLeft: 4 }]}>
               {t('emergency_toolkit')}
             </Text>
@@ -151,13 +151,32 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
             />
           </TouchableOpacity>
           <View style={modalStyles.contentContainer}>
-            <Text style={textStyles.h2}>
+            <Text style={[textStyles.h2, { paddingVertical: 8 }]}>
               {t('info_modal_whats_my_emergency_toolkit?')}
             </Text>
             <Text style={textStyles.body1} color={colors.textLight}>
               {t('info_modal_emergency_toolkit_explanation')}
             </Text>
-
+            <View style={{ flexDirection: 'row' }}>
+              <View style={modalStyles.iconColumn}>
+                <Feather name="phone" size={24} />
+                <Feather name="credit-card" size={24} />
+              </View>
+              <View style={modalStyles.contentColumn}>
+                <Text style={textStyles.h5}>
+                  {t('info_modal_emergency_hotline')}
+                </Text>
+                <Text style={textStyles.body1}>
+                  {t('info_modal_emergency_hotline_explanation')}
+                </Text>
+                <Text style={[textStyles.h5, { paddingTop: 12 }]}>
+                  {t('info_modal_rights_card')}
+                </Text>
+                <Text style={textStyles.body1}>
+                  {t('info_modal_rights_card_explanation')}
+                </Text>
+              </View>
+            </View>
             <PrimaryButton
               title={t('got_it')}
               onPress={() => setModalVisible(!isVisible)}
@@ -192,15 +211,16 @@ const localStyles = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 12,
+    backgroundColor: 'white',
   },
   rightsSuiteContainer: {
-    alignItems: 'center',
+    paddingHorizontal: 56,
     paddingTop: 80,
   },
   titleRow: {
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingTop: 80,
+    marginTop: 80,
   },
   whatsThisRow: {
     flexDirection: 'row',
@@ -208,7 +228,6 @@ const localStyles = StyleSheet.create({
     marginTop: 80,
   },
   buttonStack: {
-    flexDirection: 'column',
     paddingTop: 12,
   },
   emergencyInfo: {
@@ -232,7 +251,7 @@ const modalStyles = StyleSheet.create({
   contentContainer: {
     paddingHorizontal: 30,
     paddingBottom: 20,
-    paddingTop: 92,
+    paddingTop: 72,
     flex: 1,
     flexGrow: 2.5,
     justifyContent: 'flex-start',
@@ -240,5 +259,16 @@ const modalStyles = StyleSheet.create({
   },
   rightsRow: {
     flexDirection: 'row',
+  },
+  iconColumn: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    paddingTop: 12,
+    paddingBottom: 124,
+  },
+  contentColumn: {
+    flexDirection: 'column',
+    paddingVertical: 12,
+    paddingHorizontal: 8,
   },
 });
