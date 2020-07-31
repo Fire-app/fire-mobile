@@ -1,23 +1,56 @@
 import * as firebase from "firebase";
+import * as Random from "expo-random";
+
+import {
+  APIKEY,
+  AUTHDOMAIN,
+  DATABASEURL,
+  PROJECTID,
+  STORAGEBUCKET,
+} from "./secrets";
+
+// Config firebase
 const config = {
-  apiKey: "AIzaSyCkVOfQKEUrj5G-GtaywGZvef5_vGA31LI",
-  authDomain: "fire-expo-db.firebaseapp.com",
-  databaseURL: "https://fire-expo-db.firebaseio.com/",
-  projectId: "fire-expo-db",
-  storageBucket: "fire-expo-db.appspot.com",
+  apiKey: APIKEY,
+  authDomain: AUTHDOMAIN,
+  databaseURL: DATABASEURL,
+  projectId: PROJECTID,
+  storageBucket: STORAGEBUCKET,
 };
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 
-export const addToken = (token) => {
-  firebase
-    .database()
-    .ref("tokens/" + "1")
-    .set({
-      pushToken: token,
+// Tokens not saved in store for security layer
+const getAllTokens = function () {
+  var query = firebase.database().ref("/tokens").orderByKey();
+  var tokenLists = [];
+
+  return query.once("value").then((snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+      var key = childSnapshot.key;
+      var childData = childSnapshot.val();
+      tokenLists.push(childData.pushToken);
     });
+
+    return tokenLists;
+  });
+};
+
+// When token is generated, add token (if new) to firebase
+export const addToken = async (token) => {
+  getAllTokens().then((tokenLists) => {
+    if (!tokenLists.includes(token)) {
+      const uuid = new Date().getTime();
+      firebase
+        .database()
+        .ref("tokens/" + uuid)
+        .set({
+          pushToken: token,
+        });
+    }
+  });
 };
 
 export default firebase;

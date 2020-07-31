@@ -5,7 +5,7 @@ import { Vibration, Platform } from "react-native";
 import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
-import firebase, { addToken } from "./firebase";
+import { addToken } from "./firebase";
 
 export const registerForPushNotificationsAsync = async () => {
   if (Constants.isDevice) {
@@ -42,8 +42,6 @@ export const registerForPushNotificationsAsync = async () => {
 // eslint-disable-next-line no-unused-vars
 export const handleNotification = (_notification) => {
   Vibration.vibrate();
-  console.log("notification", _notification);
-  //   setNotification({ notification: _notification });
 };
 
 export const _notificationSubscription = Notifications.addListener(

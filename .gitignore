@@ -14,3 +14,4 @@ web-report/
 yarn-error.log
 # macOS
 .DS_Store
+secrets.js
