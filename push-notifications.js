@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
 import { Vibration, Platform } from 'react-native';
 
 import { Notifications } from 'expo';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 import { addToken } from './firebase';
