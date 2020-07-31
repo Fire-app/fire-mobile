@@ -30,6 +30,8 @@ import { Provider as ReduxProvider } from "react-redux";
 import { FontAwesome } from "@expo/vector-icons";
 
 import { PersistGate } from "redux-persist/integration/react";
+import firebase, { addToken } from "./firebase";
+import { registerForPushNotificationsAsync } from "./push-notifications";
 import createPersistedStore from "./js/store/createPersistedStore";
 import Navigation from "./js/navigation";
 import "./js/config"; // Load our build time configs
@@ -61,8 +63,8 @@ async function loadAssetsAsync() {
 const { store, persistor } = createPersistedStore();
 
 const App = () => {
-  const [expoPushToken, setexpoPushToken] = useState("");
-  const [notification, setNotification] = useState({});
+  // const [expoPushToken, setexpoPushToken] = useState("");
+  // const [notification, setNotification] = useState({});
 
   const googleFontsLoaded = useFonts({
     Roboto_400Regular,
@@ -71,74 +73,53 @@ const App = () => {
     Roboto_900Black,
   });
 
-  const registerForPushNotificationsAsync = async () => {
-    if (Constants.isDevice) {
-      const { status: existingStatus } = await Permissions.getAsync(
-        Permissions.NOTIFICATIONS
-      );
-      let finalStatus = existingStatus;
-      if (existingStatus !== "granted") {
-        const { status } = await Permissions.askAsync(
-          Permissions.NOTIFICATIONS
-        );
-        finalStatus = status;
-      }
-      if (finalStatus !== "granted") {
-        alert("Failed to get push token for push notification!");
-        return;
-      }
-      const token = await Notifications.getExpoPushTokenAsync();
-      console.log("token:", token);
-      setexpoPushToken(token);
-    } else {
-      alert("Must use physical device for Push Notifications");
-    }
+  // const registerForPushNotificationsAsync = async () => {
+  //   if (Constants.isDevice) {
+  //     const { status: existingStatus } = await Permissions.getAsync(
+  //       Permissions.NOTIFICATIONS
+  //     );
+  //     let finalStatus = existingStatus;
+  //     if (existingStatus !== "granted") {
+  //       const { status } = await Permissions.askAsync(
+  //         Permissions.NOTIFICATIONS
+  //       );
+  //       finalStatus = status;
+  //     }
+  //     if (finalStatus !== "granted") {
+  //       alert("Failed to get push token for push notification!");
+  //       return;
+  //     }
+  //     const token = await Notifications.getExpoPushTokenAsync();
+  //     addToken(token);
+  //     // console.log("Ma'am this is the token thank you:", token);
+  //     setexpoPushToken(token);
+  //   } else {
+  //     alert("Must use physical device for Push Notifications");
+  //   }
 
-    if (Platform.OS === "android") {
-      Notifications.createChannelAndroidAsync("default", {
-        name: "default",
-        sound: true,
-        priority: "max",
-        vibrate: [0, 250, 250, 250],
-      });
-    }
-  };
+  //   if (Platform.OS === "android") {
+  //     Notifications.createChannelAndroidAsync("default", {
+  //       name: "default",
+  //       sound: true,
+  //       priority: "max",
+  //       vibrate: [0, 250, 250, 250],
+  //     });
+  //   }
+  // };
 
   // eslint-disable-next-line no-unused-vars
-  const handleNotification = (_notification) => {
-    Vibration.vibrate();
-    console.log("notification", _notification);
-    setNotification({ notification: _notification });
-  };
-
-  // this will send teh push notificaiotn
-  const sendPushNotification = async () => {
-    const message = {
-      to: expoPushToken,
-      sound: "default",
-      title: "Original Title",
-      body: "And here is the body!",
-      data: { data: "goes here" },
-      _displayInForeground: true,
-    };
-    const response = await fetch("https://exp.host/--/api/v2/push/send", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Accept-encoding": "gzip, deflate",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(message),
-    });
-  };
+  // const handleNotification = (_notification) => {
+  //   Vibration.vibrate();
+  //   console.log("notification", _notification);
+  //   setNotification({ notification: _notification });
+  // };
 
   useEffect(() => {
     registerForPushNotificationsAsync();
-    // eslint-disable-next-line no-underscore-dangle
-    const _notificationSubscription = Notifications.addListener(
-      handleNotification
-    );
-    // sendPushNotification();
+    // const _notificationSubscription = Notifications.addListener(
+    //   handleNotification
+    // );
+    // const response = sendPushNotification();
   });
 
   const [assetsLoaded, setAssetsLoaded] = useState(false);
