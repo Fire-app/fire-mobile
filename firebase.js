@@ -1,5 +1,4 @@
-import * as firebase from "firebase";
-import * as Random from "expo-random";
+import * as firebase from 'firebase';
 
 import {
   APIKEY,
@@ -7,7 +6,7 @@ import {
   DATABASEURL,
   PROJECTID,
   STORAGEBUCKET,
-} from "./secrets";
+} from './secrets';
 
 // Config firebase
 const config = {
@@ -24,13 +23,13 @@ if (!firebase.apps.length) {
 
 // Tokens not saved in store for security layer
 const getAllTokens = function () {
-  var query = firebase.database().ref("/tokens").orderByKey();
-  var tokenLists = [];
+  const query = firebase.database().ref('/tokens').orderByKey();
+  const tokenLists = [];
 
-  return query.once("value").then((snapshot) => {
+  return query.once('value').then((snapshot) => {
     snapshot.forEach((childSnapshot) => {
-      var key = childSnapshot.key;
-      var childData = childSnapshot.val();
+      const { key } = childSnapshot;
+      const childData = childSnapshot.val();
       tokenLists.push(childData.pushToken);
     });
 
@@ -43,12 +42,9 @@ export const addToken = async (token) => {
   getAllTokens().then((tokenLists) => {
     if (!tokenLists.includes(token)) {
       const uuid = new Date().getTime();
-      firebase
-        .database()
-        .ref("tokens/" + uuid)
-        .set({
-          pushToken: token,
-        });
+      firebase.database().ref(`tokens/${uuid}`).set({
+        pushToken: token,
+      });
     }
   });
 };
