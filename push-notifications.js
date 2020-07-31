@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { Vibration, Platform } from 'react-native';
+import { Vibration, Platform, Alert } from 'react-native';
 
 import { Notifications } from 'expo';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -18,13 +18,13 @@ export const registerForPushNotificationsAsync = async () => {
       finalStatus = status;
     }
     if (finalStatus !== 'granted') {
-      alert('Failed to get push token for push notification!');
+        Alert.alert('Failed to get push token for push notification!');
       return;
     }
     const token = await Notifications.getExpoPushTokenAsync();
     addToken(token);
   } else {
-    alert('Must use physical device for Push Notifications');
+    Alert.alert('Must use physical device for Push Notifications');
   }
 
   if (Platform.OS === 'android') {
