@@ -28,7 +28,6 @@ const getAllTokens = function () {
 
   return query.once('value').then((snapshot) => {
     snapshot.forEach((childSnapshot) => {
-      const { key } = childSnapshot;
       const childData = childSnapshot.val();
       tokenLists.push(childData.pushToken);
     });
