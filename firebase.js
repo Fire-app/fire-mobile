@@ -6,8 +6,8 @@ import {
   DATABASEURL,
   PROJECTID,
   STORAGEBUCKET,
-// eslint-disable-next-line import/extensions
-} from './secrets.js';
+  // eslint-disable-next-line import/no-unresolved
+} from './secrets';
 
 // Config firebase
 const config = {
