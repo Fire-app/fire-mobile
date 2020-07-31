@@ -7,6 +7,7 @@ import {
   PROJECTID,
   STORAGEBUCKET,
   // eslint-disable-next-line import/no-unresolved
+  // eslint-disable-next-line import/extensions
 } from './secrets';
 
 // Config firebase
