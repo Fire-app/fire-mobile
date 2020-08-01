@@ -1,0 +1,15 @@
+name: Create Pull Request
+on:
+  push:
+    branches:
+      - "release"
+      - "release-test"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: Bump Version
+        run: yarn minor-version-bump
