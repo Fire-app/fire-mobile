@@ -79,12 +79,13 @@
     "header_home_arrest": "Agent arrests me",
     "header_driving": "Agent pulls me over",
     "header_public_transport": "Agent is on the subway",
-    "header_street": "Agent stops me on the street",
+    "header_street": "Agent is on the street",
     "header_work": "Agent is at my workplace",
     "header_scenarios": "Scenarios",
 
     "header_videos": "Videos",
     "videos_title": "Videos",
+    "videos_description": "Watch informational videos",
 
     "scenarios_title": "Scenarios",
     "scenarios_description": "Know your rights in different spaces",
