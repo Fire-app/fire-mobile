@@ -178,6 +178,7 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
                 </Text>
               </View>
             </View>
+            <View style={{ height: 10 }} />
             <PrimaryButton
               title={t('got_it')}
               onPress={() => setModalVisible(!isVisible)}
