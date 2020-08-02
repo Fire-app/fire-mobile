@@ -41,7 +41,7 @@ export default function EmergencyScreen({ navigation }) {
       />
       <View style={localStyles.container}>
         <TouchableOpacity
-          style={{ alignSelf: 'flex-start', padding: 20 }}
+          style={{ alignSelf: 'flex-start', padding: 20, paddingTop: 40 }}
           onPress={navigation.goBack}
         >
           <MaterialCommunityIcons
@@ -52,7 +52,8 @@ export default function EmergencyScreen({ navigation }) {
         </TouchableOpacity>
         <View style={localStyles.rightsSuiteContainer}>
           <View style={localStyles.titleRow}>
-            <Feather name="alert-triangle" color={colors.primary} size={32} />
+            <Feather name="alert-triangle" color={colors.primary} size={28} />
+            <View style={{ width: 6 }} />
             <Text style={[textStyles.h1, { paddingLeft: 4 }]}>
               {t('emergency_toolkit')}
             </Text>
@@ -74,9 +75,9 @@ export default function EmergencyScreen({ navigation }) {
           style={localStyles.whatsThisRow}
           onPress={() => setInfoModalVisible(!InfoModalVisible)}
         >
-          <Ionicons name="ios-help-circle" color={colors.primary} size={16} />
+          <Ionicons name="ios-help-circle" color={colors.primary} size={18} />
           <Text
-            style={[textStyles.h4, { paddingLeft: 4, color: colors.primary }]}
+            style={[textStyles.h3, { paddingLeft: 4, color: colors.primary }]}
           >
             {t('rights_card_what_is_this')}
           </Text>
@@ -98,7 +99,7 @@ const KYRModal = ({
       <Modal animationType="none" visible={isVisible}>
         <View style={modalStyles.container}>
           <TouchableOpacity
-            style={{ paddingBottom: 12 }}
+            style={{ paddingBottom: 12, paddingTop: 24 }}
             onPress={() => setModalVisible(!isVisible)}
           >
             <Feather
@@ -243,7 +244,7 @@ const localStyles = StyleSheet.create({
 const modalStyles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    paddingVertical: 32,
+    paddingVertical: 40,
     paddingHorizontal: 20,
     alignItems: 'flex-start',
     justifyContent: 'center',
