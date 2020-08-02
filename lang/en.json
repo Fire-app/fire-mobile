@@ -30,7 +30,9 @@
     "protect_yourself_sub": "Have a quick access to a free emergency hotline to contact, in case you or your loved ones are detained by ICE.",
     "connect_with_orgs": "Connect with local organizations",
     "connect_with_orgs_sub": "Find organizations near you that offer free or affordable immigration legal services.",
+    "call_emergency_hotline": "Call Emergency Hotline",
     "emergency_hotline_note": "Direct line to a 24/7 rapid response network",
+    "present_rights_card": "Present Rights Card",
     "rights_card_note": "Used to present to ICE agents, this card states your right to remain silent and contact information for your attorney or CHIRLA's legal team",
     "your_emergency_toolkit": "Your emergency toolkit",
     "your_emergency_toolkit_note": "Accessible anywhere in the app, the emergency toolkit serves to support you in urgent situations.",
@@ -104,12 +106,20 @@
     "emergency_toolkit": "Emergency Toolkit",
     "emergency_hotline": "Emergency Hotline",
     "rights_card": "Rights Card",
-    "rights_card_content_1": "I am showing you this card because I do not wish to speak to you or have any further contact with you. I choose to exercise my constitutional right to remain silent and reguse to answer your questions. If you arrest me, I will continue to exercise my right to remain silent and to refuse to answer your questions.",
-    "rights_card_content_2": "I would like to contact this attorney or organization: ",
 
     "videos.general_tips": "Know Your Rights (general tips)",
     "videos.interrogation": "Interrogated by an ICE agent in detention",
     "videos.consult_attorney": "Consulting an attorney in detention",
     "videos.isap_detention": "Seeking legal relief with ISAP in detention",
-    "videos.arrested_street": "Arrested in the street"
+    "videos.arrested_street": "Arrested in the street",
+    "rights_card_title": "RIGHTS CARD",
+    "rights_card_content_1": "I am showing you this card because I do not wish to speak to you or have any further contact with you. I choose to exercise my constitutional right to remain silent and refuse to answer your questions. If you arrest me, I will continue to exercise my right to remain silent and to refuse to answer your questions. I want to speak to a lawyer before answering your questions.",
+    "rights_card_content_2": "I would like to contact: ",
+    "rights_card_what_is_this": "What is this?",
+    "info_modal_whats_my_emergency_toolkit?": "What's my emergency toolkit?",
+    "info_modal_emergency_toolkit_explanation": "Accessible anywhere in the app, the emergency toolkit serves to support you in urgent situations",
+    "info_modal_emergency_hotline": "Emergency Hotline",
+    "info_modal_emergency_hotline_explanation": "Direct line to a 24/7 rapid response network",
+    "info_modal_rights_card": "Rights Card",
+    "info_modal_rights_card_explanation": "Used to present to ICE agents, this card states your right to remain silent and contact information for your attorney or CHIRLA's legal team."
 }
