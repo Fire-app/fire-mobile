@@ -7,10 +7,18 @@ import textStyles from '../styles/textStyles';
 import { colors } from '../styles';
 import { IconProp, FEATHER } from '../../data/fontFamilies';
 
-export default function NavCard({ title, description, onPress, icon }) {
+export default function NavCard({
+  title,
+  description,
+  onPress,
+  icon,
+  isSmall,
+}) {
   return (
     <TouchableOpacity onPress={() => onPress()}>
-      <View style={styles.navCard}>
+      <View
+        style={[styles.navCard, isSmall && { padding: 10, paddingLeft: 16 }]}
+      >
         {icon && (
           <View style={{ minWidth: 30, alignItems: 'center', marginRight: 14 }}>
             {icon.family === FEATHER ? (
@@ -25,7 +33,7 @@ export default function NavCard({ title, description, onPress, icon }) {
           </View>
         )}
         <View style={{ flex: 1 }}>
-          <Text style={textStyles.h2}>{title}</Text>
+          <Text style={isSmall ? textStyles.h3 : textStyles.h2}>{title}</Text>
           {description && (
             <Text style={[textStyles.body2, { paddingTop: 4 }]}>
               {description}
@@ -44,6 +52,7 @@ NavCard.propTypes = {
   /* eslint-disable react/require-default-props */
   description: PropTypes.string,
   icon: IconProp,
+  isSmall: PropTypes.bool,
   /* eslint-enable react/require-default-props */
 };
 

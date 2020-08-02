@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import ScenarioListScreen from '../screens/rights/ScenarioListScreen';
 import RightsOverviewScreen from '../screens/rights/RightsOverviewScreen';
+import HomeOverviewScreen from '../screens/rights/HomeOverviewScreen';
 
 import routes from './routes';
 
@@ -36,6 +37,14 @@ const SettingsStack = () => {
         component={ScenarioListScreen}
         options={{
           title: t('header_scenarios'),
+          headerBackTitle: t('tab_rights'),
+        }}
+      />
+      <Stack.Screen
+        name={routes.scenarios.homeOverview}
+        component={HomeOverviewScreen}
+        options={{
+          title: t('Home'),
           headerBackTitle: t('tab_rights'),
         }}
       />

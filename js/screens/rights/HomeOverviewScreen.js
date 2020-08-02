@@ -4,56 +4,27 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import routes from '../../navigation/routes';
 import NavCard from '../../components/NavCard';
-import { FEATHER, IONICONS } from '../../../data/fontFamilies';
 import textStyles from '../../styles/textStyles';
 import colors from '../../styles/colors';
 
-const caseRoutes = routes.scenarios.cases;
+// const caseRoutes = routes.scenarios.cases;
 
 const SCENARIOS = [
   {
-    title: 'Home',
-    route: routes.scenarios.homeOverview,
-    icon: {
-      name: 'home',
-      family: FEATHER,
-    },
+    title: 'Agent is outside my home',
+    route: routes.scenarios.cases.outsideHome,
   },
   {
-    title: 'Work',
-    route: caseRoutes.work,
-    icon: {
-      name: 'briefcase',
-      family: FEATHER,
-    },
+    title: 'Agent is inside my home',
+    route: routes.scenarios.cases.insideHome,
   },
   {
-    title: 'Street',
-    route: caseRoutes.street,
-    icon: {
-      name: 'ios-walk',
-      family: IONICONS,
-    },
-  },
-  {
-    title: 'Driving',
-    route: caseRoutes.driving,
-    icon: {
-      name: 'md-car',
-      family: IONICONS,
-    },
-  },
-  {
-    title: 'Public_Transit',
-    route: caseRoutes.publicTransport,
-    icon: {
-      name: 'ios-subway',
-      family: IONICONS,
-    },
+    title: 'Agent arrests me',
+    route: routes.scenarios.cases.homeArrest,
   },
 ];
 
-export default function ScenarioListScreen({ navigation }) {
+export default function HomeOverviewScreen({ navigation }) {
   const { t } = useTranslation();
   return (
     <FlatList
@@ -62,17 +33,15 @@ export default function ScenarioListScreen({ navigation }) {
       contentContainerStyle={{ paddingVertical: 24 }}
       data={SCENARIOS}
       ListHeaderComponent={
-        <Text
-          style={[textStyles.h3, { textAlign: 'center', paddingBottom: 16 }]}
-        >
-          {t('scenarios_subtitle')}
+        <Text style={[textStyles.h3, { paddingBottom: 16 }]}>
+          {'Select a scenario:'}
         </Text>
       }
-      renderItem={({ item: { title, route, icon } }) => (
+      renderItem={({ item: { title, route } }) => (
         <NavCard
           title={t(title)}
           onPress={() => navigation.navigate(route)}
-          icon={icon}
+          isSmall
         />
       )}
       ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
@@ -80,7 +49,7 @@ export default function ScenarioListScreen({ navigation }) {
   );
 }
 
-ScenarioListScreen.propTypes = {
+HomeOverviewScreen.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,

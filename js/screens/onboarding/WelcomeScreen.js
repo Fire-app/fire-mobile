@@ -8,7 +8,7 @@ import { textStyles, colors } from '../../styles';
 import OnboardingTemplate from './Template';
 import OnboardingTitle from '../../components/OnboardingTitle';
 
-const IMAGE = require('../../../assets/welcomeImage.png');
+const IMAGE = require('../../../assets/illustration1.png');
 const LOGO = require('../../../assets/chirlaLogo.png');
 
 const onboardingRoutes = routes.onboarding;
@@ -69,19 +69,19 @@ const WelcomeScreen = ({ navigation }) => {
       <ScrollView
         alwaysBounceVertical={false}
         contentContainerStyle={{
-          justifyContent: 'space-between',
+          justifyContent: 'space-around',
           flexGrow: 1,
         }}
       >
-        <View style={{ paddingTop: 35 }}>
+        <WelcomeInfo />
+        <LegalInfo />
+        <View style={{ paddingBottom: 10, paddingTop: 30 }}>
           <Image
             style={styles.image}
             source={IMAGE}
-            accessibilityLabel="Illustration of people"
+            accessibilityLabel="Illustration"
           />
-          <WelcomeInfo />
         </View>
-        <LegalInfo />
       </ScrollView>
     </OnboardingTemplate>
   );
@@ -98,9 +98,8 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   image: {
-    height: 200,
-    width: 340,
-    backgroundColor: 'white',
+    height: 210,
+    width: 320,
     alignSelf: 'center',
     resizeMode: 'cover',
   },
