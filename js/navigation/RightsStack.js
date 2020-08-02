@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
 
 import ScenarioListScreen from '../screens/rights/ScenarioListScreen';
+import VideoListScreen from '../screens/rights/VideoListScreen';
 import RightsOverviewScreen from '../screens/rights/RightsOverviewScreen';
 import HomeOverviewScreen from '../screens/rights/HomeOverviewScreen';
 
@@ -50,6 +51,11 @@ const RightsStack = () => {
           title: t('Home'),
           headerBackTitle: t('tab_rights'),
         }}
+      />
+      <Stack.Screen
+        name={routes.videos.overviewList}
+        component={VideoListScreen}
+        options={{ title: t('header_videos') }}
       />
 
       {/* SCENARIOS */}

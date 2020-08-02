@@ -17,30 +17,21 @@ export default function RightsOverviewScreen({ navigation }) {
       contentContainerStyle={styles.container}
     >
       <StatusBar barStyle="dark-content" />
-      <View>
-        <NavCard
-          title={t('scenarios_title')}
-          description={t('scenarios_description')}
-          onPress={() => {
-            navigation.navigate(routes.scenarios.overviewList);
-          }}
-        />
-        <View style={{ height: 15 }} />
-        <NavCard
-          title={t('Videos')}
-          description={t('Watch informational videos')}
-          onPress={() => {
-            navigation.navigate(routes.scenarios.overviewList);
-          }}
-        />
-      </View>
-      <View style={{ paddingBottom: 10, paddingTop: 30 }}>
-        <Image
-          style={styles.image}
-          source={IMAGE}
-          accessibilityLabel="Illustration"
-        />
-      </View>
+      <NavCard
+        title={t('scenarios_title')}
+        description={t('scenarios_description')}
+        onPress={() => {
+          navigation.navigate(routes.scenarios.overviewList);
+        }}
+      />
+      <View style={{ height: 16 }} />
+      <NavCard
+        title={t('videos_title')}
+        description={t('videos_description')}
+        onPress={() => {
+          navigation.navigate(routes.videos.overviewList);
+        }}
+      />
     </ScrollView>
   );
 }
@@ -56,7 +47,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 20,
     backgroundColor: colors.backgroundColor,
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
   },
   image: {
     height: 180,
