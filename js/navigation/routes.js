@@ -32,7 +32,7 @@ const routes = {
     partners: 'SETTINGS_PARTNERS',
   },
 
-  rightsStack: 'RIGHTS',
+  rightsStack: 'RIGHTS_STACK',
   rights: {
     overviewList: 'RIGHTS_LIST',
   },
@@ -52,6 +52,16 @@ const routes = {
       publicTransport: 'SCENARIOS__PUBLIC_TRANSPORT',
       street: 'SCENARIOS_STREET',
       work: 'SCENARIOS__WORK',
+    },
+  },
+
+  resourcesStack: 'RESOURCES_STACK',
+  resources: {
+    overviewList: 'RESOURCES_LIST',
+    cases: {
+      AAAJ: 'RESOURCES__AAAJ',
+      CARECEN: 'RESOURCES__CARECEN',
+      CHIRLA: 'RESOURCES__CHIRLA',
     },
   },
 

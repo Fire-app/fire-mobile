@@ -58,6 +58,12 @@ const textStyles = StyleSheet.create({
     fontSize: 16,
     fontStyle: 'normal',
   },
+  freeLabel: {
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 10,
+    fontStyle: 'normal',
+    letterSpacing: 1,
+  },
 });
 
 export default textStyles;
