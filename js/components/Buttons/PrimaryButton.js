@@ -21,11 +21,7 @@ const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
             paddingVertical: 16,
             marginBottom: 10,
           }
-        : {
-            borderRadius: 3,
-            backgroundColor: colors.primary,
-            padding: 16,
-          }
+        : { borderRadius: 3, backgroundColor: colors.primary, padding: 16 }
     }
   />
 );

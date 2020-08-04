@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { colors } from '../styles';
 
 const ProgressCircles = ({ numSteps, step }) => {
@@ -22,7 +22,7 @@ const ProgressCircles = ({ numSteps, step }) => {
             <MaterialCommunityIcons
               key={n}
               name="circle"
-              style={{ fontSize: 16, color: colors.primary, padding: 8 }}
+              style={{ fontSize: 18, color: colors.primary, padding: 8 }}
             />
           );
         }
@@ -30,7 +30,7 @@ const ProgressCircles = ({ numSteps, step }) => {
           <MaterialCommunityIcons
             key={n}
             name="circle"
-            style={{ fontSize: 16, color: colors.border, padding: 8 }}
+            style={{ fontSize: 18, color: colors.border, padding: 8 }}
           />
         );
       })}

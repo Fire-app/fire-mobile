@@ -3,6 +3,7 @@ import { View, Text, FlatList } from 'react-native';
 
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Ionicons } from '@expo/vector-icons';
 import { textStyles, colors } from '../styles';
 
 const ListOption = ({ title, selected, onPress }) => (
@@ -10,8 +11,8 @@ const ListOption = ({ title, selected, onPress }) => (
     style={[
       {
         flex: 1,
-        paddingVertical: 16,
-        paddingHorizontal: 16,
+        paddingVertical: 15,
+        paddingHorizontal: 15,
         backgroundColor: colors.primaryLight,
         borderRadius: 3,
         borderWidth: 3,
@@ -23,7 +24,20 @@ const ListOption = ({ title, selected, onPress }) => (
     ]}
     onPress={onPress}
   >
-    <Text style={textStyles.body1}>{title}</Text>
+    <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center' }}>
+        <Text style={textStyles.body1}>{title}</Text>
+      </View>
+      {selected && (
+        <Ionicons
+          name="ios-checkmark-circle"
+          style={{
+            fontSize: 24,
+            color: colors.primary,
+          }}
+        />
+      )}
+    </View>
   </TouchableOpacity>
 );
 
@@ -40,6 +54,7 @@ const ListSelector = ({
   keyExtractor,
   selectedExtractor,
   titleExtractor,
+  listHeaderComponent,
 }) => {
   const [selectedKey, setSelectedKey] = useState(defaultKey);
 
@@ -50,6 +65,7 @@ const ListSelector = ({
 
   return (
     <FlatList
+      ListHeaderComponent={listHeaderComponent}
       keyExtractor={(item) => keyExtractor(item)}
       alwaysBounceVertical={false}
       data={data}
@@ -73,6 +89,8 @@ ListSelector.propTypes = {
   keyExtractor: PropTypes.func.isRequired,
   selectedExtractor: PropTypes.func.isRequired,
   titleExtractor: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  listHeaderComponent: PropTypes.node,
 };
 
 export default ListSelector;

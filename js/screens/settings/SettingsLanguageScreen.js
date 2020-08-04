@@ -5,7 +5,7 @@ import { textStyles } from '../../styles';
 import ListSelector from '../../components/ListSelector';
 import i18n, { getLanguageOptions } from '../../config/i18n';
 
-const LanguageScreen = () => {
+const SettingsLanguageScreen = () => {
   const { t } = useTranslation();
 
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
@@ -20,7 +20,9 @@ const LanguageScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={[textStyles.h3, { alignSelf: 'flex-start' }]}>
+      <Text
+        style={[textStyles.h5, { alignSelf: 'flex-start', paddingBottom: 12 }]}
+      >
         {t('choose_language')}
       </Text>
       <View style={styles.languageList}>
@@ -37,12 +39,13 @@ const LanguageScreen = () => {
   );
 };
 
-export default LanguageScreen;
+export default SettingsLanguageScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    paddingTop: 30,
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: 'white',

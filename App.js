@@ -14,7 +14,7 @@ import {
 } from '@expo-google-fonts/roboto';
 
 import { Provider as ReduxProvider } from 'react-redux';
-import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { PersistGate } from 'redux-persist/integration/react';
 import createPersistedStore from './js/store/createPersistedStore';
@@ -26,7 +26,7 @@ const completeImage = require('./assets/completedImage.png');
 const chirlaLogo = require('./assets/chirlaLogo.png');
 
 // Assets we need to load before app starts:
-const iconFonts = [FontAwesome.font];
+const iconFonts = [Ionicons.font, Feather.font, MaterialCommunityIcons.font];
 const textFonts = [];
 const localImages = [welcomeImage, completeImage, chirlaLogo]; // Ensure that you add all images here! Otherwise they flicker on load!
 

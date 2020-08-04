@@ -1,24 +1,31 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Feather, Ionicons } from '@expo/vector-icons';
 import textStyles from '../styles/textStyles';
 import { colors } from '../styles';
+import { IconProp, FEATHER } from '../../data/fontFamilies';
+
+import Card from './Card';
 
 export default function NavCard({ title, description, onPress, icon }) {
   return (
-    <TouchableOpacity style={styles.navCard} onPress={() => onPress()}>
+    <Card onPress={onPress} style={{ padding: 24 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {icon && (
-          <MaterialCommunityIcons
-            name={icon}
-            size={24}
-            color={colors.text}
-            style={{ paddingRight: 14 }}
-          />
+          <View style={{ minWidth: 30, alignItems: 'center', marginRight: 14 }}>
+            {icon.family === FEATHER ? (
+              <Feather name={icon.name} size={24} color={colors.charcoalGrey} />
+            ) : (
+              <Ionicons
+                name={icon.name}
+                size={24}
+                color={colors.charcoalGrey}
+              />
+            )}
+          </View>
         )}
-        <View>
+        <View style={{ flex: 1 }}>
           <Text style={textStyles.h2}>{title}</Text>
           {description && (
             <Text style={[textStyles.body2, { paddingTop: 4 }]}>
@@ -26,14 +33,9 @@ export default function NavCard({ title, description, onPress, icon }) {
             </Text>
           )}
         </View>
+        <Feather name="chevron-right" size={34} color={colors.primary} />
       </View>
-
-      <MaterialCommunityIcons
-        name="chevron-right"
-        size={40}
-        color={colors.primary}
-      />
-    </TouchableOpacity>
+    </Card>
   );
 }
 
@@ -42,19 +44,6 @@ NavCard.propTypes = {
   onPress: PropTypes.func.isRequired,
   /* eslint-disable react/require-default-props */
   description: PropTypes.string,
-  icon: PropTypes.string,
+  icon: IconProp,
   /* eslint-enable react/require-default-props */
 };
-
-const styles = StyleSheet.create({
-  navCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 25,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 3,
-    borderWidth: 2,
-    borderColor: '#eeeeee',
-  },
-});

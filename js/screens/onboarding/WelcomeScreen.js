@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import routes from '../../navigation/routes';
 import { textStyles, colors } from '../../styles';
-import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingTemplate from './Template';
+import OnboardingTitle from '../../components/OnboardingTitle';
 
 const IMAGE = require('../../../assets/welcomeImage.png');
 const LOGO = require('../../../assets/chirlaLogo.png');
@@ -16,11 +16,13 @@ const onboardingRoutes = routes.onboarding;
 const WelcomeInfo = () => {
   const { t } = useTranslation();
   return (
-    <View style={styles.welcomeInfoContainer}>
+    <View style={{ paddingTop: 40, paddingHorizontal: 10 }}>
       <OnboardingTitle
         title={t('welcome_to_fire')}
         subtitle={t('welcome_message')}
         alignCenter
+        paddingHorizontal={20}
+        paddingVertical={0}
       />
       <View style={styles.logoNameContainer}>
         <Image
@@ -28,7 +30,7 @@ const WelcomeInfo = () => {
           source={LOGO}
           accessibilityLabel="CHIRLA Logo"
         />
-        <Text style={[textStyles.body2, { paddingLeft: 10 }]}>
+        <Text style={[textStyles.body2, { padding: 5 }]}>
           {t('a_chirla_project')}
         </Text>
       </View>
@@ -43,6 +45,7 @@ const LegalInfo = () => {
       <Text style={[textStyles.body2, styles.legalText]}>
         {t('must_be_over_13')}
       </Text>
+      <View style={{ height: 10 }} />
       <Text style={[textStyles.body2, styles.legalText]}>
         {t('verify_over_13')}
       </Text>
@@ -66,16 +69,18 @@ const WelcomeScreen = ({ navigation }) => {
       <ScrollView
         alwaysBounceVertical={false}
         contentContainerStyle={{
-          justifyContent: 'center',
+          justifyContent: 'space-between',
           flexGrow: 1,
         }}
       >
-        <Image
-          style={styles.image}
-          source={IMAGE}
-          accessibilityLabel="Illustration of people"
-        />
-        <WelcomeInfo />
+        <View style={{ paddingTop: 35 }}>
+          <Image
+            style={styles.image}
+            source={IMAGE}
+            accessibilityLabel="Illustration of people"
+          />
+          <WelcomeInfo />
+        </View>
         <LegalInfo />
       </ScrollView>
     </OnboardingTemplate>
@@ -93,38 +98,27 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   image: {
-    height: 250,
-    width: 375,
+    height: 200,
+    width: 340,
     backgroundColor: 'white',
     alignSelf: 'center',
     resizeMode: 'cover',
-  },
-  innerContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 50,
   },
   legalInfoContainer: {
     borderRadius: 3,
     backgroundColor: colors.border,
     paddingVertical: 20,
     paddingHorizontal: 30,
-    marginTop: 20,
+    marginBottom: 10,
   },
   legalText: {
     textAlign: 'center',
-    paddingBottom: 15,
     paddingHorizontal: 5,
-  },
-  welcomeInfoContainer: {
-    alignItems: 'center',
   },
   logoNameContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    padding: 20,
-    paddingBottom: 30,
+    justifyContent: 'center',
+    paddingTop: 20,
   },
   logo: {
     height: 25,

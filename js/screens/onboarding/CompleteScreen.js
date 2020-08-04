@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, ScrollView } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import completeOnboardingAction from '../../store/actions/completeOnboarding';
@@ -23,15 +23,24 @@ const CompleteScreen = () => {
         onPress: exitOnboarding,
       }}
     >
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <OnboardingTitle title={t('completed_title')} alignCenter />
+      <ScrollView
+        alwaysBounceVertical={false}
+        contentContainerStyle={{
+          justifyContent: 'center',
+          flexGrow: 1,
+          alignItems: 'center',
+        }}
+      >
+        <View style={{ padding: 20 }}>
+          <OnboardingTitle title={t('completed_title')} alignCenter />
+        </View>
         <View style={{ height: 40 }} />
         <Image
           style={styles.image}
           source={IMAGE}
           accessibilityLabel="Illustration of a man sitting"
         />
-      </View>
+      </ScrollView>
     </OnboardingTemplate>
   );
 };

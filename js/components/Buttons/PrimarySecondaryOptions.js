@@ -6,33 +6,34 @@ import SecondaryButton from './SecondaryButton';
 
 const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
   <View
-    style={{
-      paddingHorizontal: 24,
-      flexDirection: 'row',
-      // If font size scaled up, allow these to wrap with primary button on top
-      flexWrap: 'wrap-reverse',
-      justifyContent: 'center',
-    }}
+    style={[
+      {
+        paddingHorizontal: 40,
+        flexDirection: 'row',
+        // If font size scaled up, allow these to wrap with primary button on top
+        flexWrap: 'wrap-reverse',
+        justifyContent: 'space-between',
+      },
+      secondaryButton && { paddingHorizontal: 15 },
+    ]}
   >
     {secondaryButton && (
-      <View
-        style={{
-          flexGrow: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
+      <View style={{ flexGrow: 1 }}>
         <SecondaryButton
           onPress={secondaryButton.onPress}
           title={secondaryButton.title}
         />
       </View>
     )}
+    {secondaryButton && <View style={{ width: 10 }} />}
     {primaryButton && (
-      <PrimaryButton
-        title={primaryButton.title}
-        onPress={primaryButton.onPress}
-      />
+      <View style={{ flexGrow: 1 }}>
+        <PrimaryButton
+          title={primaryButton.title}
+          onPress={primaryButton.onPress}
+          disabled={primaryButton.disabled}
+        />
+      </View>
     )}
   </View>
 );
@@ -40,6 +41,7 @@ const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
 export const ButtonProp = PropTypes.shape({
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
 });
 
 PrimarySecondaryOptions.propTypes = {
