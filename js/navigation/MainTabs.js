@@ -3,15 +3,11 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import { Feather } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-
 import Resources from '../screens/ResourcesScreen';
 import EmergencyScreen from '../screens/EmergencyScreen';
 import { textStyles, colors } from '../styles';
-
 import routes from './routes';
 import RightsStack from './RightsStack';
 import SettingsStack from './SettingsStack';
@@ -32,7 +28,7 @@ const AppTabs = () => {
         inactiveTintColor: colors.warmGrey,
         style: styles.tabBar,
         labelStyle: textStyles.tabLabel,
-        tabStyle: styles.tabs,
+        tabStyle: { height: 56 },
       }}
     >
       <Tabs.Screen
@@ -42,8 +38,8 @@ const AppTabs = () => {
           tabBarLabel: t('tab_rights'),
           // eslint-disable-next-line react/prop-types
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="shield-half-full"
+            <Feather
+              name="shield"
               color={color}
               size={size}
               style={styles.icon}
@@ -58,8 +54,8 @@ const AppTabs = () => {
           tabBarLabel: t('tab_resources'),
           // eslint-disable-next-line react/prop-types
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="file-document-outline"
+            <Feather
+              name="users"
               color={color}
               size={size}
               style={styles.icon}
@@ -74,7 +70,7 @@ const AppTabs = () => {
           tabBarLabel: t('settings'),
           // eslint-disable-next-line react/prop-types
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
+            <Feather
               name="settings"
               color={color}
               size={size}
@@ -102,25 +98,18 @@ const AppTabs = () => {
             <View
               style={{
                 position: 'absolute',
-                bottom: 2, // space from bottombar
+                // bottom: 0, // space from bottombar
                 height: 64,
                 width: 64,
                 borderRadius: 100,
-                backgroundColor: colors.primaryLight,
+                backgroundColor: colors.primary,
                 justifyContent: 'center',
                 alignItems: 'center',
-                shadowColor: 'black',
-                shadowOffset: {
-                  width: 3,
-                  height: 3,
-                },
-                shadowOpacity: 0.3,
-                shadowRadius: 7,
               }}
             >
-              <MaterialCommunityIcons
-                name="alert-outline"
-                color={colors.primary}
+              <Feather
+                name="alert-triangle"
+                color={colors.white}
                 size={40}
                 style={{
                   top: 8,
@@ -152,11 +141,9 @@ const MainTabs = () => (
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 85,
-    paddingHorizontal: 30,
-  },
-  tabs: {
-    height: 55,
+    height: 86,
+    paddingHorizontal: 28,
+    paddingVertical: 4,
   },
   icon: {
     marginTop: 11,

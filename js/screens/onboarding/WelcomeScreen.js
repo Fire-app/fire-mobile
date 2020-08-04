@@ -119,7 +119,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     paddingTop: 20,
-    paddingBottom: 20,
   },
   logo: {
     height: 25,

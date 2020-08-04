@@ -2,7 +2,6 @@ import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import PropTypes from 'prop-types';
-import styles from '../../../styles/styles';
 import RightsTitle from '../../../components/RightsTitle';
 import RightsWarning from '../../../components/RightsWarning';
 import ActionBullets from '../../../components/ActionBullets';
@@ -34,7 +33,7 @@ const KnowYourRightsTemplate = ({
     "Don't lie.",
   ],
 }) => (
-  <ScrollView contentContainerStyle={styles.container}>
+  <ScrollView>
     <RightsTitle title={title} />
     <RightsWarning
       title={rightsWarning.title}

@@ -48,15 +48,6 @@ const HotlineScreen = ({ navigation }) => {
         onPress: () => navigation.pop(),
       }}
     >
-      <OnboardingTitle
-        title={t('select_hotline')}
-        subtitle={t('select_hotline_subtitle')}
-      />
-      <SecondaryButton
-        title={t('what_is_hotline')}
-        onPress={() => setModalVisible(true)}
-        alignRight
-      />
       <ListSelector
         defaultKey={DEFAULT_HOTLINE.phoneNumber}
         onChange={onListChange}
@@ -64,6 +55,19 @@ const HotlineScreen = ({ navigation }) => {
         keyExtractor={(item) => item.phoneNumber}
         selectedExtractor={({ item }) => item.phoneNumber}
         titleExtractor={({ item }) => item.name}
+        listHeaderComponent={
+          <>
+            <OnboardingTitle
+              title={t('select_hotline')}
+              subtitle={t('select_hotline_subtitle')}
+            />
+            <SecondaryButton
+              title={t('what_is_hotline')}
+              onPress={() => setModalVisible(true)}
+              alignRight
+            />
+          </>
+        }
       />
       {/* Modal */}
       <CustomModal

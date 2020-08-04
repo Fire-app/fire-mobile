@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import {
+  ScrollView,
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { getFormatted } from '../../util/phoneNumber';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import CustomModal from '../../components/CustomModal';
@@ -26,6 +33,7 @@ const AttorneyInformationBox = ({ name, number, onPress }) => {
         backgroundColor: colors.primaryLight,
         borderRadius: 3,
         marginTop: 15,
+        flexWrap: 'wrap',
       }}
       onPress={onPress}
     >
@@ -56,6 +64,10 @@ const RightsCardScreen = () => {
   const [name, setName] = useState(savedName || '');
   const [number, setNumber] = useState(savedNumber || '');
 
+  const setFormattedNumber = (_number) => {
+    setNumber(getFormatted(_number));
+  };
+
   const [nameIsInvalid, setNameIsInvalid] = useState(true);
   const [numberIsInvalid, setNumberIsInvalid] = useState(true);
 
@@ -80,7 +92,10 @@ const RightsCardScreen = () => {
     savedNumber.trim() === DEFAULT_NUMBER;
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      alwaysBounceVertical={false}
+      contentContainerStyle={styles.container}
+    >
       <HelpButton
         title={t('what_is_attorney')}
         onPress={() => {
@@ -124,7 +139,7 @@ const RightsCardScreen = () => {
             name={name}
             setName={setName}
             number={number}
-            setNumber={setNumber}
+            setNumber={setFormattedNumber}
             nameIsInvalid={nameIsInvalid}
             setNameIsInvalid={setNameIsInvalid}
             numberIsInvalid={numberIsInvalid}
@@ -149,7 +164,7 @@ const RightsCardScreen = () => {
           subtitle={t('attorney_default_subtitle')}
         />
       </CustomModal>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -163,7 +178,7 @@ export default RightsCardScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: 'white',
     // paddingTop technically 44 but HelpButton has padding 16 (from SecondaryButton)
     padding: 28,

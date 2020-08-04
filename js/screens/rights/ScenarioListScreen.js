@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import routes from '../../navigation/routes';
 import NavCard from '../../components/NavCard';
+import { FEATHER, IONICONS } from '../../../data/fontFamilies';
 import textStyles from '../../styles/textStyles';
 import colors from '../../styles/colors';
 
@@ -13,27 +14,42 @@ const SCENARIOS = [
   {
     title: 'Home',
     route: caseRoutes.insideHome,
-    icon: 'home-outline',
+    icon: {
+      name: 'home',
+      family: FEATHER,
+    },
   },
   {
     title: 'Work',
     route: caseRoutes.work,
-    icon: 'briefcase-outline',
+    icon: {
+      name: 'briefcase',
+      family: FEATHER,
+    },
   },
   {
     title: 'Street',
     route: caseRoutes.street,
-    icon: 'walk',
+    icon: {
+      name: 'ios-walk',
+      family: IONICONS,
+    },
   },
   {
     title: 'Driving',
     route: caseRoutes.driving,
-    icon: 'car',
+    icon: {
+      name: 'md-car',
+      family: IONICONS,
+    },
   },
   {
     title: 'Public_Transit',
     route: caseRoutes.publicTransport,
-    icon: 'subway-variant',
+    icon: {
+      name: 'ios-subway',
+      family: IONICONS,
+    },
   },
 ];
 

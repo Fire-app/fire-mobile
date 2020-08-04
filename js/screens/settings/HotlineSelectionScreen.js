@@ -24,17 +24,6 @@ const HotlineSelectionScreen = () => {
 
   return (
     <View style={styles.container}>
-      <HelpButton
-        title={t('learn_about_hotline')}
-        onPress={() => {
-          /* TODO: */
-        }}
-      />
-      <Text
-        style={[textStyles.h5, { alignSelf: 'flex-start', paddingBottom: 16 }]}
-      >
-        {t('choose_hotline')}
-      </Text>
       <ListSelector
         defaultKey={savedNumber}
         onChange={onListChange}
@@ -42,6 +31,24 @@ const HotlineSelectionScreen = () => {
         keyExtractor={(item) => item.phoneNumber}
         selectedExtractor={({ item }) => item.phoneNumber}
         titleExtractor={({ item }) => item.name}
+        listHeaderComponent={
+          <>
+            <HelpButton
+              title={t('learn_about_hotline')}
+              onPress={() => {
+                /* TODO: */
+              }}
+            />
+            <Text
+              style={[
+                textStyles.h5,
+                { alignSelf: 'flex-start', paddingBottom: 12 },
+              ]}
+            >
+              {t('choose_hotline')}
+            </Text>
+          </>
+        }
       />
     </View>
   );
@@ -59,9 +66,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    // paddingTop technically 44 but HelpButton has some unspecified top padding
-    paddingTop: 34,
-    padding: 28,
+    padding: 20,
+    paddingTop: 30,
     justifyContent: 'space-between',
   },
 });

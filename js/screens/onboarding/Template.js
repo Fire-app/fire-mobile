@@ -6,6 +6,7 @@ import {
   StatusBar,
   KeyboardAvoidingView,
   LayoutAnimation,
+  Platform,
 } from 'react-native';
 import { colors } from '../../styles';
 import { ButtonProp, PrimarySecondaryOptions } from '../../components/Buttons';
@@ -42,9 +43,8 @@ const OnboardingTemplate = ({
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       <ContentView
-        // TODO: check paddingBottom on other devices
-        style={{ paddingHorizontal: 28, paddingBottom: 16, flexGrow: 1 }}
-        behavior="padding"
+        style={{ paddingHorizontal: 25, paddingBottom: 10, flexGrow: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : null}
       >
         <View style={{ flex: 1 }}>{children}</View>
         {!!step && (

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { getFormatted } from '../../util/phoneNumber';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import routes from '../../navigation/routes';
@@ -27,6 +28,10 @@ const AttorneyScreen = ({ navigation }) => {
 
   const [name, setName] = useState(savedName || '');
   const [number, setNumber] = useState(savedNumber || '');
+
+  const setFormattedNumber = (_number) => {
+    setNumber(getFormatted(_number));
+  };
 
   const dispatch = useDispatch();
 
@@ -72,7 +77,7 @@ const AttorneyScreen = ({ navigation }) => {
           name={name}
           setName={setName}
           number={number}
-          setNumber={setNumber}
+          setNumber={setFormattedNumber}
           nameIsInvalid={nameIsInvalid}
           setNameIsInvalid={setNameIsInvalid}
           numberIsInvalid={numberIsInvalid}
