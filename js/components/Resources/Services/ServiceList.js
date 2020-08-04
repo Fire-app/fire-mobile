@@ -6,7 +6,9 @@ import { textStyles, colors } from '../../../styles';
 import Service from './Service';
 
 export default function ServiceList({ services }) {
-  const servicesList = services.map((service) => <Service name={service} />);
+  const servicesList = services.map((item) => (
+    <Service key={item} name={item} />
+  ));
 
   return (
     <View>

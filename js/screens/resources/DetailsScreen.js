@@ -40,8 +40,8 @@ export default function DetailsScreen({
         onLeftPress={() => Linking.openURL(phone)}
         rightTitle={t('Website')}
         leftTitle={t('Call')}
-        callDisabled={false}
-        websiteDisabled={false}
+        rightDisabled={false} // TODO: add to data file in case orgs do not have website/phone
+        leftDisabled={false}
       />
       <Description text={t(description)} />
       <View style={styles.services}>
