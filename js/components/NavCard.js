@@ -1,14 +1,14 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import textStyles from '../styles/textStyles';
 import { colors } from '../styles';
+import Card from './Card';
 
 export default function NavCard({ title, description, onPress, icon }) {
   return (
-    <TouchableOpacity style={styles.navCard} onPress={() => onPress()}>
+    <Card onPress={onPress} style={{ padding: 24 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {icon && (
           <MaterialCommunityIcons
@@ -33,7 +33,7 @@ export default function NavCard({ title, description, onPress, icon }) {
         size={40}
         color={colors.primary}
       />
-    </TouchableOpacity>
+    </Card>
   );
 }
 
@@ -45,16 +45,3 @@ NavCard.propTypes = {
   icon: PropTypes.string,
   /* eslint-enable react/require-default-props */
 };
-
-const styles = StyleSheet.create({
-  navCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 25,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 3,
-    borderWidth: 2,
-    borderColor: '#eeeeee',
-  },
-});

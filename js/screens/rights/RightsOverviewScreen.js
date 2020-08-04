@@ -19,6 +19,14 @@ export default function RightsOverviewScreen({ navigation }) {
           navigation.navigate(routes.scenarios.overviewList);
         }}
       />
+      <View style={{ height: 8 }} />
+      <NavCard
+        title={t('videos_title')}
+        description={t('videos_description')}
+        onPress={() => {
+          navigation.navigate(routes.videos.overviewList);
+        }}
+      />
     </View>
   );
 }
