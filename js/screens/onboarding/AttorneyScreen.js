@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { AsYouType } from 'libphonenumber-js';
+import { getFormatted } from '../../util/phoneNumber';
 import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
 import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 import routes from '../../navigation/routes';
@@ -30,8 +30,7 @@ const AttorneyScreen = ({ navigation }) => {
   const [number, setNumber] = useState(savedNumber || '');
 
   const setFormattedNumber = (_number) => {
-    const phoneNumber = new AsYouType('US');
-    setNumber(phoneNumber.input(_number));
+    setNumber(getFormatted(_number));
   };
 
   const dispatch = useDispatch();
