@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 import React from 'react';
-import { ScrollView, StyleSheet, StatusBar } from 'react-native';
+import { View, ScrollView, StyleSheet, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import NavCard from '../../components/NavCard';
@@ -20,6 +20,14 @@ export default function RightsOverviewScreen({ navigation }) {
         description={t('scenarios_description')}
         onPress={() => {
           navigation.navigate(routes.scenarios.overviewList);
+        }}
+      />
+      <View style={{ height: 8 }} />
+      <NavCard
+        title={t('videos_title')}
+        description={t('videos_description')}
+        onPress={() => {
+          navigation.navigate(routes.videos.overviewList);
         }}
       />
     </ScrollView>

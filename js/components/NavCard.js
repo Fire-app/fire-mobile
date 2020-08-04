@@ -1,16 +1,17 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Feather, Ionicons } from '@expo/vector-icons';
 import textStyles from '../styles/textStyles';
 import { colors } from '../styles';
 import { IconProp, FEATHER } from '../../data/fontFamilies';
 
+import Card from './Card';
+
 export default function NavCard({ title, description, onPress, icon }) {
   return (
-    <TouchableOpacity onPress={() => onPress()}>
-      <View style={styles.navCard}>
+    <Card onPress={onPress} style={{ padding: 24 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {icon && (
           <View style={{ minWidth: 30, alignItems: 'center', marginRight: 14 }}>
             {icon.family === FEATHER ? (
@@ -34,7 +35,7 @@ export default function NavCard({ title, description, onPress, icon }) {
         </View>
         <Feather name="chevron-right" size={34} color={colors.primary} />
       </View>
-    </TouchableOpacity>
+    </Card>
   );
 }
 
@@ -46,16 +47,3 @@ NavCard.propTypes = {
   icon: IconProp,
   /* eslint-enable react/require-default-props */
 };
-
-const styles = StyleSheet.create({
-  navCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 3,
-    borderWidth: 2,
-    borderColor: '#eeeeee',
-    padding: 24,
-  },
-});
