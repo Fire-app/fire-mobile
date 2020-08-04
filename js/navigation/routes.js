@@ -50,11 +50,7 @@ const routes = {
   resourcesStack: 'RESOURCES_STACK',
   resources: {
     overviewList: 'RESOURCES_LIST',
-    cases: {
-      AAAJ: 'RESOURCES__AAAJ',
-      CARECEN: 'RESOURCES__CARECEN',
-      CHIRLA: 'RESOURCES__CHIRLA',
-    },
+    details: 'RESOURCES_DETAILS',
   },
 
   emergencyModal: 'EMERGENCY_MODAL',

@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, ScrollView } from 'react-native';
@@ -7,28 +6,35 @@ import * as Linking from 'expo-linking';
 import * as WebBrowser from 'expo-web-browser';
 
 import ContactButtons from '../../components/Resources/ContactButtons';
-import OrgName from '../../components/Resources/OrgName';
-import OrgDescription from '../../components/Resources/OrgDescription';
-import OrgServices from '../../components/Resources/OrgServices/ServiceList';
-import OrgSocials from '../../components/Resources/OrgSocials';
+import Name from '../../components/Resources/ResourcesName';
+import Description from '../../components/Resources/ResourcesDescription';
+import Services from '../../components/Resources/Services/ServiceList';
+import Socials from '../../components/Resources/ResourcesSocials';
+import { RESOURCES_MAP } from '../../../data/resources';
 
 import colors from '../../styles/colors';
 
-export default function OrgPageTemplate({
-  name,
-  website,
-  phone,
-  description,
-  services,
-  facebookUrl,
-  instagramUrl,
-  twitterUrl,
-  youtubeUrl,
+export default function DetailsScreen({
+  route: {
+    params: { mapId }, // same as const { mapId } = route.params
+  },
 }) {
   const { t } = useTranslation();
+  const {
+    fullName,
+    website,
+    phone,
+    description,
+    services,
+    facebookUrl,
+    instagramUrl,
+    twitterUrl,
+    youtubeUrl,
+  } = RESOURCES_MAP[mapId];
+
   return (
     <ScrollView style={styles.container}>
-      <OrgName text={name} />
+      <Name text={fullName} />
       <ContactButtons
         onRightPress={() => WebBrowser.openBrowserAsync(website)}
         onLeftPress={() => Linking.openURL(phone)}
@@ -37,11 +43,11 @@ export default function OrgPageTemplate({
         callDisabled={false}
         websiteDisabled={false}
       />
-      <OrgDescription text={description} />
+      <Description text={t(description)} />
       <View style={styles.services}>
-        <OrgServices services={services} />
+        <Services services={services} />
       </View>
-      <OrgSocials
+      <Socials
         facebookUrl={facebookUrl}
         instagramUrl={instagramUrl}
         twitterUrl={twitterUrl}
@@ -51,16 +57,10 @@ export default function OrgPageTemplate({
   );
 }
 
-OrgPageTemplate.propTypes = {
-  name: PropTypes.string.isRequired,
-  website: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  services: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  facebookUrl: PropTypes.string,
-  instagramUrl: PropTypes.string,
-  twitterUrl: PropTypes.string,
-  youtubeUrl: PropTypes.string,
+DetailsScreen.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape.isRequired,
+  }).isRequired,
 };
 
 const styles = StyleSheet.create({

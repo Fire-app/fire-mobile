@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { textStyles, colors } from '../../styles';
 
-const OrgName = ({ text }) => {
+const ResourcesName = ({ text }) => {
   return (
     <Text
       style={[
@@ -21,8 +21,8 @@ const OrgName = ({ text }) => {
   );
 };
 
-OrgName.propTypes = {
+ResourcesName.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-export default OrgName;
+export default ResourcesName;

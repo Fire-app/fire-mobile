@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 import * as WebBrowser from 'expo-web-browser';
 
-export default function OrgSocials({
+export default function ResourcesSocials({
   facebookUrl,
   instagramUrl,
   twitterUrl,
@@ -51,7 +51,7 @@ export default function OrgSocials({
   );
 }
 
-OrgSocials.propTypes = {
+ResourcesSocials.propTypes = {
   facebookUrl: PropTypes.string,
   instagramUrl: PropTypes.string,
   twitterUrl: PropTypes.string,

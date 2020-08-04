@@ -1,42 +1,25 @@
-/* eslint-disable global-require */
 import React from 'react';
 import { View, StyleSheet, FlatList, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+
 import routes from '../../navigation/routes';
 import NavCard from '../../components/NavCard';
+import { RESOURCES_LIST } from '../../../data/resources';
+
 import textStyles from '../../styles/textStyles';
 import colors from '../../styles/colors';
 
-const caseRoutes = routes.resources.cases;
-
-const ORGANIZATIONS = [
-  {
-    title: 'AAAJ',
-    description: 'Asian Americans Advancing Justice',
-    route: caseRoutes.AAAJ,
-  },
-  {
-    title: 'CARECEN',
-    description: 'Central American Resource Center',
-    route: caseRoutes.CARECEN,
-  },
-  {
-    title: 'CHIRLA',
-    description: 'Coalition for Humane Immigrant Rights',
-    route: caseRoutes.CHIRLA,
-  },
-];
-
 export default function ResourcesListScreen({ navigation }) {
   const { t } = useTranslation();
+  const route = routes.resources.details; // navigate to generic DetailScreen page
 
   return (
     <FlatList
       keyExtractor={(_, i) => `${i}`}
       style={styles.container}
       contentContainerStyle={{ paddingVertical: 36 }}
-      data={ORGANIZATIONS}
+      data={RESOURCES_LIST}
       ListHeaderComponent={
         <Text
           style={[
@@ -50,11 +33,11 @@ export default function ResourcesListScreen({ navigation }) {
           {t('resources_subtitle')}
         </Text>
       }
-      renderItem={({ item: { title, description, route } }) => (
+      renderItem={({ item: { shortName, fullName } }) => (
         <NavCard
-          title={t(title)}
-          description={t(description)}
-          onPress={() => navigation.navigate(route)}
+          title={t(shortName)}
+          description={t(fullName)}
+          onPress={() => navigation.navigate(route, { mapId: shortName })}
         />
       )}
       ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
