@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { textStyles, colors } from '../../../styles';
 
 // eslint-disable-next-line no-unused-vars
-export default function Service({ name, isFree }) {
+export default function Service({ name }) {
   return (
     <View style={styles.serviceContainer}>
       <View style={{ flex: 1, paddingRight: 8 }}>
@@ -35,7 +35,6 @@ export default function Service({ name, isFree }) {
 
 Service.propTypes = {
   name: PropTypes.string.isRequired,
-  isFree: PropTypes.bool, // not currently being used
 };
 
 const styles = StyleSheet.create({
