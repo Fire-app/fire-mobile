@@ -5,12 +5,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Feather } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import Resources from '../screens/ResourcesScreen';
 import EmergencyScreen from '../screens/EmergencyScreen';
 import { textStyles, colors } from '../styles';
 import routes from './routes';
 import RightsStack from './RightsStack';
 import SettingsStack from './SettingsStack';
+import ResourcesStack from './ResourcesStack';
 
 const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -21,7 +21,7 @@ const AppTabs = () => {
   const { t } = useTranslation();
   return (
     <Tabs.Navigator
-      name="FOO"
+      name="FOO" // TODO: what is this
       initialRouteName={routes.main.rights}
       tabBarOptions={{
         activeTintColor: colors.charcoalGrey,
@@ -49,7 +49,7 @@ const AppTabs = () => {
       />
       <Tabs.Screen
         name={routes.main.resources}
-        component={Resources}
+        component={ResourcesStack}
         options={{
           tabBarLabel: t('tab_resources'),
           // eslint-disable-next-line react/prop-types
