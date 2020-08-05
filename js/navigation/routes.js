@@ -32,7 +32,7 @@ const routes = {
     partners: 'SETTINGS_PARTNERS',
   },
 
-  rightsStack: 'RIGHTS',
+  rightsStack: 'RIGHTS_STACK',
   rights: {
     overviewList: 'RIGHTS_LIST',
   },
@@ -53,6 +53,12 @@ const routes = {
       street: 'SCENARIOS_STREET',
       work: 'SCENARIOS__WORK',
     },
+  },
+
+  resourcesStack: 'RESOURCES_STACK',
+  resources: {
+    overviewList: 'RESOURCES_LIST',
+    details: 'RESOURCES_DETAILS',
   },
 
   emergencyModal: 'EMERGENCY_MODAL',
