@@ -13,12 +13,12 @@ export default function NavCard({
   description,
   onPress,
   icon,
-  isSmall,
+  smallMode,
 }) {
   return (
     <Card
       onPress={onPress}
-      style={[{ padding: 24 }, isSmall && { padding: 10, paddingLeft: 16 }]}
+      style={[{ padding: 24 }, smallMode && { padding: 10, paddingLeft: 16 }]}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {icon && (
@@ -35,7 +35,7 @@ export default function NavCard({
           </View>
         )}
         <View style={{ flex: 1 }}>
-          <Text style={isSmall ? textStyles.h3 : textStyles.h2}>{title}</Text>
+          <Text style={smallMode ? textStyles.h3 : textStyles.h2}>{title}</Text>
           {description && (
             <Text style={[textStyles.body2, { paddingTop: 4 }]}>
               {description}
@@ -54,6 +54,6 @@ NavCard.propTypes = {
   /* eslint-disable react/require-default-props */
   description: PropTypes.string,
   icon: IconProp,
-  isSmall: PropTypes.bool,
+  smallMode: PropTypes.bool,
   /* eslint-enable react/require-default-props */
 };

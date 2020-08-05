@@ -41,7 +41,7 @@ export default function HomeOverviewScreen({ navigation }) {
         <NavCard
           title={t(title)}
           onPress={() => navigation.navigate(route)}
-          isSmall
+          smallMode
         />
       )}
       ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
