@@ -1,28 +1,32 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import KnowYourRightsTemplate from './Template';
 
-const OutsideHomeScreen = () => (
-  <KnowYourRightsTemplate
-    warning={{
-      title: 'Do not open the door.',
-      subtitle: 'You can talk to the agent through the door if necessary.',
-    }}
-    scenarioItems={[
-      {
-        title: "Agents won't leave?",
-        subtitle: 'Call your attorney or the emergency hotline.',
-      },
-      {
-        title: 'Agents looking for a loved one?',
-        subtitle: 'Do not provide any information.',
-      },
-    ]}
-    tips={[
-      'Do not open the door.',
-      'Do not lie.',
-      'Do not provide any information.',
-    ]}
-  />
-);
+const OutsideHomeScreen = () => {
+  const { t } = useTranslation();
+  return (
+    <KnowYourRightsTemplate
+      warning={{
+        title: t('do_not_open_door'),
+        subtitle: t('talk_through_door'),
+      }}
+      scenarioItems={[
+        {
+          title: t("agent_won't_leave?"),
+          subtitle: t('call_your_attorney'),
+        },
+        {
+          title: t('agent_looking_for_someone'),
+          subtitle: t('do_not_provide_information'),
+        },
+      ]}
+      tips={[
+        t('do_not_open_door'),
+        t('do_not_lie'),
+        t('do_not_provide_information'),
+      ]}
+    />
+  );
+};
 
 export default OutsideHomeScreen;

@@ -1,32 +1,36 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import KnowYourRightsTemplate from './Template';
 
-const InsideHomeScreen = () => (
-  <KnowYourRightsTemplate
-    warning={{
-      title: 'Present your rights card and remain silent.',
-      subtitle: 'You have the right to remain silent!',
-    }}
-    scenarioBullets={{
-      title: 'Tell the agent(s) if...',
-      bullets: [
-        'children or elderly are present',
-        'you are ill, on medication, nursing, or pregnant',
-        'you need to arrange care for someone',
-      ],
-    }}
-    scenarioItems={[
-      {
-        title: "Agents don't have a signed warrant?",
-        subtitle: 'Say "I deny consent to search my home."',
-      },
-    ]}
-    tips={[
-      'Do not resist arrest.',
-      'Do not give false documents.',
-      'Do not lie.',
-    ]}
-  />
-);
+const InsideHomeScreen = () => {
+  const { t } = useTranslation();
+  return (
+    <KnowYourRightsTemplate
+      warning={{
+        title: t('present_card_remain_silent'),
+        subtitle: t('you_have_right_to_silence'),
+      }}
+      scenarioBullets={{
+        title: t('tell_agent_if'),
+        bullets: [
+          t('children_are_present'),
+          t('you_are_ill'),
+          t('need_to_arrange_care'),
+        ],
+      }}
+      scenarioItems={[
+        {
+          title: t('agent_no_warrant?'),
+          subtitle: t('say_you_deny_search'),
+        },
+      ]}
+      tips={[
+        t('do_not_resist_arrest'),
+        t('do_not_give_false_documents'),
+        t('do_not_lie'),
+      ]}
+    />
+  );
+};
 
 export default InsideHomeScreen;

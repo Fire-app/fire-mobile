@@ -1,20 +1,23 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import KnowYourRightsTemplate from './Template';
 
-const DrivingScreen = () => (
-  <KnowYourRightsTemplate
-    warning={{
-      title: 'Do not drive away.',
-      subtitle: 'Stay calm and do not open your car door.',
-    }}
-    tips={[
-      'Do not open your car door.',
-      'Tell the ICE agent that you want to remain silent. If you speak, do not lie.',
-      'Call your attorney while in the car.',
-      "Do not present your driver's license or any other identifications.",
-      'Do not sign any documents or answer questions without an attorney present. ',
-    ]}
-  />
-);
+const DrivingScreen = () => {
+  const { t } = useTranslation();
+  return (
+    <KnowYourRightsTemplate
+      warning={{
+        title: t('do_not_drive_away'),
+        subtitle: t('stay_calm_do_not_open_car'),
+      }}
+      tips={[
+        t('do_not_open_car'),
+        t('tell_agent_that_you_want_to_remain_silent'),
+        t('do_not_present_your_license'),
+        t('do_not_sign_or_answer_wo_lawyer'),
+      ]}
+    />
+  );
+};
 
 export default DrivingScreen;
