@@ -11,7 +11,7 @@ const InsideHomeScreen = () => {
         subtitle: t('you_have_right_to_silence'),
       }}
       scenarioBullets={{
-        title: t('tell_agent_if'),
+        title: t('tell_agents_if'),
         bullets: [
           t('children_are_present'),
           t('you_are_ill'),
