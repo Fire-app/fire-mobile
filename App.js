@@ -15,11 +15,14 @@ import {
 
 import { Provider as ReduxProvider } from 'react-redux';
 import { Ionicons, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
-
 import { PersistGate } from 'redux-persist/integration/react';
+
 import createPersistedStore from './js/store/createPersistedStore';
 import Navigation from './js/navigation';
-import './js/config'; // Load our build time configs
+import { initialize as initializeSentry } from './js/diagnostics/sentry';
+import './js/config';
+
+initializeSentry(); // Load our build time configs
 
 const welcomeImage = require('./assets/welcomeImage.png');
 const completeImage = require('./assets/completedImage.png');
