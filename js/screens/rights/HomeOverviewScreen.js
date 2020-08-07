@@ -7,8 +7,6 @@ import NavCard from '../../components/NavCard';
 import textStyles from '../../styles/textStyles';
 import colors from '../../styles/colors';
 
-// const caseRoutes = routes.scenarios.cases;
-
 const SCENARIOS = [
   {
     title: 'Agent is outside my home',
