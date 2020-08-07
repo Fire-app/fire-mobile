@@ -49,7 +49,7 @@
     "select_hotline": "Select an emergency hotline",
     "select_hotline_subtitle": "Select the emergency hotline that's closest to where you spend the most time.",
     "attorney_default_title": "No attorney? No problem!",
-    "attorney_default_subtitle":"The CHIRLA hotline provides legal support that can help you during both emergency and non-emergency situations.",
+    "attorney_default_subtitle": "The CHIRLA hotline provides legal support that can help you during both emergency and non-emergency situations.",
     "select_attorney": "Set your attorney contact",
     "select_attorney_subtitle": "The attorney contact will be used for your rights card.",
     "attorney_name": "Attorney Name",
@@ -84,11 +84,19 @@
     "header_street": "On the Street",
     "header_work": "At Work",
     "header_scenarios": "Scenarios",
-
+    "header_videos": "Videos",
+    "videos_title": "Videos",
     "scenarios_title": "Scenarios",
     "scenarios_description": "Know your rights in different spaces",
     "scenarios_subtitle": "Know your rights in different spaces.",
-
+    "header_resources": "Resources",
+    "resources_subtitle": "Organizations",
+    "header_AAAJ": "AAAJ",
+    "AAAJ_description": "Asian Americans Advancing Justice-LA advocates for civil rights, provides legal services and education, and builds coalitions to positively influence and impact Asian Americans and Pacific Islanders.",
+    "header_CARECEN": "CARECEN",
+    "CARECEN_description": "Central American Resource Center (CARECEN) empowers Central Americans by defending human and civil rights, working for social and economic justice, and promoting cultural diversity. The CARECEN Legal Department offers a wide range of immigration legal services. Most services are provided after legal consultation.",
+    "header_CHIRLA": "CHIRLA",
+    "CHIRLA_description": "The Coalition for Humane Immigrant Rights of Los Angeles (CHIRLA) is a California leader with national impact made of diverse immigrant families and individuals who act as agents of social change to achieve a world with freedom of mobility, full human rights, and true participatory democracy. We seek to achieve a just society fully inclusive of immigrants. We organize and serve individuals, institutions and coalitions to build power, transform public opinion, and change policies to achieve full human, civil and labor rights. Guided by the power, love, and vision of our community, CHIRLA embraces and drives progressive social change.",
     "emergency_toolkit": "Emergency Toolkit",
     "rights_card_title": "RIGHTS CARD",
     "rights_card_content_1": "I am showing you this card because I do not wish to speak to you or have any further contact with you. I choose to exercise my constitutional right to remain silent and refuse to answer your questions. If you arrest me, I will continue to exercise my right to remain silent and to refuse to answer your questions. I want to speak to a lawyer before answering your questions.",
@@ -99,5 +107,10 @@
     "info_modal_emergency_hotline": "Emergency Hotline",
     "info_modal_emergency_hotline_explanation": "Direct line to a 24/7 rapid response network",
     "info_modal_rights_card": "Rights Card",
-    "info_modal_rights_card_explanation": "Used to present to ICE agents, this card states your right to remain silent and contact information for your attorney or CHIRLA's legal team."
+    "info_modal_rights_card_explanation": "Used to present to ICE agents, this card states your right to remain silent and contact information for your attorney or CHIRLA's legal team.",
+    "videos.general_tips": "Know Your Rights (general tips)",
+    "videos.interrogation": "Interrogated by an ICE agent in detention",
+    "videos.consult_attorney": "Consulting an attorney in detention",
+    "videos.isap_detention": "Seeking legal relief with ISAP in detention",
+    "videos.arrested_street": "Arrested in the street"
 }

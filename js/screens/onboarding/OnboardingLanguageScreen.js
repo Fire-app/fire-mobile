@@ -29,10 +29,6 @@ const LanguageScreen = ({ navigation }) => {
         title: t('continue'),
       }}
     >
-      <OnboardingTitle
-        title={t('select_language')}
-        subtitle={t('select_language_subtitle')}
-      />
       <ListSelector
         defaultKey={i18n.language}
         onChange={onLanguageChange}
@@ -40,6 +36,12 @@ const LanguageScreen = ({ navigation }) => {
         keyExtractor={({ locale }, i) => `${locale}:${i}`}
         selectedExtractor={({ item }) => item.locale}
         titleExtractor={({ item }) => item.name}
+        listHeaderComponent={
+          <OnboardingTitle
+            title={t('select_language')}
+            subtitle={t('select_language_subtitle')}
+          />
+        }
       />
     </OnboardingTemplate>
   );

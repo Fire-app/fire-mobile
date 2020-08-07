@@ -1,7 +1,6 @@
-/* eslint-disable global-require */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Text, Modal } from 'react-native';
+import { View, StyleSheet, Text, SafeAreaView } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Feather, Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -11,6 +10,7 @@ import { useSelector } from 'react-redux';
 import colors from '../styles/colors';
 import PrimaryButton from '../components/Buttons/PrimaryButton';
 import textStyles from '../styles/textStyles';
+import CustomModal from '../components/CustomModal';
 
 export default function EmergencyScreen({ navigation }) {
   const { t } = useTranslation();
@@ -28,20 +28,10 @@ export default function EmergencyScreen({ navigation }) {
     prompt: false,
   };
   return (
-    <>
-      <InfoModal
-        isVisible={InfoModalVisible}
-        setModalVisible={setInfoModalVisible}
-      />
-      <KYRModal
-        isVisible={KYRModalVisible}
-        setModalVisible={setKYRModalVisible}
-        attorneyName={savedAttorneyName}
-        attorneyNumber={savedAttorneyNumber}
-      />
-      <View style={localStyles.container}>
+    <View style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1 }}>
         <TouchableOpacity
-          style={{ alignSelf: 'flex-start', padding: 20 }}
+          style={{ alignSelf: 'flex-start', paddingLeft: 20, paddingTop: 12 }}
           onPress={navigation.goBack}
         >
           <MaterialCommunityIcons
@@ -50,12 +40,23 @@ export default function EmergencyScreen({ navigation }) {
             size={32}
           />
         </TouchableOpacity>
+        <View style={{ flexGrow: 1 }} />
+
         <View style={localStyles.rightsSuiteContainer}>
-          <View style={localStyles.titleRow}>
-            <Feather name="alert-triangle" color={colors.primary} size={32} />
-            <Text style={[textStyles.h1, { paddingLeft: 4 }]}>
-              {t('emergency_toolkit')}
-            </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Feather
+              name="alert-triangle"
+              color={colors.primary}
+              size={32}
+              style={{ paddingTop: 3, paddingRight: 6 }}
+            />
+            <Text style={textStyles.h1}>{t('emergency_toolkit')}</Text>
           </View>
           <View style={localStyles.buttonStack}>
             <PrimaryButton
@@ -70,19 +71,42 @@ export default function EmergencyScreen({ navigation }) {
             />
           </View>
         </View>
+        <View style={{ flexGrow: 1, maxHeight: 100 }} />
         <TouchableOpacity
-          style={localStyles.whatsThisRow}
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
           onPress={() => setInfoModalVisible(!InfoModalVisible)}
         >
-          <Ionicons name="ios-help-circle" color={colors.primary} size={16} />
+          <Ionicons
+            name="ios-help-circle"
+            color={colors.primary}
+            size={20}
+            style={{ paddingTop: 2 }}
+          />
           <Text
-            style={[textStyles.h4, { paddingLeft: 4, color: colors.primary }]}
+            style={[textStyles.h3, { paddingLeft: 4, color: colors.primary }]}
           >
             {t('rights_card_what_is_this')}
           </Text>
         </TouchableOpacity>
-      </View>
-    </>
+        <View style={{ flexGrow: 1 }} />
+
+        {/* ABSOLUTE MODALS */}
+        <InfoModal
+          isVisible={InfoModalVisible}
+          setModalVisible={setInfoModalVisible}
+        />
+        <KYRModal
+          isVisible={KYRModalVisible}
+          setModalVisible={setKYRModalVisible}
+          attorneyName={savedAttorneyName}
+          attorneyNumber={savedAttorneyNumber}
+        />
+      </SafeAreaView>
+    </View>
   );
 }
 /* Modal code adapted from NoAttorneyModal */
@@ -94,97 +118,77 @@ const KYRModal = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <View>
-      <Modal animationType="none" visible={isVisible}>
-        <View style={modalStyles.container}>
-          <TouchableOpacity
-            style={{ paddingBottom: 12 }}
-            onPress={() => setModalVisible(!isVisible)}
-          >
-            <Feather
-              name="chevron-left"
-              color={colors.charcoalGrey}
-              size={32}
-            />
-          </TouchableOpacity>
-          <View style={modalStyles.contentContainer}>
-            <View style={[modalStyles.rightsRow, { paddingBottom: 12 }]}>
-              <Feather name="credit-card" color={colors.primary} size={20} />
-              <Text style={[textStyles.h2, { paddingLeft: 8 }]}>
-                {t('rights_card_title')}
-              </Text>
-            </View>
-            <Text style={textStyles.body1}>{t('rights_card_content_1')}</Text>
-            <Text style={[textStyles.body1, { paddingTop: 20 }]}>
-              {t('rights_card_content_2')}
-            </Text>
-            <View style={localStyles.emergencyInfo}>
-              <Text style={(textStyles.h4, localStyles.emergencyInfoItem)}>
-                {attorneyName}
-              </Text>
-              <Text style={(textStyles.h4, localStyles.emergencyInfoItem)}>
-                {attorneyNumber}
-              </Text>
-            </View>
-          </View>
-        </View>
-      </Modal>
-    </View>
+    <CustomModal
+      contentContainerStyle={{ paddingBottom: 12 }} // less padding because of secondary button
+      isVisible={isVisible}
+      secondaryButton={{
+        title: t('close'),
+        onPress: () => setModalVisible(!isVisible),
+      }}
+    >
+      <View
+        style={{
+          paddingBottom: 12,
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}
+      >
+        <Feather
+          name="credit-card"
+          color={colors.primary}
+          size={22}
+          style={{ paddingTop: 2 }}
+        />
+        <Text style={[textStyles.h2, { paddingLeft: 8 }]}>
+          {t('rights_card_title')}
+        </Text>
+      </View>
+      <Text style={textStyles.body1}>
+        {`${t('rights_card_content_1')}\n\n${t('rights_card_content_2')}`}
+      </Text>
+      <Text style={[textStyles.h3, { paddingVertical: 10 }]}>
+        {attorneyName}
+      </Text>
+      <Text style={textStyles.h3}>{attorneyNumber}</Text>
+    </CustomModal>
   );
 };
 
 const InfoModal = ({ isVisible, setModalVisible }) => {
   const { t } = useTranslation();
   return (
-    <View>
-      <Modal animationType="none" visible={isVisible}>
-        {/* <View style={modalStyles.container}> */}
-        <View style={modalStyles.container}>
-          <TouchableOpacity
-            style={{ paddingBottom: 12 }}
-            onPress={() => setModalVisible(!isVisible)}
-          >
-            <Feather
-              name="chevron-left"
-              color={colors.charcoalGrey}
-              size={32}
-            />
-          </TouchableOpacity>
-          <View style={modalStyles.contentContainer}>
-            <Text style={[textStyles.h2, { paddingVertical: 8 }]}>
-              {t('info_modal_whats_my_emergency_toolkit?')}
-            </Text>
-            <Text style={textStyles.body1} color={colors.textLight}>
-              {t('info_modal_emergency_toolkit_explanation')}
-            </Text>
-            <View style={{ flexDirection: 'row' }}>
-              <View style={modalStyles.iconColumn}>
-                <Feather name="phone" size={24} />
-                <Feather name="credit-card" size={24} />
-              </View>
-              <View style={modalStyles.contentColumn}>
-                <Text style={textStyles.h5}>
-                  {t('info_modal_emergency_hotline')}
-                </Text>
-                <Text style={textStyles.body1}>
-                  {t('info_modal_emergency_hotline_explanation')}
-                </Text>
-                <Text style={[textStyles.h5, { paddingTop: 12 }]}>
-                  {t('info_modal_rights_card')}
-                </Text>
-                <Text style={textStyles.body1}>
-                  {t('info_modal_rights_card_explanation')}
-                </Text>
-              </View>
-            </View>
-            <PrimaryButton
-              title={t('got_it')}
-              onPress={() => setModalVisible(!isVisible)}
-            />
-          </View>
+    <CustomModal
+      isVisible={isVisible}
+      primaryButton={{
+        title: t('got_it'),
+        onPress: () => setModalVisible(!isVisible),
+      }}
+    >
+      <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
+        {t('info_modal_whats_my_emergency_toolkit?')}
+      </Text>
+      <Text style={textStyles.body1} color={colors.textLight}>
+        {t('info_modal_emergency_toolkit_explanation')}
+      </Text>
+      <View style={{ flexDirection: 'row', paddingTop: 15 }}>
+        <Feather name="phone" size={24} style={{ paddingRight: 12 }} />
+        <View>
+          <Text style={textStyles.h5}>{t('info_modal_emergency_hotline')}</Text>
+          <Text style={textStyles.body1}>
+            {t('info_modal_emergency_hotline_explanation')}
+          </Text>
         </View>
-      </Modal>
-    </View>
+      </View>
+      <View style={{ flexDirection: 'row', paddingVertical: 15 }}>
+        <Feather name="credit-card" size={24} style={{ paddingRight: 12 }} />
+        <View>
+          <Text style={textStyles.h5}>{t('info_modal_rights_card')}</Text>
+          <Text style={textStyles.body1}>
+            {t('info_modal_rights_card_explanation')}
+          </Text>
+        </View>
+      </View>
+    </CustomModal>
   );
 };
 
@@ -208,67 +212,10 @@ InfoModal.propTypes = {
 };
 
 const localStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingVertical: 12,
-    backgroundColor: 'white',
-  },
   rightsSuiteContainer: {
     paddingHorizontal: 56,
-    paddingTop: 80,
-  },
-  titleRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 80,
-  },
-  whatsThisRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 80,
   },
   buttonStack: {
     paddingTop: 12,
-  },
-  emergencyInfo: {
-    padding: 4,
-  },
-  emergencyInfoItem: {
-    fontWeight: 'bold',
-    paddingVertical: 4,
-    fontSize: 16,
-  },
-});
-
-const modalStyles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    paddingVertical: 32,
-    paddingHorizontal: 20,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-  },
-  contentContainer: {
-    paddingHorizontal: 30,
-    paddingBottom: 20,
-    paddingTop: 72,
-    flex: 1,
-    flexGrow: 2.5,
-    justifyContent: 'flex-start',
-    alignSelf: 'stretch',
-  },
-  rightsRow: {
-    flexDirection: 'row',
-  },
-  iconColumn: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    paddingTop: 12,
-    paddingBottom: 124,
-  },
-  contentColumn: {
-    flexDirection: 'column',
-    paddingVertical: 12,
-    paddingHorizontal: 8,
   },
 });

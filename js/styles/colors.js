@@ -11,7 +11,7 @@ const colors = {
 
   // Colors not included in Zeplin: Check wireframes and replace with right colors
   warmGrey: '#a1a1a1',
-  backgroundColor: '#f6f5f6',
+  backgroundColor: '#f9f9f9',
 };
 
 export default colors;
