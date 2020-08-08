@@ -2,25 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, FlatList, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import routes from '../../navigation/routes';
 import NavCard from '../../components/NavCard';
-import textStyles from '../../styles/textStyles';
-import colors from '../../styles/colors';
-
-const SCENARIOS = [
-  {
-    title: 'Agent is outside my home',
-    route: routes.scenarios.cases.outsideHome,
-  },
-  {
-    title: 'Agent is inside my home',
-    route: routes.scenarios.cases.insideHome,
-  },
-  {
-    title: 'Agent arrests me',
-    route: routes.scenarios.cases.homeArrest,
-  },
-];
+import { HOME_SCENARIOS } from '../../../data/scenarios';
+import { textStyles, colors } from '../../styles';
 
 export default function HomeOverviewScreen({ navigation }) {
   const { t } = useTranslation();
@@ -29,10 +13,10 @@ export default function HomeOverviewScreen({ navigation }) {
       keyExtractor={(_, i) => `${i}`}
       style={styles.container}
       contentContainerStyle={{ paddingVertical: 24 }}
-      data={SCENARIOS}
+      data={HOME_SCENARIOS}
       ListHeaderComponent={
         <Text style={[textStyles.h3, { paddingBottom: 16 }]}>
-          {'Select a scenario:'}
+          {t('select_scenario')}
         </Text>
       }
       renderItem={({ item: { title, route } }) => (

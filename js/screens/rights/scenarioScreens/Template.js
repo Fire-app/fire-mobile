@@ -1,11 +1,9 @@
 import React from 'react';
-import { ScrollView } from 'react-native-gesture-handler';
-
+import { ScrollView, View } from 'react-native';
 import PropTypes from 'prop-types';
 import RightsWarning from '../../../components/RightsWarning';
 import RightsScenarios from '../../../components/RightsScenarios';
 import RightsTips from '../../../components/RightsTips';
-
 import { colors } from '../../../styles';
 
 const KnowYourRightsTemplate = ({
@@ -24,7 +22,9 @@ const KnowYourRightsTemplate = ({
     }}
   >
     <RightsWarning title={warning.title} subtitle={warning.subtitle} />
+    {(scenarioItems || scenarioBullets) && <View style={{ height: 50 }} />}
     <RightsScenarios bullets={scenarioBullets} items={scenarioItems} />
+    {tips && <View style={{ height: 50 }} />}
     <RightsTips tips={tips} />
   </ScrollView>
 );

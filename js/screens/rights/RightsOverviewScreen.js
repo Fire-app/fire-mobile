@@ -17,24 +17,24 @@ export default function RightsOverviewScreen({ navigation }) {
       contentContainerStyle={styles.container}
     >
       <StatusBar barStyle="dark-content" />
-      <View>
-        <NavCard
-          title={t('scenarios_title')}
-          description={t('scenarios_description')}
-          onPress={() => {
-            navigation.navigate(routes.scenarios.overviewList);
-          }}
-        />
-        <View style={{ height: 8 }} />
-        <NavCard
-          title={t('videos_title')}
-          description={t('videos_description')}
-          onPress={() => {
-            navigation.navigate(routes.videos.overviewList);
-          }}
-        />
-      </View>
-      <View style={{ paddingBottom: 10, paddingTop: 30 }}>
+      <NavCard
+        title={t('scenarios_title')}
+        description={t('scenarios_description')}
+        onPress={() => {
+          navigation.navigate(routes.scenarios.overviewList);
+        }}
+      />
+      <View style={{ height: 8 }} />
+      <NavCard
+        title={t('videos_title')}
+        description={t('videos_description')}
+        onPress={() => {
+          navigation.navigate(routes.videos.overviewList);
+        }}
+      />
+      <View
+        style={{ flexGrow: 1, justifyContent: 'flex-end', paddingBottom: 10 }}
+      >
         <Image
           style={styles.image}
           source={IMAGE}
@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 20,
     backgroundColor: colors.backgroundColor,
-    justifyContent: 'space-between',
   },
   image: {
     height: 180,

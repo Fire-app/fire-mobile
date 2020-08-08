@@ -1,13 +1,30 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { colors, textStyles } from '../styles';
+
+const AlertCircle = () => (
+  <View
+    style={{
+      aspectRatio: 1,
+      borderRadius: 999,
+      backgroundColor: colors.primary,
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 4,
+    }}
+  >
+    <FontAwesome name="exclamation" color="white" size={20} />
+  </View>
+);
 
 export default function RightsWarning({ title, subtitle }) {
   return (
     <View style={styles.container}>
-      <Ionicons name="md-alert" color={colors.primary} size={34} />
+      <View style={{ paddingVertical: 3 }}>
+        <AlertCircle />
+      </View>
       <View style={styles.textContainer}>
         <Text style={[textStyles.h2, { color: 'white', paddingBottom: 2 }]}>
           {title}

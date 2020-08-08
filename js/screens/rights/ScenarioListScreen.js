@@ -2,56 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, FlatList, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import routes from '../../navigation/routes';
 import NavCard from '../../components/NavCard';
-import { FEATHER, IONICONS } from '../../../data/fontFamilies';
+import { SCENARIOS } from '../../../data/scenarios';
 import textStyles from '../../styles/textStyles';
 import colors from '../../styles/colors';
-
-const caseRoutes = routes.scenarios.cases;
-
-const SCENARIOS = [
-  {
-    title: 'Home',
-    route: routes.scenarios.homeOverview,
-    icon: {
-      name: 'home',
-      family: FEATHER,
-    },
-  },
-  {
-    title: 'Work',
-    route: caseRoutes.work,
-    icon: {
-      name: 'briefcase',
-      family: FEATHER,
-    },
-  },
-  {
-    title: 'Street',
-    route: caseRoutes.street,
-    icon: {
-      name: 'ios-walk',
-      family: IONICONS,
-    },
-  },
-  {
-    title: 'Driving',
-    route: caseRoutes.driving,
-    icon: {
-      name: 'md-car',
-      family: IONICONS,
-    },
-  },
-  {
-    title: 'Public_Transit',
-    route: caseRoutes.publicTransport,
-    icon: {
-      name: 'ios-subway',
-      family: IONICONS,
-    },
-  },
-];
 
 export default function ScenarioListScreen({ navigation }) {
   const { t } = useTranslation();

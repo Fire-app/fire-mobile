@@ -61,14 +61,15 @@
     "rights_card_contact": "Rights Card Attorney Contact:",
     "english": "English",
     "klingon": "Klingon",
+    "select_scenario": "Select a scenario:",
     "Home": "Home",
+    "Agent_Outside_Home": "Agent is outside my home",
+    "Agent_Inside_Home": "Agent is inside my home",
+    "Agent_Arrests_Me": "Agent arrests me",
     "Work": "Work",
     "Public_Transit": "Public Transit",
     "Driving": "Driving",
     "Street": "Street",
-    "Agent_Inside": "Agent Inside",
-    "Agent_Outside": "Agent Outside",
-    "Agent_Arrests_Me": "Agent Arrests Me",
     "For_use_at_work": "For use at work",
     "For_use_on_Public_Transit": "For use on Public Transit",
     "For_use_when_pulled_over": "For use when pulled over",
@@ -141,6 +142,7 @@
     "do_not_sign_or_answer_wo_lawyer": "Do not sign any documents or answer questions without an attorney present.",
     "present_card": "Present your rights card.",
     "do_not_run_speak": "Do not run or speak.",
-    "remember_to_remain_silent": "Remember, you have the right to remain silent! If you speak, do not lie."
-
+    "remember_to_remain_silent": "Remember, you have the right to remain silent! If you speak, do not lie.",
+    "tips": "Tips",
+    "potential_scenarios": "Potential Scenarios"
 }

@@ -18,19 +18,25 @@ export default function NavCard({
   return (
     <Card
       onPress={onPress}
-      style={[{ padding: 24 }, smallMode && { padding: 10, paddingLeft: 16 }]}
+      style={smallMode ? { padding: 10, paddingLeft: 16 } : { padding: 24 }}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {icon && (
-          <View style={{ minWidth: 30, alignItems: 'center', marginRight: 14 }}>
+          <View
+            style={{
+              height: 34,
+              width: 34,
+              borderRadius: 34,
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginRight: 8,
+              backgroundColor: colors.primaryLight,
+            }}
+          >
             {icon.family === FEATHER ? (
-              <Feather name={icon.name} size={24} color={colors.charcoalGrey} />
+              <Feather name={icon.name} size={22} color={colors.primary} />
             ) : (
-              <Ionicons
-                name={icon.name}
-                size={24}
-                color={colors.charcoalGrey}
-              />
+              <Ionicons name={icon.name} size={22} color={colors.primary} />
             )}
           </View>
         )}
