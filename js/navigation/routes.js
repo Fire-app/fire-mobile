@@ -36,7 +36,6 @@ const routes = {
   rights: {
     overviewList: 'RIGHTS_LIST',
   },
-
   videos: {
     overviewList: 'VIDEOS_LIST',
     cases: {},
@@ -44,6 +43,7 @@ const routes = {
 
   scenarios: {
     overviewList: 'SCENARIOS_LIST',
+    homeOverview: 'SCENARIOS_HOME',
     cases: {
       insideHome: 'SCENARIOS__INSIDE_HOME',
       outsideHome: 'SCENARIOS__OUTSIDE_HOME',
