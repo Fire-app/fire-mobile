@@ -8,25 +8,40 @@ import { IconProp, FEATHER } from '../../data/fontFamilies';
 
 import Card from './Card';
 
-export default function NavCard({ title, description, onPress, icon }) {
+export default function NavCard({
+  title,
+  description,
+  onPress,
+  icon,
+  smallMode,
+}) {
   return (
-    <Card onPress={onPress} style={{ padding: 24 }}>
+    <Card
+      onPress={onPress}
+      style={smallMode ? { padding: 10, paddingLeft: 16 } : { padding: 24 }}
+    >
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {icon && (
-          <View style={{ minWidth: 30, alignItems: 'center', marginRight: 14 }}>
+          <View
+            style={{
+              height: 34,
+              width: 34,
+              borderRadius: 34,
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginRight: 8,
+              backgroundColor: colors.primaryLight,
+            }}
+          >
             {icon.family === FEATHER ? (
-              <Feather name={icon.name} size={24} color={colors.charcoalGrey} />
+              <Feather name={icon.name} size={22} color={colors.primary} />
             ) : (
-              <Ionicons
-                name={icon.name}
-                size={24}
-                color={colors.charcoalGrey}
-              />
+              <Ionicons name={icon.name} size={22} color={colors.primary} />
             )}
           </View>
         )}
         <View style={{ flex: 1 }}>
-          <Text style={textStyles.h2}>{title}</Text>
+          <Text style={smallMode ? textStyles.h3 : textStyles.h2}>{title}</Text>
           {description && (
             <Text style={[textStyles.body2, { paddingTop: 4 }]}>
               {description}
@@ -45,5 +60,6 @@ NavCard.propTypes = {
   /* eslint-disable react/require-default-props */
   description: PropTypes.string,
   icon: IconProp,
+  smallMode: PropTypes.bool,
   /* eslint-enable react/require-default-props */
 };
