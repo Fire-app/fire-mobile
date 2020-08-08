@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import ScenarioListScreen from '../screens/rights/ScenarioListScreen';
 import VideoListScreen from '../screens/rights/VideoListScreen';
 import RightsOverviewScreen from '../screens/rights/RightsOverviewScreen';
+import HomeOverviewScreen from '../screens/rights/HomeOverviewScreen';
 
 import routes from './routes';
 
@@ -41,6 +42,14 @@ const RightsStack = () => {
           title: t('header_scenarios'),
           headerBackTitle: t('tab_rights'),
           headerTitleStyle: textStyles.h2,
+        }}
+      />
+      <Stack.Screen
+        name={routes.scenarios.homeOverview}
+        component={HomeOverviewScreen}
+        options={{
+          title: t('Home'),
+          headerBackTitle: t('tab_rights'),
         }}
       />
       <Stack.Screen

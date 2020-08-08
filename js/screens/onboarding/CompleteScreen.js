@@ -7,7 +7,7 @@ import completeOnboardingAction from '../../store/actions/completeOnboarding';
 import OnboardingTitle from '../../components/OnboardingTitle';
 import OnboardingTemplate from './Template';
 
-const IMAGE = require('../../../assets/completedImage.png');
+const IMAGE = require('../../../assets/illustration2.png');
 
 const CompleteScreen = () => {
   const { t } = useTranslation();
@@ -30,14 +30,13 @@ const CompleteScreen = () => {
           alignItems: 'center',
         }}
       >
-        <View style={{ padding: 20 }}>
+        <View style={{ paddingHorizontal: 30 }}>
           <OnboardingTitle title={t('completed_title')} alignCenter />
         </View>
-        <View style={{ height: 40 }} />
         <Image
           style={styles.image}
           source={IMAGE}
-          accessibilityLabel="Illustration of a man sitting"
+          accessibilityLabel="Illustration"
         />
       </ScrollView>
     </OnboardingTemplate>
@@ -55,8 +54,8 @@ export default CompleteScreen;
 
 const styles = StyleSheet.create({
   image: {
-    height: 200,
-    width: 380,
+    height: 280,
+    width: 400,
     backgroundColor: 'white',
     padding: 30,
     alignSelf: 'center',
