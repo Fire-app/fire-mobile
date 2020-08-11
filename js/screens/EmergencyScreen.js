@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Text, SafeAreaView } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Feather, Ionicons } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import call from 'react-native-phone-call';
 import { useSelector } from 'react-redux';
 import colors from '../styles/colors';
-import PrimaryButton from '../components/Buttons/PrimaryButton';
+import { PrimaryButton, HelpButton } from '../components/Buttons';
 import textStyles from '../styles/textStyles';
 import CustomModal from '../components/CustomModal';
 
 export default function EmergencyScreen({ navigation }) {
   const { t } = useTranslation();
-  const [KYRModalVisible, setKYRModalVisible] = useState(false);
+  const [RightsCardVisible, setRightsCardVisible] = useState(false);
   const [InfoModalVisible, setInfoModalVisible] = useState(false);
   const savedHotlineNumber = useSelector(
     (state) => state.settings.hotlineNumber
@@ -42,7 +40,7 @@ export default function EmergencyScreen({ navigation }) {
         </TouchableOpacity>
         <View style={{ flexGrow: 1 }} />
 
-        <View style={localStyles.rightsSuiteContainer}>
+        <View style={{ paddingHorizontal: 56 }}>
           <View
             style={{
               flexDirection: 'row',
@@ -58,7 +56,7 @@ export default function EmergencyScreen({ navigation }) {
             />
             <Text style={textStyles.h1}>{t('emergency_toolkit')}</Text>
           </View>
-          <View style={localStyles.buttonStack}>
+          <View style={{ paddingTop: 12 }}>
             <PrimaryButton
               title={t('emergency_hotline')}
               onPress={() => call(phoneNum)}
@@ -66,32 +64,17 @@ export default function EmergencyScreen({ navigation }) {
             />
             <PrimaryButton
               title={t('rights_card')}
-              onPress={() => setKYRModalVisible(!KYRModalVisible)}
+              onPress={() => setRightsCardVisible(!RightsCardVisible)}
               darkMode
             />
           </View>
         </View>
         <View style={{ flexGrow: 1, maxHeight: 100 }} />
-        <TouchableOpacity
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
+        <HelpButton
+          title={t('rights_card_what_is_this')}
           onPress={() => setInfoModalVisible(!InfoModalVisible)}
-        >
-          <Ionicons
-            name="ios-help-circle"
-            color={colors.primary}
-            size={20}
-            style={{ paddingTop: 2 }}
-          />
-          <Text
-            style={[textStyles.h3, { paddingLeft: 4, color: colors.primary }]}
-          >
-            {t('rights_card_what_is_this')}
-          </Text>
-        </TouchableOpacity>
+          centered
+        />
         <View style={{ flexGrow: 1 }} />
 
         {/* ABSOLUTE MODALS */}
@@ -99,9 +82,9 @@ export default function EmergencyScreen({ navigation }) {
           isVisible={InfoModalVisible}
           setModalVisible={setInfoModalVisible}
         />
-        <KYRModal
-          isVisible={KYRModalVisible}
-          setModalVisible={setKYRModalVisible}
+        <RightsCardModal
+          isVisible={RightsCardVisible}
+          setModalVisible={setRightsCardVisible}
           attorneyName={savedAttorneyName}
           attorneyNumber={savedAttorneyNumber}
         />
@@ -109,8 +92,8 @@ export default function EmergencyScreen({ navigation }) {
     </View>
   );
 }
-/* Modal code adapted from NoAttorneyModal */
-const KYRModal = ({
+
+const RightsCardModal = ({
   isVisible,
   setModalVisible,
   attorneyName,
@@ -119,10 +102,9 @@ const KYRModal = ({
   const { t } = useTranslation();
   return (
     <CustomModal
-      contentContainerStyle={{ paddingBottom: 12 }} // less padding because of secondary button
       isVisible={isVisible}
-      secondaryButton={{
-        title: t('close'),
+      primaryButton={{
+        title: t('dismiss_card'),
         onPress: () => setModalVisible(!isVisible),
       }}
     >
@@ -149,7 +131,9 @@ const KYRModal = ({
       <Text style={[textStyles.h3, { paddingVertical: 10 }]}>
         {attorneyName}
       </Text>
-      <Text style={textStyles.h3}>{attorneyNumber}</Text>
+      <Text style={[textStyles.h3, { paddingBottom: 25 }]}>
+        {attorneyNumber}
+      </Text>
     </CustomModal>
   );
 };
@@ -163,6 +147,7 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
         title: t('got_it'),
         onPress: () => setModalVisible(!isVisible),
       }}
+      contentContainerStyle={{ paddingHorizontal: 30 }}
     >
       <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
         {t('info_modal_whats_my_emergency_toolkit?')}
@@ -172,7 +157,7 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
       </Text>
       <View style={{ flexDirection: 'row', paddingTop: 15 }}>
         <Feather name="phone" size={24} style={{ paddingRight: 12 }} />
-        <View>
+        <View style={{ flex: 1 }}>
           <Text style={textStyles.h5}>{t('info_modal_emergency_hotline')}</Text>
           <Text style={textStyles.body1}>
             {t('info_modal_emergency_hotline_explanation')}
@@ -181,7 +166,7 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
       </View>
       <View style={{ flexDirection: 'row', paddingVertical: 15 }}>
         <Feather name="credit-card" size={24} style={{ paddingRight: 12 }} />
-        <View>
+        <View style={{ flex: 1 }}>
           <Text style={textStyles.h5}>{t('info_modal_rights_card')}</Text>
           <Text style={textStyles.body1}>
             {t('info_modal_rights_card_explanation')}
@@ -199,7 +184,7 @@ EmergencyScreen.propTypes = {
   }).isRequired,
 };
 
-KYRModal.propTypes = {
+RightsCardModal.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   setModalVisible: PropTypes.func.isRequired,
   attorneyName: PropTypes.string.isRequired,
@@ -210,12 +195,3 @@ InfoModal.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   setModalVisible: PropTypes.func.isRequired,
 };
-
-const localStyles = StyleSheet.create({
-  rightsSuiteContainer: {
-    paddingHorizontal: 56,
-  },
-  buttonStack: {
-    paddingTop: 12,
-  },
-});
