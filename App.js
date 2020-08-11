@@ -22,9 +22,13 @@ import {
 } from '@expo/vector-icons';
 
 import { PersistGate } from 'redux-persist/integration/react';
+
 import createPersistedStore from './js/store/createPersistedStore';
 import Navigation from './js/navigation';
-import './js/config'; // Load our build time configs
+import { initialize as initializeSentry } from './js/diagnostics/sentry';
+import './js/config';
+
+initializeSentry(); // Load our build time configs
 
 const illustration1 = require('./assets/illustration1.png');
 const illustration2 = require('./assets/illustration2.png');
