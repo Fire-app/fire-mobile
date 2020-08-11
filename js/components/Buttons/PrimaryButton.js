@@ -10,8 +10,8 @@ const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
     onPress={onPress}
     disabled={disabled}
     darkMode={darkMode}
+    titleStyle={StyleSheet.flatten([textStyles.h3, { color: 'white' }])}
     containerStyle={{ flexGrow: 1 }}
-    titleStyle={StyleSheet.flatten([textStyles.h2, { color: 'white' }])}
     buttonStyle={
       darkMode
         ? {

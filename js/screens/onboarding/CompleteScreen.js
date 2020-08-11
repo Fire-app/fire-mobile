@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, Image, ScrollView } from 'react-native';
@@ -54,10 +53,6 @@ CompleteScreen.propTypes = {
 export default CompleteScreen;
 
 const styles = StyleSheet.create({
-  title: {
-    textAlign: 'center',
-    paddingBottom: 5,
-  },
   image: {
     height: 280,
     width: 400,

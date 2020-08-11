@@ -10,6 +10,7 @@ import {
   Keyboard,
   ScrollView,
   Platform,
+  ViewPropTypes,
 } from 'react-native';
 import { ButtonProp, PrimarySecondaryOptions } from './Buttons';
 
@@ -18,6 +19,7 @@ const CustomModal = ({
   isVisible,
   primaryButton,
   secondaryButton,
+  contentContainerStyle,
 }) => (
   <Modal transparent animationType="fade" visible={isVisible}>
     <KeyboardAvoidingView
@@ -32,7 +34,7 @@ const CustomModal = ({
             contentContainerStyle={{ flexGrow: 1 }}
           >
             <View style={styles.modalContainer}>
-              <View style={styles.contentContainer}>
+              <View style={[styles.contentContainer, contentContainerStyle]}>
                 {children}
                 <PrimarySecondaryOptions
                   primaryButton={primaryButton}
@@ -50,9 +52,10 @@ const CustomModal = ({
 CustomModal.propTypes = {
   children: PropTypes.node.isRequired,
   isVisible: PropTypes.bool.isRequired,
-  primaryButton: ButtonProp.isRequired,
-  // eslint-disable-next-line react/require-default-props
+  /* eslint-disable react/require-default-props */
+  primaryButton: ButtonProp,
   secondaryButton: ButtonProp,
+  contentContainerStyle: ViewPropTypes.style,
 };
 
 export default CustomModal;
@@ -77,21 +80,3 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 });
-
-/* <Modal transparent animationType="fade" visible={isVisible}>
-        <KeyboardAvoidingView style={{ flexGrow: 1 }} behavior="padding">
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={{ flex: 1 }}>
-              <ScrollView
-                alwaysBounceVertical={false}
-                style={{ flex: 1 }}
-                contentContainerStyle={{ flexGrow: 1 }}
-              >
-                <View style={styles.modalContainer}>
-                  <View style={styles.contentContainer}>{children}</View>
-                </View>
-              </ScrollView>
-            </View>
-          </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
-      </Modal> */

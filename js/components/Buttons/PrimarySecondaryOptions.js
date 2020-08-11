@@ -45,8 +45,8 @@ export const ButtonProp = PropTypes.shape({
 });
 
 PrimarySecondaryOptions.propTypes = {
-  primaryButton: ButtonProp.isRequired,
-  // eslint-disable-next-line react/require-default-props
+  /* eslint-disable react/require-default-props */
+  primaryButton: ButtonProp,
   secondaryButton: ButtonProp,
 };
 export default PrimarySecondaryOptions;
