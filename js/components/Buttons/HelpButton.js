@@ -1,26 +1,41 @@
 import React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 import PropTypes from 'prop-types';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import SecondaryButton from './SecondaryButton';
-import { colors } from '../../styles';
+import { Ionicons } from '@expo/vector-icons';
+import { colors, textStyles } from '../../styles';
 
-const HelpButton = ({ title, onPress }) => (
-  <View style={{ paddingBottom: 8, flexDirection: 'row' }}>
-    <View style={{ paddingVertical: 6 }}>
-      <MaterialCommunityIcons
-        name="help-circle"
-        size={22}
-        color={colors.primary}
-      />
-    </View>
-    <SecondaryButton title={title} onPress={onPress} alignRight />
-  </View>
+const HelpButton = ({ title, onPress, centered }) => (
+  <TouchableOpacity
+    style={[
+      {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingBottom: 10,
+      },
+      centered && { justifyContent: 'center' },
+    ]}
+    onPress={onPress}
+  >
+    <Ionicons
+      name="ios-help-circle"
+      color={colors.primary}
+      size={20}
+      style={{ paddingTop: 2 }}
+    />
+    <Text style={[textStyles.h3, { paddingLeft: 4, color: colors.primary }]}>
+      {title}
+    </Text>
+  </TouchableOpacity>
 );
 
 HelpButton.propTypes = {
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
+  centered: PropTypes.bool,
+};
+
+HelpButton.defaultProps = {
+  centered: false,
 };
 
 export default HelpButton;

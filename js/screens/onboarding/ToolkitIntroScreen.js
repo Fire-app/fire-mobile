@@ -1,10 +1,9 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Feather } from '@expo/vector-icons';
 import routes from '../../navigation/routes';
 import { textStyles, colors } from '../../styles';
 import OnboardingTemplate from './Template';
@@ -18,7 +17,7 @@ const ToolkitTitleInfo = () => {
     <View style={styles.titleContainer}>
       <View style={{ height: 30 }} />
       <View style={styles.alertIconContainer}>
-        <MaterialCommunityIcons name="alert-outline" style={styles.alertIcon} />
+        <Feather name="alert-triangle" style={styles.alertIcon} />
       </View>
       <View style={{ height: 30 }} />
       <OnboardingTitle
@@ -35,7 +34,7 @@ const ToolkitTitleInfo = () => {
 const ToolkitInfoSection = ({ title, subtitle, iconName }) => {
   return (
     <View style={styles.infoContainer}>
-      <MaterialCommunityIcons name={iconName} style={styles.infoIcon} />
+      <Feather name={iconName} style={styles.infoIcon} />
       <View style={{ flex: 1, paddingRight: 10 }}>
         <Text style={[textStyles.h5, styles.infoTitle]}>{title}</Text>
         <Text style={textStyles.body1}>{subtitle}</Text>
@@ -72,12 +71,12 @@ const ToolkitIntroScreen = ({ navigation }) => {
         <ToolkitInfoSection
           title={t('emergency_hotline')}
           subtitle={t('emergency_hotline_note')}
-          iconName="phone-outline"
+          iconName="phone"
         />
         <ToolkitInfoSection
           title={t('rights_card')}
           subtitle={t('rights_card_note')}
-          iconName="credit-card-outline"
+          iconName="credit-card"
         />
       </ScrollView>
     </OnboardingTemplate>

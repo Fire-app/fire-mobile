@@ -67,10 +67,6 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     color: colors.charcoalGrey,
   },
-  noAttorney: {
-    alignItems: 'flex-end',
-    paddingRight: 10,
-  },
   errorText: {
     color: 'red',
     fontSize: 14,

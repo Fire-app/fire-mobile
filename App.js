@@ -15,22 +15,35 @@ import {
 } from '@expo-google-fonts/roboto';
 
 import { Provider as ReduxProvider } from 'react-redux';
-import { FontAwesome } from '@expo/vector-icons';
+import {
+  Ionicons,
+  Feather,
+  MaterialCommunityIcons,
+  FontAwesome,
+} from '@expo/vector-icons';
 
 import { PersistGate } from 'redux-persist/integration/react';
 import { registerForPushNotificationsAsync } from './push-notifications';
 import createPersistedStore from './js/store/createPersistedStore';
 import Navigation from './js/navigation';
-import './js/config'; // Load our build time configs
+import { initialize as initializeSentry } from './js/diagnostics/sentry';
+import './js/config';
 
-const welcomeImage = require('./assets/welcomeImage.png');
-const completeImage = require('./assets/completedImage.png');
+initializeSentry(); // Load our build time configs
+
+const illustration1 = require('./assets/illustration1.png');
+const illustration2 = require('./assets/illustration2.png');
 const chirlaLogo = require('./assets/chirlaLogo.png');
 
 // Assets we need to load before app starts:
-const iconFonts = [FontAwesome.font];
+const iconFonts = [
+  Ionicons.font,
+  Feather.font,
+  MaterialCommunityIcons.font,
+  FontAwesome.font,
+];
 const textFonts = [];
-const localImages = [welcomeImage, completeImage, chirlaLogo]; // Ensure that you add all images here! Otherwise they flicker on load!
+const localImages = [illustration1, illustration2, chirlaLogo]; // Ensure that you add all images here! Otherwise they flicker on load!
 
 function cacheLocalImages() {
   return localImages.map((image) => Asset.fromModule(image).downloadAsync());

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { Row, Divider } from '../../components/SettingsSelector';
@@ -9,7 +9,10 @@ const EmergencyToolkitScreen = ({ navigation }) => {
   const { t } = useTranslation();
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      alwaysBounceVertical={false}
+      contentContainerStyle={styles.container}
+    >
       <Divider />
       <Row
         title={t('privacy_policy')}
@@ -31,7 +34,7 @@ const EmergencyToolkitScreen = ({ navigation }) => {
         onPress={() => navigation.navigate(routes.settings.acknowledgements)}
       />
       <Divider />
-    </View>
+    </ScrollView>
   );
 };
 
@@ -45,7 +48,7 @@ export default EmergencyToolkitScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: 'white',
   },
 });
