@@ -22,7 +22,7 @@ import {
 } from '@expo/vector-icons';
 
 import { PersistGate } from 'redux-persist/integration/react';
-
+import { RegisterForPushNotificationsAsync } from './push-notifications';
 import createPersistedStore from './js/store/createPersistedStore';
 import Navigation from './js/navigation';
 import { initialize as initializeSentry } from './js/diagnostics/sentry';
@@ -62,9 +62,6 @@ async function loadAssetsAsync() {
 const { store, persistor } = createPersistedStore();
 
 const App = () => {
-  const [assetsLoaded, setAssetsLoaded] = useState(false);
-  // If application has an online step, that can occur here too, as a redux action.
-
   const googleFontsLoaded = useFonts({
     Roboto_400Regular,
     Roboto_500Medium,
@@ -72,6 +69,17 @@ const App = () => {
     Roboto_900Black,
   });
 
+  const [isInitialRender, setIsInitialRender] = useState(false);
+
+  useEffect(() => {
+    if (!isInitialRender) {
+      setIsInitialRender(true);
+      RegisterForPushNotificationsAsync();
+    }
+  }, [isInitialRender, setIsInitialRender]);
+
+  const [assetsLoaded, setAssetsLoaded] = useState(false);
+  // If application has an online step, that can occur here too, as a redux action.
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
     StatusBar.setBarStyle('light-content');
