@@ -7,7 +7,6 @@ import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 
 export const sendTokenToBackend = (_token) => {
-  console.log('insideSendTokenToBackend');
   fetch('https://fire-app-web.herokuapp.com/send-token', {
     method: 'POST', // or 'PUT'
     headers: {
@@ -19,14 +18,16 @@ export const sendTokenToBackend = (_token) => {
   })
     .then((response) => response.json())
     .then((res) => {
+      // eslint-disable-next-line no-console
       console.log(res);
     })
     .catch((err) => {
+      // eslint-disable-next-line no-console
       console.log(err);
     });
 };
 
-export default RegisterForPushNotificationsAsync = async () => {
+export const RegisterForPushNotificationsAsync = async () => {
   if (Constants.isDevice) {
     const { status: existingStatus } = await Permissions.getAsync(
       Permissions.NOTIFICATIONS

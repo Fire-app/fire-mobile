@@ -23,7 +23,7 @@ import {
 } from '@expo/vector-icons';
 
 import { PersistGate } from 'redux-persist/integration/react';
-import RegisterForPushNotificationsAsync from './push-notifications';
+import { RegisterForPushNotificationsAsync } from './push-notifications';
 import createPersistedStore from './js/store/createPersistedStore';
 import Navigation from './js/navigation';
 import { initialize as initializeSentry } from './js/diagnostics/sentry';
