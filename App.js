@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect, useState } from "react";
-import { StatusBar } from "react-native";
-import { SplashScreen as SplashScreenUtils } from "expo";
-import { Asset } from "expo-asset";
-import * as Font from "expo-font";
+import React, { useEffect, useState } from 'react';
+import { StatusBar } from 'react-native';
+import { SplashScreen as SplashScreenUtils } from 'expo';
+import { Asset } from 'expo-asset';
+import * as Font from 'expo-font';
 import {
   useFonts,
   /* eslint-disable camelcase */
@@ -12,28 +12,28 @@ import {
   Roboto_700Bold,
   Roboto_900Black,
   /* eslint-enable camelcase */
-} from "@expo-google-fonts/roboto";
+} from '@expo-google-fonts/roboto';
 
-import { Provider as ReduxProvider } from "react-redux";
+import { Provider as ReduxProvider } from 'react-redux';
 import {
   Ionicons,
   Feather,
   MaterialCommunityIcons,
   FontAwesome,
-} from "@expo/vector-icons";
+} from '@expo/vector-icons';
 
-import { PersistGate } from "redux-persist/integration/react";
-import RegisterForPushNotificationsAsync from "./push-notifications";
-import createPersistedStore from "./js/store/createPersistedStore";
-import Navigation from "./js/navigation";
-import { initialize as initializeSentry } from "./js/diagnostics/sentry";
-import "./js/config";
+import { PersistGate } from 'redux-persist/integration/react';
+import RegisterForPushNotificationsAsync from './push-notifications';
+import createPersistedStore from './js/store/createPersistedStore';
+import Navigation from './js/navigation';
+import { initialize as initializeSentry } from './js/diagnostics/sentry';
+import './js/config';
 
 initializeSentry(); // Load our build time configs
 
-const illustration1 = require("./assets/illustration1.png");
-const illustration2 = require("./assets/illustration2.png");
-const chirlaLogo = require("./assets/chirlaLogo.png");
+const illustration1 = require('./assets/illustration1.png');
+const illustration2 = require('./assets/illustration2.png');
+const chirlaLogo = require('./assets/chirlaLogo.png');
 
 // Assets we need to load before app starts:
 const iconFonts = [
@@ -83,7 +83,7 @@ const App = () => {
   // If application has an online step, that can occur here too, as a redux action.
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
-    StatusBar.setBarStyle("light-content");
+    StatusBar.setBarStyle('light-content');
     SplashScreenUtils.preventAutoHide();
     loadAssetsAsync().then(() => {
       setAssetsLoaded(true);

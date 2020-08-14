@@ -1,17 +1,17 @@
 /* eslint-disable no-underscore-dangle */
-import { Vibration, Platform, Alert } from "react-native";
+import { Vibration, Platform, Alert } from 'react-native';
 
-import { Notifications } from "expo";
+import { Notifications } from 'expo';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import * as Permissions from "expo-permissions";
-import Constants from "expo-constants";
+import * as Permissions from 'expo-permissions';
+import Constants from 'expo-constants';
 
 export const sendTokenToBackend = (_token) => {
-  console.log("insideSendTokenToBackend");
-  fetch("https://fire-app-web.herokuapp.com/send-token", {
-    method: "POST", // or 'PUT'
+  console.log('insideSendTokenToBackend');
+  fetch('https://fire-app-web.herokuapp.com/send-token', {
+    method: 'POST', // or 'PUT'
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       token: _token,
@@ -32,26 +32,26 @@ export default RegisterForPushNotificationsAsync = async () => {
       Permissions.NOTIFICATIONS
     );
     let finalStatus = existingStatus;
-    if (existingStatus !== "granted") {
+    if (existingStatus !== 'granted') {
       const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
       finalStatus = status;
     }
-    if (finalStatus !== "granted") {
-      Alert.alert("Failed to get push token for push notification!");
+    if (finalStatus !== 'granted') {
+      Alert.alert('Failed to get push token for push notification!');
       return;
     }
     const token = await Notifications.getExpoPushTokenAsync();
     // send post request to store token in backend
     sendTokenToBackend(token);
   } else {
-    Alert.alert("Must use physical device for Push Notifications");
+    Alert.alert('Must use physical device for Push Notifications');
   }
 
-  if (Platform.OS === "android") {
-    Notifications.createChannelAndroidAsync("default", {
-      name: "default",
+  if (Platform.OS === 'android') {
+    Notifications.createChannelAndroidAsync('default', {
+      name: 'default',
       sound: true,
-      priority: "max",
+      priority: 'max',
       vibrate: [0, 250, 250, 250],
     });
   }
