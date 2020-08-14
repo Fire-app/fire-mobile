@@ -26,10 +26,10 @@ import { PersistGate } from "redux-persist/integration/react";
 import RegisterForPushNotificationsAsync from "./push-notifications";
 import createPersistedStore from "./js/store/createPersistedStore";
 import Navigation from "./js/navigation";
-// import { initialize as initializeSentry } from './js/diagnostics/sentry';
+import { initialize as initializeSentry } from "./js/diagnostics/sentry";
 import "./js/config";
 
-// initializeSentry(); // Load our build time configs
+initializeSentry(); // Load our build time configs
 
 const illustration1 = require("./assets/illustration1.png");
 const illustration2 = require("./assets/illustration2.png");
