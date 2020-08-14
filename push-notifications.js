@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import { Vibration, Platform, Alert } from 'react-native';
 
 import { Notifications } from 'expo';
@@ -63,6 +62,6 @@ export const handleNotification = (_notification) => {
   Vibration.vibrate();
 };
 
-export const _notificationSubscription = Notifications.addListener(
+export const notificationSubscription = Notifications.addListener(
   handleNotification
 );
