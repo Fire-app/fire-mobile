@@ -27,7 +27,9 @@ const AttorneyScreen = ({ navigation }) => {
   const savedNumber = useSelector((state) => state.settings.attorneyNumber);
 
   const [name, setName] = useState(savedName || '');
-  const [number, setNumber] = useState(getFormatted(savedNumber) || '');
+  const [number, setNumber] = useState(
+    savedNumber ? getFormatted(savedNumber) : ''
+  );
 
   const setFormattedNumber = (_number) => {
     setNumber(getFormatted(_number));
