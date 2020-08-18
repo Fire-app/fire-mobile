@@ -1,12 +1,11 @@
 /* eslint-disable no-console */
 import * as Sentry from 'sentry-expo';
-import { SENTRY_DSN } from 'react-native-dotenv';
 import Constants from 'expo-constants';
 import { getReleaseChannel } from '../util/versionInfo';
 
 export function initialize() {
   Sentry.init({
-    dsn: SENTRY_DSN,
+    dsn: Constants.manifest.extra.SENTRY_DSN,
     enableInExpoDevelopment: true,
     debug: true,
   });
