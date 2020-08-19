@@ -102,6 +102,9 @@ const styles = StyleSheet.create({
   alertIconContainer: {
     backgroundColor: colors.primary,
     borderRadius: 30,
+    aspectRatio: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 12,
   },
   alertIcon: {
