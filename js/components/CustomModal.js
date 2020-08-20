@@ -6,8 +6,6 @@ import {
   StyleSheet,
   Modal,
   KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
   ScrollView,
   Platform,
   ViewPropTypes,
@@ -26,25 +24,17 @@ const CustomModal = ({
       style={{ flexGrow: 1 }}
       behavior={Platform.OS === 'ios' ? 'padding' : null}
     >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={{ flex: 1 }}>
-          <ScrollView
-            alwaysBounceVertical={false}
-            style={{ flex: 1 }}
-            contentContainerStyle={{ flexGrow: 1 }}
-          >
-            <View style={styles.modalContainer}>
-              <View style={[styles.contentContainer, contentContainerStyle]}>
-                {children}
-                <PrimarySecondaryOptions
-                  primaryButton={primaryButton}
-                  secondaryButton={secondaryButton}
-                />
-              </View>
-            </View>
+      <View style={styles.modalContainer}>
+        <View style={[styles.contentContainer, contentContainerStyle]}>
+          <ScrollView alwaysBounceVertical={false} style={{ flexGrow: 1 }}>
+            {children}
+            <PrimarySecondaryOptions
+              primaryButton={primaryButton}
+              secondaryButton={secondaryButton}
+            />
           </ScrollView>
         </View>
-      </TouchableWithoutFeedback>
+      </View>
     </KeyboardAvoidingView>
   </Modal>
 );
@@ -62,21 +52,19 @@ export default CustomModal;
 
 const styles = StyleSheet.create({
   modalContainer: {
+    flex: 1,
     padding: 28,
     backgroundColor: '#00000080',
     alignItems: 'center',
     justifyContent: 'center',
-    // explicitly defined to be full screen without flex
-    width: '100%',
-    height: '100%',
   },
   contentContainer: {
+    maxHeight: '90%',
     width: '100%',
     paddingHorizontal: 30,
     paddingVertical: 30,
     justifyContent: 'center',
     backgroundColor: 'white',
     borderRadius: 3,
-    position: 'absolute',
   },
 });
