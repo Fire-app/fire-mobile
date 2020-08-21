@@ -1,9 +1,26 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
-import { SocialIcon } from 'react-native-elements';
+import { View, TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 import * as WebBrowser from 'expo-web-browser';
+import { colors } from '../../styles';
+
+const Socials = ({ onPress, iconName }) => {
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      style={{ paddingHorizontal: 10, paddingVertical: 5 }}
+    >
+      <Feather name={iconName} size={25} color={colors.primary} />
+    </TouchableOpacity>
+  );
+};
+
+Socials.propTypes = {
+  onPress: PropTypes.func.isRequired,
+  iconName: PropTypes.string.isRequired,
+};
 
 export default function ResourcesSocials({
   facebookUrl,
@@ -24,27 +41,27 @@ export default function ResourcesSocials({
       }}
     >
       {facebookUrl ? (
-        <SocialIcon
-          type="facebook"
+        <Socials
           onPress={() => WebBrowser.openBrowserAsync(facebookUrl)}
+          iconName="facebook"
         />
       ) : null}
       {instagramUrl ? (
-        <SocialIcon
-          type="instagram"
+        <Socials
           onPress={() => WebBrowser.openBrowserAsync(instagramUrl)}
+          iconName="instagram"
         />
       ) : null}
       {twitterUrl ? (
-        <SocialIcon
-          type="twitter"
+        <Socials
           onPress={() => WebBrowser.openBrowserAsync(twitterUrl)}
+          iconName="twitter"
         />
       ) : null}
       {youtubeUrl ? (
-        <SocialIcon
-          type="youtube"
+        <Socials
           onPress={() => WebBrowser.openBrowserAsync(youtubeUrl)}
+          iconName="youtube"
         />
       ) : null}
     </View>

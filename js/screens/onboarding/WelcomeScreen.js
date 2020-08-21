@@ -61,10 +61,6 @@ const WelcomeScreen = ({ navigation }) => {
         title: t('continue'),
         onPress: () => navigation.navigate(onboardingRoutes.intro),
       }}
-      secondaryButton={{
-        title: t('not_over_13'),
-        onPress: () => navigation.pop(),
-      }}
     >
       <ScrollView
         alwaysBounceVertical={false}

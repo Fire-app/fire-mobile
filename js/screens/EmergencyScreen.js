@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import call from 'react-native-phone-call';
@@ -28,54 +34,55 @@ export default function EmergencyScreen({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1 }}>
-        <TouchableOpacity
-          style={{ alignSelf: 'flex-start', paddingLeft: 20, paddingTop: 12 }}
-          onPress={navigation.goBack}
-        >
-          <MaterialCommunityIcons
-            name="close"
-            color={colors.charcoalGrey}
-            size={32}
-          />
-        </TouchableOpacity>
-        <View style={{ flexGrow: 1 }} />
-
-        <View style={{ paddingHorizontal: 56 }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+          <TouchableOpacity
+            style={{ alignSelf: 'flex-start', paddingLeft: 20, paddingTop: 12 }}
+            onPress={navigation.goBack}
           >
-            <Feather
-              name="alert-triangle"
-              color={colors.primary}
+            <MaterialCommunityIcons
+              name="close"
+              color={colors.charcoalGrey}
               size={32}
-              style={{ paddingTop: 3, paddingRight: 6 }}
             />
-            <Text style={textStyles.h1}>{t('emergency_toolkit')}</Text>
+          </TouchableOpacity>
+          <View style={{ flexGrow: 1 }} />
+          <View style={{ paddingHorizontal: 56 }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Feather
+                name="alert-triangle"
+                color={colors.primary}
+                size={32}
+                style={{ paddingTop: 3, paddingRight: 6 }}
+              />
+              <Text style={textStyles.h1}>{t('emergency_toolkit')}</Text>
+            </View>
+            <View style={{ paddingTop: 12 }}>
+              <PrimaryButton
+                title={t('emergency_hotline')}
+                onPress={() => call(phoneNum)}
+                darkMode
+              />
+              <PrimaryButton
+                title={t('rights_card')}
+                onPress={() => setRightsCardVisible(!RightsCardVisible)}
+                darkMode
+              />
+            </View>
           </View>
-          <View style={{ paddingTop: 12 }}>
-            <PrimaryButton
-              title={t('emergency_hotline')}
-              onPress={() => call(phoneNum)}
-              darkMode
-            />
-            <PrimaryButton
-              title={t('rights_card')}
-              onPress={() => setRightsCardVisible(!RightsCardVisible)}
-              darkMode
-            />
-          </View>
-        </View>
-        <View style={{ flexGrow: 1, maxHeight: 100 }} />
-        <HelpButton
-          title={t('rights_card_what_is_this')}
-          onPress={() => setInfoModalVisible(!InfoModalVisible)}
-          centered
-        />
-        <View style={{ flexGrow: 1 }} />
+          <View style={{ flexGrow: 1, maxHeight: 100 }} />
+          <HelpButton
+            title={t('rights_card_what_is_this')}
+            onPress={() => setInfoModalVisible(!InfoModalVisible)}
+            centered
+          />
+          <View style={{ flexGrow: 1 }} />
+        </ScrollView>
 
         {/* ABSOLUTE MODALS */}
         <InfoModal
