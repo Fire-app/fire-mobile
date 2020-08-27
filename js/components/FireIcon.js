@@ -4,7 +4,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { MaterialCommunityIcons, Feather, Ionicons } from '@expo/vector-icons';
+import {
+  MaterialCommunityIcons,
+  Feather,
+  Ionicons,
+  FontAwesome,
+} from '@expo/vector-icons';
 import { colors } from '../styles';
 
 const FireIcon = ({ name, size, color, style, raised }) => {
@@ -71,10 +76,15 @@ const MATERIAL_ICONS = {
   CLOSE: 'close',
 };
 
+const FONT_AWESOME = {
+  EXCLAMATION: 'exclamation',
+};
+
 export const ICON_NAMES = {
   ...FEATHER_ICONS,
   ...ION_NAMES,
   ...MATERIAL_ICONS,
+  ...FONT_AWESOME,
 };
 
 const iconNamesToFamilyComponent = (name) => {
@@ -83,6 +93,8 @@ const iconNamesToFamilyComponent = (name) => {
   if (Object.values(MATERIAL_ICONS).find(hasName))
     return MaterialCommunityIcons;
   if (Object.values(ION_NAMES).find(hasName)) return Ionicons;
+  if (Object.values(FONT_AWESOME).find(hasName)) return FontAwesome;
+
   throw new Error(`Cannot find icon component for icon: '${name}'`);
 };
 
