@@ -6,26 +6,6 @@ import React from 'react';
 import { colors, textStyles } from '../styles';
 import FireIcon, { IconNamePropType, ICON_NAMES } from './FireIcon';
 
-const SettingsIcon = ({ iconName }) => (
-  <View
-    style={{
-      alignItems: 'center',
-      backgroundColor: colors.primaryLight,
-      borderRadius: 34,
-      height: 34,
-      justifyContent: 'center',
-      marginRight: 8,
-      width: 34,
-    }}
-  >
-    <FireIcon color={colors.primary} name={iconName} size={24} />
-  </View>
-);
-
-SettingsIcon.propTypes = {
-  iconName: IconNamePropType.isRequired,
-};
-
 export const Divider = () => (
   <View
     style={{
@@ -47,8 +27,12 @@ export const Row = ({ iconName, title, onPress }) => (
       }}
     >
       <View style={{ alignItems: 'center', flex: 1, flexDirection: 'row' }}>
-        {iconName && <SettingsIcon iconName={iconName} />}
-        <Text style={[textStyles.h5, { flex: 1 }]}>{title}</Text>
+        {iconName && (
+          <FireIcon color={colors.primary} name={iconName} raised size={24} />
+        )}
+        <Text style={[textStyles.h5, { flex: 1, paddingLeft: 12 }]}>
+          {title}
+        </Text>
       </View>
       <FireIcon
         color={colors.primary}
