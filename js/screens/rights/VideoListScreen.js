@@ -7,9 +7,7 @@ import textStyles from '../../styles/textStyles';
 import VIDEOS from '../../../data/videos';
 import colors from '../../styles/colors';
 
-const KNOW_YOUR_RIGHTS_IMAGE = require('../../../assets/videoCoverImages/know_your_rights.png');
-
-const VideoCard = ({ title, time, onPress, coverImage }) => (
+const VideoCard = ({ title, time, onPress, image }) => (
   <Card onPress={onPress}>
     <View style={{ flex: 1, flexDirection: 'row' }}>
       <View
@@ -19,7 +17,7 @@ const VideoCard = ({ title, time, onPress, coverImage }) => (
         }}
       >
         <Image
-          source={coverImage}
+          source={image}
           // Need to use absolute + percent for images to contain properly
           style={{ height: 80, width: '100%' }}
           resizeMode="contain"
@@ -41,7 +39,7 @@ VideoCard.propTypes = {
   title: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
-  coverImage: Image.propTypes.source.isRequired,
+  image: Image.propTypes.source.isRequired,
 };
 
 const VideoListScreen = () => {
@@ -55,9 +53,8 @@ const VideoListScreen = () => {
       renderItem={({ item: { title, image, time } }) => (
         <VideoCard
           title={t(title)}
-          image={image}
           // TODO: image per video, or thumbnail
-          coverImage={KNOW_YOUR_RIGHTS_IMAGE}
+          image={image}
           time={time}
           onPress={() => {}}
         />
