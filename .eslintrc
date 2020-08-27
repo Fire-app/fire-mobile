@@ -5,6 +5,7 @@
       "prettier/react"
     ],
     "rules": {
+      "no-restricted-imports": ["error", { "paths": ["@expo/vector-icons"] }],
       "react/jsx-filename-extension": [
         1,
         {
