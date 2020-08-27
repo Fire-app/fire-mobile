@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native';
-import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFormatted } from '../../util/phoneNumber';
-import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
-import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
-import routes from '../../navigation/routes';
-import OnboardingTitle from '../../components/OnboardingTitle';
-import { SecondaryButton } from '../../components/Buttons';
-import AttorneyForm from '../../components/AttorneyForm';
-import CustomModal from '../../components/CustomModal';
-import ModalContent from '../../components/ModalContent';
-import OnboardingTemplate from './Template';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import {
   DEFAULT_ATTORNEY,
   DEFAULT_NUMBER,
 } from '../../../data/attorneyOptions';
+import { SecondaryButton } from '../../components/Buttons';
+import { getFormatted } from '../../util/phoneNumber';
+import AttorneyForm from '../../components/AttorneyForm';
+import CustomModal from '../../components/CustomModal';
+import ModalContent from '../../components/ModalContent';
+import OnboardingTemplate from './Template';
+import OnboardingTitle from '../../components/OnboardingTitle';
+import routes from '../../navigation/routes';
+import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
+import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -57,55 +57,55 @@ const AttorneyScreen = ({ navigation }) => {
     <OnboardingTemplate
       keyboardAvoiding
       primaryButton={{
-        title: t('finish'),
-        onPress: onSubmit,
         disabled: nameIsInvalid || numberIsInvalid,
+        onPress: onSubmit,
+        title: t('finish'),
       }}
       secondaryButton={{
-        title: t('back'),
         onPress: () => navigation.pop(),
+        title: t('back'),
       }}
     >
       <ScrollView
         alwaysBounceVertical={false}
-        style={{ flex: 1 }}
         contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
+        style={{ flex: 1 }}
       >
         <OnboardingTitle
-          title={t('select_attorney')}
           subtitle={t('select_attorney_subtitle')}
+          title={t('select_attorney')}
         />
         <AttorneyForm
           name={name}
-          setName={setName}
-          number={number}
-          setNumber={setFormattedNumber}
           nameIsInvalid={nameIsInvalid}
-          setNameIsInvalid={setNameIsInvalid}
+          number={number}
           numberIsInvalid={numberIsInvalid}
+          setName={setName}
+          setNameIsInvalid={setNameIsInvalid}
+          setNumber={setFormattedNumber}
           setNumberIsInvalid={setNumberIsInvalid}
         />
         <SecondaryButton
-          title={t('no_attorney')}
-          onPress={() => setModalVisible(true)}
           alignRight
+          onPress={() => setModalVisible(true)}
+          title={t('no_attorney')}
         />
 
         <CustomModal
+          buttonTitle={t('no_attorney')}
           isVisible={modalVisible}
           primaryButton={{
-            title: t('use_chirla'),
             onPress: onModalSubmit,
+            title: t('use_chirla'),
           }}
           secondaryButton={{
-            title: t('cancel'),
             onPress: () => setModalVisible(false),
+            title: t('cancel'),
           }}
-          buttonTitle={t('no_attorney')}
         >
           <ModalContent
-            title={t('attorney_default_title')}
             subtitle={t('attorney_default_subtitle')}
+            title={t('attorney_default_title')}
           />
         </CustomModal>
       </ScrollView>

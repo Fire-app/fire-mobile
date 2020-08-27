@@ -1,12 +1,12 @@
-/* eslint-disable global-require */
-import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import routes from '../../navigation/routes';
-import { textStyles, colors } from '../../styles';
+import React from 'react';
+import { colors, textStyles } from '../../styles';
 import OnboardingTemplate from './Template';
 import OnboardingTitle from '../../components/OnboardingTitle';
+import routes from '../../navigation/routes';
 
 const IMAGE = require('../../../assets/illustration1.png');
 const LOGO = require('../../../assets/chirlaLogo.png');
@@ -16,19 +16,19 @@ const onboardingRoutes = routes.onboarding;
 const WelcomeInfo = () => {
   const { t } = useTranslation();
   return (
-    <View style={{ paddingTop: 40, paddingHorizontal: 10 }}>
+    <View style={{ paddingHorizontal: 10, paddingTop: 40 }}>
       <OnboardingTitle
-        title={t('welcome_to_fire')}
-        subtitle={t('welcome_message')}
         alignCenter
         paddingHorizontal={20}
         paddingVertical={0}
+        subtitle={t('welcome_message')}
+        title={t('welcome_to_fire')}
       />
       <View style={styles.logoNameContainer}>
         <Image
-          style={styles.logo}
-          source={LOGO}
           accessibilityLabel="CHIRLA Logo"
+          source={LOGO}
+          style={styles.logo}
         />
         <Text style={[textStyles.body2, { padding: 5 }]}>
           {t('a_chirla_project')}
@@ -58,24 +58,24 @@ const WelcomeScreen = ({ navigation }) => {
   return (
     <OnboardingTemplate
       primaryButton={{
-        title: t('continue'),
         onPress: () => navigation.navigate(onboardingRoutes.intro),
+        title: t('continue'),
       }}
     >
       <ScrollView
         alwaysBounceVertical={false}
         contentContainerStyle={{
-          justifyContent: 'space-around',
           flexGrow: 1,
+          justifyContent: 'space-around',
         }}
       >
         <WelcomeInfo />
         <LegalInfo />
         <View style={{ paddingBottom: 10, paddingTop: 30 }}>
           <Image
-            style={styles.image}
-            source={IMAGE}
             accessibilityLabel="Illustration"
+            source={IMAGE}
+            style={styles.image}
           />
         </View>
       </ScrollView>
@@ -94,29 +94,29 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   image: {
-    height: 210,
-    width: 320,
     alignSelf: 'center',
+    height: 210,
     resizeMode: 'cover',
+    width: 320,
   },
   legalInfoContainer: {
-    borderRadius: 3,
     backgroundColor: colors.border,
-    paddingVertical: 20,
-    paddingHorizontal: 30,
+    borderRadius: 3,
     marginBottom: 10,
+    paddingHorizontal: 30,
+    paddingVertical: 20,
   },
   legalText: {
-    textAlign: 'center',
     paddingHorizontal: 5,
+    textAlign: 'center',
+  },
+  logo: {
+    height: 25,
+    width: 25,
   },
   logoNameContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     paddingTop: 20,
-  },
-  logo: {
-    height: 25,
-    width: 25,
   },
 });

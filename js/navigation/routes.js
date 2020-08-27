@@ -1,67 +1,67 @@
 const routes = {
-  onboardingStack: 'ONBOARDING',
-  onboarding: {
-    language: 'ONBOARDING_LANGUAGE',
-    welcome: 'ONBOARDING_WELCOME',
-    intro: 'ONBOARDING_INTRO',
-    toolkitIntro: 'ONBOARDING_TOOLKIT_INTRO',
-    hotline: 'ONBOARDING_HOTLINE',
-    attorney: 'ONBOARDING_ATTORNEY',
-    complete: 'ONBOARDING_COMPLETE',
-  },
-
-  mainTabs: 'MAIN_TABS',
+  emergencyModal: 'EMERGENCY_MODAL',
   main: {
+    emergency: 'TAB_EMERGENCY',
     resources: 'TAB_RESOURCES',
     rights: 'TAB_RIGHTS',
     settings: 'TAB_SETTINGS',
-    emergency: 'TAB_EMERGENCY',
   },
 
-  settingsStack: 'SETTINGS_STACK',
-  settings: {
-    overview: 'SETTINGS_OVERVIEW',
-    language: 'SETTINGS_LANGUAGE',
-    toolkit: 'SETTINGS_TOOLKIT',
-    hotline: 'SETTINGS_HOTLINE',
-    rights_card: 'SETTINGS_RIGHTS_CARD',
-    about: 'SETTINGS_ABOUT',
-    privacy_policy: 'SETTINGS_PRIVACY_POLICY',
-    terms_of_service: 'SETTINGS_TERMS_OF_SERVICE',
-    acknowledgements: 'SETTINGS_ACKNOWLEDGEMENTS',
-    partners: 'SETTINGS_PARTNERS',
+  mainTabs: 'MAIN_TABS',
+  onboarding: {
+    attorney: 'ONBOARDING_ATTORNEY',
+    complete: 'ONBOARDING_COMPLETE',
+    hotline: 'ONBOARDING_HOTLINE',
+    intro: 'ONBOARDING_INTRO',
+    language: 'ONBOARDING_LANGUAGE',
+    toolkitIntro: 'ONBOARDING_TOOLKIT_INTRO',
+    welcome: 'ONBOARDING_WELCOME',
   },
 
-  rightsStack: 'RIGHTS_STACK',
+  onboardingStack: 'ONBOARDING',
+  resources: {
+    details: 'RESOURCES_DETAILS',
+    overviewList: 'RESOURCES_LIST',
+  },
+
+  resourcesStack: 'RESOURCES_STACK',
   rights: {
     overviewList: 'RIGHTS_LIST',
   },
-  videos: {
-    overviewList: 'VIDEOS_LIST',
-    cases: {},
-  },
+  rightsStack: 'RIGHTS_STACK',
 
   scenarios: {
-    overviewList: 'SCENARIOS_LIST',
-    homeOverview: 'SCENARIOS_HOME',
     cases: {
+      driving: 'SCENARIOS__DRIVING',
+      homeArrest: 'SCENARIOS__HOME_ARREST',
       insideHome: 'SCENARIOS__INSIDE_HOME',
       outsideHome: 'SCENARIOS__OUTSIDE_HOME',
-      homeArrest: 'SCENARIOS__HOME_ARREST',
-      driving: 'SCENARIOS__DRIVING',
       publicTransport: 'SCENARIOS__PUBLIC_TRANSPORT',
       street: 'SCENARIOS_STREET',
       work: 'SCENARIOS__WORK',
     },
+    homeOverview: 'SCENARIOS_HOME',
+    overviewList: 'SCENARIOS_LIST',
   },
 
-  resourcesStack: 'RESOURCES_STACK',
-  resources: {
-    overviewList: 'RESOURCES_LIST',
-    details: 'RESOURCES_DETAILS',
+  settings: {
+    about: 'SETTINGS_ABOUT',
+    acknowledgements: 'SETTINGS_ACKNOWLEDGEMENTS',
+    hotline: 'SETTINGS_HOTLINE',
+    language: 'SETTINGS_LANGUAGE',
+    overview: 'SETTINGS_OVERVIEW',
+    partners: 'SETTINGS_PARTNERS',
+    privacy_policy: 'SETTINGS_PRIVACY_POLICY',
+    rights_card: 'SETTINGS_RIGHTS_CARD',
+    terms_of_service: 'SETTINGS_TERMS_OF_SERVICE',
+    toolkit: 'SETTINGS_TOOLKIT',
   },
+  settingsStack: 'SETTINGS_STACK',
 
-  emergencyModal: 'EMERGENCY_MODAL',
+  videos: {
+    cases: {},
+    overviewList: 'VIDEOS_LIST',
+  },
 };
 
 export default routes;

@@ -1,28 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View, StyleSheet, Text } from 'react-native';
 import { Feather, Ionicons } from '@expo/vector-icons';
+import { StyleSheet, Text, View } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { FEATHER, IconProp } from '../../data/fontFamilies';
 
-import { textStyles, colors } from '../styles';
+import { colors, textStyles } from '../styles';
 
 const SettingsIcon = ({ icon }) => (
   <View
     style={{
-      height: 34,
-      width: 34,
-      borderRadius: 34,
       alignItems: 'center',
-      justifyContent: 'center',
       backgroundColor: colors.primaryLight,
+      borderRadius: 34,
+      height: 34,
+      justifyContent: 'center',
       marginRight: 8,
+      width: 34,
     }}
   >
     {icon.family === FEATHER ? (
-      <Feather name={icon.name} size={24} color={colors.primary} />
+      <Feather color={colors.primary} name={icon.name} size={24} />
     ) : (
-      <Ionicons name={icon.name} size={24} color={colors.primary} />
+      <Ionicons color={colors.primary} name={icon.name} size={24} />
     )}
   </View>
 );
@@ -41,30 +41,32 @@ export const Divider = () => (
 );
 
 export const Row = ({ hasIcon, icon, title, onPress }) => (
-  <TouchableHighlight underlayColor={colors.primaryLight} onPress={onPress}>
+  <TouchableHighlight onPress={onPress} underlayColor={colors.primaryLight}>
     <View
       style={{
-        flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 14,
-        paddingHorizontal: 24,
+        flexDirection: 'row',
         justifyContent: 'space-between',
+        paddingHorizontal: 24,
+        paddingVertical: 14,
       }}
     >
-      <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+      <View style={{ alignItems: 'center', flex: 1, flexDirection: 'row' }}>
         {hasIcon && <SettingsIcon icon={icon} />}
         <Text style={[textStyles.h5, { flex: 1 }]}>{title}</Text>
       </View>
-      <Feather name="chevron-right" size={34} color={colors.primary} />
+      <Feather color={colors.primary} name="chevron-right" size={34} />
     </View>
   </TouchableHighlight>
 );
 Row.propTypes = {
-  title: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
   hasIcon: PropTypes.bool,
-  // eslint-disable-next-line react/require-default-props
+
   icon: IconProp,
+
+  onPress: PropTypes.func.isRequired,
+
+  title: PropTypes.string.isRequired,
 };
 
 Row.defaultProps = {

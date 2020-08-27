@@ -1,11 +1,11 @@
-import React from 'react';
-import { StyleSheet, Text, FlatList, View, Image } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import React from 'react';
 import Card from '../../components/Card';
-import textStyles from '../../styles/textStyles';
 import VIDEOS from '../../../data/videos';
 import colors from '../../styles/colors';
+import textStyles from '../../styles/textStyles';
 
 const KNOW_YOUR_RIGHTS_IMAGE = require('../../../assets/videoCoverImages/know_your_rights.png');
 
@@ -19,10 +19,10 @@ const VideoCard = ({ title, time, onPress, coverImage }) => (
         }}
       >
         <Image
-          source={coverImage}
-          // Need to use absolute + percent for images to contain properly
-          style={{ height: 80, width: '100%' }}
           resizeMode="contain"
+          // Need to use absolute + percent for images to contain properly
+          source={coverImage}
+          style={{ height: 80, width: '100%' }}
         />
       </View>
       <View style={{ flex: 1, justifyContent: 'space-between' }}>
@@ -38,40 +38,40 @@ const VideoCard = ({ title, time, onPress, coverImage }) => (
 );
 
 VideoCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
   coverImage: Image.propTypes.source.isRequired,
+  onPress: PropTypes.func.isRequired,
+  time: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 const VideoListScreen = () => {
   const { t } = useTranslation();
   return (
     <FlatList
-      keyExtractor={(_, i) => `${i}`}
-      style={styles.container}
       contentContainerStyle={{ paddingVertical: 24 }}
       data={VIDEOS}
+      ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+      keyExtractor={(_, i) => `${i}`}
       renderItem={({ item: { title, image, time } }) => (
         <VideoCard
-          title={t(title)}
+          coverImage={KNOW_YOUR_RIGHTS_IMAGE}
           image={image}
           // TODO: image per video, or thumbnail
-          coverImage={KNOW_YOUR_RIGHTS_IMAGE}
-          time={time}
           onPress={() => {}}
+          time={time}
+          title={t(title)}
         />
       )}
-      ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+      style={styles.container}
     />
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.backgroundColor,
     flex: 1,
     paddingHorizontal: 24,
-    backgroundColor: colors.backgroundColor,
   },
 });
 

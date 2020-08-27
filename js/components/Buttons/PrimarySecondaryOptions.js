@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import PropTypes from 'prop-types';
+import React from 'react';
 import PrimaryButton from './PrimaryButton';
 import SecondaryButton from './SecondaryButton';
 
@@ -8,11 +8,11 @@ const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
   <View
     style={[
       {
-        paddingHorizontal: 40,
         flexDirection: 'row',
         // If font size scaled up, allow these to wrap with primary button on top
         flexWrap: 'wrap-reverse',
         justifyContent: 'space-between',
+        paddingHorizontal: 40,
       },
       secondaryButton && { paddingHorizontal: 15 },
     ]}
@@ -29,9 +29,9 @@ const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
     {primaryButton && (
       <View style={{ flexGrow: 1 }}>
         <PrimaryButton
-          title={primaryButton.title}
-          onPress={primaryButton.onPress}
           disabled={primaryButton.disabled}
+          onPress={primaryButton.onPress}
+          title={primaryButton.title}
         />
       </View>
     )}
@@ -39,13 +39,12 @@ const PrimarySecondaryOptions = ({ primaryButton, secondaryButton }) => (
 );
 
 export const ButtonProp = PropTypes.shape({
-  title: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
+  onPress: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 });
 
 PrimarySecondaryOptions.propTypes = {
-  /* eslint-disable react/require-default-props */
   primaryButton: ButtonProp,
   secondaryButton: ButtonProp,
 };

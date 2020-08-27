@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { StatusBar } from 'react-native';
-import { SplashScreen as SplashScreenUtils } from 'expo';
-import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
+import { Asset } from 'expo-asset';
 import {
-  useFonts,
   /* eslint-disable camelcase */
   Roboto_400Regular,
   Roboto_500Medium,
   Roboto_700Bold,
   Roboto_900Black,
+  useFonts,
   /* eslint-enable camelcase */
 } from '@expo-google-fonts/roboto';
+import { SplashScreen as SplashScreenUtils } from 'expo';
+import { StatusBar } from 'react-native';
+import React, { useEffect, useState } from 'react';
 
-import { Provider as ReduxProvider } from 'react-redux';
 import {
-  Ionicons,
   Feather,
-  MaterialCommunityIcons,
   FontAwesome,
+  Ionicons,
+  MaterialCommunityIcons,
 } from '@expo/vector-icons';
+import { Provider as ReduxProvider } from 'react-redux';
 
 import { PersistGate } from 'redux-persist/integration/react';
 
-import createPersistedStore from './js/store/createPersistedStore';
-import Navigation from './js/navigation';
-import { initialize as initializeSentry } from './js/diagnostics/sentry';
 import './js/config';
+import { initialize as initializeSentry } from './js/diagnostics/sentry';
+import Navigation from './js/navigation';
+import createPersistedStore from './js/store/createPersistedStore';
 
 initializeSentry(); // Load our build time configs
 

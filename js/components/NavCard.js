@@ -1,10 +1,10 @@
-import React from 'react';
+import { Feather, Ionicons } from '@expo/vector-icons';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { Feather, Ionicons } from '@expo/vector-icons';
-import textStyles from '../styles/textStyles';
+import React from 'react';
 import { colors } from '../styles';
-import { IconProp, FEATHER } from '../../data/fontFamilies';
+import { FEATHER, IconProp } from '../../data/fontFamilies';
+import textStyles from '../styles/textStyles';
 
 import Card from './Card';
 
@@ -20,23 +20,23 @@ export default function NavCard({
       onPress={onPress}
       style={smallMode ? { padding: 10, paddingLeft: 16 } : { padding: 24 }}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View style={{ alignItems: 'center', flexDirection: 'row' }}>
         {icon && (
           <View
             style={{
-              height: 34,
-              width: 34,
-              borderRadius: 34,
-              justifyContent: 'center',
               alignItems: 'center',
-              marginRight: 8,
               backgroundColor: colors.primaryLight,
+              borderRadius: 34,
+              height: 34,
+              justifyContent: 'center',
+              marginRight: 8,
+              width: 34,
             }}
           >
             {icon.family === FEATHER ? (
-              <Feather name={icon.name} size={22} color={colors.primary} />
+              <Feather color={colors.primary} name={icon.name} size={22} />
             ) : (
-              <Ionicons name={icon.name} size={22} color={colors.primary} />
+              <Ionicons color={colors.primary} name={icon.name} size={22} />
             )}
           </View>
         )}
@@ -48,18 +48,16 @@ export default function NavCard({
             </Text>
           )}
         </View>
-        <Feather name="chevron-right" size={34} color={colors.primary} />
+        <Feather color={colors.primary} name="chevron-right" size={34} />
       </View>
     </Card>
   );
 }
 
 NavCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
-  /* eslint-disable react/require-default-props */
   description: PropTypes.string,
   icon: IconProp,
+  onPress: PropTypes.func.isRequired,
   smallMode: PropTypes.bool,
-  /* eslint-enable react/require-default-props */
+  title: PropTypes.string.isRequired,
 };

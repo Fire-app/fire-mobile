@@ -1,28 +1,28 @@
 const videos = [
   {
-    title: 'videos.general_tips',
+    fileName: 'know_your_rights',
     time: '1:11',
-    fileName: 'know_your_rights',
+    title: 'videos.general_tips',
   },
   {
-    title: 'videos.interrogation',
+    fileName: 'know_your_rights',
     time: '1:56',
-    fileName: 'know_your_rights',
+    title: 'videos.interrogation',
   },
   {
+    fileName: 'know_your_rights',
+    time: '2:30',
     title: 'videos.consult_attorney',
-    time: '2:30',
-    fileName: 'know_your_rights',
   },
   {
-    title: 'videos.isap_detention',
+    fileName: 'know_your_rights',
     time: '2:26',
-    fileName: 'know_your_rights',
+    title: 'videos.isap_detention',
   },
   {
-    title: 'videos.arrested_street',
-    time: '2:30',
     fileName: 'know_your_rights',
+    time: '2:30',
+    title: 'videos.arrested_street',
   },
 ];
 

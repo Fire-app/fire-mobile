@@ -1,15 +1,15 @@
-import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
-import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
+import React from 'react';
 import ListSelector from '../../components/ListSelector';
 import { HelpButton } from '../../components/Buttons';
+import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
+import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
 
-import { textStyles } from '../../styles';
 import { HOTLINE_OPTIONS } from '../../../data/hotlineOptions';
+import { textStyles } from '../../styles';
 
 const HotlineSelectionScreen = () => {
   const { t } = useTranslation();
@@ -25,19 +25,16 @@ const HotlineSelectionScreen = () => {
   return (
     <View style={styles.container}>
       <ListSelector
-        defaultKey={savedNumber}
-        onChange={onListChange}
         data={HOTLINE_OPTIONS}
+        defaultKey={savedNumber}
         keyExtractor={(item) => item.phoneNumber}
-        selectedExtractor={({ item }) => item.phoneNumber}
-        titleExtractor={({ item }) => item.name}
         listHeaderComponent={
           <>
             <HelpButton
-              title={t('learn_about_hotline')}
               onPress={() => {
                 /* TODO: */
               }}
+              title={t('learn_about_hotline')}
             />
             <Text
               style={[
@@ -49,6 +46,9 @@ const HotlineSelectionScreen = () => {
             </Text>
           </>
         }
+        onChange={onListChange}
+        selectedExtractor={({ item }) => item.phoneNumber}
+        titleExtractor={({ item }) => item.name}
       />
     </View>
   );
@@ -64,10 +64,10 @@ export default HotlineSelectionScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: 'white',
+    flex: 1,
+    justifyContent: 'space-between',
     padding: 20,
     paddingTop: 30,
-    justifyContent: 'space-between',
   },
 });

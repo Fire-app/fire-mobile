@@ -5,9 +5,9 @@ import { getReleaseChannel } from '../util/versionInfo';
 
 export function initialize() {
   Sentry.init({
+    debug: true,
     dsn: Constants.manifest.extra.SENTRY_DSN,
     enableInExpoDevelopment: true,
-    debug: true,
   });
 
   Sentry.setTags({

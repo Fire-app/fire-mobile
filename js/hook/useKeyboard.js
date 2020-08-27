@@ -1,8 +1,8 @@
 // copied from https://github.com/react-native-hooks/keyboard
 
+import { Keyboard } from 'react-native';
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { Keyboard } from 'react-native';
 
 export default (config = {}) => {
   const { useWillShow = false, useWillHide = false } = config;

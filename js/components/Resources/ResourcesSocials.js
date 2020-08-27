@@ -1,9 +1,8 @@
-/* eslint-disable react/require-default-props */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View, TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import * as WebBrowser from 'expo-web-browser';
+import { Feather } from '@expo/vector-icons';
+import { TouchableOpacity, View } from 'react-native';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { colors } from '../../styles';
 
 const Socials = ({ onPress, iconName }) => {
@@ -12,14 +11,14 @@ const Socials = ({ onPress, iconName }) => {
       onPress={onPress}
       style={{ paddingHorizontal: 10, paddingVertical: 5 }}
     >
-      <Feather name={iconName} size={25} color={colors.primary} />
+      <Feather color={colors.primary} name={iconName} size={25} />
     </TouchableOpacity>
   );
 };
 
 Socials.propTypes = {
-  onPress: PropTypes.func.isRequired,
   iconName: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default function ResourcesSocials({
@@ -36,32 +35,32 @@ export default function ResourcesSocials({
     <View
       style={{
         flexDirection: 'row',
-        paddingTop: 38,
         paddingBottom: 58,
+        paddingTop: 38,
       }}
     >
       {facebookUrl ? (
         <Socials
-          onPress={() => WebBrowser.openBrowserAsync(facebookUrl)}
           iconName="facebook"
+          onPress={() => WebBrowser.openBrowserAsync(facebookUrl)}
         />
       ) : null}
       {instagramUrl ? (
         <Socials
-          onPress={() => WebBrowser.openBrowserAsync(instagramUrl)}
           iconName="instagram"
+          onPress={() => WebBrowser.openBrowserAsync(instagramUrl)}
         />
       ) : null}
       {twitterUrl ? (
         <Socials
-          onPress={() => WebBrowser.openBrowserAsync(twitterUrl)}
           iconName="twitter"
+          onPress={() => WebBrowser.openBrowserAsync(twitterUrl)}
         />
       ) : null}
       {youtubeUrl ? (
         <Socials
-          onPress={() => WebBrowser.openBrowserAsync(youtubeUrl)}
           iconName="youtube"
+          onPress={() => WebBrowser.openBrowserAsync(youtubeUrl)}
         />
       ) : null}
     </View>

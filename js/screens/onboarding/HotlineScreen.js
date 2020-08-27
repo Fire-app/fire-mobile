@@ -1,18 +1,18 @@
-/* eslint-disable global-require */
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
-import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
-import routes from '../../navigation/routes';
-import OnboardingTitle from '../../components/OnboardingTitle';
-import ListSelector from '../../components/ListSelector';
-import CustomModal from '../../components/CustomModal';
-import ModalContent from '../../components/ModalContent';
-import { SecondaryButton } from '../../components/Buttons';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { DEFAULT_HOTLINE, HOTLINE_OPTIONS } from '../../../data/hotlineOptions';
+import { SecondaryButton } from '../../components/Buttons';
+import CustomModal from '../../components/CustomModal';
+import ListSelector from '../../components/ListSelector';
+import ModalContent from '../../components/ModalContent';
 import OnboardingTemplate from './Template';
+import OnboardingTitle from '../../components/OnboardingTitle';
+import routes from '../../navigation/routes';
+import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
+import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -40,46 +40,46 @@ const HotlineScreen = ({ navigation }) => {
   return (
     <OnboardingTemplate
       primaryButton={{
-        title: t('next'),
         onPress: saveHotlineNumber,
+        title: t('next'),
       }}
       secondaryButton={{
-        title: t('back'),
         onPress: () => navigation.pop(),
+        title: t('back'),
       }}
     >
       <ListSelector
-        defaultKey={DEFAULT_HOTLINE.phoneNumber}
-        onChange={onListChange}
         data={HOTLINE_OPTIONS}
+        defaultKey={DEFAULT_HOTLINE.phoneNumber}
         keyExtractor={(item) => item.phoneNumber}
-        selectedExtractor={({ item }) => item.phoneNumber}
-        titleExtractor={({ item }) => item.name}
         listHeaderComponent={
           <>
             <OnboardingTitle
-              title={t('select_hotline')}
               subtitle={t('select_hotline_subtitle')}
+              title={t('select_hotline')}
             />
             <SecondaryButton
-              title={t('what_is_hotline')}
-              onPress={() => setModalVisible(true)}
               alignRight
+              onPress={() => setModalVisible(true)}
+              title={t('what_is_hotline')}
             />
           </>
         }
+        onChange={onListChange}
+        selectedExtractor={({ item }) => item.phoneNumber}
+        titleExtractor={({ item }) => item.name}
       />
       {/* Modal */}
       <CustomModal
         isVisible={modalVisible}
         primaryButton={{
-          title: t('got_it'),
           onPress: () => setModalVisible(false),
+          title: t('got_it'),
         }}
       >
         <ModalContent
-          title={t('what_is_hotline')}
           subtitle={t('hotline_note')}
+          title={t('what_is_hotline')}
         />
       </CustomModal>
     </OnboardingTemplate>

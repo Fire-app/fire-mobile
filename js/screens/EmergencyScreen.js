@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useTranslation } from 'react-i18next';
-import call from 'react-native-phone-call';
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { useSelector } from 'react-redux';
-import colors from '../styles/colors';
-import { PrimaryButton, HelpButton } from '../components/Buttons';
-import textStyles from '../styles/textStyles';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import call from 'react-native-phone-call';
 import CustomModal from '../components/CustomModal';
+import { HelpButton, PrimaryButton } from '../components/Buttons';
+import colors from '../styles/colors';
+import textStyles from '../styles/textStyles';
 
 export default function EmergencyScreen({ navigation }) {
   const { t } = useTranslation();
@@ -34,14 +34,14 @@ export default function EmergencyScreen({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1 }}>
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1 }}>
           <TouchableOpacity
-            style={{ alignSelf: 'flex-start', paddingLeft: 20, paddingTop: 12 }}
             onPress={navigation.goBack}
+            style={{ alignSelf: 'flex-start', paddingLeft: 20, paddingTop: 12 }}
           >
             <MaterialCommunityIcons
-              name="close"
               color={colors.charcoalGrey}
+              name="close"
               size={32}
             />
           </TouchableOpacity>
@@ -49,37 +49,37 @@ export default function EmergencyScreen({ navigation }) {
           <View style={{ paddingHorizontal: 56 }}>
             <View
               style={{
+                alignItems: 'center',
                 flexDirection: 'row',
                 justifyContent: 'center',
-                alignItems: 'center',
               }}
             >
               <Feather
-                name="alert-triangle"
                 color={colors.primary}
+                name="alert-triangle"
                 size={32}
-                style={{ paddingTop: 3, paddingRight: 6 }}
+                style={{ paddingRight: 6, paddingTop: 3 }}
               />
               <Text style={textStyles.h1}>{t('emergency_toolkit')}</Text>
             </View>
             <View style={{ paddingTop: 12 }}>
               <PrimaryButton
-                title={t('emergency_hotline')}
-                onPress={() => call(phoneNum)}
                 darkMode
+                onPress={() => call(phoneNum)}
+                title={t('emergency_hotline')}
               />
               <PrimaryButton
-                title={t('rights_card')}
-                onPress={() => setRightsCardVisible(!RightsCardVisible)}
                 darkMode
+                onPress={() => setRightsCardVisible(!RightsCardVisible)}
+                title={t('rights_card')}
               />
             </View>
           </View>
           <View style={{ flexGrow: 1, maxHeight: 100 }} />
           <HelpButton
-            title={t('rights_card_what_is_this')}
-            onPress={() => setInfoModalVisible(!InfoModalVisible)}
             centered
+            onPress={() => setInfoModalVisible(!InfoModalVisible)}
+            title={t('rights_card_what_is_this')}
           />
           <View style={{ flexGrow: 1 }} />
         </ScrollView>
@@ -90,10 +90,10 @@ export default function EmergencyScreen({ navigation }) {
           setModalVisible={setInfoModalVisible}
         />
         <RightsCardModal
-          isVisible={RightsCardVisible}
-          setModalVisible={setRightsCardVisible}
           attorneyName={savedAttorneyName}
           attorneyNumber={savedAttorneyNumber}
+          isVisible={RightsCardVisible}
+          setModalVisible={setRightsCardVisible}
         />
       </SafeAreaView>
     </View>
@@ -111,20 +111,20 @@ const RightsCardModal = ({
     <CustomModal
       isVisible={isVisible}
       primaryButton={{
-        title: t('dismiss_card'),
         onPress: () => setModalVisible(!isVisible),
+        title: t('dismiss_card'),
       }}
     >
       <View
         style={{
-          paddingBottom: 12,
-          flexDirection: 'row',
           alignItems: 'center',
+          flexDirection: 'row',
+          paddingBottom: 12,
         }}
       >
         <Feather
-          name="credit-card"
           color={colors.primary}
+          name="credit-card"
           size={22}
           style={{ paddingTop: 2 }}
         />
@@ -149,17 +149,17 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
   const { t } = useTranslation();
   return (
     <CustomModal
+      contentContainerStyle={{ paddingHorizontal: 30 }}
       isVisible={isVisible}
       primaryButton={{
-        title: t('got_it'),
         onPress: () => setModalVisible(!isVisible),
+        title: t('got_it'),
       }}
-      contentContainerStyle={{ paddingHorizontal: 30 }}
     >
       <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
         {t('info_modal_whats_my_emergency_toolkit?')}
       </Text>
-      <Text style={textStyles.body1} color={colors.textLight}>
+      <Text color={colors.textLight} style={textStyles.body1}>
         {t('info_modal_emergency_toolkit_explanation')}
       </Text>
       <View style={{ flexDirection: 'row', paddingTop: 15 }}>
@@ -186,16 +186,16 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
 
 EmergencyScreen.propTypes = {
   navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
     goBack: PropTypes.func.isRequired,
+    navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
 
 RightsCardModal.propTypes = {
-  isVisible: PropTypes.bool.isRequired,
-  setModalVisible: PropTypes.func.isRequired,
   attorneyName: PropTypes.string.isRequired,
   attorneyNumber: PropTypes.string.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  setModalVisible: PropTypes.func.isRequired,
 };
 
 InfoModal.propTypes = {

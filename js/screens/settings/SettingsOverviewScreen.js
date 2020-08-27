@@ -1,14 +1,14 @@
-import React from 'react';
-import { View, StyleSheet, Text, ScrollView } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import resetOnboardingAction from '../../store/actions/resetOnboarding';
-import { Row, Divider } from '../../components/SettingsSelector';
-import { FEATHER, IONICONS } from '../../../data/fontFamilies';
+import React from 'react';
 import { textStyles } from '../../styles';
-import routes from '../../navigation/routes';
+import { FEATHER, IONICONS } from '../../../data/fontFamilies';
+import { Divider, Row } from '../../components/SettingsSelector';
 import formattedVersionInfo from '../../util/versionInfo';
+import resetOnboardingAction from '../../store/actions/resetOnboarding';
+import routes from '../../navigation/routes';
 
 const SettingsOverviewScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -25,43 +25,43 @@ const SettingsOverviewScreen = ({ navigation }) => {
       <Row
         hasIcon
         icon={{
+          family: FEATHER,
           name: 'alert-triangle',
-          family: FEATHER,
         }}
-        title={t('emergency_toolkit')}
         onPress={() => navigation.navigate(routes.settings.toolkit)}
+        title={t('emergency_toolkit')}
       />
       <Divider />
       <Row
         hasIcon
         icon={{
-          name: 'md-globe',
           family: IONICONS,
+          name: 'md-globe',
         }}
-        title={t('language')}
         onPress={() => navigation.navigate(routes.settings.language)}
+        title={t('language')}
       />
       <Divider />
       <Row
         hasIcon
         icon={{
-          name: 'bell',
           family: FEATHER,
+          name: 'bell',
         }}
-        title={t('notifications')}
         onPress={() => {
           // TODO
         }}
+        title={t('notifications')}
       />
       <Divider />
       <Row
         hasIcon
         icon={{
-          name: 'info',
           family: FEATHER,
+          name: 'info',
         }}
-        title={t('about')}
         onPress={() => navigation.navigate(routes.settings.about)}
+        title={t('about')}
       />
       <Divider />
       {__DEV__ && (
@@ -69,17 +69,17 @@ const SettingsOverviewScreen = ({ navigation }) => {
           <Row
             hasIcon
             icon={{
-              name: 'rotate-ccw',
               family: FEATHER,
+              name: 'rotate-ccw',
             }}
-            title="Restart Set-Up"
             onPress={resetOnboarding}
+            title="Restart Set-Up"
           />
           <Divider />
         </>
       )}
       <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-        <View style={{ paddingVertical: 8, marginBottom: 30 }}>
+        <View style={{ marginBottom: 30, paddingVertical: 8 }}>
           <Text style={[textStyles.h3, { textAlign: 'center' }]}>
             {formattedVersionInfo()}
           </Text>
@@ -99,7 +99,7 @@ export default SettingsOverviewScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
     backgroundColor: 'white',
+    flexGrow: 1,
   },
 });

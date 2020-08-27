@@ -1,14 +1,14 @@
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import PropTypes from 'prop-types';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Card from './Card';
+import { StyleSheet, Text, View } from 'react-native';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { colors, textStyles } from '../styles';
+import Card from './Card';
 
 export default function ScenarioBullets({ title, bullets }) {
   const bulletsList = bullets.map((bullet) => {
     return (
-      <View style={styles.textContainer} key={bullet}>
+      <View key={bullet} style={styles.textContainer}>
         <MaterialCommunityIcons name="circle" style={styles.bulletPoint} />
         <Text style={[textStyles.body1, { color: colors.textLight }]}>
           {bullet}
@@ -20,10 +20,10 @@ export default function ScenarioBullets({ title, bullets }) {
   return (
     <Card
       style={{
-        flexDirection: 'column',
         alignItems: 'flex-start',
-        padding: 20,
+        flexDirection: 'column',
         marginVertical: 6,
+        padding: 20,
       }}
     >
       <Text style={[textStyles.h3, { paddingBottom: 2 }]}>{title}</Text>
@@ -33,19 +33,19 @@ export default function ScenarioBullets({ title, bullets }) {
 }
 
 ScenarioBullets.propTypes = {
-  title: PropTypes.string.isRequired,
   bullets: PropTypes.arrayOf(PropTypes.string).isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
+  bulletPoint: {
+    color: colors.textLight,
+    fontSize: 6,
+    paddingRight: 8,
+    paddingTop: 10,
+  },
   textContainer: {
     flexDirection: 'row',
     paddingVertical: 2,
-  },
-  bulletPoint: {
-    fontSize: 6,
-    color: colors.textLight,
-    paddingRight: 8,
-    paddingTop: 10,
   },
 });

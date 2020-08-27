@@ -1,12 +1,12 @@
-import React from 'react';
 import { StyleSheet, ViewPropTypes } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { colors } from '../styles';
 
 export default function Card({ children, onPress, style }) {
   return (
-    <TouchableOpacity style={[styles.card, style]} onPress={() => onPress()}>
+    <TouchableOpacity onPress={() => onPress()} style={[styles.card, style]}>
       {children}
     </TouchableOpacity>
   );
@@ -14,20 +14,19 @@ export default function Card({ children, onPress, style }) {
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
-  /* eslint-disable react/require-default-props */
   onPress: PropTypes.func,
   style: ViewPropTypes.style,
 };
 
 const styles = StyleSheet.create({
   card: {
-    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 12,
     backgroundColor: colors.white,
+    borderColor: colors.border,
     borderRadius: 3,
     borderWidth: 2,
-    borderColor: colors.border,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 12,
   },
 });
