@@ -1,23 +1,21 @@
 import * as WebBrowser from 'expo-web-browser';
-import { Feather } from '@expo/vector-icons';
 import { TouchableOpacity, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { colors } from '../../styles';
+import FireIcon, { IconNamePropType, ICON_NAMES } from '../FireIcon';
 
-const Socials = ({ onPress, iconName }) => {
-  return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={{ paddingHorizontal: 10, paddingVertical: 5 }}
-    >
-      <Feather color={colors.primary} name={iconName} size={25} />
-    </TouchableOpacity>
-  );
-};
+const Socials = ({ onPress, iconName }) => (
+  <TouchableOpacity
+    onPress={onPress}
+    style={{ paddingHorizontal: 10, paddingVertical: 5 }}
+  >
+    <FireIcon color={colors.primary} name={iconName} size={25} />
+  </TouchableOpacity>
+);
 
 Socials.propTypes = {
-  iconName: PropTypes.string.isRequired,
+  iconName: IconNamePropType.isRequired,
   onPress: PropTypes.func.isRequired,
 };
 
@@ -39,30 +37,30 @@ export default function ResourcesSocials({
         paddingTop: 38,
       }}
     >
-      {facebookUrl ? (
+      {facebookUrl && (
         <Socials
-          iconName="facebook"
+          iconName={ICON_NAMES.FACEBOOK}
           onPress={() => WebBrowser.openBrowserAsync(facebookUrl)}
         />
-      ) : null}
-      {instagramUrl ? (
+      )}
+      {instagramUrl && (
         <Socials
-          iconName="instagram"
+          iconName={ICON_NAMES.INSTAGRAM}
           onPress={() => WebBrowser.openBrowserAsync(instagramUrl)}
         />
-      ) : null}
-      {twitterUrl ? (
+      )}
+      {twitterUrl && (
         <Socials
-          iconName="twitter"
+          iconName={ICON_NAMES.TWITTER}
           onPress={() => WebBrowser.openBrowserAsync(twitterUrl)}
         />
-      ) : null}
-      {youtubeUrl ? (
+      )}
+      {youtubeUrl && (
         <Socials
-          iconName="youtube"
+          iconName={ICON_NAMES.YOUTUBE}
           onPress={() => WebBrowser.openBrowserAsync(youtubeUrl)}
         />
-      ) : null}
+      )}
     </View>
   );
 }

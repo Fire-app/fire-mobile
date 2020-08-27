@@ -1,4 +1,3 @@
-import { Feather } from '@expo/vector-icons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
@@ -7,13 +6,14 @@ import React from 'react';
 import OnboardingTemplate from './Template';
 import { colors, textStyles } from '../../styles';
 import routes from '../../navigation/routes';
+import FireIcon, { IconNamePropType } from '../../components/FireIcon';
 
 const onboardingRoutes = routes.onboarding;
 
 const InfoSection = ({ title, subtitle, iconName }) => {
   return (
     <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
-      <Feather name={iconName} style={styles.icon} />
+      <FireIcon name={iconName} style={styles.icon} />
       <View style={{ width: 12 }} />
       <View style={{ flex: 1 }}>
         <Text style={[textStyles.h1, { paddingBottom: 5 }]}>{title}</Text>
@@ -26,7 +26,7 @@ const InfoSection = ({ title, subtitle, iconName }) => {
 };
 
 InfoSection.propTypes = {
-  iconName: PropTypes.string.isRequired,
+  iconName: IconNamePropType.isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };

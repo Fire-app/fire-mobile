@@ -1,13 +1,12 @@
-import { Feather, Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { FEATHER, IconProp } from '../../data/fontFamilies';
 
 import { colors, textStyles } from '../styles';
+import FireIcon, { IconNamePropType, ICON_NAMES } from './FireIcon';
 
-const SettingsIcon = ({ icon }) => (
+const SettingsIcon = ({ iconName }) => (
   <View
     style={{
       alignItems: 'center',
@@ -19,16 +18,12 @@ const SettingsIcon = ({ icon }) => (
       width: 34,
     }}
   >
-    {icon.family === FEATHER ? (
-      <Feather color={colors.primary} name={icon.name} size={24} />
-    ) : (
-      <Ionicons color={colors.primary} name={icon.name} size={24} />
-    )}
+    <FireIcon color={colors.primary} name={iconName} size={24} />
   </View>
 );
 
 SettingsIcon.propTypes = {
-  icon: IconProp.isRequired,
+  iconName: IconNamePropType.isRequired,
 };
 
 export const Divider = () => (
@@ -40,7 +35,7 @@ export const Divider = () => (
   />
 );
 
-export const Row = ({ hasIcon, icon, title, onPress }) => (
+export const Row = ({ iconName, title, onPress }) => (
   <TouchableHighlight onPress={onPress} underlayColor={colors.primaryLight}>
     <View
       style={{
@@ -52,23 +47,20 @@ export const Row = ({ hasIcon, icon, title, onPress }) => (
       }}
     >
       <View style={{ alignItems: 'center', flex: 1, flexDirection: 'row' }}>
-        {hasIcon && <SettingsIcon icon={icon} />}
+        {iconName && <SettingsIcon iconName={iconName} />}
         <Text style={[textStyles.h5, { flex: 1 }]}>{title}</Text>
       </View>
-      <Feather color={colors.primary} name="chevron-right" size={34} />
+      <FireIcon
+        color={colors.primary}
+        name={ICON_NAMES.CHEVRON_RIGHT}
+        size={34}
+      />
     </View>
   </TouchableHighlight>
 );
+
 Row.propTypes = {
-  hasIcon: PropTypes.bool,
-
-  icon: IconProp,
-
+  iconName: IconNamePropType,
   onPress: PropTypes.func.isRequired,
-
   title: PropTypes.string.isRequired,
-};
-
-Row.defaultProps = {
-  hasIcon: false,
 };

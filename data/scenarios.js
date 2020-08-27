@@ -1,5 +1,5 @@
-import { FEATHER, IONICONS } from './fontFamilies';
 import routes from '../js/navigation/routes';
+import { ICON_NAMES } from '../js/components/FireIcon';
 
 const caseRoutes = routes.scenarios.cases;
 
@@ -20,42 +20,27 @@ export const HOME_SCENARIOS = [
 
 export const SCENARIOS = [
   {
-    icon: {
-      family: FEATHER,
-      name: 'home',
-    },
+    iconName: ICON_NAMES.HOME,
     route: routes.scenarios.homeOverview,
     title: 'Home',
   },
   {
-    icon: {
-      family: FEATHER,
-      name: 'briefcase',
-    },
+    iconName: ICON_NAMES.BRIEFCASE,
     route: caseRoutes.work,
     title: 'Work',
   },
   {
-    icon: {
-      family: IONICONS,
-      name: 'ios-walk',
-    },
+    iconName: ICON_NAMES.WALK,
     route: caseRoutes.street,
     title: 'Street',
   },
   {
-    icon: {
-      family: IONICONS,
-      name: 'md-car',
-    },
+    iconName: ICON_NAMES.CAR,
     route: caseRoutes.driving,
     title: 'Driving',
   },
   {
-    icon: {
-      family: IONICONS,
-      name: 'ios-subway',
-    },
+    iconName: ICON_NAMES.SUBWAY,
     route: caseRoutes.publicTransport,
     title: 'Public_Transit',
   },

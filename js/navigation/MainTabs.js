@@ -1,6 +1,5 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-import { Feather } from '@expo/vector-icons';
 import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,6 +11,7 @@ import ResourcesStack from './ResourcesStack';
 import RightsStack from './RightsStack';
 import SettingsStack from './SettingsStack';
 import routes from './routes';
+import FireIcon, { ICON_NAMES } from '../components/FireIcon';
 
 const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -37,9 +37,9 @@ const AppTabs = () => {
         name={routes.main.rights}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather
+            <FireIcon
               color={color}
-              name="shield"
+              name={ICON_NAMES.SHIELD}
               size={size}
               style={styles.icon}
             />
@@ -53,9 +53,9 @@ const AppTabs = () => {
         name={routes.main.resources}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather
+            <FireIcon
               color={color}
-              name="users"
+              name={ICON_NAMES.USERS}
               size={size}
               style={styles.icon}
             />
@@ -69,9 +69,9 @@ const AppTabs = () => {
         name={routes.main.settings}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather
+            <FireIcon
               color={color}
-              name="settings"
+              name={ICON_NAMES.GEAR}
               size={size}
               style={styles.icon}
             />
@@ -105,16 +105,12 @@ const AppTabs = () => {
                 width: 64,
               }}
             >
-              <Feather
+              <FireIcon
                 color={colors.white}
-                name="alert-triangle"
+                name={ICON_NAMES.ALERT}
                 size={40}
                 style={{
                   alignContent: 'center',
-                  height: 60,
-                  left: 10,
-                  top: 8,
-                  width: 60,
                 }}
               />
             </View>

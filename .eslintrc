@@ -6,6 +6,7 @@
       "plugin:react/recommended"
     ],
     "rules": {
+      "no-restricted-imports": ["error", { "paths": ["@expo/vector-icons"] }],
       "react/jsx-sort-props": "error",
       "sort-keys-fix/sort-keys-fix": "warn",
       "react/jsx-filename-extension": [
