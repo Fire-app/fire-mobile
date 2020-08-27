@@ -1,18 +1,17 @@
-import { Feather, Ionicons } from '@expo/vector-icons';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { colors } from '../styles';
-import { FEATHER, IconProp } from '../../data/fontFamilies';
 import textStyles from '../styles/textStyles';
 
 import Card from './Card';
+import FireIcon, { ICON_NAMES, IconNamePropType } from './FireIcon';
 
 export default function NavCard({
   title,
   description,
   onPress,
-  icon,
+  iconName,
   smallMode,
 }) {
   return (
@@ -21,7 +20,7 @@ export default function NavCard({
       style={smallMode ? { padding: 10, paddingLeft: 16 } : { padding: 24 }}
     >
       <View style={{ alignItems: 'center', flexDirection: 'row' }}>
-        {icon && (
+        {iconName && (
           <View
             style={{
               alignItems: 'center',
@@ -29,15 +28,11 @@ export default function NavCard({
               borderRadius: 34,
               height: 34,
               justifyContent: 'center',
-              marginRight: 8,
+              marginRight: 12,
               width: 34,
             }}
           >
-            {icon.family === FEATHER ? (
-              <Feather color={colors.primary} name={icon.name} size={22} />
-            ) : (
-              <Ionicons color={colors.primary} name={icon.name} size={22} />
-            )}
+            <FireIcon color={colors.primary} name={iconName} size={22} />
           </View>
         )}
         <View style={{ flex: 1 }}>
@@ -48,7 +43,11 @@ export default function NavCard({
             </Text>
           )}
         </View>
-        <Feather color={colors.primary} name="chevron-right" size={34} />
+        <FireIcon
+          color={colors.primary}
+          name={ICON_NAMES.CHEVRON_RIGHT}
+          size={34}
+        />
       </View>
     </Card>
   );
@@ -56,7 +55,7 @@ export default function NavCard({
 
 NavCard.propTypes = {
   description: PropTypes.string,
-  icon: IconProp,
+  iconName: IconNamePropType,
   onPress: PropTypes.func.isRequired,
   smallMode: PropTypes.bool,
   title: PropTypes.string.isRequired,

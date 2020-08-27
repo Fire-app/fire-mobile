@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { textStyles } from '../../styles';
-import { FEATHER, IONICONS } from '../../../data/fontFamilies';
 import { Divider, Row } from '../../components/SettingsSelector';
 import formattedVersionInfo from '../../util/versionInfo';
 import resetOnboardingAction from '../../store/actions/resetOnboarding';
 import routes from '../../navigation/routes';
+import { ICON_NAMES } from '../../components/FireIcon';
 
 const SettingsOverviewScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -24,30 +24,19 @@ const SettingsOverviewScreen = ({ navigation }) => {
       <Divider />
       <Row
         hasIcon
-        icon={{
-          family: FEATHER,
-          name: 'alert-triangle',
-        }}
+        iconName={ICON_NAMES.ALERT}
         onPress={() => navigation.navigate(routes.settings.toolkit)}
         title={t('emergency_toolkit')}
       />
       <Divider />
       <Row
-        hasIcon
-        icon={{
-          family: IONICONS,
-          name: 'md-globe',
-        }}
+        iconName={ICON_NAMES.GLOBE}
         onPress={() => navigation.navigate(routes.settings.language)}
         title={t('language')}
       />
       <Divider />
       <Row
-        hasIcon
-        icon={{
-          family: FEATHER,
-          name: 'bell',
-        }}
+        iconName={ICON_NAMES.BELL}
         onPress={() => {
           // TODO
         }}
@@ -55,11 +44,7 @@ const SettingsOverviewScreen = ({ navigation }) => {
       />
       <Divider />
       <Row
-        hasIcon
-        icon={{
-          family: FEATHER,
-          name: 'info',
-        }}
+        iconName={ICON_NAMES.INFO}
         onPress={() => navigation.navigate(routes.settings.about)}
         title={t('about')}
       />
@@ -67,11 +52,7 @@ const SettingsOverviewScreen = ({ navigation }) => {
       {__DEV__ && (
         <>
           <Row
-            hasIcon
-            icon={{
-              family: FEATHER,
-              name: 'rotate-ccw',
-            }}
+            iconName={ICON_NAMES.ROTATE_CCW}
             onPress={resetOnboarding}
             title="Restart Set-Up"
           />
