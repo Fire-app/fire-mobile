@@ -21,21 +21,9 @@ export default function NavCard({
     >
       <View style={{ alignItems: 'center', flexDirection: 'row' }}>
         {iconName && (
-          <View
-            style={{
-              alignItems: 'center',
-              backgroundColor: colors.primaryLight,
-              borderRadius: 34,
-              height: 34,
-              justifyContent: 'center',
-              marginRight: 12,
-              width: 34,
-            }}
-          >
-            <FireIcon color={colors.primary} name={iconName} size={22} />
-          </View>
+          <FireIcon color={colors.primary} name={iconName} raised size={22} />
         )}
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, paddingLeft: 12 }}>
           <Text style={smallMode ? textStyles.h3 : textStyles.h2}>{title}</Text>
           {description && (
             <Text style={[textStyles.body2, { paddingTop: 4 }]}>

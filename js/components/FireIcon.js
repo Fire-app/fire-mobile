@@ -2,17 +2,39 @@
 // Explicitly allow @expo/vector-icons import in this file
 
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { MaterialCommunityIcons, Feather, Ionicons } from '@expo/vector-icons';
+import { colors } from '../styles';
 
-const FireIcon = ({ name, size, color, style }) => {
+const FireIcon = ({ name, size, color, style, raised }) => {
   const IconComponent =
     iconNamesToFamilyComponent(name) || MaterialCommunityIcons;
   return (
-    <Text style={style}>
-      <IconComponent color={color} name={name} size={size} />
-    </Text>
+    <View
+      style={[
+        raised && {
+          alignItems: 'center',
+          aspectRatio: 1,
+          backgroundColor: colors.primaryLight,
+          borderRadius: 100,
+          justifyContent: 'center',
+          padding: 8,
+        },
+      ]}
+    >
+      <Text
+        style={[
+          style,
+          raised && {
+            aspectRatio: 1,
+            textAlign: 'center',
+          },
+        ]}
+      >
+        <IconComponent color={color} name={name} size={size} />
+      </Text>
+    </View>
   );
 };
 
@@ -68,6 +90,7 @@ export const IconNamePropType = PropTypes.oneOf(Object.values(ICON_NAMES));
 FireIcon.propTypes = {
   color: PropTypes.string,
   name: IconNamePropType.isRequired,
+  raised: PropTypes.bool,
   size: PropTypes.number,
   style: Text.propTypes.style,
 };
