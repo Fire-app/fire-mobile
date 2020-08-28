@@ -51,5 +51,8 @@
           "paths": ["js"]
         }
       }
+    },
+    "env": {
+      "jest": true
     }
 }

@@ -8,9 +8,9 @@ export const RESOURCES_MAP = {
     phone: 'tel://8883499695',
     description: 'AAAJ_description',
     services: ['DACA renewal', 'Citizenship consultation', 'English classes'],
-    facebookUrl: 'http://www.facebook.com/AdvancingJusticeLA',
+    facebookUrl: 'https://www.facebook.com/AdvancingJusticeLA',
     instagramUrl: null,
-    twitterUrl: 'https://twitter.com/AAAJ_LA',
+    twitterUrl: 'https://www.twitter.com/AAAJ_LA',
     youtubeUrl: null,
   },
   CARECEN: {
@@ -22,7 +22,7 @@ export const RESOURCES_MAP = {
     services: ['DACA renewal', 'Citizenship consultation', 'English classes'],
     facebookUrl: 'https://www.facebook.com/Carecen.LA/',
     instagramUrl: 'https://www.instagram.com/carecen_la/',
-    twitterUrl: 'https://twitter.com/Carecen_LA',
+    twitterUrl: 'https://www.twitter.com/Carecen_LA',
     youtubeUrl: null,
   },
   CHIRLA: {
@@ -34,7 +34,7 @@ export const RESOURCES_MAP = {
     services: ['DACA renewal', 'Citizenship consultation', 'English classes'],
     facebookUrl: 'https://www.facebook.com/chirlausa/',
     instagramUrl: 'https://www.instagram.com/chirla_org/',
-    twitterUrl: 'https://twitter.com/CHIRLA',
+    twitterUrl: 'https://www.twitter.com/CHIRLA',
     youtubeUrl: 'https://www.youtube.com/channel/UCkpuw8C5tb4RL8IwI-liMsA',
   },
 };
