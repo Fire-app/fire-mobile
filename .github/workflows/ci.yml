@@ -9,3 +9,5 @@ jobs:
       run: yarn
     - name: Run ESLint
       run: yarn eslint . --ext .js,.jsx,.ts,.tsx
+    - name: Run tests
+      run: yarn test
