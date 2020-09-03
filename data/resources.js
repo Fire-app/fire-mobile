@@ -3,7 +3,7 @@
 export const RESOURCES_MAP = {
   AAAJ: {
     description: 'AAAJ_description',
-    facebookUrl: 'http://www.facebook.com/AdvancingJusticeLA',
+    facebookUrl: 'https://www.facebook.com/AdvancingJusticeLA',
     fullName: 'Asian Americans Advancing Justice',
     instagramUrl: null,
     phone: 'tel://8883499695',
