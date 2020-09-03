@@ -1,21 +1,21 @@
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
+import { StyleSheet, Text, View } from 'react-native';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { colors, textStyles } from '../styles';
 
 const AlertCircle = () => (
   <View
     style={{
-      aspectRatio: 1,
-      borderRadius: 999,
-      backgroundColor: colors.primary,
       alignItems: 'center',
+      aspectRatio: 1,
+      backgroundColor: colors.primary,
+      borderRadius: 999,
       justifyContent: 'center',
       padding: 4,
     }}
   >
-    <FontAwesome name="exclamation" color="white" size={20} />
+    <FontAwesome color="white" name="exclamation" size={20} />
   </View>
 );
 
@@ -36,17 +36,17 @@ export default function RightsWarning({ title, subtitle }) {
 }
 
 RightsWarning.propTypes = {
-  title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.charcoalGrey,
     borderRadius: 5,
     flexDirection: 'row',
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: colors.charcoalGrey,
   },
   textContainer: {
     paddingLeft: 15,

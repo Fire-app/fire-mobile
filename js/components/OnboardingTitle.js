@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { textStyles, colors } from '../styles';
+import React from 'react';
+import { colors, textStyles } from '../styles';
 
 const OnboardingTitle = ({
   title,
@@ -12,7 +12,7 @@ const OnboardingTitle = ({
   paddingVertical,
 }) => {
   return (
-    <View style={[{ paddingVertical, paddingHorizontal, width: '100%' }]}>
+    <View style={[{ paddingHorizontal, paddingVertical, width: '100%' }]}>
       <Text
         style={[
           textStyles.h1,
@@ -36,18 +36,18 @@ const OnboardingTitle = ({
 };
 
 OnboardingTitle.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
   alignCenter: PropTypes.bool,
   paddingHorizontal: PropTypes.number,
   paddingVertical: PropTypes.number,
+  subtitle: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 OnboardingTitle.defaultProps = {
-  subtitle: '',
   alignCenter: false,
   paddingHorizontal: 0,
   paddingVertical: 40,
+  subtitle: '',
 };
 
 export default OnboardingTitle;

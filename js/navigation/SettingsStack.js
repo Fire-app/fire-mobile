@@ -1,18 +1,18 @@
-import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
+import React from 'react';
 
 import {
-  SettingsOverviewScreen,
-  SettingsLanguageScreen,
+  AboutScreen,
+  AcknowledgementsScreen,
   EmergencyToolkitScreen,
   HotlineSelectionScreen,
-  RightsCardScreen,
-  AboutScreen,
-  PrivacyPolicyScreen,
-  TermsOfServiceScreen,
   PartnersInfoScreen,
-  AcknowledgementsScreen,
+  PrivacyPolicyScreen,
+  RightsCardScreen,
+  SettingsLanguageScreen,
+  SettingsOverviewScreen,
+  TermsOfServiceScreen,
 } from '../screens/settings';
 
 import routes from './routes';
@@ -25,79 +25,79 @@ const SettingsStack = () => {
 
   return (
     <Stack.Navigator
-      name={routes.settingsStack}
       initialRouteName={routes.settings.overview}
+      name={routes.settingsStack}
       screenOptions={{
-        headerTitleStyle: textStyles.h2,
         headerBackTitleStyle: textStyles.headerBackStyle,
+        headerTitleStyle: textStyles.h2,
       }}
     >
       <Stack.Screen
-        name={routes.settings.overview}
         component={SettingsOverviewScreen}
+        name={routes.settings.overview}
         options={{
           title: t('settings'),
         }}
       />
       <Stack.Screen
-        name={routes.settings.language}
         component={SettingsLanguageScreen}
+        name={routes.settings.language}
         options={{
           title: t('language'),
         }}
       />
       <Stack.Screen
-        name={routes.settings.toolkit}
         component={EmergencyToolkitScreen}
+        name={routes.settings.toolkit}
         options={{
           title: t('emergency_toolkit'),
         }}
       />
       <Stack.Screen
-        name={routes.settings.hotline}
         component={HotlineSelectionScreen}
+        name={routes.settings.hotline}
         options={{
           title: t('emergency_hotline'),
         }}
       />
       <Stack.Screen
-        name={routes.settings.rights_card}
         component={RightsCardScreen}
+        name={routes.settings.rights_card}
         options={{
           title: t('rights_card'),
         }}
       />
       <Stack.Screen
-        name={routes.settings.about}
         component={AboutScreen}
+        name={routes.settings.about}
         options={{
           title: t('about'),
         }}
       />
       <Stack.Screen
-        name={routes.settings.privacy_policy}
         component={PrivacyPolicyScreen}
+        name={routes.settings.privacy_policy}
         options={{
           title: t('privacy_policy'),
         }}
       />
       <Stack.Screen
-        name={routes.settings.terms_of_service}
         component={TermsOfServiceScreen}
+        name={routes.settings.terms_of_service}
         options={{
           title: t('terms_of_service'),
         }}
       />
       <Stack.Screen
-        name={routes.settings.acknowledgements}
         component={AcknowledgementsScreen}
+        name={routes.settings.acknowledgements}
         options={{
           title: t('acknowledgements'),
         }}
       />
       <Stack.Screen
-        name={routes.settings.partners}
         component={PartnersInfoScreen}
+        name={routes.settings.partners}
         options={{
           title: t('partners'),
         }}

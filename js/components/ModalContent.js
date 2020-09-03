@@ -1,7 +1,6 @@
-/* eslint-disable global-require */
-import React from 'react';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import React from 'react';
 import { textStyles } from '../styles';
 
 const ModalContent = ({ title, subtitle }) => {
@@ -19,8 +18,8 @@ const ModalContent = ({ title, subtitle }) => {
 };
 
 ModalContent.propTypes = {
-  title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default ModalContent;

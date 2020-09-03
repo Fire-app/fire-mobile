@@ -1,62 +1,62 @@
-import routes from '../js/navigation/routes';
 import { FEATHER, IONICONS } from './fontFamilies';
+import routes from '../js/navigation/routes';
 
 const caseRoutes = routes.scenarios.cases;
 
 export const HOME_SCENARIOS = [
   {
-    title: 'Agent_Outside_Home',
     route: caseRoutes.outsideHome,
+    title: 'Agent_Outside_Home',
   },
   {
-    title: 'Agent_Inside_Home',
     route: caseRoutes.insideHome,
+    title: 'Agent_Inside_Home',
   },
   {
-    title: 'Agent_Arrests_Me',
     route: caseRoutes.homeArrest,
+    title: 'Agent_Arrests_Me',
   },
 ];
 
 export const SCENARIOS = [
   {
-    title: 'Home',
-    route: routes.scenarios.homeOverview,
     icon: {
+      family: FEATHER,
       name: 'home',
-      family: FEATHER,
     },
+    route: routes.scenarios.homeOverview,
+    title: 'Home',
   },
   {
-    title: 'Work',
-    route: caseRoutes.work,
     icon: {
+      family: FEATHER,
       name: 'briefcase',
-      family: FEATHER,
     },
+    route: caseRoutes.work,
+    title: 'Work',
   },
   {
-    title: 'Street',
-    route: caseRoutes.street,
     icon: {
+      family: IONICONS,
       name: 'ios-walk',
-      family: IONICONS,
     },
+    route: caseRoutes.street,
+    title: 'Street',
   },
   {
-    title: 'Driving',
-    route: caseRoutes.driving,
     icon: {
+      family: IONICONS,
       name: 'md-car',
-      family: IONICONS,
     },
+    route: caseRoutes.driving,
+    title: 'Driving',
   },
   {
-    title: 'Public_Transit',
-    route: caseRoutes.publicTransport,
     icon: {
-      name: 'ios-subway',
       family: IONICONS,
+      name: 'ios-subway',
     },
+    route: caseRoutes.publicTransport,
+    title: 'Public_Transit',
   },
 ];

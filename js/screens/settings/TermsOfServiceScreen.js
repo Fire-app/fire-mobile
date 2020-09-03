@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { textStyles } from '../../styles';
 
 const TermsOfServiceScreen = () => {
@@ -24,8 +24,8 @@ export default TermsOfServiceScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: 'white',
+    flex: 1,
     justifyContent: 'center',
   },
 });

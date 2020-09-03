@@ -1,15 +1,15 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import {
-  View,
-  SafeAreaView,
-  StatusBar,
   KeyboardAvoidingView,
   LayoutAnimation,
   Platform,
+  SafeAreaView,
+  StatusBar,
+  View,
 } from 'react-native';
-import { colors } from '../../styles';
+import PropTypes from 'prop-types';
+import React, { useEffect, useRef } from 'react';
 import { ButtonProp, PrimarySecondaryOptions } from '../../components/Buttons';
+import { colors } from '../../styles';
 import ProgressCircles from '../../components/ProgressCircles';
 import useKeyboard from '../../hook/useKeyboard';
 
@@ -28,8 +28,8 @@ const OnboardingTemplate = ({
   const mountedRef = useRef(false);
   // We don't want a ton of padding if the keyboard is up. This animates between paddings
   const [keyboardVisible] = useKeyboard({
-    useWillShow: true,
     useWillHide: true,
+    useWillShow: true,
   });
   useEffect(() => {
     // only animate on keyboard change, not on mount effect
@@ -40,11 +40,11 @@ const OnboardingTemplate = ({
     }
   }, [keyboardVisible]);
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
+    <SafeAreaView style={{ backgroundColor: colors.white, flex: 1 }}>
+      <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
       <ContentView
-        style={{ paddingHorizontal: 25, paddingBottom: 10, flexGrow: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : null}
+        style={{ flexGrow: 1, paddingBottom: 10, paddingHorizontal: 25 }}
       >
         <View style={{ flex: 1 }}>{children}</View>
         {!!step && (
@@ -66,13 +66,13 @@ const OnboardingTemplate = ({
 };
 
 OnboardingTemplate.propTypes = {
-  primaryButton: ButtonProp.isRequired,
   children: PropTypes.node.isRequired,
-  /* eslint-disable react/require-default-props */
+  keyboardAvoiding: PropTypes.bool,
+
+  primaryButton: ButtonProp.isRequired,
+
   secondaryButton: ButtonProp,
   step: PropTypes.oneOf(VALID_STEPS),
-  keyboardAvoiding: PropTypes.bool,
-  /* eslint-enable react/require-default-props */
 };
 
 export default OnboardingTemplate;

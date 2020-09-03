@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import PropTypes from 'prop-types';
+import { Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import React from 'react';
 import Card from './Card';
 import { textStyles } from '../styles';
 
@@ -15,10 +15,10 @@ export default function Tips({ tips }) {
           <Card
             key={tip}
             style={{
-              flexDirection: 'column',
               alignItems: 'flex-start',
-              padding: 20,
+              flexDirection: 'column',
               marginVertical: 6,
+              padding: 20,
             }}
           >
             <Text style={textStyles.h3}>{tip}</Text>

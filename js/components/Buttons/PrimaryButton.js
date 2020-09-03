@@ -1,41 +1,41 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Button } from 'react-native-elements';
 import { StyleSheet } from 'react-native';
-import { textStyles, colors } from '../../styles';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { colors, textStyles } from '../../styles';
 
 const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
   <Button
-    title={title}
-    onPress={onPress}
-    disabled={disabled}
-    darkMode={darkMode}
-    titleStyle={StyleSheet.flatten([textStyles.h3, { color: 'white' }])}
-    containerStyle={{ flexGrow: 1 }}
     buttonStyle={
       darkMode
         ? {
-            borderRadius: 3,
             backgroundColor: colors.charcoalGrey,
+            borderRadius: 3,
+            marginBottom: 10,
             paddingHorizontal: 48,
             paddingVertical: 16,
-            marginBottom: 10,
           }
-        : { borderRadius: 3, backgroundColor: colors.primary, padding: 16 }
+        : { backgroundColor: colors.primary, borderRadius: 3, padding: 16 }
     }
+    containerStyle={{ flexGrow: 1 }}
+    darkMode={darkMode}
+    disabled={disabled}
+    onPress={onPress}
+    title={title}
+    titleStyle={StyleSheet.flatten([textStyles.h3, { color: 'white' }])}
   />
 );
 
 PrimaryButton.propTypes = {
+  darkMode: PropTypes.bool,
+  disabled: PropTypes.bool,
   onPress: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  disabled: PropTypes.bool,
-  darkMode: PropTypes.bool,
 };
 
 PrimaryButton.defaultProps = {
-  disabled: false,
   darkMode: false,
+  disabled: false,
 };
 
 export default PrimaryButton;

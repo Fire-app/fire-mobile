@@ -1,11 +1,10 @@
-/* eslint-disable global-require */
-import React from 'react';
-import { View, ScrollView, StyleSheet, StatusBar, Image } from 'react-native';
-import PropTypes from 'prop-types';
+import { Image, ScrollView, StatusBar, StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import React from 'react';
 import NavCard from '../../components/NavCard';
-import routes from '../../navigation/routes';
 import { colors } from '../../styles';
+import routes from '../../navigation/routes';
 
 const IMAGE = require('../../../assets/illustration1.png');
 
@@ -18,27 +17,27 @@ export default function RightsOverviewScreen({ navigation }) {
     >
       <StatusBar barStyle="dark-content" />
       <NavCard
-        title={t('scenarios_title')}
         description={t('scenarios_description')}
         onPress={() => {
           navigation.navigate(routes.scenarios.overviewList);
         }}
+        title={t('scenarios_title')}
       />
       <View style={{ height: 8 }} />
       <NavCard
-        title={t('videos_title')}
         description={t('videos_description')}
         onPress={() => {
           navigation.navigate(routes.videos.overviewList);
         }}
+        title={t('videos_title')}
       />
       <View
         style={{ flexGrow: 1, justifyContent: 'flex-end', paddingBottom: 10 }}
       >
         <Image
-          style={styles.image}
-          source={IMAGE}
           accessibilityLabel="Illustration"
+          source={IMAGE}
+          style={styles.image}
         />
       </View>
     </ScrollView>
@@ -53,14 +52,14 @@ RightsOverviewScreen.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.backgroundColor,
     flexGrow: 1,
     padding: 20,
-    backgroundColor: colors.backgroundColor,
   },
   image: {
-    height: 180,
-    width: 280,
     alignSelf: 'center',
+    height: 180,
     resizeMode: 'cover',
+    width: 280,
   },
 });

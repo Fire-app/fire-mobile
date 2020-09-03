@@ -1,41 +1,41 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import {
   ScrollView,
-  View,
   StyleSheet,
   Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { getFormatted } from '../../util/phoneNumber';
-import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
-import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
-import CustomModal from '../../components/CustomModal';
-import AttorneyForm from '../../components/AttorneyForm';
-import ModalContent from '../../components/ModalContent';
-import { textStyles, colors } from '../../styles';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import {
   DEFAULT_ATTORNEY,
   DEFAULT_NUMBER,
 } from '../../../data/attorneyOptions';
-import { SecondaryButton, HelpButton } from '../../components/Buttons';
+import { HelpButton, SecondaryButton } from '../../components/Buttons';
+import { colors, textStyles } from '../../styles';
+import { getFormatted } from '../../util/phoneNumber';
+import AttorneyForm from '../../components/AttorneyForm';
+import CustomModal from '../../components/CustomModal';
+import ModalContent from '../../components/ModalContent';
+import setAttorneyNameAction from '../../store/actions/settings/setAttorneyNameAction';
+import setAttorneyNumberAction from '../../store/actions/settings/setAttorneyNumberAction';
 
 const AttorneyInformationBox = ({ name, number, onPress }) => {
   const { t } = useTranslation();
   return (
     <TouchableOpacity
+      onPress={onPress}
       style={{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        padding: 15,
         backgroundColor: colors.primaryLight,
         borderRadius: 3,
-        marginTop: 15,
+        flexDirection: 'row',
         flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        marginTop: 15,
+        padding: 15,
       }}
-      onPress={onPress}
     >
       <View style={{ flexDirection: 'column' }}>
         <Text style={[textStyles.h3, { paddingBottom: 10 }]}>{name}</Text>
@@ -97,10 +97,10 @@ const RightsCardScreen = () => {
       contentContainerStyle={styles.container}
     >
       <HelpButton
-        title={t('what_is_attorney')}
         onPress={() => {
           /* TODO: */
         }}
+        title={t('what_is_attorney')}
       />
       <Text style={[textStyles.h5, { alignSelf: 'flex-start' }]}>
         {t('rights_card_contact')}
@@ -112,24 +112,24 @@ const RightsCardScreen = () => {
       />
       {defaultIsSet || (
         <SecondaryButton
-          title={t('no_attorney')}
-          onPress={() => setUseDefaultModalVisible(true)}
           alignRight
+          onPress={() => setUseDefaultModalVisible(true)}
+          title={t('no_attorney')}
         />
       )}
       {/* Modals */}
       <CustomModal
+        buttonTitle=""
         isVisible={editModalVisible}
         primaryButton={{
-          title: t(t('set_contact')),
-          onPress: onEditModalSubmit,
           disabled: nameIsInvalid || numberIsInvalid,
+          onPress: onEditModalSubmit,
+          title: t(t('set_contact')),
         }}
         secondaryButton={{
-          title: t('cancel'),
           onPress: () => setEditModalVisible(false),
+          title: t('cancel'),
         }}
-        buttonTitle=""
       >
         <View style={styles.modalContentContainer}>
           <Text style={[textStyles.h2, { paddingBottom: 15 }]}>
@@ -137,31 +137,31 @@ const RightsCardScreen = () => {
           </Text>
           <AttorneyForm
             name={name}
-            setName={setName}
-            number={number}
-            setNumber={setFormattedNumber}
             nameIsInvalid={nameIsInvalid}
-            setNameIsInvalid={setNameIsInvalid}
+            number={number}
             numberIsInvalid={numberIsInvalid}
+            setName={setName}
+            setNameIsInvalid={setNameIsInvalid}
+            setNumber={setFormattedNumber}
             setNumberIsInvalid={setNumberIsInvalid}
           />
         </View>
       </CustomModal>
       <CustomModal
+        buttonTitle={t('no_attorney')}
         isVisible={useDefaultModalVisible}
         primaryButton={{
-          title: t('use_chirla'),
           onPress: onNoAttorneyModalSubmit,
+          title: t('use_chirla'),
         }}
         secondaryButton={{
-          title: t('cancel'),
           onPress: () => setUseDefaultModalVisible(false),
+          title: t('cancel'),
         }}
-        buttonTitle={t('no_attorney')}
       >
         <ModalContent
-          title={t('attorney_default_title')}
           subtitle={t('attorney_default_subtitle')}
+          title={t('attorney_default_title')}
         />
       </CustomModal>
     </ScrollView>
@@ -178,14 +178,15 @@ export default RightsCardScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
     backgroundColor: 'white',
+    flexGrow: 1,
+
+    justifyContent: 'flex-start',
     // paddingTop technically 44 but HelpButton has padding 16 (from SecondaryButton)
     padding: 28,
-    justifyContent: 'flex-start',
   },
   modalContentContainer: {
-    alignSelf: 'stretch',
     alignItems: 'flex-start',
+    alignSelf: 'stretch',
   },
 });

@@ -1,9 +1,9 @@
-import React from 'react';
 import { View } from 'react-native';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { isValid } from '../util/phoneNumber';
+import PropTypes from 'prop-types';
+import React from 'react';
 import PrimaryInput from './PrimaryInput';
+import { isValid } from '../util/phoneNumber';
 
 const AttorneyForm = ({
   name,
@@ -36,22 +36,22 @@ const AttorneyForm = ({
   return (
     <View style={{ alignSelf: 'stretch' }}>
       <PrimaryInput
-        label={t('attorney_name')}
-        value={name}
-        setValue={setName}
-        isInvalid={nameIsInvalid}
-        validate={validateName}
         errorMessage={t('attorney_name_error')}
+        isInvalid={nameIsInvalid}
         keyboardType="default"
+        label={t('attorney_name')}
+        setValue={setName}
+        validate={validateName}
+        value={name}
       />
       <PrimaryInput
-        label={t('phone_number')}
-        value={number}
-        setValue={setNumber}
-        isInvalid={numberIsInvalid}
-        validate={validateNumber}
         errorMessage={t('phone_number_error')}
+        isInvalid={numberIsInvalid}
         keyboardType="numeric"
+        label={t('phone_number')}
+        setValue={setNumber}
+        validate={validateNumber}
+        value={number}
       />
     </View>
   );
@@ -59,12 +59,12 @@ const AttorneyForm = ({
 
 AttorneyForm.propTypes = {
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-  setName: PropTypes.func.isRequired,
-  setNumber: PropTypes.func.isRequired,
   nameIsInvalid: PropTypes.bool.isRequired,
-  setNameIsInvalid: PropTypes.func.isRequired,
+  number: PropTypes.string.isRequired,
   numberIsInvalid: PropTypes.bool.isRequired,
+  setName: PropTypes.func.isRequired,
+  setNameIsInvalid: PropTypes.func.isRequired,
+  setNumber: PropTypes.func.isRequired,
   setNumberIsInvalid: PropTypes.func.isRequired,
 };
 

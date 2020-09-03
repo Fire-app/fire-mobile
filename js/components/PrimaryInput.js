@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { textStyles, colors } from '../styles';
+import React from 'react';
+import { colors, textStyles } from '../styles';
 
 const PrimaryInput = ({
   label,
@@ -23,6 +23,10 @@ const PrimaryInput = ({
         <Text style={[textStyles.body1, styles.errorText]}>{errorMessage}</Text>
       )}
       <TextInput
+        defaultValue={value}
+        keyboardType={keyboardType}
+        onBlur={validate(value)}
+        onChangeText={(text) => setValue(text)}
         style={[
           textStyles.h2,
           styles.textInput,
@@ -34,42 +38,38 @@ const PrimaryInput = ({
                 borderColor: 'gray',
               },
         ]}
-        keyboardType={keyboardType}
-        onChangeText={(text) => setValue(text)}
-        defaultValue={value}
-        onBlur={validate(value)}
       />
     </View>
   );
 };
 
 PrimaryInput.propTypes = {
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  setValue: PropTypes.func.isRequired,
-  isInvalid: PropTypes.bool.isRequired,
-  validate: PropTypes.func.isRequired,
   errorMessage: PropTypes.string.isRequired,
+  isInvalid: PropTypes.bool.isRequired,
   keyboardType: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
+  validate: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default PrimaryInput;
 
 const styles = StyleSheet.create({
-  textInput: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: 3,
-    paddingHorizontal: 12,
-    paddingVertical: 15,
-    color: colors.charcoalGrey,
-  },
-  title: {
-    paddingBottom: 5,
-    color: colors.charcoalGrey,
-  },
   errorText: {
     color: 'red',
     fontSize: 14,
     paddingBottom: 4,
+  },
+  textInput: {
+    borderRadius: 3,
+    borderWidth: StyleSheet.hairlineWidth,
+    color: colors.charcoalGrey,
+    paddingHorizontal: 12,
+    paddingVertical: 15,
+  },
+  title: {
+    color: colors.charcoalGrey,
+    paddingBottom: 5,
   },
 });

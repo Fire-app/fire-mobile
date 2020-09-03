@@ -1,13 +1,12 @@
-/* eslint-disable global-require */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { useTranslation } from 'react-i18next';
 import { Feather } from '@expo/vector-icons';
-import routes from '../../navigation/routes';
-import { textStyles, colors } from '../../styles';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { colors, textStyles } from '../../styles';
 import OnboardingTemplate from './Template';
 import OnboardingTitle from '../../components/OnboardingTitle';
+import routes from '../../navigation/routes';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -21,11 +20,11 @@ const ToolkitTitleInfo = () => {
       </View>
       <View style={{ height: 30 }} />
       <OnboardingTitle
-        title={t('your_emergency_toolkit')}
-        subtitle={t('your_emergency_toolkit_note')}
         alignCenter
         paddingHorizontal={10}
         paddingVertical={0}
+        subtitle={t('your_emergency_toolkit_note')}
+        title={t('your_emergency_toolkit')}
       />
     </View>
   );
@@ -44,24 +43,24 @@ const ToolkitInfoSection = ({ title, subtitle, iconName }) => {
 };
 
 ToolkitInfoSection.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
   iconName: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 const ToolkitIntroScreen = ({ navigation }) => {
   const { t } = useTranslation();
   return (
     <OnboardingTemplate
-      step={2}
       primaryButton={{
-        title: t('next'),
         onPress: () => navigation.navigate(onboardingRoutes.hotline),
+        title: t('next'),
       }}
       secondaryButton={{
-        title: t('back'),
         onPress: () => navigation.pop(),
+        title: t('back'),
       }}
+      step={2}
     >
       <ScrollView
         alwaysBounceVertical={false}
@@ -69,14 +68,14 @@ const ToolkitIntroScreen = ({ navigation }) => {
       >
         <ToolkitTitleInfo />
         <ToolkitInfoSection
-          title={t('emergency_hotline')}
-          subtitle={t('emergency_hotline_note')}
           iconName="phone"
+          subtitle={t('emergency_hotline_note')}
+          title={t('emergency_hotline')}
         />
         <ToolkitInfoSection
-          title={t('rights_card')}
-          subtitle={t('rights_card_note')}
           iconName="credit-card"
+          subtitle={t('rights_card_note')}
+          title={t('rights_card')}
         />
       </ScrollView>
     </OnboardingTemplate>
@@ -93,36 +92,36 @@ ToolkitIntroScreen.propTypes = {
 export default ToolkitIntroScreen;
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    alignSelf: 'stretch',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+  alertIcon: {
+    color: 'white',
+    fontSize: 35,
   },
   alertIconContainer: {
+    alignItems: 'center',
+    aspectRatio: 1,
     backgroundColor: colors.primary,
     borderRadius: 30,
-    aspectRatio: 1,
-    alignItems: 'center',
     justifyContent: 'center',
     padding: 12,
   },
-  alertIcon: {
-    fontSize: 35,
-    color: 'white',
-  },
-  infoTitle: {
-    paddingTop: 10,
-    paddingBottom: 5,
-  },
   infoContainer: {
     flexDirection: 'row',
-    paddingVertical: 15,
     justifyContent: 'flex-start',
+    paddingVertical: 15,
   },
   infoIcon: {
     color: colors.charcoalGrey,
     fontSize: 20,
     padding: 10,
+  },
+  infoTitle: {
+    paddingBottom: 5,
+    paddingTop: 10,
+  },
+  titleContainer: {
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
   },
 });

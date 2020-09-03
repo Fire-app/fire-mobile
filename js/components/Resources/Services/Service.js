@@ -1,9 +1,8 @@
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { textStyles, colors } from '../../../styles';
+import React from 'react';
+import { colors, textStyles } from '../../../styles';
 
-// eslint-disable-next-line no-unused-vars
 export default function Service({ name }) {
   return (
     <View style={styles.serviceContainer}>
@@ -38,23 +37,24 @@ Service.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  serviceContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 1,
-    borderRadius: 4,
-    borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    marginVertical: 4, // this interferes with padding of OrgSocials in OrgPageTemplate, leaving bc design is WIP
-    borderColor: colors.charcoalGrey,
-    backgroundColor: colors.white,
-  },
   freeContainer: {
-    backgroundColor: colors.primaryLighter,
     alignSelf: 'center',
+    backgroundColor: colors.primaryLighter,
+    borderRadius: 4,
     paddingHorizontal: 8,
     paddingVertical: 4,
+  },
+  serviceContainer: {
+    backgroundColor: colors.white,
+    borderColor: colors.charcoalGrey,
     borderRadius: 4,
+    borderWidth: StyleSheet.hairlineWidth,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    // TODO: this interferes with padding of OrgSocials in OrgPageTemplate, leaving bc design is WIP
+    marginVertical: 4,
+    padding: 1,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
   },
 });

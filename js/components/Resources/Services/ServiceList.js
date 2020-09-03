@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { textStyles, colors } from '../../../styles';
+import React from 'react';
+import { colors, textStyles } from '../../../styles';
 
 import Service from './Service';
 
@@ -16,7 +16,7 @@ export default function ServiceList({ services }) {
         style={[
           textStyles.h2,
           colors.charcoalGrey,
-          { paddingTop: 20, paddingBottom: 14 },
+          { paddingBottom: 14, paddingTop: 20 },
         ]}
       >
         {'Services'}
