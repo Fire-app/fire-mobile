@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import PropTypes from 'prop-types';
+import { Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import React from 'react';
 import ScenarioBullets from './ScenarioBullets';
 import ScenarioItems from './ScenarioItems';
 
@@ -15,12 +15,12 @@ const RightsScenarios = ({ bullets, items }) => {
         <Text style={textStyles.h2}>{t('potential_scenarios')}</Text>
       )}
       {bullets && (
-        <ScenarioBullets title={bullets.title} bullets={bullets.bullets} />
+        <ScenarioBullets bullets={bullets.bullets} title={bullets.title} />
       )}
       {items && (
         <View>
           {items.map(({ title, subtitle }) => (
-            <ScenarioItems title={title} subtitle={subtitle} key={title} />
+            <ScenarioItems key={title} subtitle={subtitle} title={title} />
           ))}
         </View>
       )}
@@ -29,17 +29,15 @@ const RightsScenarios = ({ bullets, items }) => {
 };
 
 RightsScenarios.propTypes = {
-  // eslint-disable-next-line react/require-default-props
+  bullets: PropTypes.shape({
+    bullets: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    title: PropTypes.string.isRequired,
+  }),
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
       subtitle: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
     })
   ),
-  // eslint-disable-next-line react/require-default-props
-  bullets: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    bullets: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  }),
 };
 export default RightsScenarios;

@@ -1,7 +1,7 @@
-import AsyncStorage from '@react-native-community/async-storage';
-import { createImmutableStateInvariantMiddleware } from '@reduxjs/toolkit';
 import { applyMiddleware, compose, createStore } from 'redux';
+import { createImmutableStateInvariantMiddleware } from '@reduxjs/toolkit';
 import { createMigrate, persistReducer, persistStore } from 'redux-persist';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import migrations from './migrations';
 import rootReducer from './reducers/rootReducer';
@@ -26,12 +26,12 @@ const enhancers = composeEnhancers(
 
 export const STORE_VERSION = 0;
 const persistConfig = {
-  key: 'root',
-  storage: AsyncStorage,
-  version: STORE_VERSION,
   // add keys of reducers to ignore:
   blacklist: [],
+  key: 'root',
   migrate: createMigrate(migrations),
+  storage: AsyncStorage,
+  version: STORE_VERSION,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -39,7 +39,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const createPersistedStore = () => {
   const store = createStore(persistedReducer, {}, enhancers);
   const persistor = persistStore(store);
-  return { store, persistor };
+  return { persistor, store };
 };
 
 export default createPersistedStore;

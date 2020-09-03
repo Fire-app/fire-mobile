@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View, StyleSheet, Image, ScrollView } from 'react-native';
+import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import completeOnboardingAction from '../../store/actions/completeOnboarding';
-import OnboardingTitle from '../../components/OnboardingTitle';
+import PropTypes from 'prop-types';
+import React from 'react';
 import OnboardingTemplate from './Template';
+import OnboardingTitle from '../../components/OnboardingTitle';
+import completeOnboardingAction from '../../store/actions/completeOnboarding';
 
 const IMAGE = require('../../../assets/illustration2.png');
 
@@ -18,25 +18,25 @@ const CompleteScreen = () => {
   return (
     <OnboardingTemplate
       primaryButton={{
-        title: t('continue'),
         onPress: exitOnboarding,
+        title: t('continue'),
       }}
     >
       <ScrollView
         alwaysBounceVertical={false}
         contentContainerStyle={{
-          justifyContent: 'center',
-          flexGrow: 1,
           alignItems: 'center',
+          flexGrow: 1,
+          justifyContent: 'center',
         }}
       >
         <View style={{ paddingHorizontal: 30 }}>
-          <OnboardingTitle title={t('completed_title')} alignCenter />
+          <OnboardingTitle alignCenter title={t('completed_title')} />
         </View>
         <Image
-          style={styles.image}
-          source={IMAGE}
           accessibilityLabel="Illustration"
+          source={IMAGE}
+          style={styles.image}
         />
       </ScrollView>
     </OnboardingTemplate>
@@ -54,11 +54,11 @@ export default CompleteScreen;
 
 const styles = StyleSheet.create({
   image: {
-    height: 280,
-    width: 400,
-    backgroundColor: 'white',
-    padding: 30,
     alignSelf: 'center',
+    backgroundColor: 'white',
+    height: 280,
+    padding: 30,
     resizeMode: 'contain',
+    width: 400,
   },
 });

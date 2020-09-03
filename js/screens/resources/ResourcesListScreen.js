@@ -1,14 +1,14 @@
-import React from 'react';
-import { View, StyleSheet, FlatList, Text } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import routes from '../../navigation/routes';
-import NavCard from '../../components/NavCard';
 import { RESOURCES_LIST } from '../../../data/resources';
+import NavCard from '../../components/NavCard';
+import routes from '../../navigation/routes';
 
-import textStyles from '../../styles/textStyles';
 import colors from '../../styles/colors';
+import textStyles from '../../styles/textStyles';
 
 export default function ResourcesListScreen({ navigation }) {
   const { t } = useTranslation();
@@ -16,17 +16,17 @@ export default function ResourcesListScreen({ navigation }) {
 
   return (
     <FlatList
-      keyExtractor={(_, i) => `${i}`}
-      style={styles.container}
       contentContainerStyle={{ paddingVertical: 36 }}
       data={RESOURCES_LIST}
+      ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+      keyExtractor={(_, i) => `${i}`}
       ListHeaderComponent={
         <Text
           style={[
             textStyles.h2,
             {
-              textAlign: 'left',
               paddingBottom: 16,
+              textAlign: 'left',
             },
           ]}
         >
@@ -35,12 +35,12 @@ export default function ResourcesListScreen({ navigation }) {
       }
       renderItem={({ item: { shortName, fullName } }) => (
         <NavCard
-          title={t(shortName)}
           description={t(fullName)}
           onPress={() => navigation.navigate(route, { mapId: shortName })}
+          title={t(shortName)}
         />
       )}
-      ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+      style={styles.container}
     />
   );
 }
@@ -53,8 +53,8 @@ ResourcesListScreen.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.backgroundColor,
     flex: 1,
     paddingHorizontal: 24,
-    backgroundColor: colors.backgroundColor,
   },
 });

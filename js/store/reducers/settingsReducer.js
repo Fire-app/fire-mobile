@@ -1,8 +1,8 @@
 import {
   SET_ATTORNEY_NAME,
   SET_ATTORNEY_NUMBER,
-  SET_HOTLINE_NUMBER,
   SET_HOTLINE_NAME,
+  SET_HOTLINE_NUMBER,
 } from '../actions/constants';
 
 const initialState = {

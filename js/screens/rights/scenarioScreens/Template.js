@@ -1,10 +1,10 @@
-import React from 'react';
 import { ScrollView, View } from 'react-native';
 import PropTypes from 'prop-types';
-import RightsWarning from '../../../components/RightsWarning';
+import React from 'react';
+import { colors } from '../../../styles';
 import RightsScenarios from '../../../components/RightsScenarios';
 import RightsTips from '../../../components/RightsTips';
-import { colors } from '../../../styles';
+import RightsWarning from '../../../components/RightsWarning';
 
 const KnowYourRightsTemplate = ({
   warning,
@@ -15,13 +15,13 @@ const KnowYourRightsTemplate = ({
   <ScrollView
     alwaysBounceVertical={false}
     contentContainerStyle={{
-      flexGrow: 1,
       backgroundColor: colors.backgroundColor,
-      paddingVertical: 36,
+      flexGrow: 1,
       paddingHorizontal: 20,
+      paddingVertical: 36,
     }}
   >
-    <RightsWarning title={warning.title} subtitle={warning.subtitle} />
+    <RightsWarning subtitle={warning.subtitle} title={warning.title} />
     {(scenarioItems || scenarioBullets) && <View style={{ height: 50 }} />}
     <RightsScenarios bullets={scenarioBullets} items={scenarioItems} />
     {tips && <View style={{ height: 50 }} />}
@@ -30,23 +30,23 @@ const KnowYourRightsTemplate = ({
 );
 
 KnowYourRightsTemplate.propTypes = {
-  warning: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
-  }).isRequired,
-  // eslint-disable-next-line react/require-default-props
   scenarioBullets: PropTypes.shape({
-    title: PropTypes.string.isRequired,
     bullets: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    title: PropTypes.string.isRequired,
   }),
-  // eslint-disable-next-line react/require-default-props
+
   scenarioItems: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
       subtitle: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
     })
   ),
+
   tips: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  warning: PropTypes.shape({
+    subtitle: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default KnowYourRightsTemplate;

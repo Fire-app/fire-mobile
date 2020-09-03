@@ -1,39 +1,39 @@
+import { FlatList, Text, View } from 'react-native';
 import React, { useState } from 'react';
-import { View, Text, FlatList } from 'react-native';
 
-import PropTypes from 'prop-types';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
-import { textStyles, colors } from '../styles';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import PropTypes from 'prop-types';
+import { colors, textStyles } from '../styles';
 
 const ListOption = ({ title, selected, onPress }) => (
   <TouchableOpacity
+    onPress={onPress}
     style={[
       {
-        flex: 1,
-        paddingVertical: 15,
-        paddingHorizontal: 15,
         backgroundColor: colors.primaryLight,
+        borderColor: colors.primaryLight,
         borderRadius: 3,
         borderWidth: 3,
-        borderColor: colors.primaryLight,
+        flex: 1,
+        paddingHorizontal: 15,
+        paddingVertical: 15,
       },
       selected && {
         borderColor: colors.primary,
       },
     ]}
-    onPress={onPress}
   >
     <View style={{ flexDirection: 'row' }}>
-      <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center' }}>
+      <View style={{ alignItems: 'center', flex: 1, flexDirection: 'row' }}>
         <Text style={textStyles.body1}>{title}</Text>
       </View>
       {selected && (
         <Ionicons
           name="ios-checkmark-circle"
           style={{
-            fontSize: 24,
             color: colors.primary,
+            fontSize: 24,
           }}
         />
       )}
@@ -42,9 +42,9 @@ const ListOption = ({ title, selected, onPress }) => (
 );
 
 ListOption.propTypes = {
-  title: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
   onPress: PropTypes.func.isRequired,
+  selected: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 const ListSelector = ({
@@ -65,32 +65,35 @@ const ListSelector = ({
 
   return (
     <FlatList
-      ListHeaderComponent={listHeaderComponent}
-      keyExtractor={(item) => keyExtractor(item)}
       alwaysBounceVertical={false}
       data={data}
       extraData={{ selectedKey }}
+      ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+      keyExtractor={(item) => keyExtractor(item)}
+      ListHeaderComponent={listHeaderComponent}
       renderItem={(item) => (
         <ListOption
-          title={titleExtractor(item)}
-          selected={selectedExtractor(item) === selectedKey}
           onPress={() => onPress(item)}
+          selected={selectedExtractor(item) === selectedKey}
+          title={titleExtractor(item)}
         />
       )}
-      ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
     />
   );
 };
 
 ListSelector.propTypes = {
-  defaultKey: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  defaultKey: PropTypes.string.isRequired,
   keyExtractor: PropTypes.func.isRequired,
-  selectedExtractor: PropTypes.func.isRequired,
-  titleExtractor: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/require-default-props
+
   listHeaderComponent: PropTypes.node,
+
+  onChange: PropTypes.func.isRequired,
+
+  selectedExtractor: PropTypes.func.isRequired,
+
+  titleExtractor: PropTypes.func.isRequired,
 };
 
 export default ListSelector;

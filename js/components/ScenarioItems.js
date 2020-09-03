@@ -1,17 +1,17 @@
-import React from 'react';
 import { Text } from 'react-native';
 import PropTypes from 'prop-types';
-import Card from './Card';
+import React from 'react';
 import { colors, textStyles } from '../styles';
+import Card from './Card';
 
 export default function ScenarioItems({ title, subtitle }) {
   return (
     <Card
       style={{
-        flexDirection: 'column',
         alignItems: 'flex-start',
-        padding: 20,
+        flexDirection: 'column',
         marginVertical: 6,
+        padding: 20,
       }}
     >
       <Text style={textStyles.h3}>{title}</Text>
@@ -28,6 +28,6 @@ export default function ScenarioItems({ title, subtitle }) {
 }
 
 ScenarioItems.propTypes = {
-  title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };

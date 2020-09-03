@@ -1,14 +1,14 @@
-import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
 
 import {
-  WelcomeScreen,
-  LanguageScreen,
-  HotlineScreen,
   AttorneyScreen,
   CompleteScreen,
+  HotlineScreen,
   IntroScreen,
+  LanguageScreen,
   ToolkitIntroScreen,
+  WelcomeScreen,
 } from '../screens/onboarding';
 
 import routes from './routes';
@@ -24,16 +24,16 @@ const OnboardingStack = () => (
       headerShown: false,
     }}
   >
-    <Stack.Screen name={onboardingRoutes.language} component={LanguageScreen} />
-    <Stack.Screen name={onboardingRoutes.welcome} component={WelcomeScreen} />
-    <Stack.Screen name={onboardingRoutes.intro} component={IntroScreen} />
+    <Stack.Screen component={LanguageScreen} name={onboardingRoutes.language} />
+    <Stack.Screen component={WelcomeScreen} name={onboardingRoutes.welcome} />
+    <Stack.Screen component={IntroScreen} name={onboardingRoutes.intro} />
     <Stack.Screen
-      name={onboardingRoutes.toolkitIntro}
       component={ToolkitIntroScreen}
+      name={onboardingRoutes.toolkitIntro}
     />
-    <Stack.Screen name={onboardingRoutes.hotline} component={HotlineScreen} />
-    <Stack.Screen name={onboardingRoutes.attorney} component={AttorneyScreen} />
-    <Stack.Screen name={onboardingRoutes.complete} component={CompleteScreen} />
+    <Stack.Screen component={HotlineScreen} name={onboardingRoutes.hotline} />
+    <Stack.Screen component={AttorneyScreen} name={onboardingRoutes.attorney} />
+    <Stack.Screen component={CompleteScreen} name={onboardingRoutes.complete} />
   </Stack.Navigator>
 );
 

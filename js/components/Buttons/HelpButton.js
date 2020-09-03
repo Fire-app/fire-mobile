@@ -1,37 +1,37 @@
-import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
-import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
+import { Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { colors, textStyles } from '../../styles';
 
 const HelpButton = ({ title, onPress, centered }) => (
   <TouchableOpacity
+    onPress={onPress}
     style={[
       {
-        flexDirection: 'row',
         alignItems: 'center',
+        flexDirection: 'row',
         paddingBottom: 10,
       },
       centered && { justifyContent: 'center' },
     ]}
-    onPress={onPress}
   >
     <Ionicons
-      name="ios-help-circle"
       color={colors.primary}
+      name="ios-help-circle"
       size={20}
       style={{ paddingTop: 2 }}
     />
-    <Text style={[textStyles.h3, { paddingLeft: 4, color: colors.primary }]}>
+    <Text style={[textStyles.h3, { color: colors.primary, paddingLeft: 4 }]}>
       {title}
     </Text>
   </TouchableOpacity>
 );
 
 HelpButton.propTypes = {
-  title: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
   centered: PropTypes.bool,
+  onPress: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 HelpButton.defaultProps = {

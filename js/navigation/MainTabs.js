@@ -1,16 +1,17 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import { Feather } from '@expo/vector-icons';
 import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Feather } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
+import React from 'react';
 import EmergencyScreen from '../screens/EmergencyScreen';
-import { textStyles, colors } from '../styles';
-import routes from './routes';
+import { colors, textStyles } from '../styles';
+import ResourcesStack from './ResourcesStack';
 import RightsStack from './RightsStack';
 import SettingsStack from './SettingsStack';
-import ResourcesStack from './ResourcesStack';
+import routes from './routes';
 
 const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -21,65 +22,66 @@ const AppTabs = () => {
   const { t } = useTranslation();
   return (
     <Tabs.Navigator
-      name="FOO" // TODO: what is this
-      initialRouteName={routes.main.rights}
+      initialRouteName={routes.main.rights} // TODO: what is this
+      name="FOO"
       tabBarOptions={{
         activeTintColor: colors.charcoalGrey,
         inactiveTintColor: colors.warmGrey,
-        style: styles.tabBar,
         labelStyle: textStyles.tabLabel,
+        style: styles.tabBar,
         tabStyle: { height: 56 },
       }}
     >
       <Tabs.Screen
-        name={routes.main.rights}
         component={RightsStack}
+        name={routes.main.rights}
         options={{
-          tabBarLabel: t('tab_rights'),
-          // eslint-disable-next-line react/prop-types
           tabBarIcon: ({ color, size }) => (
             <Feather
+              color={color}
               name="shield"
-              color={color}
               size={size}
               style={styles.icon}
             />
           ),
+
+          tabBarLabel: t('tab_rights'),
         }}
       />
       <Tabs.Screen
-        name={routes.main.resources}
         component={ResourcesStack}
+        name={routes.main.resources}
         options={{
-          tabBarLabel: t('tab_resources'),
-          // eslint-disable-next-line react/prop-types
           tabBarIcon: ({ color, size }) => (
             <Feather
+              color={color}
               name="users"
-              color={color}
               size={size}
               style={styles.icon}
             />
           ),
+
+          tabBarLabel: t('tab_resources'),
         }}
       />
       <Tabs.Screen
-        name={routes.main.settings}
         component={SettingsStack}
+        name={routes.main.settings}
         options={{
-          tabBarLabel: t('settings'),
-          // eslint-disable-next-line react/prop-types
           tabBarIcon: ({ color, size }) => (
             <Feather
-              name="settings"
               color={color}
+              name="settings"
               size={size}
               style={styles.icon}
             />
           ),
+
+          tabBarLabel: t('settings'),
         }}
       />
       <Tabs.Screen
+        component={FakeScreen}
         listeners={({ navigation }) => ({
           tabPress: (e) => {
             // Prevent default action
@@ -90,37 +92,34 @@ const AppTabs = () => {
           },
         })}
         name={routes.main.emergency}
-        component={FakeScreen}
         options={{
-          tabBarLabel: '',
-          // eslint-disable-next-line no-unused-vars
           tabBarIcon: () => (
             <View
               style={{
-                position: 'absolute',
-                // bottom: 0, // space from bottombar
-                height: 64,
-                width: 64,
-                borderRadius: 100,
-                backgroundColor: colors.primary,
-                justifyContent: 'center',
                 alignItems: 'center',
+                backgroundColor: colors.primary,
+                borderRadius: 100,
+                height: 64,
+                justifyContent: 'center',
+                position: 'absolute',
+                width: 64,
               }}
             >
               <Feather
-                name="alert-triangle"
                 color={colors.white}
+                name="alert-triangle"
                 size={40}
                 style={{
-                  top: 8,
-                  left: 10,
-                  width: 60,
-                  height: 60,
                   alignContent: 'center',
+                  height: 60,
+                  left: 10,
+                  top: 8,
+                  width: 60,
                 }}
               />
             </View>
           ),
+          tabBarLabel: '',
         }}
       />
     </Tabs.Navigator>
@@ -129,24 +128,24 @@ const AppTabs = () => {
 
 const MainTabs = () => (
   <Stack.Navigator
-    name={routes.mainTabs}
     initialRouteName="tabs"
-    screenOptions={{ headerShown: false }}
     mode="modal"
+    name={routes.mainTabs}
+    screenOptions={{ headerShown: false }}
   >
-    <Tabs.Screen name="tabs" component={AppTabs} />
-    <Tabs.Screen name="EMERGENCY_MODAL" component={EmergencyScreen} />
+    <Tabs.Screen component={AppTabs} name="tabs" />
+    <Tabs.Screen component={EmergencyScreen} name="EMERGENCY_MODAL" />
   </Stack.Navigator>
 );
 
 const styles = StyleSheet.create({
+  icon: {
+    marginTop: 11,
+  },
   tabBar: {
     height: 86,
     paddingHorizontal: 28,
     paddingVertical: 4,
-  },
-  icon: {
-    marginTop: 11,
   },
 });
 

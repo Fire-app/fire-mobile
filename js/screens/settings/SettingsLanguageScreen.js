@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState } from 'react';
 import { textStyles } from '../../styles';
 import ListSelector from '../../components/ListSelector';
 import i18n, { getLanguageOptions } from '../../config/i18n';
@@ -27,10 +27,10 @@ const SettingsLanguageScreen = () => {
       </Text>
       <View style={styles.languageList}>
         <ListSelector
-          defaultKey={i18n.language}
-          onChange={onLanguageChange}
           data={getLanguageOptions()}
+          defaultKey={i18n.language}
           keyExtractor={({ locale }, i) => `${locale}:${i}`}
+          onChange={onLanguageChange}
           selectedExtractor={({ item }) => item.locale}
           titleExtractor={({ item }) => item.name}
         />
@@ -43,12 +43,12 @@ export default SettingsLanguageScreen;
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+    backgroundColor: 'white',
     flex: 1,
+    justifyContent: 'space-between',
     padding: 20,
     paddingTop: 30,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: 'white',
   },
   languageList: {
     flex: 1,

@@ -1,7 +1,7 @@
-import React from 'react';
 import { Text } from 'react-native';
 import PropTypes from 'prop-types';
-import { textStyles, colors } from '../../styles';
+import React from 'react';
+import { colors, textStyles } from '../../styles';
 
 const ResourcesName = ({ text }) => {
   return (
@@ -10,9 +10,9 @@ const ResourcesName = ({ text }) => {
         textStyles.h2,
         colors.charcoalGrey,
         {
-          textAlign: 'left',
           alignSelf: 'stretch',
           paddingBottom: 20,
+          textAlign: 'left',
         },
       ]}
     >
