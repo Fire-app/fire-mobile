@@ -11,9 +11,6 @@ export const RESOURCES_MAP = {
     shortName: 'AAAJ',
     twitterUrl: 'https://www.twitter.com/AAAJ_LA',
     website: 'https://www.advancingjustice-la.org/',
-    services: ['DACA renewal', 'Citizenship consultation', 'English classes'],
-    facebookUrl: 'https://www.facebook.com/AdvancingJusticeLA',
-    instagramUrl: null,
     youtubeUrl: null,
   },
   CARECEN: {
@@ -36,9 +33,8 @@ export const RESOURCES_MAP = {
     phone: 'tel://8886244752',
     services: ['DACA renewal', 'Citizenship consultation', 'English classes'],
     shortName: 'CHIRLA',
-    twitterUrl: 'https://twitter.com/CHIRLA',
-    website: 'https://chirla.org/',
     twitterUrl: 'https://www.twitter.com/CHIRLA',
+    website: 'https://chirla.org/',
     youtubeUrl: 'https://www.youtube.com/channel/UCkpuw8C5tb4RL8IwI-liMsA',
   },
 };
