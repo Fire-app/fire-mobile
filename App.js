@@ -13,6 +13,7 @@ import { SplashScreen as SplashScreenUtils } from 'expo';
 import { StatusBar } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
+// eslint-disable-next-line no-restricted-imports
 import {
   Feather,
   FontAwesome,

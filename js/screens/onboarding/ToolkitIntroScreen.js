@@ -1,4 +1,3 @@
-import { Feather } from '@expo/vector-icons';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
@@ -7,6 +6,10 @@ import { colors, textStyles } from '../../styles';
 import OnboardingTemplate from './Template';
 import OnboardingTitle from '../../components/OnboardingTitle';
 import routes from '../../navigation/routes';
+import FireIcon, {
+  ICON_NAMES,
+  IconNamePropType,
+} from '../../components/FireIcon';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -16,7 +19,7 @@ const ToolkitTitleInfo = () => {
     <View style={styles.titleContainer}>
       <View style={{ height: 30 }} />
       <View style={styles.alertIconContainer}>
-        <Feather name="alert-triangle" style={styles.alertIcon} />
+        <FireIcon name={ICON_NAMES.ALERT} style={styles.alertIcon} />
       </View>
       <View style={{ height: 30 }} />
       <OnboardingTitle
@@ -30,20 +33,18 @@ const ToolkitTitleInfo = () => {
   );
 };
 
-const ToolkitInfoSection = ({ title, subtitle, iconName }) => {
-  return (
-    <View style={styles.infoContainer}>
-      <Feather name={iconName} style={styles.infoIcon} />
-      <View style={{ flex: 1, paddingRight: 10 }}>
-        <Text style={[textStyles.h5, styles.infoTitle]}>{title}</Text>
-        <Text style={textStyles.body1}>{subtitle}</Text>
-      </View>
+const ToolkitInfoSection = ({ title, subtitle, iconName }) => (
+  <View style={styles.infoContainer}>
+    <FireIcon name={iconName} style={styles.infoIcon} />
+    <View style={{ flex: 1, paddingRight: 10 }}>
+      <Text style={[textStyles.h5, styles.infoTitle]}>{title}</Text>
+      <Text style={textStyles.body1}>{subtitle}</Text>
     </View>
-  );
-};
+  </View>
+);
 
 ToolkitInfoSection.propTypes = {
-  iconName: PropTypes.string.isRequired,
+  iconName: IconNamePropType.isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
@@ -68,12 +69,12 @@ const ToolkitIntroScreen = ({ navigation }) => {
       >
         <ToolkitTitleInfo />
         <ToolkitInfoSection
-          iconName="phone"
+          iconName={ICON_NAMES.PHONE}
           subtitle={t('emergency_hotline_note')}
           title={t('emergency_hotline')}
         />
         <ToolkitInfoSection
-          iconName="credit-card"
+          iconName={ICON_NAMES.CREDIT_CARD}
           subtitle={t('rights_card_note')}
           title={t('rights_card')}
         />

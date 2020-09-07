@@ -1,4 +1,3 @@
-import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import {
   SafeAreaView,
   ScrollView,
@@ -15,6 +14,7 @@ import CustomModal from '../components/CustomModal';
 import { HelpButton, PrimaryButton } from '../components/Buttons';
 import colors from '../styles/colors';
 import textStyles from '../styles/textStyles';
+import FireIcon, { ICON_NAMES } from '../components/FireIcon';
 
 export default function EmergencyScreen({ navigation }) {
   const { t } = useTranslation();
@@ -39,9 +39,9 @@ export default function EmergencyScreen({ navigation }) {
             onPress={navigation.goBack}
             style={{ alignSelf: 'flex-start', paddingLeft: 20, paddingTop: 12 }}
           >
-            <MaterialCommunityIcons
+            <FireIcon
               color={colors.charcoalGrey}
-              name="close"
+              name={ICON_NAMES.CLOSE}
               size={32}
             />
           </TouchableOpacity>
@@ -54,9 +54,9 @@ export default function EmergencyScreen({ navigation }) {
                 justifyContent: 'center',
               }}
             >
-              <Feather
+              <FireIcon
                 color={colors.primary}
-                name="alert-triangle"
+                name={ICON_NAMES.ALERT}
                 size={32}
                 style={{ paddingRight: 6, paddingTop: 3 }}
               />
@@ -122,9 +122,9 @@ const RightsCardModal = ({
           paddingBottom: 12,
         }}
       >
-        <Feather
+        <FireIcon
           color={colors.primary}
-          name="credit-card"
+          name={ICON_NAMES.CREDIT_CARD}
           size={22}
           style={{ paddingTop: 2 }}
         />
@@ -163,7 +163,11 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
         {t('info_modal_emergency_toolkit_explanation')}
       </Text>
       <View style={{ flexDirection: 'row', paddingTop: 15 }}>
-        <Feather name="phone" size={24} style={{ paddingRight: 12 }} />
+        <FireIcon
+          name={ICON_NAMES.PHONE}
+          size={24}
+          style={{ paddingRight: 12 }}
+        />
         <View style={{ flex: 1 }}>
           <Text style={textStyles.h5}>{t('info_modal_emergency_hotline')}</Text>
           <Text style={textStyles.body1}>
@@ -172,7 +176,11 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
         </View>
       </View>
       <View style={{ flexDirection: 'row', paddingVertical: 15 }}>
-        <Feather name="credit-card" size={24} style={{ paddingRight: 12 }} />
+        <FireIcon
+          name={ICON_NAMES.CREDIT_CARD}
+          size={24}
+          style={{ paddingRight: 12 }}
+        />
         <View style={{ flex: 1 }}>
           <Text style={textStyles.h5}>{t('info_modal_rights_card')}</Text>
           <Text style={textStyles.body1}>
