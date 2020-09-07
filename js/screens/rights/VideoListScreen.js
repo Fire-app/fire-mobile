@@ -19,7 +19,6 @@ const VideoCard = ({ title, time, onPress, image }) => (
         <Image
           source={image}
           // Need to use absolute + percent for images to contain properly
-          source={image}
           style={{ height: 80, width: '100%' }}
         />
       </View>
@@ -36,7 +35,7 @@ const VideoCard = ({ title, time, onPress, image }) => (
 );
 
 VideoCard.propTypes = {
-  coverImage: Image.propTypes.source.isRequired,
+  image: Image.propTypes.source.isRequired,
   onPress: PropTypes.func.isRequired,
   time: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -52,10 +51,8 @@ const VideoListScreen = () => {
       keyExtractor={(_, i) => `${i}`}
       renderItem={({ item: { title, image, time } }) => (
         <VideoCard
-          title={t(title)}
-          // TODO: image per video, or thumbnail
           image={image}
-          time={time}
+          // TODO: image per video, or thumbnail
           onPress={() => {}}
           time={time}
           title={t(title)}
