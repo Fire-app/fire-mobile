@@ -17,7 +17,10 @@ export const HOTLINE_OPTIONS = [
     name: 'Orange County',
     phoneNumber: '6572100157',
   },
-  { name: 'San Bernardino/Riverside County', phoneNumber: '9093614588' },
+  {
+    name: 'San Bernardino/Riverside County',
+    phoneNumber: '9093614588',
+  },
   {
     name: 'San Diego County',
     phoneNumber: '6195360823',
