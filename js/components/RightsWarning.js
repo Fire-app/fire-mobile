@@ -1,8 +1,8 @@
-import { FontAwesome } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { colors, textStyles } from '../styles';
+import FireIcon, { ICON_NAMES } from './FireIcon';
 
 const AlertCircle = () => (
   <View
@@ -15,7 +15,7 @@ const AlertCircle = () => (
       padding: 4,
     }}
   >
-    <FontAwesome color="white" name="exclamation" size={20} />
+    <FireIcon color="white" name={ICON_NAMES.EXCLAMATION} size={20} />
   </View>
 );
 

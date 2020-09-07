@@ -1,10 +1,10 @@
 import { FlatList, Text, View } from 'react-native';
 import React, { useState } from 'react';
 
-import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
 import { colors, textStyles } from '../styles';
+import FireIcon, { ICON_NAMES } from './FireIcon';
 
 const ListOption = ({ title, selected, onPress }) => (
   <TouchableOpacity
@@ -29,12 +29,10 @@ const ListOption = ({ title, selected, onPress }) => (
         <Text style={textStyles.body1}>{title}</Text>
       </View>
       {selected && (
-        <Ionicons
-          name="ios-checkmark-circle"
-          style={{
-            color: colors.primary,
-            fontSize: 24,
-          }}
+        <FireIcon
+          color={colors.primary}
+          name={ICON_NAMES.CHECKMARK}
+          size={24}
         />
       )}
     </View>
@@ -86,13 +84,9 @@ ListSelector.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   defaultKey: PropTypes.string.isRequired,
   keyExtractor: PropTypes.func.isRequired,
-
   listHeaderComponent: PropTypes.node,
-
   onChange: PropTypes.func.isRequired,
-
   selectedExtractor: PropTypes.func.isRequired,
-
   titleExtractor: PropTypes.func.isRequired,
 };
 

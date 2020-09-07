@@ -1,15 +1,15 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { colors, textStyles } from '../styles';
 import Card from './Card';
+import FireIcon, { ICON_NAMES } from './FireIcon';
 
 export default function ScenarioBullets({ title, bullets }) {
   const bulletsList = bullets.map((bullet) => {
     return (
       <View key={bullet} style={styles.textContainer}>
-        <MaterialCommunityIcons name="circle" style={styles.bulletPoint} />
+        <FireIcon name={ICON_NAMES.CIRCLE} style={styles.bulletPoint} />
         <Text style={[textStyles.body1, { color: colors.textLight }]}>
           {bullet}
         </Text>
