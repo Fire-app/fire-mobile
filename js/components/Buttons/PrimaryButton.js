@@ -1,8 +1,8 @@
-import { Button } from 'react-native-elements';
-import { StyleSheet } from 'react-native';
-import PropTypes from 'prop-types';
-import React from 'react';
-import { colors, textStyles } from '../../styles';
+import { Button } from "react-native-elements";
+import { StyleSheet } from "react-native";
+import PropTypes from "prop-types";
+import React from "react";
+import { colors, textStyles } from "../../styles";
 
 const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
   <Button
@@ -22,7 +22,7 @@ const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
     disabled={disabled}
     onPress={onPress}
     title={title}
-    titleStyle={StyleSheet.flatten([textStyles.h3, { color: 'white' }])}
+    titleStyle={StyleSheet.flatten([textStyles.h2, { color: "white" }])}
   />
 );
 
