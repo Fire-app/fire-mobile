@@ -1,29 +1,12 @@
-import {
-  SET_ATTORNEY_NAME,
-  SET_ATTORNEY_NUMBER,
-  SET_HOTLINE_NAME,
-  SET_HOTLINE_NUMBER,
-} from '../actions/constants';
+import { SET_HOTLINE_NAME, SET_HOTLINE_NUMBER } from "../actions/constants";
 
 const initialState = {
-  attorneyName: null,
-  attorneyNumber: null,
   hotlineName: null,
   hotlineNumber: null,
 };
 
 const attorneyReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_ATTORNEY_NAME:
-      return {
-        ...state,
-        attorneyName: action.payload.attorneyName,
-      };
-    case SET_ATTORNEY_NUMBER:
-      return {
-        ...state,
-        attorneyNumber: action.payload.attorneyNumber,
-      };
     case SET_HOTLINE_NAME:
       return {
         ...state,

@@ -1,17 +1,16 @@
-import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
+import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
 
 import {
-  AttorneyScreen,
   CompleteScreen,
   HotlineScreen,
   IntroScreen,
   LanguageScreen,
   ToolkitIntroScreen,
   WelcomeScreen,
-} from '../screens/onboarding';
+} from "../screens/onboarding";
 
-import routes from './routes';
+import routes from "./routes";
 
 const onboardingRoutes = routes.onboarding;
 
@@ -32,7 +31,6 @@ const OnboardingStack = () => (
       name={onboardingRoutes.toolkitIntro}
     />
     <Stack.Screen component={HotlineScreen} name={onboardingRoutes.hotline} />
-    <Stack.Screen component={AttorneyScreen} name={onboardingRoutes.attorney} />
     <Stack.Screen component={CompleteScreen} name={onboardingRoutes.complete} />
   </Stack.Navigator>
 );
