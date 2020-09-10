@@ -1,28 +1,39 @@
+const generalTipsImage = require("../assets/videoCoverImages/general_tips.jpg");
+const streetArrestImage = require("../assets/videoCoverImages/street_arrest.jpg");
+const consultAttorneyImage = require("../assets/videoCoverImages/consult_attorney.jpg");
+const isapAidImage = require("../assets/videoCoverImages/isap_aid.jpg");
+const interrogationImage = require("../assets/videoCoverImages/interrogation.jpg");
+
 const videos = [
   {
-    fileName: 'know_your_rights',
-    time: '1:11',
-    title: 'videos.general_tips',
+    title: "videos.general_tips",
+    time: "1:11",
+    image: generalTipsImage,
+    videoUrl: "https://youtu.be/GapEalG_Kt8",
   },
   {
-    fileName: 'know_your_rights',
-    time: '1:56',
-    title: 'videos.interrogation',
+    title: "videos.interrogation",
+    time: "1:56",
+    image: interrogationImage,
+    videoUrl: "https://youtu.be/pH-1V-1i9AE",
   },
   {
-    fileName: 'know_your_rights',
-    time: '2:30',
-    title: 'videos.consult_attorney',
+    title: "videos.consult_attorney",
+    time: "2:30",
+    image: consultAttorneyImage,
+    videoUrl: "https://youtu.be/uxpRrK-xb4I",
   },
   {
-    fileName: 'know_your_rights',
-    time: '2:26',
-    title: 'videos.isap_detention',
+    title: "videos.isap_detention",
+    time: "2:26",
+    image: isapAidImage,
+    videoUrl: "https://youtu.be/U8raAQ2sUYw",
   },
   {
-    fileName: 'know_your_rights',
-    time: '2:30',
-    title: 'videos.arrested_street',
+    title: "videos.arrested_street",
+    time: "2:30",
+    image: streetArrestImage,
+    videoUrl: "https://youtu.be/mmsIccaRWVs",
   },
 ];
 
