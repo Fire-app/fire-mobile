@@ -4,17 +4,17 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from "react-native";
-import { useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
-import PropTypes from "prop-types";
-import React, { useState } from "react";
-import call from "react-native-phone-call";
-import CustomModal from "../components/CustomModal";
-import { HelpButton, PrimaryButton } from "../components/Buttons";
-import colors from "../styles/colors";
-import textStyles from "../styles/textStyles";
-import FireIcon, { ICON_NAMES } from "../components/FireIcon";
+} from 'react-native';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import call from 'react-native-phone-call';
+import CustomModal from '../components/CustomModal';
+import { HelpButton, PrimaryButton } from '../components/Buttons';
+import colors from '../styles/colors';
+import textStyles from '../styles/textStyles';
+import FireIcon, { ICON_NAMES } from '../components/FireIcon';
 
 export default function EmergencyScreen({ navigation }) {
   const { t } = useTranslation();
@@ -37,7 +37,7 @@ export default function EmergencyScreen({ navigation }) {
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1 }}>
           <TouchableOpacity
             onPress={navigation.goBack}
-            style={{ alignSelf: "flex-start", paddingLeft: 20, paddingTop: 12 }}
+            style={{ alignSelf: 'flex-start', paddingLeft: 20, paddingTop: 12 }}
           >
             <FireIcon
               color={colors.charcoalGrey}
@@ -49,9 +49,9 @@ export default function EmergencyScreen({ navigation }) {
           <View style={{ paddingHorizontal: 56 }}>
             <View
               style={{
-                alignItems: "center",
-                flexDirection: "row",
-                justifyContent: "center",
+                alignItems: 'center',
+                flexDirection: 'row',
+                justifyContent: 'center',
               }}
             >
               <FireIcon
@@ -60,18 +60,18 @@ export default function EmergencyScreen({ navigation }) {
                 size={32}
                 style={{ paddingRight: 6, paddingTop: 3 }}
               />
-              <Text style={textStyles.h1}>{t("emergency_toolkit")}</Text>
+              <Text style={textStyles.h1}>{t('emergency_toolkit')}</Text>
             </View>
             <View style={{ paddingTop: 12 }}>
               <PrimaryButton
                 darkMode
                 onPress={() => call(phoneNum)}
-                title={t("call_emergency_hotline")}
+                title={t('call_emergency_hotline')}
               />
               <PrimaryButton
                 darkMode
                 onPress={() => setRightsCardVisible(!RightsCardVisible)}
-                title={t("rights_card")}
+                title={t('rights_card')}
               />
             </View>
           </View>
@@ -79,7 +79,7 @@ export default function EmergencyScreen({ navigation }) {
           <HelpButton
             centered
             onPress={() => setInfoModalVisible(!InfoModalVisible)}
-            title={t("rights_card_what_is_this")}
+            title={t('rights_card_what_is_this')}
           />
           <View style={{ flexGrow: 1 }} />
         </ScrollView>
@@ -112,13 +112,13 @@ const RightsCardModal = ({
       isVisible={isVisible}
       primaryButton={{
         onPress: () => setModalVisible(!isVisible),
-        title: t("dismiss_card"),
+        title: t('dismiss_card'),
       }}
     >
       <View
         style={{
-          alignItems: "center",
-          flexDirection: "row",
+          alignItems: 'center',
+          flexDirection: 'row',
           paddingBottom: 12,
         }}
       >
@@ -129,11 +129,11 @@ const RightsCardModal = ({
           style={{ paddingTop: 2 }}
         />
         <Text style={[textStyles.h2, { paddingLeft: 8 }]}>
-          {t("rights_card_title")}
+          {t('rights_card_title')}
         </Text>
       </View>
       <Text style={textStyles.body1}>
-        {`${t("rights_card_content_1")}\n\n${t("rights_card_content_2")}`}
+        {`${t('rights_card_content_1')}\n\n${t('rights_card_content_2')}`}
       </Text>
       <Text style={[textStyles.h3, { paddingVertical: 10 }]}>
         {attorneyName}
@@ -153,38 +153,38 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
       isVisible={isVisible}
       primaryButton={{
         onPress: () => setModalVisible(!isVisible),
-        title: t("got_it"),
+        title: t('got_it'),
       }}
     >
       <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
-        {t("info_modal_whats_my_emergency_toolkit?")}
+        {t('info_modal_whats_my_emergency_toolkit?')}
       </Text>
       <Text color={colors.textLight} style={textStyles.body1}>
-        {t("info_modal_emergency_toolkit_explanation")}
+        {t('info_modal_emergency_toolkit_explanation')}
       </Text>
-      <View style={{ flexDirection: "row", paddingTop: 15 }}>
+      <View style={{ flexDirection: 'row', paddingTop: 15 }}>
         <FireIcon
           name={ICON_NAMES.PHONE}
           size={24}
           style={{ paddingRight: 12 }}
         />
         <View style={{ flex: 1 }}>
-          <Text style={textStyles.h5}>{t("emergency_hotline")}</Text>
+          <Text style={textStyles.h5}>{t('emergency_hotline')}</Text>
           <Text style={textStyles.body1}>
-            {t("info_modal_emergency_hotline_explanation")}
+            {t('info_modal_emergency_hotline_explanation')}
           </Text>
         </View>
       </View>
-      <View style={{ flexDirection: "row", paddingVertical: 15 }}>
+      <View style={{ flexDirection: 'row', paddingVertical: 15 }}>
         <FireIcon
           name={ICON_NAMES.CREDIT_CARD}
           size={24}
           style={{ paddingRight: 12 }}
         />
         <View style={{ flex: 1 }}>
-          <Text style={textStyles.h5}>{t("info_modal_rights_card")}</Text>
+          <Text style={textStyles.h5}>{t('info_modal_rights_card')}</Text>
           <Text style={textStyles.body1}>
-            {t("info_modal_rights_card_explanation")}
+            {t('info_modal_rights_card_explanation')}
           </Text>
         </View>
       </View>

@@ -1,4 +1,4 @@
-import { SET_HOTLINE_NAME, SET_HOTLINE_NUMBER } from "../actions/constants";
+import { SET_HOTLINE_NAME, SET_HOTLINE_NUMBER } from '../actions/constants';
 
 const initialState = {
   hotlineName: null,

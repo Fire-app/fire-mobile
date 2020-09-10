@@ -1,16 +1,16 @@
-import { Button } from "react-native-elements";
-import { StyleSheet } from "react-native";
-import PropTypes from "prop-types";
-import React from "react";
-import { colors, textStyles } from "../../styles";
+import { Button } from 'react-native-elements';
+import { StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { colors, textStyles } from '../../styles';
 
 const SecondaryButton = ({ title, onPress, alignRight }) => (
   <Button
     buttonStyle={StyleSheet.flatten([
-      { backgroundColor: "white", borderRadius: 3, padding: 16 },
+      { backgroundColor: 'white', borderRadius: 3, padding: 16 },
       alignRight && { padding: 6 },
     ])}
-    containerStyle={({ flexGrow: 1 }, alignRight && { alignSelf: "flex-end" })}
+    containerStyle={({ flexGrow: 1 }, alignRight && { alignSelf: 'flex-end' })}
     onPress={onPress}
     title={title}
     titleStyle={StyleSheet.flatten([

@@ -1,17 +1,17 @@
-import { useDispatch } from "react-redux";
-import { useTranslation } from "react-i18next";
-import PropTypes from "prop-types";
-import React, { useState } from "react";
-import { DEFAULT_HOTLINE, HOTLINE_OPTIONS } from "../../../data/hotlineOptions";
-import { SecondaryButton } from "../../components/Buttons";
-import CustomModal from "../../components/CustomModal";
-import ListSelector from "../../components/ListSelector";
-import ModalContent from "../../components/ModalContent";
-import OnboardingTemplate from "./Template";
-import OnboardingTitle from "../../components/OnboardingTitle";
-import routes from "../../navigation/routes";
-import setHotlineNameAction from "../../store/actions/settings/setHotlineNameAction";
-import setHotlineNumberAction from "../../store/actions/settings/setHotlineNumberAction";
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { DEFAULT_HOTLINE, HOTLINE_OPTIONS } from '../../../data/hotlineOptions';
+import { SecondaryButton } from '../../components/Buttons';
+import CustomModal from '../../components/CustomModal';
+import ListSelector from '../../components/ListSelector';
+import ModalContent from '../../components/ModalContent';
+import OnboardingTemplate from './Template';
+import OnboardingTitle from '../../components/OnboardingTitle';
+import routes from '../../navigation/routes';
+import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
+import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -40,11 +40,11 @@ const HotlineScreen = ({ navigation }) => {
     <OnboardingTemplate
       primaryButton={{
         onPress: saveHotlineNumber,
-        title: t("next"),
+        title: t('next'),
       }}
       secondaryButton={{
         onPress: () => navigation.pop(),
-        title: t("back"),
+        title: t('back'),
       }}
     >
       <ListSelector
@@ -54,13 +54,13 @@ const HotlineScreen = ({ navigation }) => {
         listHeaderComponent={
           <>
             <OnboardingTitle
-              subtitle={t("select_hotline_subtitle")}
-              title={t("select_hotline")}
+              subtitle={t('select_hotline_subtitle')}
+              title={t('select_hotline')}
             />
             <SecondaryButton
               alignRight
               onPress={() => setModalVisible(true)}
-              title={t("what_is_hotline")}
+              title={t('what_is_hotline')}
             />
           </>
         }
@@ -73,12 +73,12 @@ const HotlineScreen = ({ navigation }) => {
         isVisible={modalVisible}
         primaryButton={{
           onPress: () => setModalVisible(false),
-          title: t("got_it"),
+          title: t('got_it'),
         }}
       >
         <ModalContent
-          subtitle={t("hotline_note")}
-          title={t("what_is_hotline")}
+          subtitle={t('hotline_note')}
+          title={t('what_is_hotline')}
         />
       </CustomModal>
     </OnboardingTemplate>

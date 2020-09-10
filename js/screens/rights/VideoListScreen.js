@@ -1,16 +1,16 @@
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
-import * as WebBrowser from "expo-web-browser";
-import { useTranslation } from "react-i18next";
-import PropTypes from "prop-types";
-import React from "react";
-import Card from "../../components/Card";
-import VIDEOS from "../../../data/videos";
-import colors from "../../styles/colors";
-import textStyles from "../../styles/textStyles";
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Card from '../../components/Card';
+import VIDEOS from '../../../data/videos';
+import colors from '../../styles/colors';
+import textStyles from '../../styles/textStyles';
 
 const VideoCard = ({ title, time, onPress, image }) => (
   <Card onPress={onPress}>
-    <View style={{ flex: 1, flexDirection: "row" }}>
+    <View style={{ flex: 1, flexDirection: 'row' }}>
       <View
         style={{
           flex: 1,
@@ -21,10 +21,10 @@ const VideoCard = ({ title, time, onPress, image }) => (
           resizeMode="contain"
           // Need to use absolute + percent for images to contain properly
           source={image}
-          style={{ height: 80, width: "100%" }}
+          style={{ height: 80, width: '100%' }}
         />
       </View>
-      <View style={{ flex: 1, justifyContent: "space-between" }}>
+      <View style={{ flex: 1, justifyContent: 'space-between' }}>
         <Text style={[textStyles.h3, { color: colors.charcoalGrey }]}>
           {title}
         </Text>

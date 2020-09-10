@@ -1,6 +1,6 @@
-import { createStackNavigator } from "@react-navigation/stack";
-import { useTranslation } from "react-i18next";
-import React from "react";
+import { createStackNavigator } from '@react-navigation/stack';
+import { useTranslation } from 'react-i18next';
+import React from 'react';
 
 import {
   AboutScreen,
@@ -11,10 +11,10 @@ import {
   SettingsLanguageScreen,
   SettingsOverviewScreen,
   TermsOfServiceScreen,
-} from "../screens/settings";
+} from '../screens/settings';
 
-import routes from "./routes";
-import textStyles from "../styles/textStyles";
+import routes from './routes';
+import textStyles from '../styles/textStyles';
 
 const Stack = createStackNavigator();
 
@@ -34,56 +34,56 @@ const SettingsStack = () => {
         component={SettingsOverviewScreen}
         name={routes.settings.overview}
         options={{
-          title: t("settings"),
+          title: t('settings'),
         }}
       />
       <Stack.Screen
         component={SettingsLanguageScreen}
         name={routes.settings.language}
         options={{
-          title: t("language"),
+          title: t('language'),
         }}
       />
       <Stack.Screen
         component={HotlineSelectionScreen}
         name={routes.settings.hotline}
         options={{
-          title: t("emergency_hotline"),
+          title: t('emergency_hotline'),
         }}
       />
       <Stack.Screen
         component={AboutScreen}
         name={routes.settings.about}
         options={{
-          title: t("about"),
+          title: t('about'),
         }}
       />
       <Stack.Screen
         component={PrivacyPolicyScreen}
         name={routes.settings.privacy_policy}
         options={{
-          title: t("privacy_policy"),
+          title: t('privacy_policy'),
         }}
       />
       <Stack.Screen
         component={TermsOfServiceScreen}
         name={routes.settings.terms_of_service}
         options={{
-          title: t("terms_of_service"),
+          title: t('terms_of_service'),
         }}
       />
       <Stack.Screen
         component={AcknowledgementsScreen}
         name={routes.settings.acknowledgements}
         options={{
-          title: t("acknowledgements"),
+          title: t('acknowledgements'),
         }}
       />
       <Stack.Screen
         component={PartnersInfoScreen}
         name={routes.settings.partners}
         options={{
-          title: t("partners"),
+          title: t('partners'),
         }}
       />
     </Stack.Navigator>

@@ -1,5 +1,5 @@
-import { createStackNavigator } from "@react-navigation/stack";
-import React from "react";
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
 
 import {
   CompleteScreen,
@@ -8,9 +8,9 @@ import {
   LanguageScreen,
   ToolkitIntroScreen,
   WelcomeScreen,
-} from "../screens/onboarding";
+} from '../screens/onboarding';
 
-import routes from "./routes";
+import routes from './routes';
 
 const onboardingRoutes = routes.onboarding;
 

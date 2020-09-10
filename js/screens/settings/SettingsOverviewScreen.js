@@ -1,14 +1,14 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { useDispatch } from "react-redux";
-import { useTranslation } from "react-i18next";
-import PropTypes from "prop-types";
-import React from "react";
-import { textStyles } from "../../styles";
-import { Divider, Row } from "../../components/SettingsSelector";
-import formattedVersionInfo from "../../util/versionInfo";
-import resetOnboardingAction from "../../store/actions/resetOnboarding";
-import routes from "../../navigation/routes";
-import { ICON_NAMES } from "../../components/FireIcon";
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { textStyles } from '../../styles';
+import { Divider, Row } from '../../components/SettingsSelector';
+import formattedVersionInfo from '../../util/versionInfo';
+import resetOnboardingAction from '../../store/actions/resetOnboarding';
+import routes from '../../navigation/routes';
+import { ICON_NAMES } from '../../components/FireIcon';
 
 const SettingsOverviewScreen = ({ navigation }) => {
   const { t } = useTranslation();
@@ -26,13 +26,13 @@ const SettingsOverviewScreen = ({ navigation }) => {
         hasIcon
         iconName={ICON_NAMES.ALERT}
         onPress={() => navigation.navigate(routes.settings.hotline)}
-        title={t("emergency_hotline")}
+        title={t('emergency_hotline')}
       />
       <Divider />
       <Row
         iconName={ICON_NAMES.GLOBE}
         onPress={() => navigation.navigate(routes.settings.language)}
-        title={t("language")}
+        title={t('language')}
       />
       <Divider />
       <Row
@@ -40,13 +40,13 @@ const SettingsOverviewScreen = ({ navigation }) => {
         onPress={() => {
           // TODO
         }}
-        title={t("notifications")}
+        title={t('notifications')}
       />
       <Divider />
       <Row
         iconName={ICON_NAMES.INFO}
         onPress={() => navigation.navigate(routes.settings.about)}
-        title={t("about")}
+        title={t('about')}
       />
       <Divider />
       {__DEV__ && (
@@ -59,9 +59,9 @@ const SettingsOverviewScreen = ({ navigation }) => {
           <Divider />
         </>
       )}
-      <View style={{ flex: 1, justifyContent: "flex-end" }}>
+      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
         <View style={{ marginBottom: 30, paddingVertical: 8 }}>
-          <Text style={[textStyles.h3, { textAlign: "center" }]}>
+          <Text style={[textStyles.h3, { textAlign: 'center' }]}>
             {formattedVersionInfo()}
           </Text>
         </View>
@@ -80,7 +80,7 @@ export default SettingsOverviewScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     flexGrow: 1,
   },
 });
