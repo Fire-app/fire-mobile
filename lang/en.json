@@ -147,5 +147,7 @@
   "do_not_run_speak": "Do not run or speak.",
   "remember_to_remain_silent": "Remember, you have the right to remain silent! If you speak, do not lie.",
   "tips": "Tips",
-  "potential_scenarios": "Potential Scenarios"
+  "potential_scenarios": "Potential Scenarios",
+  "disclaimer_title": "DISCLAIMER",
+  "disclaimer_body": "This information is produced by CHIRLA for educational purposes only. This is not intended as and is not a substitute for legal advice. Last updated: July 2020"
 }
