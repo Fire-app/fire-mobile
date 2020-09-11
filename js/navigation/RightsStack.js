@@ -18,7 +18,7 @@ import {
   PublicTransportScreen,
   WorkScreen,
 } from '../screens/rights/scenarioScreens';
-import textStyles from '../styles/textStyles';
+import { textStyles } from '../styles';
 
 const Stack = createStackNavigator();
 

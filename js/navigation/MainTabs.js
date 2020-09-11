@@ -1,12 +1,12 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
 import React from 'react';
 import EmergencyScreen from '../screens/EmergencyScreen';
-import { colors, textStyles } from '../styles';
+import { colors, textStyles, shadows } from '../styles';
 import ResourcesStack from './ResourcesStack';
 import RightsStack from './RightsStack';
 import SettingsStack from './SettingsStack';
@@ -17,6 +17,27 @@ const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const FakeScreen = () => null;
+
+const CreateTabLabel = (title) => ({ color }) => (
+  // adjustsFontSizeToFit + numberOfLines allows this to scale nicely on smaller devices
+  <Text
+    adjustsFontSizeToFit
+    maxFontSizeMultiplier={1.2}
+    numberOfLines={1}
+    style={{ color }}
+  >
+    {title}
+  </Text>
+);
+const CreateTabIcon = (iconName) => ({ color, size }) => (
+  <FireIcon
+    color={color}
+    maxFontSizeMultiplier={1}
+    name={iconName}
+    size={size}
+    style={styles.icon}
+  />
+);
 
 const AppTabs = () => {
   const { t } = useTranslation();
@@ -29,55 +50,31 @@ const AppTabs = () => {
         inactiveTintColor: colors.warmGrey,
         labelStyle: textStyles.tabLabel,
         style: styles.tabBar,
-        tabStyle: { height: 56 },
+        tabStyle: { height: 60 },
       }}
     >
       <Tabs.Screen
         component={RightsStack}
         name={routes.main.rights}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <FireIcon
-              color={color}
-              name={ICON_NAMES.SHIELD}
-              size={size}
-              style={styles.icon}
-            />
-          ),
-
-          tabBarLabel: t('tab_rights'),
+          tabBarIcon: CreateTabIcon(ICON_NAMES.SHIELD),
+          tabBarLabel: CreateTabLabel(t('tab_rights')),
         }}
       />
       <Tabs.Screen
         component={ResourcesStack}
         name={routes.main.resources}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <FireIcon
-              color={color}
-              name={ICON_NAMES.USERS}
-              size={size}
-              style={styles.icon}
-            />
-          ),
-
-          tabBarLabel: t('tab_resources'),
+          tabBarIcon: CreateTabIcon(ICON_NAMES.USERS),
+          tabBarLabel: CreateTabLabel(t('tab_resources')),
         }}
       />
       <Tabs.Screen
         component={SettingsStack}
         name={routes.main.settings}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <FireIcon
-              color={color}
-              name={ICON_NAMES.GEAR}
-              size={size}
-              style={styles.icon}
-            />
-          ),
-
-          tabBarLabel: t('settings'),
+          tabBarIcon: CreateTabIcon(ICON_NAMES.GEAR),
+          tabBarLabel: CreateTabLabel(t('settings')),
         }}
       />
       <Tabs.Screen
@@ -95,24 +92,36 @@ const AppTabs = () => {
         options={{
           tabBarIcon: () => (
             <View
-              style={{
-                alignItems: 'center',
-                backgroundColor: colors.primary,
-                borderRadius: 100,
-                height: 64,
-                justifyContent: 'center',
-                position: 'absolute',
-                width: 64,
-              }}
+              style={[
+                {
+                  alignItems: 'center',
+                  backgroundColor: colors.primary,
+                  borderRadius: 100,
+                  elevation: 5,
+                  justifyContent: 'center',
+                  padding: 12,
+                  position: 'absolute',
+                },
+                shadows.default,
+              ]}
             >
-              <FireIcon
-                color={colors.white}
-                name={ICON_NAMES.ALERT}
-                size={40}
+              <View
                 style={{
-                  alignContent: 'center',
+                  alignItems: 'center',
+                  aspectRatio: 1,
+                  justifyContent: 'center',
                 }}
-              />
+              >
+                <FireIcon
+                  color={colors.white}
+                  maxFontSizeMultiplier={1.2}
+                  name={ICON_NAMES.ALERT}
+                  size={40}
+                  style={{
+                    alignContent: 'center',
+                  }}
+                />
+              </View>
             </View>
           ),
           tabBarLabel: '',
@@ -134,13 +143,16 @@ const MainTabs = () => (
   </Stack.Navigator>
 );
 
+const windowWidth = Dimensions.get('window').width;
+const isWide = windowWidth > 380;
+
 const styles = StyleSheet.create({
   icon: {
     marginTop: 11,
   },
   tabBar: {
     height: 86,
-    paddingHorizontal: 28,
+    paddingHorizontal: isWide ? 20 : 10,
     paddingVertical: 4,
   },
 });
