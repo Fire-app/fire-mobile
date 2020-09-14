@@ -26,7 +26,7 @@ const HotlineScreen = ({ navigation }) => {
   const saveHotlineNumber = () => {
     dispatch(setHotlineNameAction(hotlineName));
     dispatch(setHotlineNumberAction(hotlineNumber));
-    navigation.navigate(onboardingRoutes.attorney);
+    navigation.navigate(onboardingRoutes.complete);
   };
 
   const [modalVisible, setModalVisible] = useState(false);

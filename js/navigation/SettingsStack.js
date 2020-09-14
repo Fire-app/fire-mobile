@@ -5,11 +5,9 @@ import React from 'react';
 import {
   AboutScreen,
   AcknowledgementsScreen,
-  EmergencyToolkitScreen,
   HotlineSelectionScreen,
   PartnersInfoScreen,
   PrivacyPolicyScreen,
-  RightsCardScreen,
   SettingsLanguageScreen,
   SettingsOverviewScreen,
   TermsOfServiceScreen,
@@ -47,24 +45,10 @@ const SettingsStack = () => {
         }}
       />
       <Stack.Screen
-        component={EmergencyToolkitScreen}
-        name={routes.settings.toolkit}
-        options={{
-          title: t('emergency_toolkit'),
-        }}
-      />
-      <Stack.Screen
         component={HotlineSelectionScreen}
         name={routes.settings.hotline}
         options={{
           title: t('emergency_hotline'),
-        }}
-      />
-      <Stack.Screen
-        component={RightsCardScreen}
-        name={routes.settings.rights_card}
-        options={{
-          title: t('rights_card'),
         }}
       />
       <Stack.Screen

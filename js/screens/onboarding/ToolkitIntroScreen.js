@@ -19,7 +19,7 @@ const ToolkitTitleInfo = () => {
     <View style={styles.titleContainer}>
       <View style={{ height: 30 }} />
       <View style={styles.alertIconContainer}>
-        <FireIcon name={ICON_NAMES.ALERT} style={styles.alertIcon} />
+        <FireIcon name={ICON_NAMES.ALERT} size={32} style={styles.alertIcon} />
       </View>
       <View style={{ height: 30 }} />
       <OnboardingTitle
@@ -35,7 +35,7 @@ const ToolkitTitleInfo = () => {
 
 const ToolkitInfoSection = ({ title, subtitle, iconName }) => (
   <View style={styles.infoContainer}>
-    <FireIcon name={iconName} style={styles.infoIcon} />
+    <FireIcon name={iconName} size={24} style={styles.infoIcon} />
     <View style={{ flex: 1, paddingRight: 10 }}>
       <Text style={[textStyles.h5, styles.infoTitle]}>{title}</Text>
       <Text style={textStyles.body1}>{subtitle}</Text>
