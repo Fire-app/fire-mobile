@@ -72,6 +72,7 @@ const ION_NAMES = {
 };
 
 const MATERIAL_ICONS = {
+  ALARM_LIGHT: 'alarm-light-outline',
   CIRCLE: 'circle',
   CLOSE: 'close',
 };

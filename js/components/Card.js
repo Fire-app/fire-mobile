@@ -1,14 +1,21 @@
-import { StyleSheet, ViewPropTypes } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, ViewPropTypes, View } from 'react-native';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { colors } from '../styles';
 
 export default function Card({ children, onPress, style }) {
   return (
-    <TouchableOpacity onPress={() => onPress()} style={[styles.card, style]}>
-      {children}
-    </TouchableOpacity>
+    <View style={styles.cardUnderlay}>
+      <TouchableHighlight
+        disabled={!onPress}
+        onPress={onPress ? () => onPress() : null}
+        style={[styles.card, style]}
+        underlayColor={colors.primaryLight}
+      >
+        {children}
+      </TouchableHighlight>
+    </View>
   );
 }
 
@@ -28,5 +35,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 12,
+  },
+  cardUnderlay: {
+    backgroundColor: colors.primaryLight,
+    borderRadius: 3,
   },
 });
