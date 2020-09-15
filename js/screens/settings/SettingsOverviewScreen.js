@@ -59,12 +59,17 @@ const SettingsOverviewScreen = ({ navigation }) => {
           <Divider />
         </>
       )}
-      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-        <View style={{ marginBottom: 30, paddingVertical: 8 }}>
-          <Text style={[textStyles.h3, { textAlign: 'center' }]}>
-            {formattedVersionInfo()}
-          </Text>
-        </View>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'flex-end',
+          marginBottom: 30,
+          paddingVertical: 8,
+        }}
+      >
+        <Text style={[textStyles.h3, { textAlign: 'center' }]}>
+          {formattedVersionInfo()}
+        </Text>
       </View>
     </ScrollView>
   );

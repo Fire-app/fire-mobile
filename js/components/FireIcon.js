@@ -12,7 +12,14 @@ import {
 } from '@expo/vector-icons';
 import { colors } from '../styles';
 
-const FireIcon = ({ name, size, color, style, raised }) => {
+const FireIcon = ({
+  name,
+  size,
+  color,
+  style,
+  raised,
+  maxFontSizeMultiplier,
+}) => {
   const IconComponent =
     iconNamesToFamilyComponent(name) || MaterialCommunityIcons;
   return (
@@ -29,6 +36,7 @@ const FireIcon = ({ name, size, color, style, raised }) => {
       ]}
     >
       <Text
+        maxFontSizeMultiplier={maxFontSizeMultiplier}
         style={[
           style,
           raised && {
@@ -102,6 +110,7 @@ const iconNamesToFamilyComponent = (name) => {
 export const IconNamePropType = PropTypes.oneOf(Object.values(ICON_NAMES));
 FireIcon.propTypes = {
   color: PropTypes.string,
+  maxFontSizeMultiplier: Text.propTypes.maxFontSizeMultiplier,
   name: IconNamePropType.isRequired,
   raised: PropTypes.bool,
   size: PropTypes.number,
