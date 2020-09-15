@@ -11,21 +11,26 @@ const INSTAGRAM_URL = /https:\/\/www\.instagram\.com\/([a-zA-Z0-9_]+)/;
 const YOUTUBE_URL = /https:\/\/www\.youtube\.com\/channel\/([a-zA-Z0-9_]+)/;
 
 const ResourceMapElementSchema = Joi.object({
-  shortName: Joi.string().min(1).required(),
-  fullName: Joi.string().min(1).required(),
-  website: Joi.string().regex(URL_REGEX).required(),
-  phone: Joi.string().regex(PHONE_REGEX).required(),
   description: Joi.string().min(1).required(),
-  services: Joi.array().items(Joi.string().required()), // TODO: validate via explicit enum types
+  // TODO: validate via explicit enum types
   facebookUrl: Joi.string().regex(FACEBOOK_URL).allow(null),
+
+  fullName: Joi.string().min(1).required(),
+
   instagramUrl: Joi.string().regex(INSTAGRAM_URL).allow(null),
+
+  phone: Joi.string().regex(PHONE_REGEX).required(),
+
+  services: Joi.array().items(Joi.string().required()),
+  shortName: Joi.string().min(1).required(),
   twitterUrl: Joi.string().regex(TWITTER_URL).allow(null),
+  website: Joi.string().regex(URL_REGEX).required(),
   youtubeUrl: Joi.string().regex(YOUTUBE_URL).allow(null),
 }).required();
 
 const ResourceListElementSchema = Joi.object({
-  shortName: Joi.string().min(1).required(),
   fullName: Joi.string().min(1).required(),
+  shortName: Joi.string().min(1).required(),
 });
 
 describe('Resource Map Validation', () => {

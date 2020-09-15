@@ -13,7 +13,7 @@ const onboardingRoutes = routes.onboarding;
 const InfoSection = ({ title, subtitle, iconName }) => {
   return (
     <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
-      <FireIcon name={iconName} style={styles.icon} />
+      <FireIcon name={iconName} size={24} style={styles.icon} />
       <View style={{ width: 12 }} />
       <View style={{ flex: 1 }}>
         <Text style={[textStyles.h1, { paddingBottom: 5 }]}>{title}</Text>

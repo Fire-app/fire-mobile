@@ -25,8 +25,8 @@ const SettingsOverviewScreen = ({ navigation }) => {
       <Row
         hasIcon
         iconName={ICON_NAMES.ALERT}
-        onPress={() => navigation.navigate(routes.settings.toolkit)}
-        title={t('emergency_toolkit')}
+        onPress={() => navigation.navigate(routes.settings.hotline)}
+        title={t('emergency_hotline')}
       />
       <Divider />
       <Row

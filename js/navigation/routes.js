@@ -9,7 +9,6 @@ const routes = {
 
   mainTabs: 'MAIN_TABS',
   onboarding: {
-    attorney: 'ONBOARDING_ATTORNEY',
     complete: 'ONBOARDING_COMPLETE',
     hotline: 'ONBOARDING_HOTLINE',
     intro: 'ONBOARDING_INTRO',
@@ -52,9 +51,7 @@ const routes = {
     overview: 'SETTINGS_OVERVIEW',
     partners: 'SETTINGS_PARTNERS',
     privacy_policy: 'SETTINGS_PRIVACY_POLICY',
-    rights_card: 'SETTINGS_RIGHTS_CARD',
     terms_of_service: 'SETTINGS_TERMS_OF_SERVICE',
-    toolkit: 'SETTINGS_TOOLKIT',
   },
   settingsStack: 'SETTINGS_STACK',
 

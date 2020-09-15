@@ -1,4 +1,5 @@
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -7,9 +8,7 @@ import VIDEOS from '../../../data/videos';
 import colors from '../../styles/colors';
 import textStyles from '../../styles/textStyles';
 
-const KNOW_YOUR_RIGHTS_IMAGE = require('../../../assets/videoCoverImages/know_your_rights.png');
-
-const VideoCard = ({ title, time, onPress, coverImage }) => (
+const VideoCard = ({ title, time, onPress, image }) => (
   <Card onPress={onPress}>
     <View style={{ flex: 1, flexDirection: 'row' }}>
       <View
@@ -21,7 +20,7 @@ const VideoCard = ({ title, time, onPress, coverImage }) => (
         <Image
           resizeMode="contain"
           // Need to use absolute + percent for images to contain properly
-          source={coverImage}
+          source={image}
           style={{ height: 80, width: '100%' }}
         />
       </View>
@@ -38,7 +37,7 @@ const VideoCard = ({ title, time, onPress, coverImage }) => (
 );
 
 VideoCard.propTypes = {
-  coverImage: Image.propTypes.source.isRequired,
+  image: Image.propTypes.source.isRequired,
   onPress: PropTypes.func.isRequired,
   time: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -52,12 +51,10 @@ const VideoListScreen = () => {
       data={VIDEOS}
       ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
       keyExtractor={(_, i) => `${i}`}
-      renderItem={({ item: { title, image, time } }) => (
+      renderItem={({ item: { title, image, time, videoUrl } }) => (
         <VideoCard
-          coverImage={KNOW_YOUR_RIGHTS_IMAGE}
           image={image}
-          // TODO: image per video, or thumbnail
-          onPress={() => {}}
+          onPress={() => WebBrowser.openBrowserAsync(videoUrl)}
           time={time}
           title={t(title)}
         />

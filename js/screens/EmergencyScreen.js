@@ -66,7 +66,7 @@ export default function EmergencyScreen({ navigation }) {
               <PrimaryButton
                 darkMode
                 onPress={() => call(phoneNum)}
-                title={t('emergency_hotline')}
+                title={t('call_emergency_hotline')}
               />
               <PrimaryButton
                 darkMode
@@ -169,7 +169,7 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
           style={{ paddingRight: 12 }}
         />
         <View style={{ flex: 1 }}>
-          <Text style={textStyles.h5}>{t('info_modal_emergency_hotline')}</Text>
+          <Text style={textStyles.h5}>{t('emergency_hotline')}</Text>
           <Text style={textStyles.body1}>
             {t('info_modal_emergency_hotline_explanation')}
           </Text>
