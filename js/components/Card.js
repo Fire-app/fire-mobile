@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   cardUnderlay: {
-    backgroundColor: colors.primaryLight,
     borderRadius: 3,
   },
 });

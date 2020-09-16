@@ -1,6 +1,7 @@
 import {
   SafeAreaView,
   ScrollView,
+  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -11,137 +12,47 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import call from 'react-native-phone-call';
 import CustomModal from '../components/CustomModal';
+import ModalContent from '../components/ModalContent';
+import Card from '../components/Card';
 import { HelpButton, PrimaryButton } from '../components/Buttons';
 import colors from '../styles/colors';
 import textStyles from '../styles/textStyles';
 import FireIcon, { ICON_NAMES } from '../components/FireIcon';
 
-export default function EmergencyScreen({ navigation }) {
+const TitleSection = () => {
   const { t } = useTranslation();
-  const [RightsCardVisible, setRightsCardVisible] = useState(false);
-  const [InfoModalVisible, setInfoModalVisible] = useState(false);
-  const savedHotlineNumber = useSelector(
-    (state) => state.settings.hotlineNumber
-  );
-  const savedAttorneyName = useSelector((state) => state.settings.attorneyName);
-  const savedAttorneyNumber = useSelector(
-    (state) => state.settings.attorneyNumber
-  );
-  const phoneNum = {
-    number: savedHotlineNumber,
-    prompt: false,
-  };
   return (
-    <View style={{ flex: 1 }}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1 }}>
-          <TouchableOpacity
-            onPress={navigation.goBack}
-            style={{ alignSelf: 'flex-start', paddingLeft: 20, paddingTop: 12 }}
-          >
-            <FireIcon
-              color={colors.charcoalGrey}
-              name={ICON_NAMES.CLOSE}
-              size={32}
-            />
-          </TouchableOpacity>
-          <View style={{ flexGrow: 1 }} />
-          <View style={{ paddingHorizontal: 56 }}>
-            <View
-              style={{
-                alignItems: 'center',
-                flexDirection: 'row',
-                justifyContent: 'center',
-              }}
-            >
-              <FireIcon
-                color={colors.primary}
-                name={ICON_NAMES.ALERT}
-                size={32}
-                style={{ paddingRight: 6, paddingTop: 3 }}
-              />
-              <Text style={textStyles.h1}>{t('emergency_toolkit')}</Text>
-            </View>
-            <View style={{ paddingTop: 12 }}>
-              <PrimaryButton
-                darkMode
-                onPress={() => call(phoneNum)}
-                title={t('call_emergency_hotline')}
-              />
-              <PrimaryButton
-                darkMode
-                onPress={() => setRightsCardVisible(!RightsCardVisible)}
-                title={t('rights_card')}
-              />
-            </View>
-          </View>
-          <View style={{ flexGrow: 1, maxHeight: 100 }} />
-          <HelpButton
-            centered
-            onPress={() => setInfoModalVisible(!InfoModalVisible)}
-            title={t('rights_card_what_is_this')}
-          />
-          <View style={{ flexGrow: 1 }} />
-        </ScrollView>
-
-        {/* ABSOLUTE MODALS */}
-        <InfoModal
-          isVisible={InfoModalVisible}
-          setModalVisible={setInfoModalVisible}
-        />
-        <RightsCardModal
-          attorneyName={savedAttorneyName}
-          attorneyNumber={savedAttorneyNumber}
-          isVisible={RightsCardVisible}
-          setModalVisible={setRightsCardVisible}
-        />
-      </SafeAreaView>
+    <View style={styles.titleContainer}>
+      <FireIcon
+        color={colors.primary}
+        name={ICON_NAMES.ALERT}
+        size={32}
+        style={{ paddingRight: 6, paddingTop: 3 }}
+      />
+      <Text style={textStyles.h1}>{t('emergency_hotline')}</Text>
     </View>
   );
-}
+};
 
-const RightsCardModal = ({
-  isVisible,
-  setModalVisible,
-  attorneyName,
-  attorneyNumber,
-}) => {
+const InfoSection = () => {
   const { t } = useTranslation();
   return (
-    <CustomModal
-      isVisible={isVisible}
-      primaryButton={{
-        onPress: () => setModalVisible(!isVisible),
-        title: t('dismiss_card'),
-      }}
-    >
-      <View
-        style={{
-          alignItems: 'center',
-          flexDirection: 'row',
-          paddingBottom: 12,
-        }}
-      >
-        <FireIcon
-          color={colors.primary}
-          name={ICON_NAMES.CREDIT_CARD}
-          size={22}
-          style={{ paddingTop: 2 }}
-        />
-        <Text style={[textStyles.h2, { paddingLeft: 8 }]}>
-          {t('rights_card_title')}
+    <Card style={styles.infoCard}>
+      <>
+        <Text style={[textStyles.h3, { paddingVertical: 6 }]}>
+          {t('call_hotline_if')}
         </Text>
-      </View>
-      <Text style={textStyles.body1}>
-        {`${t('rights_card_content_1')}\n\n${t('rights_card_content_2')}`}
-      </Text>
-      <Text style={[textStyles.h3, { paddingVertical: 10 }]}>
-        {attorneyName}
-      </Text>
-      <Text style={[textStyles.h3, { paddingBottom: 25 }]}>
-        {attorneyNumber}
-      </Text>
-    </CustomModal>
+        <Text style={[textStyles.body1, styles.infoText]}>
+          {t('you_are_detained')}
+        </Text>
+        <Text style={[textStyles.body1, styles.infoText]}>
+          {t('you_saw_raid')}
+        </Text>
+        <Text style={[textStyles.body1, styles.infoText]}>
+          {t('you_are_being_patrolled')}
+        </Text>
+      </>
+    </Card>
   );
 };
 
@@ -156,41 +67,69 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
         title: t('got_it'),
       }}
     >
-      <Text style={[textStyles.h2, { paddingBottom: 10 }]}>
-        {t('info_modal_whats_my_emergency_toolkit?')}
-      </Text>
-      <Text color={colors.textLight} style={textStyles.body1}>
-        {t('info_modal_emergency_toolkit_explanation')}
-      </Text>
-      <View style={{ flexDirection: 'row', paddingTop: 15 }}>
-        <FireIcon
-          name={ICON_NAMES.PHONE}
-          size={24}
-          style={{ paddingRight: 12 }}
-        />
-        <View style={{ flex: 1 }}>
-          <Text style={textStyles.h5}>{t('emergency_hotline')}</Text>
-          <Text style={textStyles.body1}>
-            {t('info_modal_emergency_hotline_explanation')}
-          </Text>
-        </View>
-      </View>
-      <View style={{ flexDirection: 'row', paddingVertical: 15 }}>
-        <FireIcon
-          name={ICON_NAMES.CREDIT_CARD}
-          size={24}
-          style={{ paddingRight: 12 }}
-        />
-        <View style={{ flex: 1 }}>
-          <Text style={textStyles.h5}>{t('info_modal_rights_card')}</Text>
-          <Text style={textStyles.body1}>
-            {t('info_modal_rights_card_explanation')}
-          </Text>
-        </View>
-      </View>
+      <ModalContent subtitle={t('hotline_note')} title={t('what_is_hotline')} />
     </CustomModal>
   );
 };
+
+InfoModal.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  setModalVisible: PropTypes.func.isRequired,
+};
+
+export default function EmergencyScreen({ navigation }) {
+  const { t } = useTranslation();
+  const [InfoModalVisible, setInfoModalVisible] = useState(false);
+  const savedHotlineNumber = useSelector(
+    (state) => state.settings.hotlineNumber
+  );
+  const phoneNum = {
+    number: savedHotlineNumber,
+    prompt: false,
+  };
+  return (
+    <View style={{ backgroundColor: 'white', flex: 1 }}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView
+          contentContainerStyle={{
+            flexGrow: 1,
+            justifyContent: 'space-between',
+          }}
+          style={{ flex: 1 }}
+        >
+          <View>
+            <TouchableOpacity onPress={navigation.goBack} style={styles.close}>
+              <FireIcon
+                color={colors.charcoalGrey}
+                name={ICON_NAMES.CLOSE}
+                size={32}
+              />
+            </TouchableOpacity>
+            <TitleSection />
+            <InfoSection />
+            <View style={{ paddingHorizontal: 56, paddingTop: 12 }}>
+              <PrimaryButton
+                darkMode
+                onPress={() => call(phoneNum)}
+                title={t('call_emergency_hotline')}
+              />
+            </View>
+          </View>
+          <HelpButton
+            centered
+            onPress={() => setInfoModalVisible(!InfoModalVisible)}
+            title={t('learn_more')}
+          />
+        </ScrollView>
+        {/* MODAL */}
+        <InfoModal
+          isVisible={InfoModalVisible}
+          setModalVisible={setInfoModalVisible}
+        />
+      </SafeAreaView>
+    </View>
+  );
+}
 
 EmergencyScreen.propTypes = {
   navigation: PropTypes.shape({
@@ -199,14 +138,26 @@ EmergencyScreen.propTypes = {
   }).isRequired,
 };
 
-RightsCardModal.propTypes = {
-  attorneyName: PropTypes.string.isRequired,
-  attorneyNumber: PropTypes.string.isRequired,
-  isVisible: PropTypes.bool.isRequired,
-  setModalVisible: PropTypes.func.isRequired,
-};
-
-InfoModal.propTypes = {
-  isVisible: PropTypes.bool.isRequired,
-  setModalVisible: PropTypes.func.isRequired,
-};
+const styles = StyleSheet.create({
+  close: {
+    alignSelf: 'flex-start',
+    paddingBottom: 60,
+    paddingLeft: 20,
+    paddingTop: 12,
+  },
+  infoCard: {
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    margin: 26,
+    paddingHorizontal: 16,
+  },
+  infoText: {
+    color: colors.textLight,
+    paddingVertical: 6,
+  },
+  titleContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+});
