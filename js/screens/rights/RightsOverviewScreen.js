@@ -82,6 +82,7 @@ export default function RightsOverviewScreen({ navigation }) {
         />
         <View style={{ height: 8 }} />
         <DisclaimerCard />
+        <View style={{ height: 180 }} />
       </ScrollView>
       <View
         style={{ bottom: 12, position: 'absolute', width: '100%', zIndex: -1 }}
