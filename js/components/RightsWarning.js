@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { colors, textStyles } from '../styles';
-import FireIcon, { ICON_NAMES } from './FireIcon';
+import FireIcon, { ICON_NAMES } from './FireIcon/FireIcon';
 
 const AlertCircle = () => (
   <View

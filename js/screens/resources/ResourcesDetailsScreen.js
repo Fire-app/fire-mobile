@@ -14,9 +14,9 @@ import Socials from '../../components/Resources/ResourcesSocials';
 
 import colors from '../../styles/colors';
 
-export default function DetailsScreen({
+export default function ResourceDetailsScreen({
   route: {
-    params: { mapId }, // same as const { mapId } = route.params
+    params: { resourceId }, // same as const { mapId } = route.params
   },
 }) {
   const { t } = useTranslation();
@@ -30,7 +30,7 @@ export default function DetailsScreen({
     instagramUrl,
     twitterUrl,
     youtubeUrl,
-  } = RESOURCES_MAP[mapId];
+  } = RESOURCES_MAP[resourceId];
 
   return (
     <ScrollView style={styles.container}>
@@ -57,9 +57,11 @@ export default function DetailsScreen({
   );
 }
 
-DetailsScreen.propTypes = {
+ResourceDetailsScreen.propTypes = {
   route: PropTypes.shape({
-    params: PropTypes.shape.isRequired,
+    params: PropTypes.shape({
+      resourceId: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 
