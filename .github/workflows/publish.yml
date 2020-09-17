@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: SpicyPizza/create-envfile@v1
         with:
-           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+           envkey_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
            file_name: .env
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
