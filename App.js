@@ -33,7 +33,7 @@ initializeSentry(); // Load our build time configs
 
 const illustration1 = require('./assets/illustration1.png');
 const illustration2 = require('./assets/illustration2.png');
-const chirlaLogo = require('./assets/chirlaLogo.png');
+const chirlaLogo = require('./assets/logos/chirlaLogo.png');
 
 // Assets we need to load before app starts:
 const iconFonts = [
