@@ -1,4 +1,3 @@
-// services are temporarily dummy values
 const AAAJ_LOGO = require('../assets/logos/aaajLogo.png');
 const CARECEN_LOGO = require('../assets/logos/carecenLogoSquare.jpeg');
 const CHIRLA_LOGO = require('../assets/logos/chirlaLogo.png');
@@ -12,6 +11,8 @@ export const RESOURCES_MAP = {
     facebookUrl: 'https://www.facebook.com/AdvancingJusticeLA',
     fullName: 'Asian Americans Advancing Justice',
     instagramUrl: null,
+    languages:
+      '中文, English, 日本語, ភាសាខ្មែរ, 한국어, Tagalog, ภาษาไทย, Tiếng Việt',
     phone: 'tel://8883499695',
     services: [
       'services_legal__adjustment_of_status',
@@ -33,6 +34,8 @@ export const RESOURCES_MAP = {
     facebookUrl: 'https://www.facebook.com/Carecen.LA/',
     fullName: 'Central American Resource Center',
     instagramUrl: 'https://www.instagram.com/carecen_la/',
+    languages:
+      'English, Español, Interpreting services for Maya/indigenous speakers',
     phone: 'tel://2133857800',
     services: [
       'services_legal__adjustment_of_status',
@@ -60,6 +63,7 @@ export const RESOURCES_MAP = {
     facebookUrl: 'https://www.facebook.com/chirlausa/',
     fullName: 'Coalition for Humane Immigrant Rights of Los Angeles',
     instagramUrl: 'https://www.instagram.com/chirla_org/',
+    languages: 'English, Español',
     phone: 'tel://8886244752',
     services: [
       'services_legal__adjustment_of_status',
@@ -87,6 +91,7 @@ export const RESOURCES_MAP = {
     facebookUrl: 'https://www.facebook.com/ImmDef/',
     fullName: 'Immigrant Defender Law Center',
     instagramUrl: 'https://www.instagram.com/immdef_lawcenter/',
+    languages: 'English, Español',
     phone: 'tel://2136340999',
     services: [
       'services_legal__adjustment_of_status',
@@ -107,6 +112,7 @@ export const RESOURCES_MAP = {
     facebookUrl: 'https://www.facebook.com/krcla/',
     fullName: 'Korean Resource Center',
     instagramUrl: 'https://www.instagram.com/krclaorg/',
+    languages: 'English, 한국어, Español',
     phone: 'tel://3239373718',
     services: [
       'services_legal__daca',
@@ -123,15 +129,16 @@ export const RESOURCES_MAP = {
   USC: {
     description: 'resources_description__usc',
     facebookUrl: 'https://www.facebook.com/USCGouldImmClinic/',
-    fullName: 'USC Gould Immigration Legal Assistance Clinic',
+    fullName: 'Gould School of Law Immigration Legal Assistance Clinic',
     instagramUrl: 'https://www.instagram.com/uscimmclinic',
+    languages: 'English, Español',
     phone: 'tel://2138219627',
     services: [
       'services_legal__asylum',
       'services_legal__naturalization_citizenship',
       'services_legal__removal_hearings',
     ],
-    shortName: 'USC Immigration Clinic',
+    shortName: 'USC',
     twitterUrl: 'https://twitter.com/usc_immclinic',
     website:
       'https://uscimmigrationclinic.org/ilac-and-citizenship-initiative/immigrant-legal-assistance-center/',
@@ -166,8 +173,8 @@ export const RESOURCES_LIST = [
     shortName: 'KRC',
   },
   {
-    fullName: 'Immigration Legal Assistance Clinic',
+    fullName: 'Gould School of Law Immigration Legal Assistance Clinic',
     imageName: USC_LOGO,
-    shortName: 'USC Gould School of Law',
+    shortName: 'USC',
   },
 ];

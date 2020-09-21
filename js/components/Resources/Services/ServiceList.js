@@ -16,7 +16,7 @@ export default function ServiceList({ services }) {
         style={[
           textStyles.h2,
           colors.charcoalGrey,
-          { paddingBottom: 14, paddingTop: 20 },
+          { paddingBottom: 10, paddingTop: 50 },
         ]}
       >
         {'Services'}

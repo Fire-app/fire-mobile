@@ -7,11 +7,11 @@ const ResourcesName = ({ text }) => {
   return (
     <Text
       style={[
-        textStyles.h2,
+        textStyles.h1,
         colors.charcoalGrey,
         {
           alignSelf: 'stretch',
-          paddingBottom: 20,
+          paddingBottom: 10,
           textAlign: 'left',
         },
       ]}

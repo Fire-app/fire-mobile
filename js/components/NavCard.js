@@ -26,7 +26,7 @@ export default function NavCard({
         )}
         {imageName && (
           <Image
-            accessibilityLabel="logo" // TODO: change to `title`+logo
+            accessibilityLabel="logo" // TODO: change to `title`+logo for org list case
             source={imageName}
             style={{ height: 60, width: 60 }}
           />
@@ -52,7 +52,7 @@ export default function NavCard({
 NavCard.propTypes = {
   description: PropTypes.string,
   iconName: IconNamePropType,
-  imageName: PropTypes.string,
+  imageName: PropTypes.string, // TODO: terminal errors produced but rendered on simulator still?
   onPress: PropTypes.func.isRequired,
   smallMode: PropTypes.bool,
   title: PropTypes.string.isRequired,
