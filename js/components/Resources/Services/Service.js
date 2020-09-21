@@ -1,12 +1,27 @@
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import ViewListButton from '../../Buttons/ViewListButton';
+import CustomModal from '../../CustomModal';
+import FireIcon, { ICON_NAMES } from '../../FireIcon';
 
 import { colors, textStyles } from '../../../styles';
 
-export default function Service({ name }) {
+export default function Service({ name, services }) {
   const { t } = useTranslation();
+  const [InfoModalVisible, setInfoModalVisible] = useState(false);
+
+  const servicesList = services.map((item) => {
+    return (
+      <View key={item} style={styles.textContainer}>
+        <FireIcon name={ICON_NAMES.CIRCLE} style={styles.bulletPoint} />
+        <Text style={[textStyles.body1, { color: colors.textLight }]}>
+          {t(item)}
+        </Text>
+      </View>
+    );
+  });
 
   return (
     <View style={styles.serviceContainer}>
@@ -21,44 +36,72 @@ export default function Service({ name }) {
           {t(name)}
         </Text>
       </View>
-      <View style={styles.freeContainer}>
-        <Text
-          style={[
-            textStyles.freeLabel,
-            colors.charcoalGrey,
-            { padding: 1, textAlign: 'center' },
-          ]}
-        >
-          {'FREE'}
-        </Text>
-      </View>
+      <ViewListButton
+        centered
+        onPress={() => setInfoModalVisible(!InfoModalVisible)}
+        title={t('resources__view_list')}
+      />
+      {/* ABSOLUTE MODAL */}
+      <InfoModal
+        body={servicesList}
+        isVisible={InfoModalVisible}
+        setModalVisible={setInfoModalVisible}
+        title={t('resources__services_legal_modal_header')}
+      />
     </View>
   );
 }
 
+const InfoModal = ({ isVisible, setModalVisible, title, body }) => {
+  const { t } = useTranslation();
+  return (
+    <CustomModal
+      contentContainerStyle={{ paddingHorizontal: 30 }}
+      isVisible={isVisible}
+      primaryButton={{
+        onPress: () => setModalVisible(!isVisible),
+        title: t('close'),
+      }}
+    >
+      <Text style={[textStyles.h2, { paddingBottom: 10 }]}>{title}</Text>
+      <View style={{ paddingBottom: 20 }}>{body}</View>
+    </CustomModal>
+  );
+};
+
 Service.propTypes = {
   name: PropTypes.string.isRequired,
+  services: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+};
+
+InfoModal.propTypes = {
+  body: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  setModalVisible: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
-  freeContainer: {
-    alignSelf: 'center',
-    backgroundColor: colors.primaryLighter,
-    borderRadius: 4,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
+  bulletPoint: {
+    color: colors.textLight,
+    fontSize: 6,
+    paddingRight: 8,
+    paddingTop: 10,
   },
   serviceContainer: {
     backgroundColor: colors.white,
-    borderColor: colors.charcoalGrey,
+    borderColor: colors.border,
     borderRadius: 4,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 2,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // TODO: this interferes with padding of OrgSocials in OrgPageTemplate, leaving bc design is WIP
     marginVertical: 4,
     padding: 1,
     paddingHorizontal: 16,
     paddingVertical: 8,
+  },
+  textContainer: {
+    flexDirection: 'row',
+    paddingBottom: 15,
   },
 });

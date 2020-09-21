@@ -27,7 +27,8 @@ export default function DetailsScreen({
     phone,
     languages,
     description,
-    services,
+    legalServices,
+    nonlegalServices,
     facebookUrl,
     instagramUrl,
     twitterUrl,
@@ -51,7 +52,10 @@ export default function DetailsScreen({
       />
       <Description text={t(description)} title={t('resources_about')} />
       <View style={styles.services}>
-        <Services services={services} />
+        <Services
+          legalServices={legalServices}
+          nonlegalServices={nonlegalServices}
+        />
       </View>
       <Socials
         facebookUrl={facebookUrl}
@@ -74,6 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundColor,
     flex: 1,
     padding: 26,
+    paddingBottom: 36,
     paddingTop: 36,
   },
   services: {

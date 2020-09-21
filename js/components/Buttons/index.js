@@ -5,3 +5,4 @@ export {
   ButtonProp,
 } from './PrimarySecondaryOptions';
 export { default as HelpButton } from './HelpButton';
+export { default as ViewListButton } from './ViewListButton';

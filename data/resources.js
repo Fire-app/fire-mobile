@@ -13,8 +13,7 @@ export const RESOURCES_MAP = {
     instagramUrl: null,
     languages:
       '中文, English, 日本語, ភាសាខ្មែរ, 한국어, Tagalog, ภาษาไทย, Tiếng Việt',
-    phone: 'tel://8883499695',
-    services: [
+    legalServices: [
       'services_legal__adjustment_of_status',
       'services_legal__daca',
       'services_legal__family_petitions',
@@ -24,6 +23,12 @@ export const RESOURCES_MAP = {
       'services_legal__u_visa',
       'services_legal__vawa',
     ],
+    nonlegalServices: [
+      'services_nonlegal__citizenship_civics_classes',
+      'services_nonlegal__esl',
+      'services_nonlegal__referrals_to_other_services',
+    ],
+    phone: 'tel://8883499695',
     shortName: 'AAAJ',
     twitterUrl: 'https://www.twitter.com/AAAJ_LA',
     website: 'https://www.advancingjustice-la.org/',
@@ -35,9 +40,8 @@ export const RESOURCES_MAP = {
     fullName: 'Central American Resource Center',
     instagramUrl: 'https://www.instagram.com/carecen_la/',
     languages:
-      'English, Español, Interpreting services for Maya/indigenous speakers',
-    phone: 'tel://2133857800',
-    services: [
+      'English, Español, Interpreting legalServices for Maya/indigenous speakers',
+    legalServices: [
       'services_legal__adjustment_of_status',
       'services_legal__asylum',
       'services_legal__consular_processing',
@@ -53,6 +57,17 @@ export const RESOURCES_MAP = {
       'services_legal__u_visa',
       'services_legal__vawa',
     ],
+    nonlegalServices: [
+      'services_nonlegal__afterschool_program',
+      'services_nonlegal__citizenship_civics_classes',
+      'services_nonlegal__college_application_assistance',
+      'services_nonlegal__esl',
+      'services_nonlegal__know_your_rights_presentations',
+      'services_nonlegal__language_services',
+      'services_nonlegal__legal_orientation_programs',
+      'services_nonlegal__organizing',
+    ],
+    phone: 'tel://2133857800',
     shortName: 'CARECEN',
     twitterUrl: 'https://www.twitter.com/Carecen_LA',
     website: 'https://www.carecen-la.org/',
@@ -64,8 +79,7 @@ export const RESOURCES_MAP = {
     fullName: 'Coalition for Humane Immigrant Rights of Los Angeles',
     instagramUrl: 'https://www.instagram.com/chirla_org/',
     languages: 'English, Español',
-    phone: 'tel://8886244752',
-    services: [
+    legalServices: [
       'services_legal__adjustment_of_status',
       'services_legal__asylum',
       'services_legal__consular_processing',
@@ -81,6 +95,17 @@ export const RESOURCES_MAP = {
       'services_legal__u_visa',
       'services_legal__vawa',
     ],
+    nonlegalServices: [
+      'services_nonlegal__administrative_advocacy',
+      'services_nonlegal__citizenship_civics_classes',
+      'services_nonlegal__housing_referrals',
+      'services_nonlegal__know_your_rights_presentations',
+      'services_nonlegal__language_services',
+      'services_nonlegal__legal_orientation_programs',
+      'services_nonlegal__legislative_advocacy',
+      'services_nonlegal__referrals_to_other_services',
+    ],
+    phone: 'tel://8886244752',
     shortName: 'CHIRLA',
     twitterUrl: 'https://www.twitter.com/CHIRLA',
     website: 'https://chirla.org/',
@@ -92,8 +117,7 @@ export const RESOURCES_MAP = {
     fullName: 'Immigrant Defender Law Center',
     instagramUrl: 'https://www.instagram.com/immdef_lawcenter/',
     languages: 'English, Español',
-    phone: 'tel://2136340999',
-    services: [
+    legalServices: [
       'services_legal__adjustment_of_status',
       'services_legal__asylum',
       'services_legal__family_petitions',
@@ -102,6 +126,13 @@ export const RESOURCES_MAP = {
       'services_legal__t_visa',
       'services_legal__u_visa',
     ],
+    nonlegalServices: [
+      'services_nonlegal__know_your_rights_presentations',
+      'services_nonlegal__legal_orientation_programs',
+      'services_nonlegal__referrals_to_other_services',
+      'services_nonlegal__social_services',
+    ],
+    phone: 'tel://2136340999',
     shortName: 'ImmDef',
     twitterUrl: 'https://twitter.com/immdef',
     website: 'http://www.immdef.org',
@@ -113,14 +144,20 @@ export const RESOURCES_MAP = {
     fullName: 'Korean Resource Center',
     instagramUrl: 'https://www.instagram.com/krclaorg/',
     languages: 'English, 한국어, Español',
-    phone: 'tel://3239373718',
-    services: [
+    legalServices: [
       'services_legal__daca',
       'services_legal__naturalization_citizenship',
       'services_legal__t_visa',
       'services_legal__u_visa',
       'services_legal__vawa',
     ],
+    nonlegalServices: [
+      'services_nonlegal__health_services',
+      'services_nonlegal__housing_services',
+      'services_nonlegal__language_services',
+      'services_nonlegal__social_services',
+    ],
+    phone: 'tel://3239373718',
     shortName: 'KRC',
     twitterUrl: 'https://twitter.com/krcla',
     website: 'http://www.krcla.org',
@@ -132,12 +169,13 @@ export const RESOURCES_MAP = {
     fullName: 'Gould School of Law Immigration Legal Assistance Clinic',
     instagramUrl: 'https://www.instagram.com/uscimmclinic',
     languages: 'English, Español',
-    phone: 'tel://2138219627',
-    services: [
+    legalServices: [
       'services_legal__asylum',
       'services_legal__naturalization_citizenship',
       'services_legal__removal_hearings',
     ],
+    nonlegalServices: ['services_nonlegal__referrals_to_other_services'],
+    phone: 'tel://2138219627',
     shortName: 'USC',
     twitterUrl: 'https://twitter.com/usc_immclinic',
     website:

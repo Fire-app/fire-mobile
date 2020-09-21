@@ -16,12 +16,6 @@ const textStyles = StyleSheet.create({
     fontStyle: 'normal',
     lineHeight: 17.5,
   },
-  freeLabel: {
-    fontFamily: 'Roboto_700Bold',
-    fontSize: 10,
-    fontStyle: 'normal',
-    letterSpacing: 1,
-  },
   h1: {
     color: colors.charcoalGrey,
     fontFamily: 'Roboto_900Black',
