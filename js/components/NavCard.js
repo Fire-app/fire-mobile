@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { colors } from '../styles';
@@ -12,6 +12,7 @@ export default function NavCard({
   description,
   onPress,
   iconName,
+  imageName,
   smallMode,
 }) {
   return (
@@ -22,6 +23,13 @@ export default function NavCard({
       <View style={{ alignItems: 'center', flexDirection: 'row' }}>
         {iconName && (
           <FireIcon color={colors.primary} name={iconName} raised size={22} />
+        )}
+        {imageName && (
+          <Image
+            accessibilityLabel="logo" // TODO: change to `title`+logo
+            source={imageName}
+            style={{ height: 60, width: 60 }}
+          />
         )}
         <View style={{ flex: 1, paddingLeft: 12 }}>
           <Text style={smallMode ? textStyles.h3 : textStyles.h2}>{title}</Text>
@@ -44,6 +52,7 @@ export default function NavCard({
 NavCard.propTypes = {
   description: PropTypes.string,
   iconName: IconNamePropType,
+  imageName: PropTypes.string,
   onPress: PropTypes.func.isRequired,
   smallMode: PropTypes.bool,
   title: PropTypes.string.isRequired,

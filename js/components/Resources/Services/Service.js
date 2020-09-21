@@ -1,9 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { colors, textStyles } from '../../../styles';
 
 export default function Service({ name }) {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.serviceContainer}>
       <View style={{ flex: 1, paddingRight: 8 }}>
@@ -14,7 +18,7 @@ export default function Service({ name }) {
             { paddingVertical: 10 },
           ]}
         >
-          {name}
+          {t(name)}
         </Text>
       </View>
       <View style={styles.freeContainer}>

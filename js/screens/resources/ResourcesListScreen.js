@@ -33,9 +33,10 @@ export default function ResourcesListScreen({ navigation }) {
           {t('resources_subtitle')}
         </Text>
       }
-      renderItem={({ item: { shortName, fullName } }) => (
+      renderItem={({ item: { shortName, fullName, imageName } }) => (
         <NavCard
           description={t(fullName)}
+          imageName={imageName}
           onPress={() => navigation.navigate(route, { mapId: shortName })}
           title={t(shortName)}
         />
