@@ -1,9 +1,9 @@
 import 'dotenv/config';
 
-export default {
+export default ({ config }) => ({
   android: {
     package: 'com.firemobileapp.fire',
-    versionCode: 370000001,
+    versionCode: config.android.versionCode,
   },
   assetBundlePatterns: ['**/*'],
   extra: {
@@ -14,7 +14,7 @@ export default {
   },
   icon: './assets/icon.png',
   ios: {
-    buildNumber: '0.0.1',
+    buildNumber: config.ios.buildNumber,
     bundleIdentifier: 'com.firemobileapp.fire',
     supportsTablet: false,
   },
@@ -31,5 +31,5 @@ export default {
   updates: {
     fallbackToCacheTimeout: 0,
   },
-  version: '0.0.1',
-};
+  version: config.version,
+});
