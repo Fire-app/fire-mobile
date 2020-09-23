@@ -56,14 +56,14 @@ const InfoSection = () => {
   );
 };
 
-const InfoModal = ({ isVisible, setModalVisible }) => {
+const InfoModal = ({ isVisible, onClose }) => {
   const { t } = useTranslation();
   return (
     <CustomModal
       contentContainerStyle={{ paddingHorizontal: 30 }}
       isVisible={isVisible}
       primaryButton={{
-        onPress: () => setModalVisible(!isVisible),
+        onPress: onClose,
         title: t('got_it'),
       }}
     >
@@ -74,7 +74,7 @@ const InfoModal = ({ isVisible, setModalVisible }) => {
 
 InfoModal.propTypes = {
   isVisible: PropTypes.bool.isRequired,
-  setModalVisible: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default function EmergencyScreen({ navigation }) {
@@ -117,14 +117,14 @@ export default function EmergencyScreen({ navigation }) {
           </View>
           <HelpButton
             centered
-            onPress={() => setInfoModalVisible(!InfoModalVisible)}
+            onPress={() => setInfoModalVisible(true)}
             title={t('learn_more')}
           />
         </ScrollView>
         {/* MODAL */}
         <InfoModal
           isVisible={InfoModalVisible}
-          setModalVisible={setInfoModalVisible}
+          onClose={() => setInfoModalVisible(false)}
         />
       </SafeAreaView>
     </View>
