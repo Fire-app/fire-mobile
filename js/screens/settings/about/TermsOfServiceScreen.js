@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { textStyles } from '../../styles';
+import { textStyles } from '../../../styles';
 
 const TermsOfServiceScreen = () => {
   return (
