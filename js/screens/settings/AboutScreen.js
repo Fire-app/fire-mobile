@@ -51,7 +51,7 @@ AboutScreen.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     flexGrow: 1,
   },
   logo: {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
   },
   simpleText: {
-    color: colors.subtext,
+    color: colors.charcoalGrey,
     paddingVertical: 6,
   },
 });

@@ -15,7 +15,7 @@ import CustomModal from '../components/CustomModal';
 import ModalContent from '../components/ModalContent';
 import Card from '../components/Card';
 import { HelpButton, PrimaryButton } from '../components/Buttons';
-import colors from '../styles/colors';
+import { colors } from '../styles';
 import textStyles from '../styles/textStyles';
 import FireIcon, { ICON_NAMES } from '../components/FireIcon';
 
@@ -88,7 +88,7 @@ export default function EmergencyScreen({ navigation }) {
     prompt: false,
   };
   return (
-    <View style={{ backgroundColor: 'white', flex: 1 }}>
+    <View style={{ backgroundColor: colors.white, flex: 1 }}>
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView
           contentContainerStyle={{

@@ -10,6 +10,7 @@ import {
 import PropTypes from 'prop-types';
 import React from 'react';
 import { ButtonProp, PrimarySecondaryOptions } from './Buttons';
+import { colors } from '../styles';
 
 const CustomModal = ({
   children,
@@ -50,7 +51,7 @@ export default CustomModal;
 
 const styles = StyleSheet.create({
   contentContainer: {
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     borderRadius: 3,
     justifyContent: 'center',
     maxHeight: '90%',
