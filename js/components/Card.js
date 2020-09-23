@@ -6,7 +6,7 @@ import { colors } from '../styles';
 
 export default function Card({ children, onPress, style }) {
   return (
-    <View style={styles.cardUnderlay}>
+    <View style={{ borderRadius: 3 }}>
       <TouchableHighlight
         disabled={!onPress}
         onPress={onPress ? () => onPress() : null}
@@ -35,9 +35,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 12,
-  },
-  cardUnderlay: {
-    backgroundColor: colors.primaryLight,
-    borderRadius: 3,
   },
 });

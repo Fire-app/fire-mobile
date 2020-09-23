@@ -12,7 +12,7 @@ const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
             backgroundColor: colors.charcoalGrey,
             borderRadius: 3,
             marginBottom: 10,
-            paddingHorizontal: 48,
+            paddingHorizontal: 30,
             paddingVertical: 16,
           }
         : { backgroundColor: colors.primary, borderRadius: 3, padding: 16 }

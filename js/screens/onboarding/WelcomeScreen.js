@@ -57,7 +57,7 @@ const WelcomeScreen = ({ navigation }) => {
   return (
     <OnboardingTemplate
       primaryButton={{
-        onPress: () => navigation.navigate(onboardingRoutes.intro),
+        onPress: () => navigation.navigate(onboardingRoutes.info),
         title: t('continue'),
       }}
     >

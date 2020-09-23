@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ListSelector from '../../components/ListSelector';
-import { HelpButton } from '../../components/Buttons';
 import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
 import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
 
@@ -30,12 +29,6 @@ const HotlineSelectionScreen = () => {
         keyExtractor={(item) => item.phoneNumber}
         listHeaderComponent={
           <>
-            <HelpButton
-              onPress={() => {
-                /* TODO: */
-              }}
-              title={t('learn_about_hotline')}
-            />
             <Text
               style={[
                 textStyles.h5,

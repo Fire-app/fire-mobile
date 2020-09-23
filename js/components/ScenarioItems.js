@@ -14,15 +14,17 @@ export default function ScenarioItems({ title, subtitle }) {
         padding: 20,
       }}
     >
-      <Text style={textStyles.h3}>{title}</Text>
-      <Text
-        style={[
-          textStyles.body1,
-          { color: colors.textLight, paddingVertical: 2 },
-        ]}
-      >
-        {subtitle}
-      </Text>
+      <>
+        <Text style={textStyles.h3}>{title}</Text>
+        <Text
+          style={[
+            textStyles.body1,
+            { color: colors.textLight, paddingVertical: 2 },
+          ]}
+        >
+          {subtitle}
+        </Text>
+      </>
     </Card>
   );
 }
