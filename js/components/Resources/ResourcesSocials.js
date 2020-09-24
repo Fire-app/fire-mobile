@@ -30,7 +30,7 @@ export default function ResourcesSocials({
     return null;
   }
   return (
-    <View style={{ paddingTop: 50 }}>
+    <View style={{ paddingBottom: 50, paddingTop: 50 }}>
       <Text style={[textStyles.h2, colors.charcoalGrey, { paddingBottom: 10 }]}>
         {'Connect on social media'}
       </Text>

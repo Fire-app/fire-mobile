@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundColor,
     flex: 1,
     padding: 26,
-    paddingBottom: 36,
     paddingTop: 36,
   },
   services: {
