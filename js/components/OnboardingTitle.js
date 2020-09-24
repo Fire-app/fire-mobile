@@ -6,7 +6,6 @@ import { colors, textStyles } from '../styles';
 const OnboardingTitle = ({
   title,
   subtitle,
-  // the following props only used for welcome screen and toolkit intro screen
   alignCenter,
   paddingHorizontal,
   paddingVertical,

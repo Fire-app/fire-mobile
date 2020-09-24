@@ -16,6 +16,8 @@ import FireIcon, { ICON_NAMES } from '../../components/FireIcon';
 
 const IMAGE = require('../../../assets/illustration1.png');
 
+const IMAGE_HEIGHT = 180;
+
 const DisclaimerCard = () => {
   const { t } = useTranslation();
   return (
@@ -82,6 +84,7 @@ export default function RightsOverviewScreen({ navigation }) {
         />
         <View style={{ height: 8 }} />
         <DisclaimerCard />
+        <View style={{ height: IMAGE_HEIGHT }} />
       </ScrollView>
       <View
         style={{ bottom: 12, position: 'absolute', width: '100%', zIndex: -1 }}
@@ -105,7 +108,7 @@ RightsOverviewScreen.propTypes = {
 const styles = StyleSheet.create({
   image: {
     alignSelf: 'center',
-    height: 180,
+    height: IMAGE_HEIGHT,
     resizeMode: 'cover',
     width: 280,
   },

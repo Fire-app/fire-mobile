@@ -12,6 +12,9 @@
     "build-ios-internal": "expo build:ios --release-channel internal",
     "build-android-internal": "expo build:android --release-channel internal"
   },
+  "jest": {
+    "preset": "react-native"
+  },
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.1.0",
     "@expo/vector-icons": "^10.0.0",
@@ -74,5 +77,5 @@
     "standard-version-expo": "^1.0.3"
   },
   "private": true,
-  "version": "0.0.1"
+  "version": "0.0.10"
 }
