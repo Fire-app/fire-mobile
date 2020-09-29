@@ -58,7 +58,7 @@ const RightsStack = () => {
             params: { scenarioId },
           },
         }) => ({
-          title: SCENARIO_MAP[scenarioId].title,
+          title: t(SCENARIO_MAP[scenarioId].title),
         })}
       />
 
