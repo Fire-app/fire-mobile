@@ -11,9 +11,8 @@ const routes = {
   onboarding: {
     complete: 'ONBOARDING_COMPLETE',
     hotline: 'ONBOARDING_HOTLINE',
-    intro: 'ONBOARDING_INTRO',
+    info: 'ONBOARDING_INFO',
     language: 'ONBOARDING_LANGUAGE',
-    toolkitIntro: 'ONBOARDING_TOOLKIT_INTRO',
     welcome: 'ONBOARDING_WELCOME',
   },
 
