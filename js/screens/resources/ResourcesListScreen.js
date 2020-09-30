@@ -35,6 +35,7 @@ export default function ResourcesListScreen({ navigation }) {
       renderItem={({ item: { shortName, fullName, imageName } }) => (
         <NavCard
           description={t(fullName)}
+          imageName={imageName}
           onPress={() =>
             navigation.navigate(routes.resources.details, {
               resourceId: shortName,
