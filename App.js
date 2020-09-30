@@ -9,7 +9,7 @@ import {
   useFonts,
   /* eslint-enable camelcase */
 } from '@expo-google-fonts/roboto';
-import { SplashScreen as SplashScreenUtils } from 'expo';
+import * as SplashScreenUtils from 'expo-splash-screen';
 import { StatusBar } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
@@ -90,10 +90,10 @@ const App = () => {
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
     StatusBar.setBarStyle('light-content');
-    SplashScreenUtils.preventAutoHide();
+    SplashScreenUtils.preventAutoHideAsync();
     loadAssetsAsync().then(() => {
       setAssetsLoaded(true);
-      SplashScreenUtils.hide();
+      SplashScreenUtils.hideAsync();
     });
   }, []);
 
