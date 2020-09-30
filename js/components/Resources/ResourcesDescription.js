@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { colors, textStyles } from '../../styles';
+import { textStyles } from '../../styles';
 
 const ResourcesDescription = ({ text }) => {
   return (
     <View style={styles.container}>
-      <Text style={[textStyles.body1, styles.subtitle]}>{text}</Text>
+      <Text style={textStyles.body1}>{text}</Text>
     </View>
   );
 };
@@ -22,8 +22,5 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingTop: 20,
     width: '100%',
-  },
-  subtitle: {
-    color: colors.subtext,
   },
 });

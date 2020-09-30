@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
-import { textStyles } from '../../styles';
+import { textStyles, colors } from '../../styles';
 import ListSelector from '../../components/ListSelector';
 import i18n, { getLanguageOptions } from '../../config/i18n';
 
@@ -44,7 +44,7 @@ export default SettingsLanguageScreen;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     flex: 1,
     justifyContent: 'space-between',
     padding: 20,

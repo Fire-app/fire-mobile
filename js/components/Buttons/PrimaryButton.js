@@ -22,7 +22,7 @@ const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
     disabled={disabled}
     onPress={onPress}
     title={title}
-    titleStyle={StyleSheet.flatten([textStyles.h2, { color: 'white' }])}
+    titleStyle={StyleSheet.flatten([textStyles.h2, { color: colors.white }])}
   />
 );
 
