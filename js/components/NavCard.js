@@ -52,7 +52,7 @@ export default function NavCard({
 NavCard.propTypes = {
   description: PropTypes.string,
   iconName: IconNamePropType,
-  imageName: PropTypes.string, // TODO: terminal errors produced but rendered on simulator still?
+  imageName: PropTypes.node, // TODO: terminal errors produced but rendered on simulator still?
   onPress: PropTypes.func.isRequired,
   smallMode: PropTypes.bool,
   title: PropTypes.string.isRequired,
