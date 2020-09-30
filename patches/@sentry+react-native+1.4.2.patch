@@ -1,0 +1,22 @@
+diff --git a/node_modules/@sentry/react-native/dist/js/backend.js b/node_modules/@sentry/react-native/dist/js/backend.js
+index cd0a3a1..8e5bcfc 100644
+--- a/node_modules/@sentry/react-native/dist/js/backend.js
++++ b/node_modules/@sentry/react-native/dist/js/backend.js
+@@ -3,7 +3,7 @@ import { Transports } from "@sentry/browser";
+ import { BrowserBackend } from "@sentry/browser/dist/backend";
+ import { BaseBackend, NoopTransport } from "@sentry/core";
+ import { Severity } from "@sentry/types";
+-import { Alert, YellowBox } from "react-native";
++import { Alert, LogBox } from "react-native";
+ import { NativeTransport } from "./transports/native";
+ import { NATIVE } from "./wrapper";
+ /** The Sentry ReactNative SDK Backend. */
+@@ -14,7 +14,7 @@ export class ReactNativeBackend extends BaseBackend {
+         this._options = _options;
+         this._browserBackend = new BrowserBackend(_options);
+         // This is a workaround for now using fetch on RN, this is a known issue in react-native and only generates a warning
+-        YellowBox.ignoreWarnings(["Require cycle:"]);
++        LogBox.ignoreLogs(["Require cycle:"]);
+         if (this._options.enableNative) {
+             // tslint:disable-next-line: no-floating-promises
+             this._startWithOptions();
