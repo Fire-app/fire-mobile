@@ -10,7 +10,14 @@ import {
   Ionicons,
   FontAwesome,
 } from '@expo/vector-icons';
-import { colors } from '../styles';
+import { colors } from '../../styles';
+import {
+  ICON_NAMES,
+  FEATHER_ICONS,
+  MATERIAL_ICONS,
+  ION_NAMES,
+  FONT_AWESOME,
+} from './iconNames';
 
 const FireIcon = ({
   name,
@@ -49,51 +56,6 @@ const FireIcon = ({
       </Text>
     </View>
   );
-};
-
-const FEATHER_ICONS = {
-  ALERT: 'alert-triangle',
-  BELL: 'bell',
-  BRIEFCASE: 'briefcase',
-  CHEVRON_RIGHT: 'chevron-right',
-  CREDIT_CARD: 'credit-card',
-  FACEBOOK: 'facebook',
-  GEAR: 'settings',
-  HOME: 'home',
-  INFO: 'info',
-  INSTAGRAM: 'instagram',
-  PHONE: 'phone',
-  ROTATE_CCW: 'rotate-ccw',
-  SHIELD: 'shield',
-  TWITTER: 'twitter',
-  USERS: 'users',
-  YOUTUBE: 'youtube',
-};
-
-const ION_NAMES = {
-  CAR: 'md-car',
-  CHECKMARK: 'ios-checkmark-circle',
-  GLOBE: 'md-globe',
-  HELP: 'ios-help-circle',
-  SUBWAY: 'ios-subway',
-  WALK: 'ios-walk',
-};
-
-const MATERIAL_ICONS = {
-  ALARM_LIGHT: 'alarm-light-outline',
-  CIRCLE: 'circle',
-  CLOSE: 'close',
-};
-
-const FONT_AWESOME = {
-  EXCLAMATION: 'exclamation',
-};
-
-export const ICON_NAMES = {
-  ...FEATHER_ICONS,
-  ...ION_NAMES,
-  ...MATERIAL_ICONS,
-  ...FONT_AWESOME,
 };
 
 const iconNamesToFamilyComponent = (name) => {
