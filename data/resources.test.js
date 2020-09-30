@@ -28,7 +28,7 @@ const ResourceMapElementSchema = Joi.object({
 
 const ResourceListElementSchema = Joi.object({
   fullName: Joi.string().min(1).required(),
-  imageName: Joi.any().required(),
+  image: Joi.any().required(),
   shortName: Joi.string().min(1).required(),
 });
 

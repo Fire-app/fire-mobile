@@ -12,7 +12,7 @@ export default function NavCard({
   description,
   onPress,
   iconName,
-  imageName,
+  image,
   smallMode,
 }) {
   return (
@@ -24,10 +24,10 @@ export default function NavCard({
         {iconName && (
           <FireIcon color={colors.primary} name={iconName} raised size={22} />
         )}
-        {imageName && (
+        {image && (
           <Image
             accessibilityLabel="logo" // TODO: change to `title`+logo for org list case
-            source={imageName}
+            source={image}
             style={{ height: 60, width: 60 }}
           />
         )}
@@ -52,7 +52,7 @@ export default function NavCard({
 NavCard.propTypes = {
   description: PropTypes.string,
   iconName: IconNamePropType,
-  imageName: PropTypes.node, // TODO: terminal errors produced but rendered on simulator still?
+  image: Image.propTypes.source.isRequired,
   onPress: PropTypes.func.isRequired,
   smallMode: PropTypes.bool,
   title: PropTypes.string.isRequired,

@@ -187,32 +187,32 @@ export const RESOURCES_MAP = {
 export const RESOURCES_LIST = [
   {
     fullName: 'Asian Americans Advancing Justice',
-    imageName: AAAJ_LOGO,
+    image: AAAJ_LOGO,
     shortName: 'AAAJ',
   },
   {
     fullName: 'Central American Resource Center',
-    imageName: CARECEN_LOGO,
+    image: CARECEN_LOGO,
     shortName: 'CARECEN',
   },
   {
     fullName: 'Coalition for Humane Immigrant Rights',
-    imageName: CHIRLA_LOGO,
+    image: CHIRLA_LOGO,
     shortName: 'CHIRLA',
   },
   {
     fullName: 'Immigrant Defender Law Center',
-    imageName: IMMDEF_LOGO,
+    image: IMMDEF_LOGO,
     shortName: 'ImmDef',
   },
   {
     fullName: 'Korean Resource Center',
-    imageName: KRC_LOGO,
+    image: KRC_LOGO,
     shortName: 'KRC',
   },
   {
     fullName: 'Gould School of Law Immigration Legal Assistance Clinic',
-    imageName: USC_LOGO,
+    image: USC_LOGO,
     shortName: 'USC',
   },
 ];
