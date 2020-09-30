@@ -12,7 +12,6 @@ import textStyles from '../../styles/textStyles';
 
 export default function ResourcesListScreen({ navigation }) {
   const { t } = useTranslation();
-  const route = routes.resources.details; // navigate to generic DetailScreen page
 
   return (
     <FlatList
@@ -36,7 +35,11 @@ export default function ResourcesListScreen({ navigation }) {
       renderItem={({ item: { shortName, fullName } }) => (
         <NavCard
           description={t(fullName)}
-          onPress={() => navigation.navigate(route, { mapId: shortName })}
+          onPress={() =>
+            navigation.navigate(routes.resources.details, {
+              resourceId: shortName,
+            })
+          }
           title={t(shortName)}
         />
       )}

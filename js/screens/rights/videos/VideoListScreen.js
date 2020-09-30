@@ -3,10 +3,10 @@ import * as WebBrowser from 'expo-web-browser';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Card from '../../components/Card';
-import VIDEOS from '../../../data/videos';
-import colors from '../../styles/colors';
-import textStyles from '../../styles/textStyles';
+import Card from '../../../components/Card';
+import VIDEOS from '../../../../data/videos';
+import colors from '../../../styles/colors';
+import textStyles from '../../../styles/textStyles';
 
 const VideoCard = ({ title, time, onPress, image }) => (
   <Card onPress={onPress}>
