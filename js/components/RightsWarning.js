@@ -15,7 +15,7 @@ const AlertCircle = () => (
       padding: 4,
     }}
   >
-    <FireIcon color="white" name={ICON_NAMES.EXCLAMATION} size={20} />
+    <FireIcon color={colors.white} name={ICON_NAMES.EXCLAMATION} size={20} />
   </View>
 );
 
@@ -26,10 +26,14 @@ export default function RightsWarning({ title, subtitle }) {
         <AlertCircle />
       </View>
       <View style={styles.textContainer}>
-        <Text style={[textStyles.h2, { color: 'white', paddingBottom: 2 }]}>
+        <Text
+          style={[textStyles.h2, { color: colors.white, paddingBottom: 2 }]}
+        >
           {title}
         </Text>
-        <Text style={[textStyles.body2, { color: 'white' }]}>{subtitle}</Text>
+        <Text style={[textStyles.body2, { color: colors.white }]}>
+          {subtitle}
+        </Text>
       </View>
     </View>
   );

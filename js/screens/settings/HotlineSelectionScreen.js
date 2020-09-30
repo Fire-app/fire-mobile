@@ -8,7 +8,7 @@ import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAct
 import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
 
 import { HOTLINE_OPTIONS } from '../../../data/hotlineOptions';
-import { textStyles } from '../../styles';
+import { textStyles, colors } from '../../styles';
 
 const HotlineSelectionScreen = () => {
   const { t } = useTranslation();
@@ -57,7 +57,7 @@ export default HotlineSelectionScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     flex: 1,
     justifyContent: 'space-between',
     padding: 20,
