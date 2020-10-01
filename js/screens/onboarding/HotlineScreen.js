@@ -2,8 +2,9 @@ import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { View } from 'react-native';
 import { DEFAULT_HOTLINE, HOTLINE_OPTIONS } from '../../../data/hotlineOptions';
-import { SecondaryButton } from '../../components/Buttons';
+import { HelpButton } from '../../components/Buttons';
 import CustomModal from '../../components/CustomModal';
 import ListSelector from '../../components/ListSelector';
 import ModalContent from '../../components/ModalContent';
@@ -57,11 +58,12 @@ const HotlineScreen = ({ navigation }) => {
               subtitle={t('select_hotline_subtitle')}
               title={t('select_hotline')}
             />
-            <SecondaryButton
-              alignRight
-              onPress={() => setModalVisible(true)}
-              title={t('what_is_hotline')}
-            />
+            <View style={{ alignItems: 'flex-end' }}>
+              <HelpButton
+                onPress={() => setModalVisible(true)}
+                title={t('what_is_hotline')}
+              />
+            </View>
           </>
         }
         onChange={onListChange}

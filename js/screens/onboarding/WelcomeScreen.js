@@ -8,7 +8,7 @@ import OnboardingTitle from '../../components/OnboardingTitle';
 import routes from '../../navigation/routes';
 
 const IMAGE = require('../../../assets/illustration1.png');
-const LOGO = require('../../../assets/chirlaLogo.png');
+const LOGO = require('../../../assets/logos/chirlaLogo.png');
 
 const onboardingRoutes = routes.onboarding;
 
@@ -57,7 +57,7 @@ const WelcomeScreen = ({ navigation }) => {
   return (
     <OnboardingTemplate
       primaryButton={{
-        onPress: () => navigation.navigate(onboardingRoutes.intro),
+        onPress: () => navigation.navigate(onboardingRoutes.info),
         title: t('continue'),
       }}
     >

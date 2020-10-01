@@ -11,9 +11,8 @@ const routes = {
   onboarding: {
     complete: 'ONBOARDING_COMPLETE',
     hotline: 'ONBOARDING_HOTLINE',
-    intro: 'ONBOARDING_INTRO',
+    info: 'ONBOARDING_INFO',
     language: 'ONBOARDING_LANGUAGE',
-    toolkitIntro: 'ONBOARDING_TOOLKIT_INTRO',
     welcome: 'ONBOARDING_WELCOME',
   },
 
@@ -30,17 +29,9 @@ const routes = {
   rightsStack: 'RIGHTS_STACK',
 
   scenarios: {
-    cases: {
-      driving: 'SCENARIOS__DRIVING',
-      homeArrest: 'SCENARIOS__HOME_ARREST',
-      insideHome: 'SCENARIOS__INSIDE_HOME',
-      outsideHome: 'SCENARIOS__OUTSIDE_HOME',
-      publicTransport: 'SCENARIOS__PUBLIC_TRANSPORT',
-      street: 'SCENARIOS_STREET',
-      work: 'SCENARIOS__WORK',
-    },
-    homeOverview: 'SCENARIOS_HOME',
+    details: 'SCENARIOS_DETAILS',
     overviewList: 'SCENARIOS_LIST',
+    sublist: 'SCENARIOS_SUBLIST',
   },
 
   settings: {

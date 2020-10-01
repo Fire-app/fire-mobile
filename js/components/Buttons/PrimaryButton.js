@@ -12,7 +12,7 @@ const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
             backgroundColor: colors.charcoalGrey,
             borderRadius: 3,
             marginBottom: 10,
-            paddingHorizontal: 48,
+            paddingHorizontal: 30,
             paddingVertical: 16,
           }
         : { backgroundColor: colors.primary, borderRadius: 3, padding: 16 }
@@ -22,7 +22,7 @@ const PrimaryButton = ({ title, onPress, disabled, darkMode }) => (
     disabled={disabled}
     onPress={onPress}
     title={title}
-    titleStyle={StyleSheet.flatten([textStyles.h2, { color: 'white' }])}
+    titleStyle={StyleSheet.flatten([textStyles.h2, { color: colors.white }])}
   />
 );
 

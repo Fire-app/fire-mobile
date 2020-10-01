@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import React from 'react';
 
 import { RESOURCES_MAP } from '../../data/resources';
-import ResourcesDetails from '../screens/resources/DetailsScreen';
+import ResourcesDetails from '../screens/resources/ResourcesDetailsScreen';
 import ResourcesList from '../screens/resources/ResourcesListScreen';
 import routes from './routes';
 import textStyles from '../styles/textStyles';
@@ -31,7 +31,7 @@ const ResourcesStack = () => {
         component={ResourcesDetails}
         name={routes.resources.details}
         options={({ route }) => ({
-          title: RESOURCES_MAP[route.params.mapId].shortName,
+          title: RESOURCES_MAP[route.params.resourceId].shortName,
         })}
       />
     </Stack.Navigator>
