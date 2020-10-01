@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { colors, textStyles } from '../../styles';
 
-const ResourcesTextBox = ({ title, text }) => {
+const ResourcesTextBox = ({ text, title }) => {
   return (
     <View style={styles.container}>
       <Text style={textStyles.h3}>{title}</Text>

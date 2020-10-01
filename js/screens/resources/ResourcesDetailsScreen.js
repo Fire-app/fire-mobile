@@ -46,10 +46,7 @@ export default function ResourceDetailsScreen({
         rightTitle={t('resources_website_button')}
       />
       <View style={styles.languageContainer}>
-        <TextBox
-          text={languages}
-          title={t('resources_languages_supported')}
-        />
+        <TextBox text={languages} title={t('resources_languages_supported')} />
       </View>
       <TextBox text={t(description)} title={t('resources_about')} />
       <View style={styles.servicesContainer}>
