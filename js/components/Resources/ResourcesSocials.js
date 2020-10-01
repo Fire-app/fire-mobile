@@ -1,8 +1,8 @@
 import * as WebBrowser from 'expo-web-browser';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { colors } from '../../styles';
+import { colors, textStyles } from '../../styles';
 import FireIcon, { IconNamePropType, ICON_NAMES } from '../FireIcon';
 
 const Socials = ({ onPress, iconName }) => (
@@ -30,37 +30,40 @@ export default function ResourcesSocials({
     return null;
   }
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        paddingBottom: 58,
-        paddingTop: 38,
-      }}
-    >
-      {facebookUrl && (
-        <Socials
-          iconName={ICON_NAMES.FACEBOOK}
-          onPress={() => WebBrowser.openBrowserAsync(facebookUrl)}
-        />
-      )}
-      {instagramUrl && (
-        <Socials
-          iconName={ICON_NAMES.INSTAGRAM}
-          onPress={() => WebBrowser.openBrowserAsync(instagramUrl)}
-        />
-      )}
-      {twitterUrl && (
-        <Socials
-          iconName={ICON_NAMES.TWITTER}
-          onPress={() => WebBrowser.openBrowserAsync(twitterUrl)}
-        />
-      )}
-      {youtubeUrl && (
-        <Socials
-          iconName={ICON_NAMES.YOUTUBE}
-          onPress={() => WebBrowser.openBrowserAsync(youtubeUrl)}
-        />
-      )}
+    <View style={{ paddingBottom: 50, paddingTop: 50 }}>
+      <Text style={[textStyles.h2, colors.charcoalGrey, { paddingBottom: 10 }]}>
+        {'Connect on social media'}
+      </Text>
+      <View
+        style={{
+          flexDirection: 'row',
+        }}
+      >
+        {facebookUrl && (
+          <Socials
+            iconName={ICON_NAMES.FACEBOOK}
+            onPress={() => WebBrowser.openBrowserAsync(facebookUrl)}
+          />
+        )}
+        {instagramUrl && (
+          <Socials
+            iconName={ICON_NAMES.INSTAGRAM}
+            onPress={() => WebBrowser.openBrowserAsync(instagramUrl)}
+          />
+        )}
+        {twitterUrl && (
+          <Socials
+            iconName={ICON_NAMES.TWITTER}
+            onPress={() => WebBrowser.openBrowserAsync(twitterUrl)}
+          />
+        )}
+        {youtubeUrl && (
+          <Socials
+            iconName={ICON_NAMES.YOUTUBE}
+            onPress={() => WebBrowser.openBrowserAsync(youtubeUrl)}
+          />
+        )}
+      </View>
     </View>
   );
 }

@@ -7,7 +7,7 @@ import React from 'react';
 
 import { RESOURCES_MAP } from '../../../data/resources';
 import ContactButtons from '../../components/Resources/ContactButtons';
-import Description from '../../components/Resources/ResourcesDescription';
+import TextBox from '../../components/Resources/ResourcesTextBox';
 import Name from '../../components/Resources/ResourcesName';
 import Services from '../../components/Resources/Services/ServiceList';
 import Socials from '../../components/Resources/ResourcesSocials';
@@ -24,8 +24,10 @@ export default function ResourceDetailsScreen({
     fullName,
     website,
     phone,
+    languages,
     description,
-    services,
+    legalServices,
+    nonlegalServices,
     facebookUrl,
     instagramUrl,
     twitterUrl,
@@ -37,15 +39,21 @@ export default function ResourceDetailsScreen({
       <Name text={fullName} />
       <ContactButtons
         leftDisabled={false}
-        leftTitle={t('Call')}
+        leftTitle={t('resources_call_button')}
         onLeftPress={() => Linking.openURL(phone)}
         onRightPress={() => WebBrowser.openBrowserAsync(website)}
         rightDisabled={false} // TODO: add to data file in case orgs do not have website/phone
-        rightTitle={t('Website')}
+        rightTitle={t('resources_website_button')}
       />
-      <Description text={t(description)} />
-      <View style={styles.services}>
-        <Services services={services} />
+      <View style={styles.languageContainer}>
+        <TextBox text={languages} title={t('resources_languages_supported')} />
+      </View>
+      <TextBox text={t(description)} title={t('resources_about')} />
+      <View style={styles.servicesContainer}>
+        <Services
+          legalServices={legalServices}
+          nonlegalServices={nonlegalServices}
+        />
       </View>
       <Socials
         facebookUrl={facebookUrl}
@@ -72,7 +80,10 @@ const styles = StyleSheet.create({
     padding: 26,
     paddingTop: 36,
   },
-  services: {
+  languageContainer: {
+    marginVertical: 15,
+  },
+  servicesContainer: {
     flex: 1,
     width: '100%',
   },

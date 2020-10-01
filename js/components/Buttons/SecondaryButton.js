@@ -1,14 +1,15 @@
 import { Button } from 'react-native-elements';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { colors, textStyles } from '../../styles';
 
-const SecondaryButton = ({ title, onPress, alignRight }) => (
+const SecondaryButton = ({ title, onPress, alignRight, containerStyle }) => (
   <Button
     buttonStyle={StyleSheet.flatten([
       { backgroundColor: colors.white, borderRadius: 3, padding: 16 },
       alignRight && { padding: 6 },
+      containerStyle,
     ])}
     containerStyle={({ flexGrow: 1 }, alignRight && { alignSelf: 'flex-end' })}
     onPress={onPress}
@@ -23,6 +24,8 @@ const SecondaryButton = ({ title, onPress, alignRight }) => (
 
 SecondaryButton.propTypes = {
   alignRight: PropTypes.bool,
+
+  containerStyle: ViewPropTypes.style,
 
   onPress: PropTypes.func.isRequired,
 

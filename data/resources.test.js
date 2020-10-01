@@ -8,20 +8,18 @@ const PHONE_REGEX = /^tel:\/\/([0-9]+)$/; // e.g. tel://1234567890
 const TWITTER_URL = /https:\/\/www\.twitter\.com\/([a-zA-Z0-9_]+)/;
 const FACEBOOK_URL = /https:\/\/www\.facebook\.com\/([a-zA-Z0-9_]+)/;
 const INSTAGRAM_URL = /https:\/\/www\.instagram\.com\/([a-zA-Z0-9_]+)/;
-const YOUTUBE_URL = /https:\/\/www\.youtube\.com\/channel\/([a-zA-Z0-9_]+)/;
+const YOUTUBE_URL = /https:\/\/www\.youtube\.com\/(?:user|channel)\/([a-zA-Z0-9_]+)/;
 
 const ResourceMapElementSchema = Joi.object({
   description: Joi.string().min(1).required(),
   // TODO: validate via explicit enum types
   facebookUrl: Joi.string().regex(FACEBOOK_URL).allow(null),
-
   fullName: Joi.string().min(1).required(),
-
   instagramUrl: Joi.string().regex(INSTAGRAM_URL).allow(null),
-
+  languages: Joi.string().min(1).required(),
+  legalServices: Joi.array().items(Joi.string().required()),
+  nonlegalServices: Joi.array().items(Joi.string().required()),
   phone: Joi.string().regex(PHONE_REGEX).required(),
-
-  services: Joi.array().items(Joi.string().required()),
   shortName: Joi.string().min(1).required(),
   twitterUrl: Joi.string().regex(TWITTER_URL).allow(null),
   website: Joi.string().regex(URL_REGEX).required(),
@@ -30,6 +28,7 @@ const ResourceMapElementSchema = Joi.object({
 
 const ResourceListElementSchema = Joi.object({
   fullName: Joi.string().min(1).required(),
+  image: Joi.any().required(),
   shortName: Joi.string().min(1).required(),
 });
 

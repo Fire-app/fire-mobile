@@ -33,7 +33,12 @@ initializeSentry(); // Load our build time configs
 
 const illustration1 = require('./assets/illustration1.png');
 const illustration2 = require('./assets/illustration2.png');
-const chirlaLogo = require('./assets/chirlaLogo.png');
+const aaajLogo = require('./assets/logos/aaajLogo.png');
+const carecenLogo = require('./assets/logos/carecenLogoSquare.jpeg');
+const chirlaLogo = require('./assets/logos/chirlaLogo.png');
+const immDefLogo = require('./assets/logos/immDefLogoSquare.jpeg');
+const krcLogo = require('./assets/logos/krcLogoSquare.jpeg');
+const uscLogo = require('./assets/logos/uscLogoSquare.jpeg');
 
 // Assets we need to load before app starts:
 const iconFonts = [
@@ -43,7 +48,16 @@ const iconFonts = [
   FontAwesome.font,
 ];
 const textFonts = [];
-const localImages = [illustration1, illustration2, chirlaLogo]; // Ensure that you add all images here! Otherwise they flicker on load!
+const localImages = [
+  illustration1,
+  illustration2,
+  aaajLogo,
+  carecenLogo,
+  chirlaLogo,
+  immDefLogo,
+  krcLogo,
+  uscLogo,
+]; // Ensure that you add all images here! Otherwise they flicker on load!
 
 function cacheLocalImages() {
   return localImages.map((image) => Asset.fromModule(image).downloadAsync());
