@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { textStyles } from '../../styles';
+import { textStyles, colors } from '../../styles';
 import { Divider, Row } from '../../components/SettingsSelector';
 import formattedVersionInfo from '../../util/versionInfo';
 import resetOnboardingAction from '../../store/actions/resetOnboarding';
@@ -85,7 +85,7 @@ export default SettingsOverviewScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     flexGrow: 1,
   },
 });

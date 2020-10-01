@@ -97,7 +97,7 @@ export default InfoScreen;
 
 const styles = StyleSheet.create({
   alertIcon: {
-    color: 'white',
+    color: colors.white,
   },
   alertIconContainer: {
     alignItems: 'center',

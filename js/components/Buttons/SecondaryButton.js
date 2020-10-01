@@ -7,7 +7,7 @@ import { colors, textStyles } from '../../styles';
 const SecondaryButton = ({ title, onPress, alignRight, containerStyle }) => (
   <Button
     buttonStyle={StyleSheet.flatten([
-      { backgroundColor: 'white', borderRadius: 3, padding: 16 },
+      { backgroundColor: colors.white, borderRadius: 3, padding: 16 },
       alignRight && { padding: 6 },
       containerStyle,
     ])}

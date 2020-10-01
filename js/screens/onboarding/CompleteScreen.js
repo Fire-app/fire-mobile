@@ -6,6 +6,7 @@ import React from 'react';
 import OnboardingTemplate from './Template';
 import OnboardingTitle from '../../components/OnboardingTitle';
 import completeOnboardingAction from '../../store/actions/completeOnboarding';
+import { colors } from '../../styles';
 
 const IMAGE = require('../../../assets/illustration2.png');
 
@@ -55,7 +56,7 @@ export default CompleteScreen;
 const styles = StyleSheet.create({
   image: {
     alignSelf: 'center',
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     height: 280,
     padding: 30,
     resizeMode: 'contain',
