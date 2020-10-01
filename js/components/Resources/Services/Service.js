@@ -2,7 +2,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ViewListButton from '../../Buttons/ViewListButton';
+import SecondaryButton from '../../Buttons/SecondaryButton';
+
 import CustomModal from '../../CustomModal';
 import FireIcon, { ICON_NAMES } from '../../FireIcon';
 
@@ -36,8 +37,9 @@ export default function Service({ name, services }) {
           {t(name)}
         </Text>
       </View>
-      <ViewListButton
+      <SecondaryButton
         centered
+        containerStyle={{ padding: 10 }}
         onPress={() => setInfoModalVisible(!InfoModalVisible)}
         title={t('resources__view_list')}
       />

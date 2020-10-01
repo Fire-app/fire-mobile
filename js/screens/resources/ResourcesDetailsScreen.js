@@ -7,8 +7,7 @@ import React from 'react';
 
 import { RESOURCES_MAP } from '../../../data/resources';
 import ContactButtons from '../../components/Resources/ContactButtons';
-import Languages from '../../components/Resources/ResourcesLanguages';
-import Description from '../../components/Resources/ResourcesDescription';
+import TextBox from '../../components/Resources/ResourcesTextBox';
 import Name from '../../components/Resources/ResourcesName';
 import Services from '../../components/Resources/Services/ServiceList';
 import Socials from '../../components/Resources/ResourcesSocials';
@@ -46,12 +45,14 @@ export default function ResourceDetailsScreen({
         rightDisabled={false} // TODO: add to data file in case orgs do not have website/phone
         rightTitle={t('resources_website_button')}
       />
-      <Languages
-        languages={languages}
-        title={t('resources_languages_supported')}
-      />
-      <Description text={t(description)} title={t('resources_about')} />
-      <View style={styles.services}>
+      <View style={styles.languageContainer}>
+        <TextBox
+          text={languages}
+          title={t('resources_languages_supported')}
+        />
+      </View>
+      <TextBox text={t(description)} title={t('resources_about')} />
+      <View style={styles.servicesContainer}>
         <Services
           legalServices={legalServices}
           nonlegalServices={nonlegalServices}
@@ -82,7 +83,10 @@ const styles = StyleSheet.create({
     padding: 26,
     paddingTop: 36,
   },
-  services: {
+  languageContainer: {
+    marginVertical: 15,
+  },
+  servicesContainer: {
     flex: 1,
     width: '100%',
   },

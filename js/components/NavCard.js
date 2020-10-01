@@ -52,7 +52,7 @@ export default function NavCard({
 NavCard.propTypes = {
   description: PropTypes.string,
   iconName: IconNamePropType,
-  image: Image.propTypes.source.isRequired,
+  image: Image.propTypes.source,
   onPress: PropTypes.func.isRequired,
   smallMode: PropTypes.bool,
   title: PropTypes.string.isRequired,
