@@ -1,11 +1,15 @@
-# run python3 lang_script.py on the command line to generate language files
-# remember to open generates files and save to format
+# NOTES:
+# run `python3 lang_script.py` on the command line to generate language files
+# keep in mind that there might be keys in the english file that are NOT in the csv,
+#     which would get overwritten with the json generation
+# remember to open generated files and save to prettier and pass eslint
+
 
 # pandas need to be locally installed
 import pandas as pd
 
-# you can clean up the csv file with pd.fillna("str") or
-# pd.replace("str", "new_str") but it's easier to clean up in Google Sheets
+# you can clean up the csv file with pd.fillna("str") or pd.replace("str", "new_str")
+# and such but it's easier to clean up in Google Sheets
 
 # assuming no clean up necessary and lang.csv in directory
 lang = pd.read_csv("lang.csv")
