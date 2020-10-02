@@ -29,7 +29,7 @@ export default function ResourcesListScreen({ navigation }) {
             },
           ]}
         >
-          {t('resources_subtitle')}
+          {t('organizations')}
         </Text>
       }
       renderItem={({ item: { shortName, fullName, image } }) => (

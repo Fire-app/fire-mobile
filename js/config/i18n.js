@@ -3,7 +3,10 @@ import i18n from 'i18next';
 
 // Our app is lightweight, so we import all translations up front.
 import englishJson from '../../lang/en.json';
-import klingonJson from '../../lang/tlh.json';
+import spanishJson from '../../lang/es.json';
+import chineseJson from '../../lang/zh.json';
+import tagalogJson from '../../lang/tl.json';
+import koreanJson from '../../lang/ko.json';
 
 const DEFAULT = 'en';
 export const fallback = DEFAULT;
@@ -19,9 +22,21 @@ export const resources = {
     name: 'English',
     translation: englishJson,
   },
-  tlh: {
-    name: 'Klingon',
-    translation: klingonJson,
+  es: {
+    name: 'Espa\u00f1ol',
+    translation: spanishJson,
+  },
+  ko: {
+    name: '\ud55c\uae00',
+    translation: koreanJson,
+  },
+  tl: {
+    name: 'Tagalog',
+    translation: tagalogJson,
+  },
+  zh: {
+    name: '\u4e2d\u6587',
+    translation: chineseJson,
   },
 };
 
