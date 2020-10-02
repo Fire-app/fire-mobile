@@ -1,0 +1,35 @@
+# run python3 lang_script.py on the command line to generate language files
+# remember to open generates files and save to format
+
+# pandas need to be locally installed
+import pandas as pd
+
+# you can clean up the csv file with pd.fillna("str") or
+# pd.replace("str", "new_str") but it's easier to clean up in Google Sheets
+
+# assuming no clean up necessary and lang.csv in directory
+lang = pd.read_csv("lang.csv")
+
+# setting index to column "Key", which contains the json keys
+lang = lang.set_index("Key")
+
+# isolating each language by column
+en = lang["English"]
+es = lang["Spanish"]
+zh = lang["Chinese"]
+tl = lang["Tagalog"]
+ko = lang["Korean"]
+
+# deleting rows that contain "empty_value"
+en = en[~en.str.contains("empty_value")]
+es = es[~es.str.contains("empty_value")]
+zh = zh[~zh.str.contains("empty_value")]
+tl = tl[~tl.str.contains("empty_value")]
+ko = ko[~ko.str.contains("empty_value")]
+
+# exporting to json files
+en.to_json(path_or_buf="en.json", orient="columns")
+es.to_json(path_or_buf="es.json", orient="columns")
+zh.to_json(path_or_buf="zh.json", orient="columns")
+tl.to_json(path_or_buf="tl.json", orient="columns")
+ko.to_json(path_or_buf="ko.json", orient="columns")
