@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import ListSelector from '../../components/ListSelector';
 import OnboardingTemplate from './Template';
 import OnboardingTitle from '../../components/OnboardingTitle';
-import i18n, { getLanguageOptions } from '../../config/i18n';
+import i18n, { getLanguageOptions, changeLanguage } from '../../config/i18n';
 import routes from '../../navigation/routes';
 
 const onboardingRoutes = routes.onboarding;
@@ -15,7 +15,7 @@ const LanguageScreen = ({ navigation }) => {
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
 
   useEffect(() => {
-    i18n.changeLanguage(selectedLanguage);
+    changeLanguage(selectedLanguage);
   }, [selectedLanguage]);
 
   const onLanguageChange = ({ item }) => {

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import { textStyles, colors } from '../../styles';
 import ListSelector from '../../components/ListSelector';
-import i18n, { getLanguageOptions } from '../../config/i18n';
+import i18n, { getLanguageOptions, changeLanguage } from '../../config/i18n';
 
 const SettingsLanguageScreen = () => {
   const { t } = useTranslation();
@@ -11,7 +11,7 @@ const SettingsLanguageScreen = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
 
   useEffect(() => {
-    i18n.changeLanguage(selectedLanguage);
+    changeLanguage(selectedLanguage);
   }, [selectedLanguage]);
 
   const onLanguageChange = ({ item }) => {
