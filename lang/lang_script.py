@@ -15,7 +15,7 @@ import pandas as pd
 lang = pd.read_csv("lang.csv")
 
 # setting index to column "Key", which contains the json keys
-lang = lang['Key'].str.strip()
+lang['Key'] = lang['Key'].str.strip()
 lang = lang.set_index("Key")
 
 # isolating each language by column
