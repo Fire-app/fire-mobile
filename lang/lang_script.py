@@ -15,14 +15,15 @@ import pandas as pd
 lang = pd.read_csv("lang.csv")
 
 # setting index to column "Key", which contains the json keys
+lang = lang['Key'].str.strip()
 lang = lang.set_index("Key")
 
 # isolating each language by column
-en = lang["English"]
-es = lang["Spanish"]
-zh = lang["Chinese"]
-tl = lang["Tagalog"]
-ko = lang["Korean"]
+en = lang["English"].str.strip()
+es = lang["Spanish"].str.strip()
+zh = lang["Chinese"].str.strip()
+tl = lang["Tagalog"].str.strip()
+ko = lang["Korean"].str.strip()
 
 # deleting rows that contain "empty_value"
 en = en[~en.str.contains("empty_value")]

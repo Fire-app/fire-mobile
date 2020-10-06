@@ -23,11 +23,11 @@ export const resources = {
     translation: englishJson,
   },
   es: {
-    name: 'Espa\u00f1ol',
+    name: 'Español',
     translation: spanishJson,
   },
   ko: {
-    name: '\ud55c\uae00',
+    name: '한글',
     translation: koreanJson,
   },
   tl: {
@@ -35,7 +35,7 @@ export const resources = {
     translation: tagalogJson,
   },
   zh: {
-    name: '\u4e2d\u6587',
+    name: '中文',
     translation: chineseJson,
   },
 };
