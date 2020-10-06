@@ -58,7 +58,7 @@ const AppTabs = () => {
         name={routes.main.rights}
         options={{
           tabBarIcon: CreateTabIcon(ICON_NAMES.SHIELD),
-          tabBarLabel: CreateTabLabel(t('tab_rights')),
+          tabBarLabel: CreateTabLabel(t('rights')),
         }}
       />
       <Tabs.Screen
@@ -66,7 +66,7 @@ const AppTabs = () => {
         name={routes.main.resources}
         options={{
           tabBarIcon: CreateTabIcon(ICON_NAMES.USERS),
-          tabBarLabel: CreateTabLabel(t('tab_resources')),
+          tabBarLabel: CreateTabLabel(t('resources')),
         }}
       />
       <Tabs.Screen

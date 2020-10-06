@@ -21,13 +21,13 @@ export default function ServiceList({ legalServices, nonlegalServices }) {
         {'Services'}
       </Text>
       <Service
-        key={t('resources__services_legal')}
-        name={t('resources__services_legal')}
+        key={t('immigration_legal')}
+        name={t('immigration_legal')}
         services={legalServices}
       />
       <Service
-        key={t('resources__services_nonlegal')}
-        name={t('resources__services_nonlegal')}
+        key={t('non_legal')}
+        name={t('non_legal')}
         services={nonlegalServices}
       />
     </View>

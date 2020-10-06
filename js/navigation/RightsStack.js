@@ -25,7 +25,7 @@ const RightsStack = () => {
         name={routes.rights.overviewList}
         options={{
           headerTitleStyle: textStyles.h2,
-          title: t('header_rights'),
+          title: t('know_your_rights_caps'),
         }}
       />
 
@@ -34,8 +34,8 @@ const RightsStack = () => {
         component={ScenarioListScreen}
         name={routes.scenarios.overviewList}
         options={{
-          headerBackTitle: t('tab_rights'),
-          title: t('header_scenarios'),
+          headerBackTitle: t('rights'),
+          title: t('scenarios'),
         }}
       />
       <Stack.Screen
@@ -46,7 +46,7 @@ const RightsStack = () => {
             params: { title },
           },
         }) => ({
-          headerBackTitle: t('header_scenarios'),
+          headerBackTitle: t('scenarios'),
           title: t(title),
         })}
       />
@@ -67,8 +67,8 @@ const RightsStack = () => {
         component={VideoListScreen}
         name={routes.videos.overviewList}
         options={{
-          headerBackTitle: t('tab_rights'),
-          title: t('header_videos'),
+          headerBackTitle: t('rights'),
+          title: t('videos'),
         }}
       />
     </Stack.Navigator>

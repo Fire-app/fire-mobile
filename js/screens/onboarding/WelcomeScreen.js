@@ -21,7 +21,7 @@ const WelcomeInfo = () => {
         paddingHorizontal={20}
         paddingVertical={0}
         subtitle={t('welcome_message')}
-        title={t('welcome_to_fire')}
+        title={t('welcome_title')}
       />
       <View style={styles.logoNameContainer}>
         <Image
