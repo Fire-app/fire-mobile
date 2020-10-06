@@ -79,7 +79,7 @@ const HotlineScreen = ({ navigation }) => {
         }}
       >
         <ModalContent
-          subtitle={t('hotline_note')}
+          subtitle={t('what_is_hotline_content')}
           title={t('what_is_hotline')}
         />
       </CustomModal>

@@ -25,7 +25,7 @@ const ResourcesStack = () => {
       <Stack.Screen
         component={ResourcesList}
         name={routes.resources.overviewList}
-        options={{ title: t('header_resources') }}
+        options={{ title: t('resources') }}
       />
       <Stack.Screen
         component={ResourcesDetails}

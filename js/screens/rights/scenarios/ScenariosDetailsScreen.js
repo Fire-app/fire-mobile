@@ -37,7 +37,7 @@ const ScenarioCard = ({ title, subtitle, bullets }) => {
             >
               <FireIcon
                 name={ICON_NAMES.CIRCLE}
-                size={10}
+                size={6}
                 style={{ color: colors.textLight, paddingRight: 8 }}
               />
               <Text style={[textStyles.body1, { color: colors.textLight }]}>

@@ -42,7 +42,7 @@ const DisclaimerCard = () => {
           size={20}
           style={{ paddingRight: 8 }}
         />
-        <Text style={textStyles.h3}>{t('disclaimer_title')}</Text>
+        <Text style={textStyles.h3}>{t('disclaimer')}</Text>
       </View>
       <Text style={textStyles.body2}>{t('disclaimer_body')}</Text>
     </View>
@@ -72,7 +72,7 @@ export default function RightsOverviewScreen({ navigation }) {
           onPress={() => {
             navigation.navigate(routes.scenarios.overviewList);
           }}
-          title={t('scenarios_title')}
+          title={t('scenarios')}
         />
         <View style={{ height: 8 }} />
         <NavCard
@@ -80,7 +80,7 @@ export default function RightsOverviewScreen({ navigation }) {
           onPress={() => {
             navigation.navigate(routes.videos.overviewList);
           }}
-          title={t('videos_title')}
+          title={t('videos')}
         />
         <View style={{ height: 8 }} />
         <DisclaimerCard />

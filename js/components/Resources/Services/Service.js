@@ -16,7 +16,11 @@ export default function Service({ name, services }) {
   const servicesList = services.map((item) => {
     return (
       <View key={item} style={styles.textContainer}>
-        <FireIcon name={ICON_NAMES.CIRCLE} style={styles.bulletPoint} />
+        <FireIcon
+          name={ICON_NAMES.CIRCLE}
+          size={6}
+          style={styles.bulletPoint}
+        />
         <Text style={[textStyles.body1, { color: colors.textLight }]}>
           {t(item)}
         </Text>
@@ -41,14 +45,14 @@ export default function Service({ name, services }) {
         centered
         containerStyle={{ padding: 10 }}
         onPress={() => setInfoModalVisible(!InfoModalVisible)}
-        title={t('resources__view_list')}
+        title={t('view_list')}
       />
       {/* ABSOLUTE MODAL */}
       <InfoModal
         body={servicesList}
         isVisible={InfoModalVisible}
         setModalVisible={setInfoModalVisible}
-        title={t('resources__services_legal_modal_header')}
+        title={t('immigration_legal_services')}
       />
     </View>
   );
@@ -86,7 +90,6 @@ InfoModal.propTypes = {
 const styles = StyleSheet.create({
   bulletPoint: {
     color: colors.textLight,
-    fontSize: 6,
     paddingRight: 8,
     paddingTop: 10,
   },

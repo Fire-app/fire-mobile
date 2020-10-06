@@ -20,7 +20,7 @@ export default function ScenarioListScreen({ navigation }) {
         <Text
           style={[textStyles.h3, { paddingBottom: 16, textAlign: 'center' }]}
         >
-          {t('scenarios_subtitle')}
+          {t('scenarios_description')}
         </Text>
       }
       renderItem={({ item: { title, scenarios, iconName } }) => (
