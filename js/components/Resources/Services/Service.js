@@ -77,7 +77,7 @@ Service.propTypes = {
 };
 
 InfoModal.propTypes = {
-  body: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  body: PropTypes.node.isRequired,
   isVisible: PropTypes.bool.isRequired,
   setModalVisible: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
