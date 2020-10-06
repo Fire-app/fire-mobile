@@ -5,7 +5,7 @@ export const SCENARIO_MAP = {
     tips: [
       'do_not_open_car_door',
       'tell_agent_that_you_want_to_remain_silent',
-      'call_your_attorney_or_hotline_while_in_car',
+      'call_your_attorney_while_in_car',
       'do_not_present_your_license',
       'do_not_sign_or_answer_questions_without_lawyer',
     ],
