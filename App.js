@@ -11,7 +11,7 @@ import {
 } from '@expo-google-fonts/roboto';
 import * as SplashScreenUtils from 'expo-splash-screen';
 import { StatusBar } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -77,6 +77,11 @@ async function loadAssetsAsync() {
 const { store, persistor } = createPersistedStore();
 
 const App = () => {
+  // NOTE: This is for development quality of life.
+  // This prevents the useEffect of SplashScreenUtils.preventAutoHideAsync from
+  // triggering on hot reload, which throws a LogBox warning.
+  const firstMount = useRef(true);
+
   const [assetsLoaded, setAssetsLoaded] = useState(false);
   // If application has an online step, that can occur here too, as a redux action.
 
@@ -89,9 +94,15 @@ const App = () => {
 
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
+    if (!firstMount.current) return;
+    firstMount.current = false;
     StatusBar.setBarStyle('light-content');
-    SplashScreenUtils.preventAutoHideAsync();
-    loadAssetsAsync().then(() => {
+
+    // concurrently hide splash and load assets
+    Promise.all([
+      SplashScreenUtils.preventAutoHideAsync(),
+      loadAssetsAsync(),
+    ]).then(() => {
       setAssetsLoaded(true);
       SplashScreenUtils.hideAsync();
     });
