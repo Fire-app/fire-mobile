@@ -28,6 +28,7 @@ import './js/config';
 import { initialize as initializeSentry } from './js/diagnostics/sentry';
 import Navigation from './js/navigation';
 import createPersistedStore from './js/store/createPersistedStore';
+import { rehydrateLanguageSelection } from './js/config/i18n';
 
 initializeSentry(); // Load our build time configs
 
@@ -102,6 +103,7 @@ const App = () => {
     Promise.all([
       SplashScreenUtils.preventAutoHideAsync(),
       loadAssetsAsync(),
+      rehydrateLanguageSelection(),
     ]).then(() => {
       setAssetsLoaded(true);
       SplashScreenUtils.hideAsync();
