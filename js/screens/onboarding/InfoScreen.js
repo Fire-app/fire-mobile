@@ -24,7 +24,7 @@ const TitleSection = () => {
       <OnboardingTitle
         alignCenter
         paddingVertical={0}
-        subtitle={t('protect_yourself_note')}
+        subtitle={t('protect_yourself_subtitle')}
         title={t('protect_yourself')}
       />
     </View>
@@ -72,14 +72,14 @@ const InfoScreen = ({ navigation }) => {
         <TitleSection />
         <InfoSection
           iconName={ICON_NAMES.SHIELD}
-          subtitle={t('know_your_rights_note')}
+          subtitle={t('know_your_rights_subtitle')}
           title={t('know_your_rights')}
         />
         <View style={{ height: 40 }} />
         <InfoSection
           iconName={ICON_NAMES.USERS}
-          subtitle={t('connect_with_orgs_note')}
-          title={t('connect_with_orgs')}
+          subtitle={t('connect_with_organizations_subtitle')}
+          title={t('connect_with_organizations')}
         />
       </ScrollView>
     </OnboardingTemplate>

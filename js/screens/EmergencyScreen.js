@@ -67,7 +67,10 @@ const InfoModal = ({ isVisible, onClose }) => {
         title: t('got_it'),
       }}
     >
-      <ModalContent subtitle={t('hotline_note')} title={t('what_is_hotline')} />
+      <ModalContent
+        subtitle={t('what_is_hotline_content')}
+        title={t('what_is_hotline')}
+      />
     </CustomModal>
   );
 };

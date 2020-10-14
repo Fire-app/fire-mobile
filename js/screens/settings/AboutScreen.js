@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
     width: 120,
   },
   simpleContainer: {
-    backgroundColor: colors.backgroundColor,
     flexGrow: 1,
     paddingHorizontal: 30,
     paddingVertical: 16,
@@ -77,6 +76,9 @@ const SimpleAboutScreen = () => {
     <ScrollView
       alwaysBounceVertical={false}
       contentContainerStyle={styles.simpleContainer}
+      style={{
+        backgroundColor: colors.backgroundColor,
+      }}
     >
       <View>
         <Image

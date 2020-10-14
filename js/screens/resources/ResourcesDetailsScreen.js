@@ -39,16 +39,16 @@ export default function ResourceDetailsScreen({
       <Name text={fullName} />
       <ContactButtons
         leftDisabled={false}
-        leftTitle={t('resources_call_button')}
+        leftTitle={t('call')}
         onLeftPress={() => Linking.openURL(phone)}
         onRightPress={() => WebBrowser.openBrowserAsync(website)}
         rightDisabled={false} // TODO: add to data file in case orgs do not have website/phone
-        rightTitle={t('resources_website_button')}
+        rightTitle={t('website')}
       />
       <View style={styles.languageContainer}>
-        <TextBox text={languages} title={t('resources_languages_supported')} />
+        <TextBox text={languages} title={t('languages_supported')} />
       </View>
-      <TextBox text={t(description)} title={t('resources_about')} />
+      <TextBox text={t(description)} title={t('about')} />
       <View style={styles.servicesContainer}>
         <Services
           legalServices={legalServices}
