@@ -35,6 +35,7 @@ import createPersistedStore from './js/store/createPersistedStore';
 import { rehydrateLanguageSelection } from './js/config/i18n';
 
 initializeSentry(); // Load our build time configs
+logMessage('Sentry Initialized');
 
 const illustration1 = require('./assets/illustration1.png');
 const illustration2 = require('./assets/illustration2.png');
