@@ -36,6 +36,9 @@ import { rehydrateLanguageSelection } from './js/config/i18n';
 
 initializeSentry(); // Load our build time configs
 logMessage('Sentry Initialized');
+SplashScreenUtils.preventAutoHideAsync().catch((e) =>
+  logError(e, 'Splash Screen Error')
+);
 
 const illustration1 = require('./assets/illustration1.png');
 const illustration2 = require('./assets/illustration2.png');
@@ -97,11 +100,7 @@ const App = () => {
     StatusBar.setBarStyle('light-content');
 
     // concurrently hide splash and load assets
-    Promise.all([
-      SplashScreenUtils.preventAutoHideAsync(),
-      loadAssetsAsync(),
-      rehydrateLanguageSelection(),
-    ])
+    Promise.all([loadAssetsAsync(), rehydrateLanguageSelection()])
       .then(() => {
         setAssetsLoaded(true);
         SplashScreenUtils.hideAsync();
