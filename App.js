@@ -25,7 +25,11 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import './js/config';
-import { initialize as initializeSentry } from './js/diagnostics/sentry';
+import {
+  initialize as initializeSentry,
+  logMessage,
+  logError,
+} from './js/diagnostics/sentry';
 import Navigation from './js/navigation';
 import createPersistedStore from './js/store/createPersistedStore';
 import { rehydrateLanguageSelection } from './js/config/i18n';
@@ -104,10 +108,15 @@ const App = () => {
       SplashScreenUtils.preventAutoHideAsync(),
       loadAssetsAsync(),
       rehydrateLanguageSelection(),
-    ]).then(() => {
-      setAssetsLoaded(true);
-      SplashScreenUtils.hideAsync();
-    });
+    ])
+      .then(() => {
+        setAssetsLoaded(true);
+        SplashScreenUtils.hideAsync();
+        logMessage('App mounted');
+      })
+      .catch((e) => {
+        logError(e, 'Failed to mount');
+      });
   }, []);
 
   if (!assetsLoaded || !googleFontsLoaded) {

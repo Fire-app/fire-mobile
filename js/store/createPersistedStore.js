@@ -21,7 +21,7 @@ const logger = (store) => (next) => (action) => {
 };
 
 const enhancers = composeEnhancers(
-  applyMiddleware(createImmutableStateInvariantMiddleware(), logger)
+  applyMiddleware(createImmutableStateInvariantMiddleware())
 );
 
 export const STORE_VERSION = 0;

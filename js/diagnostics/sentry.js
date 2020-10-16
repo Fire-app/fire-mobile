@@ -18,6 +18,7 @@ export function initialize() {
 }
 
 export function logMessage(message) {
+  console.log(message);
   // Default is SentrySeverity.Error
   Sentry.captureMessage(message, {
     level: Sentry.Severity.Info,
