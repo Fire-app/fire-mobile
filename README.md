@@ -1,4 +1,4 @@
-# Fire
+# About the App
 
 Fire is a multilingual Know-Your-Immigrant-Rights mobile app, launching first in Los Angeles. We seek to educate, defend, and mobilize the immigrant community and its allies.
 
@@ -31,3 +31,24 @@ To release over the air:
 4. PR `master` -> `release`, to trigger the workflow.
 
 That should automatically run the `Expo Publish` action workflow. You can validate that on the [`actions` tab](https://github.com/Fire-app/fire-mobile/actions).
+
+
+## Team
+
+* Ryan Biette - UX Researcher
+* Ki Ki Chan - Mobile & Web Developer
+* Shine Cho - Co-Founder, Legal & Partnerships
+* Tati Doyle - Web Developer
+* Meha Elhence - UX Designer
+* Belen Farias - UX Designer
+* Jacob Jaffe - Mobile Developer
+* Jiachen Jiang - Product
+* Chan Kang - UX Researcher
+* Austen Keene - Web Developer
+* Hannah Kim - Web Developer
+* Janine Kim - UX Researcher
+* Khaliun Narangerel - Mobile Developer
+* Isha Patnaik - UX Researcher
+* Jack Rosenberg - Mobile Developer
+* Ki Wan Sim - Co-Founder, Product & Mobile
+* Jennifer Weng - UX Designer
