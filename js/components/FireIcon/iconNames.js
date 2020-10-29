@@ -36,9 +36,14 @@ export const FONT_AWESOME = {
   EXCLAMATION: 'exclamation',
 };
 
+export const CUSTOM_ICONS = {
+  CAR_DOOR: 'cardoor',
+};
+
 export const ICON_NAMES = {
   ...FEATHER_ICONS,
   ...ION_NAMES,
   ...MATERIAL_ICONS,
   ...FONT_AWESOME,
+  ...CUSTOM_ICONS,
 };

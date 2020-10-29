@@ -56,6 +56,7 @@ const iconFonts = [
   MaterialCommunityIcons.font,
   FontAwesome.font,
 ];
+
 const textFonts = [];
 const localImages = [
   illustration1,
@@ -95,6 +96,12 @@ const App = () => {
     Roboto_900Black,
   });
 
+  /* eslint-disable global-require */
+  const customIconsLoaded = useFonts({
+    fontello: require('./assets/icons/fontello.ttf'),
+  });
+  /* eslint-enable global-require */
+
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
     StatusBar.setBarStyle('light-content');
@@ -111,7 +118,7 @@ const App = () => {
       });
   }, []);
 
-  if (!assetsLoaded || !googleFontsLoaded) {
+  if (!assetsLoaded || !googleFontsLoaded || !customIconsLoaded) {
     return null;
   }
 
