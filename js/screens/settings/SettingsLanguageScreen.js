@@ -20,16 +20,22 @@ const SettingsLanguageScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text
-        style={[textStyles.h5, { alignSelf: 'flex-start', paddingBottom: 12 }]}
-      >
-        {t('choose_language')}
-      </Text>
       <View style={styles.languageList}>
         <ListSelector
           data={getLanguageOptions()}
           defaultKey={i18n.language}
           keyExtractor={({ locale }, i) => `${locale}:${i}`}
+          listFooterComponent={<View style={{ height: 20 }} />}
+          listHeaderComponent={
+            <Text
+              style={[
+                textStyles.h5,
+                { alignSelf: 'flex-start', paddingBottom: 12 },
+              ]}
+            >
+              {t('choose_language')}
+            </Text>
+          }
           onChange={onLanguageChange}
           selectedExtractor={({ item }) => item.locale}
           titleExtractor={({ item }) => item.name}
@@ -47,7 +53,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flex: 1,
     justifyContent: 'space-between',
-    padding: 20,
+    paddingHorizontal: 20,
     paddingTop: 30,
   },
   languageList: {
