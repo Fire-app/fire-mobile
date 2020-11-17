@@ -32,6 +32,31 @@ To release over the air:
 
 That should automatically run the `Expo Publish` action workflow. You can validate that on the [`actions` tab](https://github.com/Fire-app/fire-mobile/actions).
 
+## Icons
+
+We use custom icons in the app via Fontello. See the [Expo documentation](https://docs.expo.io/guides/icons/) for full details.
+TLDR: convert multiple `.svg` icons to a single `.ttf` font file, which we load into the app, and then use via our `CustomIcon` component.
+
+To update icons:
+
+1. Upload new icon set to [Fontello](https://fontello.com/). Ensure that the `Default (css) name` of each glyph is consistent across icon updates (or remember to change the new icon names!).
+
+2. Ensure you have the icons you wish to include in the icon set selected. Click the `Download webfont` button.
+
+3. replace the `assets/icons/fontello.ttf` file, and the `js/components/FireIcon/config.json` with the new `fontello.ttf` and `config.json`, respectively.
+
+4. Update `CUSTOM_ICONS` of `js/components/FireIcon/iconNames.js` with the new icon name.
+```diff
+export const CUSTOM_ICONS = {
+  CAR_DOOR: 'cardoor',
++ NEW_ICON: 'new_icon',
+};
+```
+
+5. Test out the new icon via the `CustomIcon` component!
+```jsx
+<CustomIcon name={ICON_NAMES.NEW_ICON} ... />
+
 
 ## Team
 
