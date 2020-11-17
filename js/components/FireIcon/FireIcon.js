@@ -9,7 +9,9 @@ import {
   Feather,
   Ionicons,
   FontAwesome,
+  createIconSetFromFontello,
 } from '@expo/vector-icons';
+
 import { colors } from '../../styles';
 import {
   ICON_NAMES,
@@ -17,7 +19,17 @@ import {
   MATERIAL_ICONS,
   ION_NAMES,
   FONT_AWESOME,
+  CUSTOM_ICONS,
 } from './iconNames';
+
+import fontelloConfig from './config.json';
+
+// Both the font name and files exported from Fontello are most likely called "fontello"
+const CustomIcon = createIconSetFromFontello(
+  fontelloConfig,
+  'fontello',
+  'fontello.ttf'
+);
 
 const FireIcon = ({
   name,
@@ -65,6 +77,7 @@ const iconNamesToFamilyComponent = (name) => {
     return MaterialCommunityIcons;
   if (Object.values(ION_NAMES).find(hasName)) return Ionicons;
   if (Object.values(FONT_AWESOME).find(hasName)) return FontAwesome;
+  if (Object.values(CUSTOM_ICONS).find(hasName)) return CustomIcon;
 
   throw new Error(`Cannot find icon component for icon: '${name}'`);
 };
