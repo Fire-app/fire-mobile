@@ -56,7 +56,7 @@ export const CUSTOM_ICONS = {
 5. Test out the new icon via the `CustomIcon` component!
 ```jsx
 <CustomIcon name={ICON_NAMES.NEW_ICON} ... />
-
+```
 
 ## Team
 
