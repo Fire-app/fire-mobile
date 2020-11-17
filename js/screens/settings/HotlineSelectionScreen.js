@@ -27,17 +27,16 @@ const HotlineSelectionScreen = () => {
         data={HOTLINE_OPTIONS}
         defaultKey={savedNumber}
         keyExtractor={(item) => item.phoneNumber}
+        listFooterComponent={<View style={{ height: 20 }} />}
         listHeaderComponent={
-          <>
-            <Text
-              style={[
-                textStyles.h5,
-                { alignSelf: 'flex-start', paddingBottom: 12 },
-              ]}
-            >
-              {t('choose_hotline')}
-            </Text>
-          </>
+          <Text
+            style={[
+              textStyles.h5,
+              { alignSelf: 'flex-start', paddingBottom: 12 },
+            ]}
+          >
+            {t('choose_hotline')}
+          </Text>
         }
         onChange={onListChange}
         selectedExtractor={({ item }) => item.phoneNumber}
@@ -60,7 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flex: 1,
     justifyContent: 'space-between',
-    padding: 20,
+    paddingHorizontal: 20,
     paddingTop: 30,
   },
 });

@@ -53,6 +53,7 @@ const ListSelector = ({
   selectedExtractor,
   titleExtractor,
   listHeaderComponent,
+  listFooterComponent,
 }) => {
   const [selectedKey, setSelectedKey] = useState(defaultKey);
 
@@ -68,6 +69,7 @@ const ListSelector = ({
       extraData={{ selectedKey }}
       ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
       keyExtractor={(item) => keyExtractor(item)}
+      ListFooterComponent={listFooterComponent}
       ListHeaderComponent={listHeaderComponent}
       renderItem={(item) => (
         <ListOption
@@ -84,6 +86,7 @@ ListSelector.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   defaultKey: PropTypes.string.isRequired,
   keyExtractor: PropTypes.func.isRequired,
+  listFooterComponent: PropTypes.node,
   listHeaderComponent: PropTypes.node,
   onChange: PropTypes.func.isRequired,
   selectedExtractor: PropTypes.func.isRequired,
