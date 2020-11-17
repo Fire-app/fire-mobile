@@ -12,7 +12,7 @@ agent_on_street,Agent stops me on the street,移民局执法员在街上拦住�
 agent_outside_home,Agent is outside my home,移民局执法员在家外,이민국 요원이 집 밖에 있을 경우,Nasa Labas ang Ahente,El agente está fuera de mi casa. 
 agent_pulls_over,Agent pulls me over,移民局执法员指示我靠边停车。,차 운행중 이민국 요원의 정차지시를 받은 경우,Pinatabi ako ng Ahento tuwing nagmamaneho,El agente me detiene mientras manejo el carro.
 agent_won't_leave?,Agents won't leave?,如果移民局执法员不离开？,이민국 요원이 떠나지 않는다면?,Paano kapag hindi umaalis ang mga ahente?,Los agentes no se van?
-back,Back,返回,돌아가기,empty_value,empty_value
+back,Back,返回,돌아가기,empty_value,De vuelta
 call,Call,联系,전화,Tawagan,Llama
 call_emergency_hotline,Call Emergency Hotline,拨打紧急热线,핫라인에 즉시 전화를 거세요,Tawagan ang hotline na pang emerhensya,Llamar a la línea de emergencia
 call_hotline_if,Call the hotline if...,拨打热线，如果,"핫라인에 즉시 전화를 거세요, 만약에",Tawagan ang hotline kung....,Llame a la línea directa si ...
@@ -21,7 +21,7 @@ call_your_attorney_while_in_car,Call your attorney while in the car.,当您还�
 children_or_elderly_are_present,children or elderly are present,儿童或老人在场,노약자나 어린이가 집안에 있을 경우,mayroong mga bata o matanda sa loob.,hay niños o ancianos en casa
 choose_hotline,Choose your emergency hotline:,选择您的紧急热线,긴급 핫라인을 선택하십시오,Piliin ang iyong hotline na emerhensya,Escoja una línea de emergencia.
 choose_language,Choose your language:,选择你的语言：,언어를 선택하십시오:,Piliin ang iyong wika:,Escoja su idioma:
-close,Close,关闭,닫기,empty_value,empty_value
+close,Close,关闭,닫기,empty_value,Cerrar
 completed_title,You are all set to explore and use Fire!,您已经准备好，可以探索并使用Fire !,Fire를 사용할 준비가 다 되었습니다!,Handa ka nang gamitin ang Fire!,¡Estás listo para explorar y usar Fire!
 connect_with_organizations,Connect with local organizations,与当地组织联系,지역 조직과 연결,Kumonekta sa mga lokal na samahan,Conéctese con organizaciones locales
 connect_with_organizations_subtitle,Find organizations near you that offer free or affordable immigration legal services.,在您的附近，查找免费或价格合理的机关，提供移民法律服务。,무료 또는 저렴한 이민 법률 서비스를 제공하는 가까운 지원단체를 찾으세요,Maghanap ng mga organisasyon na malapit sayo na nagbibigay ng mga libre o abot-kayang ligal na serbisyo,Encontre organizaciones cerca de usted que ofrecen servicio legal gratis o barato para inmigrantes. 
@@ -47,18 +47,18 @@ home,Home,在家,집,Sa Bahay,En su casa
 immigration_legal,Immigration and Legal,移民相关法律,이민 관련 법률 서비스,Imigrasyon at Ligal,Inmigración y Legal
 immigration_legal_services,Immigration and Legal Services,移民与法律服务,이민 법률 서비스,Imigrasyon at mga serbisyo na ligal,Servicios de inmigración y legales
 know_your_rights,Know your rights,知道自己的权力,나의 권리,Alamin ang iyong mga karapatan.,Conozca sus derechos
-know_your_rights_caps,Know Your Rights,知道自己的权力,나의 권리,Alamin ang Iyong Mga Karapatan,empty_value
+know_your_rights_caps,Know Your Rights,知道自己的权力,나의 권리,Alamin ang Iyong Mga Karapatan,Conozca sus derechos
 know_your_rights_subtitle,Learn what you can do if ICE is at your door and in other situations,了解您可以做什么，如果美国移民及海关执法局人员在您的家门口，以及在其它情况下。,이민국 직원과 마주쳤을 경우 여러가지 상황과 대처 방법을 알아두세요,Alamin kung ano ang pwede mong gawin pag nasa labas ng bahay mo ang ahente ng ICE at sa iba pang mga sitwasyon.,Aprenda lo que usted puede hacer si ICE está fuera de su casa y lo que puede hacer en otras situaciones. 
 language,Language,语言,언어,Wika,Idioma
 languages_supported,Languages Supported,语言协助,언어 지원,Sinusuportahan ang mga wike,Idiomas admitidos
 learn_more,Learn More,学到更多,더 알아보기,Matuto ng Higit Pa,Aprenda más
 must_be_over_13,You must be over the age of 13 to use Fire.,您必须年满13岁才能使用 Fire。,Fire를 사용하려면 13세 이상이어야 합니다.,Dapat ikaw ay higit sa edad na 13 na gumamit ng Fire.,Necesita tener más de 13 años para usar Fire.
-next,Next,继续,다음,empty_value,empty_value
+next,Next,继续,다음,empty_value,Siguiente
 non_legal,Non-Legal,非法律,기타 서비스,Hindi Ligal,No legal
 non_legal_services,Non-Legal Services,非法律服务,비 법적 서비스,Mga Serbisyong Hindi Ligal,Servicios no legales
 notifications,Notifications,通知,알림,Mga Notification,Notificaciones
 organizations,Organizations,组织,이민 관련 지원단체,Mga Organisasyon,Organizaciones
-partners,Partners,合作伙伴,파트너,Mga kasosyo,Socios
+partners,Partners,合作伙伴,파트너,empty_value,Socios
 potential_scenarios,Potential Scenarios,可能的情况,대처 해야 할 사항,Mga Potensyal na Sitwasyon,Escenarios posibles
 present_card_and_remain_silent,Present your rights card and remain silent.,出示您的权利卡，并保持沉默。,귀하의 권리 카드를 제시하시고 묵비권을 행사 하세요.,Ipakita ang iyong Card ng mga Karapatan at manatiling manahimik.,Presenta su tarjeta de derechos e permanezca en silencio.
 present_rights_card,Present your rights card.,出示您的权利卡。,귀하의 권리 카드를 제시하세요.,Ipakita ang iyong Card ng mga Karapatan.,Presenta su tarjeta de derechos a los agentes.
@@ -101,21 +101,21 @@ services_legal__t_visa,T visa,T签证,인신 매매 피해자 비자,T visa,Visa
 services_legal__tps,TPS (Temporary Protected Status),临时保护身份,임시 보호 신분,TPS (Pansamantalang Protektadong Katayuan,TPS (estado de protección temporal)
 services_legal__u_visa,U visa,U 签证,범죄 피해자 비자,U visa,Visa U
 services_legal__vawa,VAWA (Violence Against Women Act) petitions,VAWA (反暴力侵害妇女法) 申请,가정폭력 피해자 이민 신청,VAWA (Petisyon ng Karahasan Laban sa Women Act),Peticiones VAWA (Ley de violencia contra las mujeres)
-services_nonlegal__administrative_advocacy,Administrative advocacy (CIS/ICE/CBP),行政宣传 (美国公民及移民局/美国移民及海关执法局/美国海关及边境保护局),행정 옹호,Tagapagtaguyod ng Adbokasiya (CIS/ICE/CBP),empty_value
-services_nonlegal__afterschool_program,After-school and summer educational programs,课后与暑期教育活动,"방과후, 여름방학 교육 프로그램",Mga programang pang edukasyon pagkatapos ng paaralan at tag-init,empty_value
-services_nonlegal__citizenship_civics_classes,Citizenship / Civics classes,公民入籍课程,시민권 / 국민 윤리 수업,Mga klase sa pagkamamamayan/Sibika,empty_value
-services_nonlegal__college_application_assistance,College Application assistance,大学申请协助,대학 입학 신청 보조,Tulong sa aplikasyon sa kolehiyo,empty_value
-services_nonlegal__esl,ESL,英语课,제 2의 언어로서의 영어,ESL,empty_value
-services_nonlegal__health_services,Health services,健康服务,의료 서비스,Serbisyong pangkalusugan,empty_value
-services_nonlegal__housing_referrals,Housing referrals,房屋问题咨询,거주지 소개,Mga reperal sa pabahay,empty_value
-services_nonlegal__housing_services,Housing services (rental & foreclosure counseling),房屋服务 (租赁 & 丧失抵押品赎回权咨询),"주택 서비스( 임대, 압류 상담)",Mga serbisyo sa pabahay (payo sampag-upa at foreclosure),empty_value
-services_nonlegal__know_your_rights_presentations,Know Your Rights Presentations (KYR),知道自己的权力,당신의 권리를 아십시요 발표,Alamin ang iyong pagtatanghal ng mga Karapatan,empty_value
-services_nonlegal__language_services,Language services,语言服务,언어 서비스,Mga serbisyo sa wike,empty_value
-services_nonlegal__legal_orientation_programs,Legal Orientation Programs (LOP),法律讲座与咨询,법률 지도 프로그램,Mga programang ligal na oryentasyon,empty_value
-services_nonlegal__legislative_advocacy,Legislative advocacy (state or national),立法倡导（州或国家）,입법 옹호 (주 또는 국가),empty_value,empty_value
-services_nonlegal__organizing,"Organizing (day laborers, parents, youth)",组织 (日工，父母，青年),"조직하다 ( 일꾼, 학부모,청소년)","Pag-oorganisa (manggagawa, mga magulang, kabataan)",empty_value
-services_nonlegal__referrals_to_other_services,Referrals to other services,其它服务介绍,다른 서비스로 소개,Mga reperal sa iba pang serbisyo,empty_value
-services_nonlegal__social_services,Social services,社会服务,사회 복지 서비스,Mga serbisyong panlipunan,empty_value
+services_nonlegal__administrative_advocacy,Administrative advocacy (CIS/ICE/CBP),行政宣传 (美国公民及移民局/美国移民及海关执法局/美国海关及边境保护局),행정 옹호,Tagapagtaguyod ng Adbokasiya (CIS/ICE/CBP),Defensa administrativa
+services_nonlegal__afterschool_program,After-school and summer educational programs,课后与暑期教育活动,"방과후, 여름방학 교육 프로그램",Mga programang pang edukasyon pagkatapos ng paaralan at tag-init,Programas educativos de verano y extraescolar
+services_nonlegal__citizenship_civics_classes,Citizenship / Civics classes,公民入籍课程,시민권 / 국민 윤리 수업,Mga klase sa pagkamamamayan/Sibika,Clases de ciudadanía / educación cívica
+services_nonlegal__college_application_assistance,College Application assistance,大学申请协助,대학 입학 신청 보조,Tulong sa aplikasyon sa kolehiyo,Asistencia con la solicitud de ingreos a la universidad
+services_nonlegal__esl,ESL,英语课,제 2의 언어로서의 영어,ESL,ESL (Ingles como segundo lenguage)
+services_nonlegal__health_services,Health services,健康服务,의료 서비스,Serbisyong pangkalusugan,Servicios de salud
+services_nonlegal__housing_referrals,Housing referrals,房屋问题咨询,거주지 소개,Mga reperal sa pabahay,Referencias de vivienda
+services_nonlegal__housing_services,Housing services (rental & foreclosure counseling),房屋服务 (租赁 & 丧失抵押品赎回权咨询),"주택 서비스( 임대, 압류 상담)",Mga serbisyo sa pabahay (payo sampag-upa at foreclosure),Servicios de vivienda (asesoramiento sobre alquiler y ejecución hipotecaria)
+services_nonlegal__know_your_rights_presentations,Know Your Rights Presentations (KYR),知道自己的权力,당신의 권리를 아십시요 발표,Alamin ang iyong pagtatanghal ng mga Karapatan,Presentaciones sobre conece tus derechos
+services_nonlegal__language_services,Language services,语言服务,언어 서비스,Mga serbisyo sa wike,Servicios de idiomas
+services_nonlegal__legal_orientation_programs,Legal Orientation Programs (LOP),法律讲座与咨询,법률 지도 프로그램,Mga programang ligal na oryentasyon,Programs de orientación legal 
+services_nonlegal__legislative_advocacy,Legislative advocacy (state or national),立法倡导（州或国家）,입법 옹호 (주 또는 국가),empty_value,Defensa legislativa (statal o nacional)
+services_nonlegal__organizing,"Organizing (day laborers, parents, youth)",组织 (日工，父母，青年),"조직하다 ( 일꾼, 학부모,청소년)","Pag-oorganisa (manggagawa, mga magulang, kabataan)","Organización (jornaleros, padres, jóvenes)"
+services_nonlegal__referrals_to_other_services,Referrals to other services,其它服务介绍,다른 서비스로 소개,Mga reperal sa iba pang serbisyo,Referencias a otros servicios
+services_nonlegal__social_services,Social services,社会服务,사회 복지 서비스,Mga serbisyong panlipunan,Servicios sociales
 settings,Settings,设置,설정,Mga Setting,Configuración
 stay_calm_and_do_not_open_car,Stay calm and do not open your car door.,保持镇定，不要开车门。,당황하지 말고 절때 차 문을 열지 마세요.,Huwag matakot at huwag buksan ang pinto ng kotse.,Mantiene su calma y no abra la puerta. 
 street,Street,在街上,길거리,Sa Kalye,En la calle
