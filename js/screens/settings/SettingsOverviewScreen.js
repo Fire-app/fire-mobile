@@ -37,9 +37,7 @@ const SettingsOverviewScreen = ({ navigation }) => {
       <Divider />
       <Row
         iconName={ICON_NAMES.BELL}
-        onPress={() => {
-          // TODO
-        }}
+        onPress={() => navigation.navigate(routes.settings.notifications)}
         title={t('notifications')}
       />
       <Divider />

@@ -11,8 +11,8 @@ import ModalContent from '../../components/ModalContent';
 import OnboardingTemplate from './Template';
 import OnboardingTitle from '../../components/OnboardingTitle';
 import routes from '../../navigation/routes';
-import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
-import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
+import setHotlineNameAction from '../../store/actions/setHotlineNameAction';
+import setHotlineNumberAction from '../../store/actions/setHotlineNumberAction';
 
 const onboardingRoutes = routes.onboarding;
 
@@ -27,7 +27,7 @@ const HotlineScreen = ({ navigation }) => {
   const saveHotlineNumber = () => {
     dispatch(setHotlineNameAction(hotlineName));
     dispatch(setHotlineNumberAction(hotlineNumber));
-    navigation.navigate(onboardingRoutes.complete);
+    navigation.navigate(onboardingRoutes.notifications);
   };
 
   const [modalVisible, setModalVisible] = useState(false);

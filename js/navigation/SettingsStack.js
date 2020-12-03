@@ -5,11 +5,12 @@ import React from 'react';
 import {
   AboutScreen,
   AcknowledgementsScreen,
-  HotlineSelectionScreen,
+  HotlineScreen,
+  NotificationsScreen,
   PartnersInfoScreen,
   PrivacyPolicyScreen,
-  SettingsLanguageScreen,
-  SettingsOverviewScreen,
+  LanguageScreen,
+  OverviewScreen,
   TermsOfServiceScreen,
 } from '../screens/settings';
 
@@ -31,21 +32,28 @@ const SettingsStack = () => {
       }}
     >
       <Stack.Screen
-        component={SettingsOverviewScreen}
+        component={OverviewScreen}
         name={routes.settings.overview}
         options={{
           title: t('settings'),
         }}
       />
       <Stack.Screen
-        component={SettingsLanguageScreen}
+        component={LanguageScreen}
         name={routes.settings.language}
         options={{
           title: t('language'),
         }}
       />
       <Stack.Screen
-        component={HotlineSelectionScreen}
+        component={NotificationsScreen}
+        name={routes.settings.notifications}
+        options={{
+          title: t('notifications'),
+        }}
+      />
+      <Stack.Screen
+        component={HotlineScreen}
         name={routes.settings.hotline}
         options={{
           title: t('emergency_hotline'),

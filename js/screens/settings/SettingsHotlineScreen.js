@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ListSelector from '../../components/ListSelector';
-import setHotlineNameAction from '../../store/actions/settings/setHotlineNameAction';
-import setHotlineNumberAction from '../../store/actions/settings/setHotlineNumberAction';
+import setHotlineNameAction from '../../store/actions/setHotlineNameAction';
+import setHotlineNumberAction from '../../store/actions/setHotlineNumberAction';
 
 import { HOTLINE_OPTIONS } from '../../../data/hotlineOptions';
 import { textStyles, colors } from '../../styles';

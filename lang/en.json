@@ -1,4 +1,8 @@
 {
+  "finish": "Finish",
+  "opt_in_to_push_notifications": "Opt-in to push notifications",
+  "select_notifications": "Select which notifications you would like to receive",
+
   "a_chirla_project": "A CHIRLA Project",
   "about": "About",
   "acknowledgements": "Acknowledgements",

@@ -1,4 +1,4 @@
-import { SET_HOTLINE_NAME } from '../constants';
+import { SET_HOTLINE_NAME } from './constants';
 
 const setHotlineNumberAction = (hotlineName) => ({
   payload: { hotlineName },

@@ -84,7 +84,7 @@ export default function EmergencyScreen({ navigation }) {
   const { t } = useTranslation();
   const [InfoModalVisible, setInfoModalVisible] = useState(false);
   const savedHotlineNumber = useSelector(
-    (state) => state.settings.hotlineNumber
+    (state) => state.hotline.hotlineNumber
   );
   const phoneNum = {
     number: savedHotlineNumber,

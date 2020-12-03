@@ -1,6 +1,7 @@
-export { default as SettingsOverviewScreen } from './SettingsOverviewScreen';
-export { default as SettingsLanguageScreen } from './SettingsLanguageScreen';
-export { default as HotlineSelectionScreen } from './HotlineSelectionScreen';
+export { default as OverviewScreen } from './SettingsOverviewScreen';
+export { default as LanguageScreen } from './SettingsLanguageScreen';
+export { default as HotlineScreen } from './SettingsHotlineScreen';
+export { default as NotificationsScreen } from './SettingsNotificationsScreen';
 export { default as AboutScreen } from './AboutScreen';
 export { default as PrivacyPolicyScreen } from './about/PrivacyPolicyScreen';
 export { default as TermsOfServiceScreen } from './about/TermsOfServiceScreen';

@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
 import onboardingReducer from './onboardingReducer';
-import settingsReducer from './settingsReducer';
+import hotlineReducer from './hotlineReducer';
+import notificationsReducer from './notificationsReducer';
 
 const rootReducer = combineReducers({
+  hotline: hotlineReducer,
+  notifications: notificationsReducer,
   onboarding: onboardingReducer,
-  settings: settingsReducer,
 });
 
 export default rootReducer;

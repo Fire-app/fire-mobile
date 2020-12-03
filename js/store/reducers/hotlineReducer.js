@@ -5,7 +5,7 @@ const initialState = {
   hotlineNumber: null,
 };
 
-const attorneyReducer = (state = initialState, action) => {
+const hotlineReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_HOTLINE_NAME:
       return {
@@ -22,4 +22,4 @@ const attorneyReducer = (state = initialState, action) => {
   }
 };
 
-export default attorneyReducer;
+export default hotlineReducer;

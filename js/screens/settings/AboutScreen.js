@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import React from 'react';
 import { Divider, Row } from '../../components/SettingsSelector';
 import routes from '../../navigation/routes';
@@ -72,6 +73,18 @@ const styles = StyleSheet.create({
 });
 
 const SimpleAboutScreen = () => {
+  const savedAnnouncements = useSelector(
+    (state) => state.notifications.announcements
+  );
+
+  const savedArrestAlerts = useSelector(
+    (state) => state.notifications.arrestAlerts
+  );
+
+  const savedEventAlerts = useSelector(
+    (state) => state.notifications.eventAlerts
+  );
+
   return (
     <ScrollView
       alwaysBounceVertical={false}
@@ -86,6 +99,9 @@ const SimpleAboutScreen = () => {
           source={LOGO}
           style={styles.logo}
         />
+        {savedArrestAlerts ? <Text>{'true'}</Text> : <Text>{'false'}</Text>}
+        {savedEventAlerts ? <Text>{'true'}</Text> : <Text>{'false'}</Text>}
+        {savedAnnouncements ? <Text>{'true'}</Text> : <Text>{'false'}</Text>}
         <Text style={[textStyles.body1, styles.simpleText]}>
           {
             'Fire is a multilingual Know-Your-Immigrant-Rights mobile app, launching first in Los Angeles. We seek to educate, defend, and mobilize the immigrant community and its allies.'
