@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -15,6 +15,14 @@ const SettingsOverviewScreen = ({ navigation }) => {
 
   const dispatch = useDispatch();
   const resetOnboarding = () => dispatch(resetOnboardingAction());
+
+  const announcements = useSelector(
+    (state) => state.notifications.announcements
+  );
+
+  const arrestAlerts = useSelector((state) => state.notifications.arrestAlerts);
+
+  const eventAlerts = useSelector((state) => state.notifications.eventAlerts);
 
   return (
     <ScrollView
@@ -55,6 +63,17 @@ const SettingsOverviewScreen = ({ navigation }) => {
             title="Restart Set-Up"
           />
           <Divider />
+        </>
+      )}
+      {__DEV__ && (
+        <>
+          <Text>{'Notifications State:'}</Text>
+          <Text>{'Arrest Alerts:'}</Text>
+          {arrestAlerts ? <Text>{'  true'}</Text> : <Text>{'  false'}</Text>}
+          <Text>{'Event Alerts:'}</Text>
+          {eventAlerts ? <Text>{' true'}</Text> : <Text>{'  false'}</Text>}
+          <Text>{'Announcements:'}</Text>
+          {announcements ? <Text>{' true'}</Text> : <Text>{'  false'}</Text>}
         </>
       )}
       <View
