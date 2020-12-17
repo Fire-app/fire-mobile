@@ -16,12 +16,7 @@ const HelpButton = ({ title, onPress, centered }) => (
       centered && { justifyContent: 'center' },
     ]}
   >
-    <FireIcon
-      color={colors.primary}
-      name={ICON_NAMES.HELP}
-      size={20}
-      style={{ paddingTop: 2 }}
-    />
+    <FireIcon color={colors.primary} name={ICON_NAMES.HELP} size={20} />
     <Text style={[textStyles.h3, { color: colors.primary, paddingLeft: 4 }]}>
       {title}
     </Text>
