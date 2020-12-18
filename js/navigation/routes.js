@@ -39,6 +39,7 @@ const routes = {
     acknowledgements: 'SETTINGS_ACKNOWLEDGEMENTS',
     hotline: 'SETTINGS_HOTLINE',
     language: 'SETTINGS_LANGUAGE',
+    notifications: 'SETTINGS_NOTIFICATIONS',
     overview: 'SETTINGS_OVERVIEW',
     partners: 'SETTINGS_PARTNERS',
     privacy_policy: 'SETTINGS_PRIVACY_POLICY',
