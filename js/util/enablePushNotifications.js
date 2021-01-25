@@ -15,7 +15,11 @@ const enablePushNotifications = async () => {
     }
     if (finalStatus !== 'granted') {
       // TODO: add a Linking.openSettings button option here.
-      Alert.alert('Please enable push notifications in settings.');
+      Alert.alert(
+        `Please enable push notifications in settings. ${
+          __DEV__ ? finalStatus : ''
+        }`
+      );
       return null;
     }
     const token = (await Notifications.getExpoPushTokenAsync()).data;
