@@ -17,7 +17,9 @@ const enablePushNotifications = async () => {
       // TODO: add a Linking.openSettings button option here.
       Alert.alert(
         `Please enable push notifications in settings. ${
-          __DEV__ ? `Existing Status: ${existingStatus} | Final Status: ${finalStatus}` : ''
+          __DEV__
+            ? `Existing Status: ${existingStatus} | Final Status: ${finalStatus}`
+            : ''
         }`
       );
       return null;
