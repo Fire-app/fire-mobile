@@ -10,14 +10,14 @@ const enablePushNotifications = async () => {
     );
     let finalStatus = existingStatus;
     if (existingStatus !== 'granted') {
-      const { status } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+      const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
       finalStatus = status;
     }
     if (finalStatus !== 'granted') {
       // TODO: add a Linking.openSettings button option here.
       Alert.alert(
         `Please enable push notifications in settings. ${
-          __DEV__ ? finalStatus : ''
+          __DEV__ ? `Existing Status: ${existingStatus} | Final Status: ${finalStatus}` : ''
         }`
       );
       return null;
