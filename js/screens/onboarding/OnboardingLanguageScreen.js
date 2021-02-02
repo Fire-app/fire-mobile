@@ -41,7 +41,7 @@ const LanguageScreen = ({ navigation }) => {
     >
       <ListSelector
         data={getLanguageOptions()}
-        defaultKey={i18n.language}
+        defaultKey={selectedLanguage}
         keyExtractor={({ locale }, i) => `${locale}:${i}`}
         listHeaderComponent={
           <OnboardingTitle
