@@ -1,4 +1,4 @@
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text, View, ViewPropTypes } from 'react-native';
 import React, { useState } from 'react';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -53,6 +53,7 @@ const ListSelector = ({
   selectedExtractor,
   titleExtractor,
   listHeaderComponent,
+  contentContainerStyle,
 }) => {
   const [selectedKey, setSelectedKey] = useState(defaultKey);
 
@@ -64,6 +65,7 @@ const ListSelector = ({
   return (
     <FlatList
       alwaysBounceVertical={false}
+      contentContainerStyle={contentContainerStyle}
       data={data}
       extraData={{ selectedKey }}
       ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
@@ -81,6 +83,7 @@ const ListSelector = ({
 };
 
 ListSelector.propTypes = {
+  contentContainerStyle: ViewPropTypes.style,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   defaultKey: PropTypes.string.isRequired,
   keyExtractor: PropTypes.func.isRequired,

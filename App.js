@@ -25,12 +25,21 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import './js/config';
-import { initialize as initializeSentry } from './js/diagnostics/sentry';
+import {
+  initialize as initializeSentry,
+  logMessage,
+  logError,
+} from './js/diagnostics/sentry';
 import Navigation from './js/navigation';
 import createPersistedStore from './js/store/createPersistedStore';
 import { rehydrateLanguageSelection } from './js/config/i18n';
+import { colors } from './js/styles';
 
 initializeSentry(); // Load our build time configs
+logMessage('Sentry Initialized');
+SplashScreenUtils.preventAutoHideAsync().catch((e) =>
+  logError(e, 'Splash Screen Error')
+);
 
 const illustration1 = require('./assets/illustration1.png');
 const illustration2 = require('./assets/illustration2.png');
@@ -84,7 +93,6 @@ const App = () => {
   const firstMount = useRef(true);
 
   const [assetsLoaded, setAssetsLoaded] = useState(false);
-  // If application has an online step, that can occur here too, as a redux action.
 
   const googleFontsLoaded = useFonts({
     Roboto_400Regular,
@@ -95,23 +103,21 @@ const App = () => {
 
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
-    if (!firstMount.current) return;
-    firstMount.current = false;
-    StatusBar.setBarStyle('light-content');
-
     // concurrently hide splash and load assets
-    Promise.all([
-      SplashScreenUtils.preventAutoHideAsync(),
-      loadAssetsAsync(),
-      rehydrateLanguageSelection(),
-    ]).then(() => {
-      setAssetsLoaded(true);
-      SplashScreenUtils.hideAsync();
-    });
+    Promise.all([loadAssetsAsync(), rehydrateLanguageSelection()])
+      .then(() => {
+        setAssetsLoaded(true);
+        SplashScreenUtils.hideAsync();
+        logMessage('App mounted');
+      })
+      .catch((e) => {
+        logError(e, 'Failed to mount');
+      });
   }, []);
 
   if (!assetsLoaded || !googleFontsLoaded) {
-    return null;
+    // Use declarative component for this to not bleed into the rest of the app's scope.
+    return <StatusBar backgroundColor={colors.white} barStyle="dark-content" />;
   }
 
   return (

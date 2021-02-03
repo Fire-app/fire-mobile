@@ -24,6 +24,10 @@ const HotlineSelectionScreen = () => {
   return (
     <View style={styles.container}>
       <ListSelector
+        contentContainerStyle={{
+          padding: 20,
+          paddingTop: 0, // let the title determine it
+        }}
         data={HOTLINE_OPTIONS}
         defaultKey={savedNumber}
         keyExtractor={(item) => item.phoneNumber}
@@ -32,7 +36,7 @@ const HotlineSelectionScreen = () => {
             <Text
               style={[
                 textStyles.h5,
-                { alignSelf: 'flex-start', paddingBottom: 12 },
+                { alignSelf: 'flex-start', paddingBottom: 12, paddingTop: 20 },
               ]}
             >
               {t('choose_hotline')}
@@ -60,7 +64,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flex: 1,
     justifyContent: 'space-between',
-    padding: 20,
-    paddingTop: 30,
   },
 });
