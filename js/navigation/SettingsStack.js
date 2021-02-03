@@ -11,6 +11,7 @@ import {
   SettingsLanguageScreen,
   SettingsOverviewScreen,
   TermsOfServiceScreen,
+  NotificationsScreen,
 } from '../screens/settings';
 
 import routes from './routes';
@@ -85,6 +86,11 @@ const SettingsStack = () => {
         options={{
           title: t('partners'),
         }}
+      />
+      <Stack.Screen
+        component={NotificationsScreen}
+        name={routes.settings.notifications}
+        options={{ title: t('notifications') }}
       />
     </Stack.Navigator>
   );

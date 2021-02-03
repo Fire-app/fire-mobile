@@ -9,10 +9,20 @@ import routes from '../../navigation/routes';
 
 const onboardingRoutes = routes.onboarding;
 
+// TODO: Add these conversions for more system languages.
+// This acts as a funnel from system languages, with multiple locales, to
+// our finite set where appropriate. (e.g. various englishes should be converted to "en")
+// Without this, the app will start without a selected language.
+const systemLanguageToInternalLocale = (locale) => {
+  if (locale === 'en-US') return 'en';
+  return locale;
+};
+
 const LanguageScreen = ({ navigation }) => {
   const { t } = useTranslation();
-
-  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    systemLanguageToInternalLocale(i18n.language)
+  );
 
   useEffect(() => {
     changeLanguage(selectedLanguage);
@@ -31,7 +41,7 @@ const LanguageScreen = ({ navigation }) => {
     >
       <ListSelector
         data={getLanguageOptions()}
-        defaultKey={i18n.language}
+        defaultKey={selectedLanguage}
         keyExtractor={({ locale }, i) => `${locale}:${i}`}
         listHeaderComponent={
           <OnboardingTitle

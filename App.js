@@ -33,6 +33,7 @@ import {
 import Navigation from './js/navigation';
 import createPersistedStore from './js/store/createPersistedStore';
 import { rehydrateLanguageSelection } from './js/config/i18n';
+import { colors } from './js/styles';
 
 initializeSentry(); // Load our build time configs
 logMessage('Sentry Initialized');
@@ -97,8 +98,6 @@ const App = () => {
 
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
-    StatusBar.setBarStyle('light-content');
-
     // concurrently hide splash and load assets
     Promise.all([loadAssetsAsync(), rehydrateLanguageSelection()])
       .then(() => {
@@ -112,7 +111,8 @@ const App = () => {
   }, []);
 
   if (!assetsLoaded || !googleFontsLoaded) {
-    return null;
+    // Use declarative component for this to not bleed into the rest of the app's scope.
+    return <StatusBar backgroundColor={colors.white} barStyle="dark-content" />;
   }
 
   return (
