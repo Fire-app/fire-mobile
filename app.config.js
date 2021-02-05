@@ -2,7 +2,7 @@ import 'dotenv/config';
 
 export default ({ config }) => ({
   android: {
-    package: 'com.firemobileapp.fire',
+    package: 'com.fireapp.fire',
     versionCode: config.android.versionCode,
   },
   assetBundlePatterns: ['**/*'],
@@ -15,7 +15,7 @@ export default ({ config }) => ({
   icon: './assets/icon.png',
   ios: {
     buildNumber: config.ios.buildNumber,
-    bundleIdentifier: 'com.firemobileapp.fire',
+    bundleIdentifier: 'com.fireapp.fire',
     supportsTablet: false,
   },
   name: 'Fire',
