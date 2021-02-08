@@ -11,7 +11,7 @@ import {
 } from '@expo-google-fonts/roboto';
 import * as SplashScreenUtils from 'expo-splash-screen';
 import { StatusBar } from 'react-native';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -87,11 +87,6 @@ async function loadAssetsAsync() {
 const { store, persistor } = createPersistedStore();
 
 const App = () => {
-  // NOTE: This is for development quality of life.
-  // This prevents the useEffect of SplashScreenUtils.preventAutoHideAsync from
-  // triggering on hot reload, which throws a LogBox warning.
-  const firstMount = useRef(true);
-
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
   const googleFontsLoaded = useFonts({
