@@ -18,11 +18,13 @@ export default function NotificationListScreen({ navigation }) {
       data={NOTIFICATION_LIST}
       ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
       keyExtractor={(_, i) => `${i}`}
-      renderItem={({ item: { title, message, icon } }) => (
+      renderItem={({ item: { title, message, icon, time, date } }) => (
         <NotificationCard
           description={t(message)}
           image={icon}
           title={t(title)}
+          time={(time)}
+          date={(date)}
         />
       )}
       style={styles.container}

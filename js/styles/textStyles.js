@@ -58,6 +58,12 @@ const textStyles = StyleSheet.create({
     letterSpacing: 0.5,
     lineHeight: 14.1,
   },
+  notificationTime: {
+    color: colors.warmGrey,
+    fontFamily: 'Roboto_400Regular',
+    fontSize: 13,
+    fontStyle: 'normal',
+  },
 });
 
 export default textStyles;

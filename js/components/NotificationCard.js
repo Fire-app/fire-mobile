@@ -11,34 +11,34 @@ export default function NotificationCard({
   title,
   description,
   smallMode,
+  time,
+  date,
 }) {
   return (
     <Card
       style={smallMode ? { padding: 10, paddingLeft: 16 } : { padding: 24 }}
     >
-      <View style={{ alignItems: 'center', flexDirection: 'row' }}>
+      <View style={{ alignItems: 'flex-start', flexDirection: 'column' }}>
         <View style={{ flex: 1, paddingLeft: 12 }}>
           <Text style={smallMode ? textStyles.h3 : textStyles.h2}>{title}</Text>
           {description && (
             <Text style={[textStyles.body2, { paddingTop: 4 }]}>
               {description}
-            </Text>
+            </Text> 
           )}
         </View>
-        <FireIcon
-          color={colors.primary}
-          name={ICON_NAMES.CHEVRON_RIGHT}
-          size={34}
-        />
+        <View style={{ flex: 2, paddingLeft: 12}}>
+            <Text style={[textStyles.notificationTime, { paddingTop: 4 }]}>
+                {date} {"at"} {time}
+            </Text>
+        </View>
       </View>
     </Card>
   );
 }
 
-NavCard.propTypes = {
+NotificationCard.propTypes = {
   description: PropTypes.string,
-  iconName: IconNamePropType,
-  image: Image.propTypes.source,
   smallMode: PropTypes.bool,
   title: PropTypes.string.isRequired,
 };
