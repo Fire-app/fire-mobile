@@ -2,6 +2,7 @@ import Constants from 'expo-constants';
 import { Alert } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import * as Notifications from 'expo-notifications';
+import Clipboard from 'expo-clipboard';
 
 const enablePushNotifications = async () => {
   if (Constants.isDevice) {
@@ -25,6 +26,9 @@ const enablePushNotifications = async () => {
       return null;
     }
     const token = (await Notifications.getExpoPushTokenAsync()).data;
+    Alert.alert('Token: ', token, [
+      { onPress: () => Clipboard.setString(token), text: 'Copy to Clipboard' },
+    ]);
     return token;
   }
   Alert.alert('Must use physical device for Push Notifications');
