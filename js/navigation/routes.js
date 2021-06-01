@@ -5,6 +5,7 @@ const routes = {
     resources: 'TAB_RESOURCES',
     rights: 'TAB_RIGHTS',
     settings: 'TAB_SETTINGS',
+    notification: 'TAB_NOTIFICATION'
   },
 
   mainTabs: 'MAIN_TABS',
@@ -23,6 +24,12 @@ const routes = {
   },
 
   resourcesStack: 'RESOURCES_STACK',
+
+  notificationStack: 'NOTIFICATION_STACK',
+  notification: {
+    notificationList: 'NOTIFICATION_LIST',
+  },
+
   rights: {
     overviewList: 'RIGHTS_LIST',
   },

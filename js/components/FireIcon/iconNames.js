@@ -6,6 +6,7 @@ export const FEATHER_ICONS = {
   CREDIT_CARD: 'credit-card',
   FACEBOOK: 'facebook',
   GEAR: 'settings',
+  NOTIFICATIONS: 'notifications',
   HOME: 'home',
   INFO: 'info',
   INSTAGRAM: 'instagram',
