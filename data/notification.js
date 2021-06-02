@@ -1,22 +1,26 @@
 const AAAJ_LOGO = require('../assets/logos/aaajLogo.png');
 
 var moment = require('moment'); // require
-moment().format(); 
+moment().format();
+
 
 var today_day = new Date().getDate();
-var yesterday_day = new Date().getDate() - 1;
 var month = new Date().getMonth() + 1;
 var year = new Date().getFullYear();
-
 var today = month + '/' + today_day + '/' + year;
-var yesterday = month + '/' + yesterday_day + '/' + year; //TO DO: YESTERDAY NOT WORKING CURRENTLY.
+
+var yest = new Date();
+yest.setDate(yest.getDate() - 1);
+var monthYesterday = yest.getMonth() + 1;
+var yearYesterday = yest.getFullYear();
+var yesterday = monthYesterday + '/' + yest.getDate() + '/' + yearYesterday;
 
 // THE VALUES THAT ARE NOW HARD TYPED WILL COME FROM THE DB
 export const NOTIFICATION_LIST = [
     {
-        title: 'Verified ICE Presence in the Subway',
+        title: yesterday,
         message: 'Whe have not heard more reports thatICE is in Union Station and are ending the alert.',
-        date: '6/1/2021' == today ? 'Today' : '6/1/2021' == yesterday ? 'Yesterday' : '6/1/2021', //TO CHANGE: THE DATE IS TEMP HARD CODED RN, MAKE IT SO YOU GET THE CURRENT DATE FROM DataBase
+        date: '6/2/2021' == today ? 'Today' : '6/2/2021' == yesterday ? 'Yesterday' : '6/2/2021', //TO CHANGE: THE DATE IS TEMP HARD CODED RN, MAKE IT SO YOU GET THE CURRENT DATE FROM DataBase
         time: '3:02pm',
         image: AAAJ_LOGO, // THIS IS A TEMP. I AM VISUALIZING THIS AS SOME SORT OF TEMP VALUE THAT WILL DECIDE WHICH ICON IS USED
     },

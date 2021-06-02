@@ -25,6 +25,7 @@ export default function NotificationListScreen({ navigation }) {
           title={t(title)}
           time={(time)}
           date={(date)}
+          smallMode={(false)}
         />
       )}
       style={styles.container}

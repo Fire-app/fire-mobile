@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.1.0",
-    "@expo/vector-icons": "^12.0.0",
+    "@expo/vector-icons": "expo/vector-icons",
     "@react-native-community/async-storage": "~1.12.0",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-community/netinfo": "5.9.7",
@@ -58,6 +58,7 @@
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.13.12",
     "react-redux": "^7.2.0",
+    "react-time-ago": "^6.2.2",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "sentry-expo": "^2.1.2"
