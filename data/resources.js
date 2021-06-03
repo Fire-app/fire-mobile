@@ -5,14 +5,6 @@ const IMMDEF_LOGO = require('../assets/logos/immDefLogoSquare.jpeg');
 const KRC_LOGO = require('../assets/logos/krcLogoSquare.jpeg');
 const USC_LOGO = require('../assets/logos/uscLogoSquare.jpeg');
 
-import TimeAgo from 'javascript-time-ago'
-
-import en from 'javascript-time-ago/locale/en'
-import ru from 'javascript-time-ago/locale/ru'
-
-TimeAgo.addDefaultLocale(en)
-TimeAgo.addLocale(ru)
-
 export const RESOURCES_MAP = {
   AAAJ: {
     description: 'resources_description__aaaj',

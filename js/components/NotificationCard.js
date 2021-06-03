@@ -1,15 +1,11 @@
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Button } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
+import Toast from 'react-native-toast-message';
 import { colors } from '../styles';
 import textStyles from '../styles/textStyles';
 
-import Card from './Card';
 import FireIcon, { ICON_NAMES, IconNamePropType } from './FireIcon';
-
-import LastSeen from '../screens/notifications/LastSeen'
-
-var temp = new Date();
 
 export default function NotificationCard({
   title,
@@ -20,27 +16,28 @@ export default function NotificationCard({
   date,
 }) {
   return (
-    <Card
-      style={smallMode ? { padding: 10, paddingLeft: 16 } : { padding: 24 }}
-    >
-      <View style={{ alignItems: 'flex-start', flexDirection: 'column' }}>
+    <View style={smallMode ? { padding: 10, paddingLeft: 16 } : { padding: 4 }}>
+      <View style={{ alignItems: 'flex-start', flexDirection: 'row' }}>
         <View style={{ flex: 1, paddingLeft: 12 }}>
-
-          <Text style={smallMode ? textStyles.h3 : textStyles.h2}>{title}</Text>
+          <View style={{ flex: 1, flexDirection: 'row' }}>
+            <FireIcon color={colors.primary} name={ICON_NAMES.HELP} size={20} />
+            <Text style={smallMode ? textStyles.h3 : textStyles.h2}>
+              {title}
+            </Text>
+          </View>
           {description && (
             <Text style={[textStyles.body2, { paddingTop: 4 }]}>
               {description}
-            </Text> 
-          )}
-        </View>
-        <View style={{ flex: 2, paddingLeft: 12}}>
-            <Text style={[textStyles.notificationTime, { paddingTop: 4 }]}>
-              {date} at {time}
             </Text>
+          )}
+          <Text style={[textStyles.notificationTime, { paddingTop: 4 }]}>
+            {date}
+            {' at '}
+            {time}
+          </Text>
         </View>
-        <View>{LastSeen(temp)}</View>
       </View>
-    </Card>
+    </View>
   );
 }
 
@@ -50,4 +47,6 @@ NotificationCard.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-//define default props: smallMode = false.
+NotificationCard.defaultProps = {
+  smallMode: false,
+};

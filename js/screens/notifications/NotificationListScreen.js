@@ -20,12 +20,11 @@ export default function NotificationListScreen({ navigation }) {
       keyExtractor={(_, i) => `${i}`}
       renderItem={({ item: { title, message, icon, time, date } }) => (
         <NotificationCard
+          date={date}
           description={t(message)}
           image={icon}
+          time={time}
           title={t(title)}
-          time={(time)}
-          date={(date)}
-          smallMode={(false)}
         />
       )}
       style={styles.container}

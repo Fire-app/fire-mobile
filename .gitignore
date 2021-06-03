@@ -12,5 +12,6 @@ web-report/
 .vscode
 .env
 yarn-error.log
+package-lock.json
 # macOS
 .DS_Store

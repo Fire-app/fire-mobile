@@ -18,7 +18,7 @@ var yesterday = monthYesterday + '/' + yest.getDate() + '/' + yearYesterday;
 // THE VALUES THAT ARE NOW HARD TYPED WILL COME FROM THE DB
 export const NOTIFICATION_LIST = [
     {
-        title: yesterday,
+        title: 'ICE activity stopeed',
         message: 'Whe have not heard more reports thatICE is in Union Station and are ending the alert.',
         date: '6/2/2021' == today ? 'Today' : '6/2/2021' == yesterday ? 'Yesterday' : '6/2/2021', //TO CHANGE: THE DATE IS TEMP HARD CODED RN, MAKE IT SO YOU GET THE CURRENT DATE FROM DataBase
         time: '3:02pm',
@@ -59,7 +59,7 @@ export const NOTIFICATION_LIST = [
         time: '3:02pm',
         image: AAAJ_LOGO, // THIS IS A TEMP. I AM VISUALIZING THIS AS SOME SORT OF TEMP VALUE THAT WILL DECIDE WHICH ICON IS USED
     },
-  ];
+];
 
 
 function zeroFill( number, width )

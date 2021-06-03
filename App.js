@@ -25,6 +25,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import './js/config';
+import Toast from 'react-native-toast-message';
 import {
   initialize as initializeSentry,
   logMessage,
@@ -34,6 +35,7 @@ import Navigation from './js/navigation';
 import createPersistedStore from './js/store/createPersistedStore';
 import { rehydrateLanguageSelection } from './js/config/i18n';
 import { colors } from './js/styles';
+
 
 initializeSentry(); // Load our build time configs
 logMessage('Sentry Initialized');
@@ -123,5 +125,7 @@ const App = () => {
     </ReduxProvider>
   );
 };
+
+<Toast ref={(ref) => Toast.setRef(ref)} />
 
 export default App;
