@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { NOTIFICATION_LIST } from '../../../data/notification';
 import NotificationCard from '../../components/NotificationCard';
@@ -11,19 +11,16 @@ import textStyles from '../../styles/textStyles';
 
 export default function NotificationListScreen({ navigation }) {
   const { t } = useTranslation();
-
   return (
     <FlatList
       contentContainerStyle={{ paddingVertical: 36 }}
       data={NOTIFICATION_LIST}
       ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
       keyExtractor={(_, i) => `${i}`}
-      renderItem={({ item: { title, message, icon, time, date } }) => (
+      renderItem={({ item: { title, message, date } }) => (
         <NotificationCard
           date={date}
           description={t(message)}
-          image={icon}
-          time={time}
           title={t(title)}
         />
       )}

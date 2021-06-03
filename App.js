@@ -36,7 +36,6 @@ import createPersistedStore from './js/store/createPersistedStore';
 import { rehydrateLanguageSelection } from './js/config/i18n';
 import { colors } from './js/styles';
 
-
 initializeSentry(); // Load our build time configs
 logMessage('Sentry Initialized');
 SplashScreenUtils.preventAutoHideAsync().catch((e) =>
@@ -118,14 +117,15 @@ const App = () => {
   }
 
   return (
-    <ReduxProvider store={store}>
-      <PersistGate persistor={persistor}>
-        <Navigation />
-      </PersistGate>
-    </ReduxProvider>
+    <>
+      <ReduxProvider store={store}>
+        <PersistGate persistor={persistor}>
+          <Navigation />
+        </PersistGate>
+      </ReduxProvider>
+      <Toast ref={(ref) => Toast.setRef(ref)} />
+    </>
   );
 };
-
-<Toast ref={(ref) => Toast.setRef(ref)} />
 
 export default App;
