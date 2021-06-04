@@ -1,23 +1,15 @@
 import { Text, View, Button } from 'react-native';
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Toast from 'react-native-toast-message';
 import TimeAgo from 'react-native-timeago';
 import { colors } from '../styles';
 import textStyles from '../styles/textStyles';
 
-export default function NotificationCard({
-  title,
-  description,
-  date,
-  dateType,
-}) {
-  useEffect(() => {
-    Toast.show({
-      text1: { title },
-      text2: { description },
-    });
-  }, []);
+export default function NotificationCard({ title, description, date }) {
+  const [tempTitle, setTitle] = useState(title);
+  const [tempDescription, setDescription] = useState(description);
+
   return (
     <View
       style={{
@@ -35,6 +27,20 @@ export default function NotificationCard({
       <Text style={[textStyles.notificationTime, { paddingTop: 4 }]}>
         <TimeAgo interval={20000} time={date} />
       </Text>
+      {console.log(tempDescription)}
+      <Button
+        onPress={() => {
+          {
+            Toast.show({
+              text1: { tempTitle },
+              text2: { tempDescription },
+              type: 'info',
+            });
+          }
+        }}
+        title="Toast Test"
+      />
+      {console.log(tempDescription)}
     </View>
   );
 }
@@ -53,8 +59,8 @@ NotificationCard.defaultProps = {
     <Button
         onPress={() => {
           Toast.show({
-            text1: 'hello',
-            text2: 'This is something',
+            text1: { tempTitle },
+            text2: { tempDescription },
           });
         }}
         title="hello"

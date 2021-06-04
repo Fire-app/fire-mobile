@@ -25,7 +25,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import './js/config';
-import Toast from 'react-native-toast-message';
+import Toast, { BaseToast } from 'react-native-toast-message';
 import {
   initialize as initializeSentry,
   logMessage,
@@ -116,6 +116,22 @@ const App = () => {
     return <StatusBar backgroundColor={colors.white} barStyle="dark-content" />;
   }
 
+  const toastConfig = {
+    success: ({ text1, ...rest }) => (
+      <BaseToast
+        {...rest}
+        contentContainerStyle={{ paddingHorizontal: 15 }}
+        style={{ borderLeftColor: 'pink' }}
+        text1={text1}
+        text1Style={{
+          fontSize: 15,
+          fontWeight: 'semibold',
+        }}
+        text2={null}
+      />
+    ),
+  };
+
   return (
     <>
       <ReduxProvider store={store}>
@@ -123,7 +139,7 @@ const App = () => {
           <Navigation />
         </PersistGate>
       </ReduxProvider>
-      <Toast ref={(ref) => Toast.setRef(ref)} />
+      <Toast ref={(ref) => Toast.setRef(ref)} config={toastConfig} />
     </>
   );
 };
