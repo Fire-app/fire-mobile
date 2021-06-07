@@ -1,15 +1,17 @@
-import { Text, View, Button } from 'react-native';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
-import Toast from 'react-native-toast-message';
+import React, { useState } from 'react';
 import TimeAgo from 'react-native-timeago';
 import { colors } from '../styles';
 import textStyles from '../styles/textStyles';
 
 export default function NotificationCard({ title, description, date }) {
-  const [tempTitle, setTitle] = useState(title);
-  const [tempDescription, setDescription] = useState(description);
-  const [tempDate, setDate] = useState(date);
+  /*  These might be used once backend is implemented
+   *
+   *  const [tempTitle, setTitle] = useState(title);
+   *  const [tempDescription, setDescription] = useState(description);
+   *  const [tempDate, setDate] = useState(date);
+   */
 
   return (
     <View
@@ -45,15 +47,3 @@ NotificationCard.propTypes = {
 NotificationCard.defaultProps = {
   smallMode: false,
 };
-
-/* 
-    <Button
-        onPress={() => {
-          Toast.show({
-            text1: { tempTitle },
-            text2: { tempDescription },
-          });
-        }}
-        title="hello"
-      />
-*/

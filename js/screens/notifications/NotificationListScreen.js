@@ -1,16 +1,15 @@
-import { FlatList, StyleSheet, Text, View, Button } from 'react-native';
+import { FlatList, StyleSheet, View, Button } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Toast from 'react-native-toast-message';
 
 import { NOTIFICATION_LIST } from '../../../data/notification';
 import NotificationCard from '../../components/NotificationCard';
 
 import colors from '../../styles/colors';
-import textStyles from '../../styles/textStyles';
+import { DEFAULT_NOTIFICATION } from '../../../data/notificationOptions';
 
-export default function NotificationListScreen({ navigation }) {
+export default function NotificationListScreen() {
   const { t } = useTranslation();
 
   const [currTitle, setCurrTitle] = useState('empty');
@@ -43,8 +42,8 @@ export default function NotificationListScreen({ navigation }) {
               autoHide: true,
               text1: currTitle,
               text2: currMessage,
-              topOffset: 10,
-              visibilityTime: 5000,
+              topOffset: DEFAULT_NOTIFICATION.offsetTop,
+              visibilityTime: DEFAULT_NOTIFICATION.visibilityTime,
             });
           }
         }}
@@ -54,22 +53,10 @@ export default function NotificationListScreen({ navigation }) {
   );
 }
 
-NotificationListScreen.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-  }).isRequired,
-};
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.backgroundColor,
     flex: 1,
     paddingHorizontal: 24,
-  },
-  notTest: {
-    backgroundColor: 'blue',
-    flex: 2,
-    height: 10,
-    width: 100,
   },
 });

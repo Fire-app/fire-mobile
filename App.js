@@ -117,6 +117,7 @@ const App = () => {
     return <StatusBar backgroundColor={colors.white} barStyle="dark-content" />;
   }
 
+  // Used for toastNotifications on NotificationListScreen.js. Sets default props, components and style of toast notification
   const toastConfig = {
     success: ({ text1, text2, text3, ...rest }) => (
       <BaseToast
