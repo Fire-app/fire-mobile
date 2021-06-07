@@ -9,6 +9,7 @@ import textStyles from '../styles/textStyles';
 export default function NotificationCard({ title, description, date }) {
   const [tempTitle, setTitle] = useState(title);
   const [tempDescription, setDescription] = useState(description);
+  const [tempDate, setDate] = useState(date);
 
   return (
     <View
@@ -27,20 +28,20 @@ export default function NotificationCard({ title, description, date }) {
       <Text style={[textStyles.notificationTime, { paddingTop: 4 }]}>
         <TimeAgo interval={20000} time={date} />
       </Text>
-      {console.log(tempDescription)}
       <Button
         onPress={() => {
           {
             Toast.show({
-              text1: { tempTitle },
-              text2: { tempDescription },
-              type: 'info',
+              autoHide: true,
+              text1: tempTitle,
+              text2: tempDescription,
+              topOffset: 10,
+              visibilityTime: 5000,
             });
           }
         }}
         title="Toast Test"
       />
-      {console.log(tempDescription)}
     </View>
   );
 }
