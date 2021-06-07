@@ -133,7 +133,7 @@ const App = () => {
         text1={text1}
         text1Style={{
           color: colors.white,
-          fontSize: 14,
+          fontSize: 13,
           fontWeight: 'bold',
         }}
         text2={text2}

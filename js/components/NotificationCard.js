@@ -20,28 +20,18 @@ export default function NotificationCard({ title, description, date }) {
       }}
     >
       <View style={{ flexDirection: 'row' }}>
-        <Text style={textStyles.h2}> {title} </Text>
+        <Text style={textStyles.h5}> {title} </Text>
       </View>
       {description && (
-        <Text style={[textStyles.body2, { paddingTop: 4 }]}>{description}</Text>
+        <Text style={[textStyles.body2, { paddingLeft: 4, paddingTop: 4 }]}>
+          {description}
+        </Text>
       )}
-      <Text style={[textStyles.notificationTime, { paddingTop: 4 }]}>
+      <Text
+        style={[textStyles.notificationTime, { paddingLeft: 4, paddingTop: 4 }]}
+      >
         <TimeAgo interval={20000} time={date} />
       </Text>
-      <Button
-        onPress={() => {
-          {
-            Toast.show({
-              autoHide: true,
-              text1: tempTitle,
-              text2: tempDescription,
-              topOffset: 10,
-              visibilityTime: 5000,
-            });
-          }
-        }}
-        title="Toast Test"
-      />
     </View>
   );
 }
