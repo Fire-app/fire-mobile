@@ -1,4 +1,6 @@
+import { Platform, StyleSheet } from 'react-native';
+
 export const DEFAULT_NOTIFICATION = {
-  offsetTop: 10,
+  offsetTop: Platform.OS == 'ios' ? 45 : 0,
   visibilityTime: 5000,
 };

@@ -14,6 +14,7 @@ export default function NotificationListScreen() {
 
   const [currTitle, setCurrTitle] = useState('empty');
   const [currMessage, setCurrMessage] = useState('empty');
+
   return (
     <View style={{ flex: 1 }}>
       <FlatList
