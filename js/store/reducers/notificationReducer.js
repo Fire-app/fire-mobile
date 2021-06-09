@@ -1,15 +1,15 @@
 import NOTIFICATION_LIST from '../../../data/notification';
-import { ADD_NOTIFICATION, REMOVE_NOTIFICATION } from '../actions/constants';
+import { STACK_NOTIFICATION, POP_NOTIFICATION } from '../actions/constants';
 
 const notificationReducer = (state = NOTIFICATION_LIST, action) => {
   switch (action.type) {
-    case ADD_NOTIFICATION: {
+    case STACK_NOTIFICATION: {
       return {
         ...state,
         item: action.payload,
       };
     }
-    case REMOVE_NOTIFICATION: {
+    case POP_NOTIFICATION: {
       return {
         ...state,
         complete: false,
