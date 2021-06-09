@@ -1,4 +1,5 @@
 // The date, message and title values will come from the DataBase
+import { connect } from 'react-redux';
 
 export const NOTIFICATION_LIST = [
   {

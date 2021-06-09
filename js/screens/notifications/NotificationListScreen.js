@@ -3,11 +3,14 @@ import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import Toast from 'react-native-toast-message';
 
+import { Provider } from 'react-redux';
 import { NOTIFICATION_LIST } from '../../../data/notification';
 import NotificationCard from '../../components/NotificationCard';
 
 import colors from '../../styles/colors';
 import { DEFAULT_NOTIFICATION } from '../../../data/notificationOptions';
+
+import notificationList from '../../store/notificationList';
 
 export default function NotificationListScreen() {
   const { t } = useTranslation();

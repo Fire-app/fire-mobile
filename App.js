@@ -26,7 +26,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import './js/config';
 import Toast, { BaseToast } from 'react-native-toast-message';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+
 import {
   initialize as initializeSentry,
   logMessage,
@@ -119,14 +119,14 @@ const App = () => {
 
   // Used for toastNotifications on NotificationListScreen.js. Sets default props, components and style of toast notification
   const toastConfig = {
-    success: ({ text1, text2, text3, ...rest }) => (
+    success: ({ text1, text2, ...rest }) => (
       <BaseToast
         {...rest}
         contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 15 }}
         style={{
           alignItems: 'flex-start',
-          backgroundColor: 'rgba(0, 0, 0, 0.93)',
-          borderLeftColor: 'rgba(0, 0, 0, 0.93)',
+          backgroundColor: 'rgba(0, 0, 0, 0.95)',
+          borderLeftColor: 'rgba(0, 0, 0, 0.95)',
           borderRadius: 13,
           height: 85,
           opacity: 0.9,
@@ -146,6 +146,8 @@ const App = () => {
       />
     ),
   };
+
+  toastConfig.displayName = 'toastConfig';
 
   return (
     <>
