@@ -1,5 +1,5 @@
 // The date, message and title values will come from the DataBase
-const NOTIFICATION_LIST = [
+export const NOTIFICATION_LIST = [
   {
     date: '2021-06-03T06:24:44.124Z',
     message:
@@ -37,5 +37,3 @@ const NOTIFICATION_LIST = [
     title: 'Verified ICE Presence in the Subway',
   },
 ];
-
-export default NOTIFICATION_LIST;

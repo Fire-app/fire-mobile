@@ -41,10 +41,5 @@ export default function NotificationCard({ title, description, date }) {
 NotificationCard.propTypes = {
   date: PropTypes.isRequired,
   description: PropTypes.string,
-  smallMode: PropTypes.bool,
   title: PropTypes.string.isRequired,
-};
-
-NotificationCard.defaultProps = {
-  smallMode: false,
 };
