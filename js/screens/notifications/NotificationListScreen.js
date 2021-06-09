@@ -22,17 +22,15 @@ export default function NotificationListScreen() {
         data={NOTIFICATION_LIST}
         ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
         keyExtractor={(_, i) => `${i}`}
-        renderItem={({ item: { title, message, date } }) => (
+        renderItem={({ item: { title, message, date } }) => [
           setCurrTitle(title),
           setCurrMessage(message),
-          (
-            <NotificationCard
-              date={date}
-              description={t(message)}
-              title={t(title)}
-            />
-          )
-        )}
+          <NotificationCard
+            date={date}
+            description={t(message)}
+            title={t(title)}
+          />,
+        ]}
         style={styles.container}
       />
       <Button
