@@ -119,7 +119,7 @@ const App = () => {
 
   // Used for toastNotifications on NotificationListScreen.js. Sets default props, components and style of toast notification
   const toastConfig = {
-    success: ({ text1, text2, ...rest }) => (
+    success: ({ text1, text2, props, ...rest }) => (
       <BaseToast
         {...rest}
         contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 15 }}
@@ -128,6 +128,7 @@ const App = () => {
           backgroundColor: 'rgba(0, 0, 0, 0.95)',
           borderLeftColor: 'rgba(0, 0, 0, 0.95)',
           borderRadius: 13,
+          displayName: 'toast_display',
           height: 85,
           opacity: 0.9,
         }}
