@@ -11,7 +11,8 @@ import {
 } from '@expo-google-fonts/roboto';
 import * as SplashScreenUtils from 'expo-splash-screen';
 import { StatusBar } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import * as Notifications from 'expo-notifications';
 
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -86,6 +87,14 @@ async function loadAssetsAsync() {
 
 const { store, persistor } = createPersistedStore();
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+    shouldShowAlert: true,
+  }),
+});
+
 const App = () => {
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
@@ -95,6 +104,30 @@ const App = () => {
     Roboto_700Bold,
     Roboto_900Black,
   });
+
+  const handleNotification = useCallback((notification) => {
+    console.log(
+      'Foregrounded app received a push notification: ',
+      notification
+    );
+  }, []);
+  const handleNotificationResponse = useCallback((response) => {
+    console.log('User interacted with push notification: ', response);
+  }, []);
+
+  useEffect(() => {
+    const subscription1 = Notifications.addNotificationReceivedListener(
+      handleNotification
+    );
+    const subscription2 = Notifications.addNotificationResponseReceivedListener(
+      handleNotificationResponse
+    );
+    // TODO: also add https://docs.expo.io/versions/latest/sdk/notifications/#addpushtokenlistenerlistener-pushtokenlistener-subscription
+    return () => {
+      subscription1.remove();
+      subscription2.remove();
+    };
+  }, [handleNotification, handleNotificationResponse]);
 
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
