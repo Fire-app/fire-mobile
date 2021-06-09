@@ -1,5 +1,6 @@
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
+import PropTypes from 'prop-types';
 import {
   /* eslint-disable camelcase */
   Roboto_400Regular,
@@ -119,7 +120,7 @@ const App = () => {
 
   // Used for toastNotifications on NotificationListScreen.js. Sets default props, components and style of toast notification
   const toastConfig = {
-    success: ({ text1, text2, props, ...rest }) => (
+    success: ({ text1, text2, ...rest }) => (
       <BaseToast
         {...rest}
         contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 15 }}
@@ -148,7 +149,10 @@ const App = () => {
     ),
   };
 
-  toastConfig.displayName = 'toastConfig';
+  toastConfig.propTypes = {
+    text1: PropTypes.string,
+    text2: PropTypes.string,
+  };
 
   return (
     <>
