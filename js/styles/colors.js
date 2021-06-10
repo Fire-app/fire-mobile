@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 const colors = {
   backgroundColor: '#f9f9f9',
   border: '#eeeeee',
@@ -10,6 +11,9 @@ const colors = {
   // Colors are in Zeplin but is not used
   // textNavBar: '#a1a1a1',
   // greyBackground: '#f9f9f9',
+
+  // Colors from redesigns (current in Figma)
+  lightGrey: '#989898',
 };
 
 export default colors;

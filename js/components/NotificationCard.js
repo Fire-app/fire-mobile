@@ -29,9 +29,7 @@ export default function NotificationCard({ title, description, date }) {
           {description}
         </Text>
       )}
-      <Text
-        style={[textStyles.notificationTime, { paddingLeft: 4, paddingTop: 4 }]}
-      >
+      <Text style={[textStyles.body1, { paddingLeft: 4, paddingTop: 4 }]}>
         <TimeAgo interval={20000} time={date} />
       </Text>
     </View>
