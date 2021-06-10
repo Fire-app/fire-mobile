@@ -5,7 +5,8 @@
       "buildNumber": "0.0.18"
     },
     "android": {
-      "versionCode": 390000018
+      "versionCode": 390000018,
+      "useNextNotificationsApi": true
     }
   }
 }

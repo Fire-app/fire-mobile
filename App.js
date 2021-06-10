@@ -11,7 +11,9 @@ import {
 } from '@expo-google-fonts/roboto';
 import * as SplashScreenUtils from 'expo-splash-screen';
 import { StatusBar } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { addNotificationReceivedListener, addNotificationResponseReceivedListener, removeAllNotificationListeners, setNotificationHandler } from 'expo-notifications';
+import { RegisterForPushNotificationsAsync, handleNotification } from './js/push-notifications';
+import React, { useEffect, useState, useRef } from 'react';
 
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -39,6 +41,14 @@ logMessage('Sentry Initialized');
 SplashScreenUtils.preventAutoHideAsync().catch((e) =>
   logError(e, 'Splash Screen Error')
 );
+
+setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 
 const illustration1 = require('./assets/illustration1.png');
 const illustration2 = require('./assets/illustration2.png');
@@ -94,6 +104,30 @@ const App = () => {
     Roboto_700Bold,
     Roboto_900Black,
   });
+
+  const [expoPushToken, setExpoPushToken] = useState('');
+  const [isInitialRender, setIsInitialRender] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
+  useEffect(() => {
+    if (!isInitialRender) {
+      setIsInitialRender(true);
+      RegisterForPushNotificationsAsync().then(token => setExpoPushToken(token));
+
+      notificationListener.current = addNotificationReceivedListener(notification => {
+        handleNotification
+      });
+
+      responseListener.current = addNotificationResponseReceivedListener(response => {
+        console.log(response);
+      });
+    }
+
+    return () => {
+      removeAllNotificationListeners();
+    };
+  }, [isInitialRender, setIsInitialRender]);
 
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
