@@ -49,7 +49,7 @@ export function setupPush(
   setExpoPushToken,
   setNotification,
   notificationListener,
-  responseListener
+  responseListener,
 ) {
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
@@ -66,7 +66,6 @@ export function setupPush(
     responseListener.current = Notifications.addNotificationResponseReceivedListener(
       () => {
         console.log('here');
-        navigation.navigate(routes.notification.notificationList);
       }
     );
 

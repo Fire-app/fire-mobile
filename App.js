@@ -106,7 +106,7 @@ const App = () => {
     setExpoPushToken,
     setNotification,
     notificationListener,
-    responseListener
+    responseListener,
   );
 
   const googleFontsLoaded = useFonts({
