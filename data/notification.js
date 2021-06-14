@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 // The date, message and title values will come from the DataBase
 export const NOTIFICATION_LIST = [
   {

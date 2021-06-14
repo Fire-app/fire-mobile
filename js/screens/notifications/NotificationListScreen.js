@@ -1,6 +1,5 @@
 import { FlatList, StyleSheet, View, Button } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
+import React from 'react';
 import Toast from 'react-native-toast-message';
 
 import { NOTIFICATION_LIST } from '../../../data/notification';
@@ -17,9 +16,9 @@ export default function NotificationListScreen() {
         data={NOTIFICATION_LIST}
         ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
         keyExtractor={(_, i) => `${i}`}
-        renderItem={({ item: { title, message, date } }) => [
-          <NotificationCard date={date} description={message} title={title} />,
-        ]}
+        renderItem={({ item: { title, message, date } }) => (
+          <NotificationCard date={date} description={message} title={title} />
+        )}
         style={styles.container}
       />
       <Button
@@ -27,8 +26,8 @@ export default function NotificationListScreen() {
         onPress={() => {
           Toast.show({
             autoHide: true,
-            text1: 'Test Title',
-            text2: 'Test Message',
+            text1: 'example title',
+            text2: 'example message',
             topOffset: DEFAULT_NOTIFICATION.offsetTop,
             visibilityTime: DEFAULT_NOTIFICATION.visibilityTime,
           });
