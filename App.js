@@ -12,8 +12,7 @@ import {
 } from '@expo-google-fonts/roboto';
 import * as SplashScreenUtils from 'expo-splash-screen';
 import { StatusBar } from 'react-native';
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect, useState, useRef } from 'react';
 // eslint-disable-next-line no-restricted-imports
 import {
   Feather,
@@ -27,6 +26,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import './js/config';
 import Toast, { BaseToast } from 'react-native-toast-message';
+import registerForPushNotificationsAsync, {
+  setupPush,
+} from './js/components/PushNotifications';
 
 import {
   initialize as initializeSentry,
@@ -91,6 +93,21 @@ const { store, persistor } = createPersistedStore();
 
 const App = () => {
   const [assetsLoaded, setAssetsLoaded] = useState(false);
+
+  // Consts used for Push Notifications
+  const [expoPushToken, setExpoPushToken] = useState('');
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
+  // push notification setup
+
+  setupPush(
+    setExpoPushToken,
+    setNotification,
+    notificationListener,
+    responseListener
+  );
 
   const googleFontsLoaded = useFonts({
     Roboto_400Regular,
