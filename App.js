@@ -99,6 +99,7 @@ const App = () => {
     Roboto_900Black,
   });
 
+  /* eslint-disable no-unused-vars */
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
     // concurrently hide splash and load assets
@@ -118,8 +119,10 @@ const App = () => {
     return <StatusBar backgroundColor={colors.white} barStyle="dark-content" />;
   }
 
+  /* eslint-disable react/jsx-props-no-spreading */
   // Used for toastNotifications on NotificationListScreen.js. Sets default props, components and style of toast notification
   const toastConfig = {
+    // eslint-disable-next-line react/prop-types
     success: ({ text1, text2, ...rest }) => (
       <BaseToast
         {...rest}
