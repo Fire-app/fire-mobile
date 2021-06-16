@@ -11,6 +11,8 @@ import {
   /* eslint-enable camelcase */
 } from '@expo-google-fonts/roboto';
 import * as SplashScreenUtils from 'expo-splash-screen';
+import * as Notifications from 'expo-notifications';
+
 import { StatusBar } from 'react-native';
 import React, { useEffect, useState, useRef } from 'react';
 // eslint-disable-next-line no-restricted-imports
@@ -27,7 +29,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import './js/config';
 import Toast, { BaseToast } from 'react-native-toast-message';
 import registerForPushNotificationsAsync, {
-  setupPush,
+  setupPush, 
 } from './js/components/PushNotifications';
 
 import {
@@ -39,6 +41,7 @@ import Navigation from './js/navigation';
 import createPersistedStore from './js/store/createPersistedStore';
 import { rehydrateLanguageSelection } from './js/config/i18n';
 import { colors } from './js/styles';
+import { Platform } from 'react-native';
 
 initializeSentry(); // Load our build time configs
 logMessage('Sentry Initialized');
@@ -98,7 +101,7 @@ const App = () => {
   const [expoPushToken, setExpoPushToken] = useState('');
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
-  const responseListener = useRef();
+  const responseListener = useRef(null);
 
   // push notification setup
 

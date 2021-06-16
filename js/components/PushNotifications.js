@@ -2,9 +2,7 @@ import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 import { useEffect } from 'react';
-import routes from '../navigation/routes';
-import NotificationListScreen from '../screens/notifications/NotificationListScreen';
-import Navigation from '../navigation';
+
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -13,6 +11,7 @@ Notifications.setNotificationHandler({
     shouldShowAlert: true,
   }),
 });
+
 
 registerForPushNotificationsAsync = async () => {
   if (Constants.isDevice) {
@@ -30,6 +29,7 @@ registerForPushNotificationsAsync = async () => {
     }
     const token = (await Notifications.getExpoPushTokenAsync()).data;
     console.log(token);
+
     this.setState({ expoPushToken: token });
   } else {
     alert('Must use physical device for Push Notifications');
@@ -45,6 +45,7 @@ registerForPushNotificationsAsync = async () => {
   }
 };
 
+
 export function setupPush(
   setExpoPushToken,
   setNotification,
@@ -55,7 +56,6 @@ export function setupPush(
     registerForPushNotificationsAsync().then((token) =>
       setExpoPushToken(token)
     );
-
     // This listener is fired whenever a notification is received while the app is foregrounded
     notificationListener.current = Notifications.addNotificationReceivedListener(
       (notification) => {
@@ -68,8 +68,9 @@ export function setupPush(
         console.log('here');
       }
     );
-
+    
     return () => {
+      console.log("hey");
       Notifications.removeNotificationSubscription(
         notificationListener.current
       );
