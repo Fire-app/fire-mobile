@@ -3139,6 +3139,21 @@
     "@sentry/utils" "6.5.1"
     "@sentry/wizard" "^1.2.2"
 
+"@sentry/react-native@^2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@sentry/react-native/-/react-native-2.5.1.tgz#cf4d89d034d5b4d2475da198fdf62020fcc725f0"
+  integrity sha512-Utf/Cq98J+jk2YQ4mO+EWLfa5vyWA62tvV46Yw7dtpZlhpf7Ip3xN+OxnMdDf8H9tWWAerp/v6bcncKAnvcMQA==
+  dependencies:
+    "@sentry/browser" "6.5.1"
+    "@sentry/core" "6.5.1"
+    "@sentry/hub" "6.5.1"
+    "@sentry/integrations" "6.5.1"
+    "@sentry/react" "6.5.1"
+    "@sentry/tracing" "6.5.1"
+    "@sentry/types" "6.5.1"
+    "@sentry/utils" "6.5.1"
+    "@sentry/wizard" "^1.2.2"
+
 "@sentry/react@6.5.1":
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/@sentry/react/-/react-6.5.1.tgz#1c7019fc3d8b1168c1ab8936cb65971b314d060d"
