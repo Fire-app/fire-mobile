@@ -8,19 +8,16 @@ export function initialize() {
     debug: true,
     dsn: Constants.manifest.extra.SENTRY_DSN,
     enableInExpoDevelopment: true,
-  });
-
-  Sentry.setTags({
     environment: getReleaseChannel(),
+    // Needed for source Maps
+    release: Constants.manifest.revisionId,
   });
-  // Needed for source Maps
-  Sentry.setRelease(Constants.manifest.revisionId);
 }
 
 export function logMessage(message) {
   // Default is SentrySeverity.Error
-  Sentry.captureMessage(message, {
-    level: Sentry.Severity.Info,
+  Sentry.Native.captureMessage(message, {
+    level: Sentry.Native.Severity.Info,
   });
 }
 
@@ -29,7 +26,7 @@ export function logError(error, errorType, extraData) {
     console.log(errorType, { error, extraData });
   }
 
-  Sentry.captureException(error);
+  Sentry.Native.captureException(error);
 
   Sentry.withScope((scope) => {
     scope.setTag('errorType', errorType);
@@ -41,6 +38,6 @@ export function logError(error, errorType, extraData) {
       });
     }
 
-    Sentry.captureException(error);
+    Sentry.Native.captureException(error);
   });
 }

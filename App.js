@@ -11,7 +11,8 @@ import {
   /* eslint-enable camelcase */
 } from '@expo-google-fonts/roboto';
 import * as SplashScreenUtils from 'expo-splash-screen';
-import * as Notifications from 'expo-notifications';
+import { StatusBar } from 'react-native';
+import React, { useEffect, useState, useRef } from 'react';
 
 import { StatusBar } from 'react-native';
 import React, { useEffect, useState, useRef } from 'react';
@@ -95,6 +96,14 @@ async function loadAssetsAsync() {
 const { store, persistor } = createPersistedStore();
 
 const App = () => {
+  // NOTE: This is for development quality of life.
+  // This prevents the useEffect of SplashScreenUtils.preventAutoHideAsync from
+  // triggering on hot reload, which throws a LogBox warning.
+
+  /* eslint-disable no-unused-vars */
+  const firstMount = useRef(true);
+  /* eslint-enable no-unused-vars */
+
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
   // Consts used for Push Notifications
