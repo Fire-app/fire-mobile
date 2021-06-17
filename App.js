@@ -1,5 +1,6 @@
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
+import PropTypes from 'prop-types';
 import {
   /* eslint-disable camelcase */
   Roboto_400Regular,
@@ -25,6 +26,8 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import './js/config';
+import Toast, { BaseToast } from 'react-native-toast-message';
+
 import {
   initialize as initializeSentry,
   logMessage,
@@ -104,6 +107,7 @@ const App = () => {
     Roboto_900Black,
   });
 
+  /* eslint-disable no-unused-vars */
   // Prevent the splash screen from hiding until our fake splash screen is ready
   useEffect(() => {
     // concurrently hide splash and load assets
@@ -123,12 +127,53 @@ const App = () => {
     return <StatusBar backgroundColor={colors.white} barStyle="dark-content" />;
   }
 
+  /* eslint-disable react/jsx-props-no-spreading */
+  // Used for toastNotifications on NotificationListScreen.js. Sets default props, components and style of toast notification
+  const toastConfig = {
+    // eslint-disable-next-line react/prop-types
+    success: ({ text1, text2, ...rest }) => (
+      <BaseToast
+        {...rest}
+        contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 15 }}
+        style={{
+          alignItems: 'flex-start',
+          backgroundColor: 'rgba(0, 0, 0, 0.95)',
+          borderLeftColor: 'rgba(0, 0, 0, 0.95)',
+          borderRadius: 13,
+          displayName: 'toast_display',
+          height: 85,
+          opacity: 0.9,
+        }}
+        text1={text1}
+        text1Style={{
+          color: colors.white,
+          fontSize: 13,
+          fontWeight: 'bold',
+        }}
+        text2={text2}
+        text2Style={{
+          color: colors.white,
+          fontSize: 12,
+          fontWeight: 'semibold',
+        }}
+      />
+    ),
+  };
+
+  toastConfig.propTypes = {
+    text1: PropTypes.string,
+    text2: PropTypes.string,
+  };
+
   return (
-    <ReduxProvider store={store}>
-      <PersistGate persistor={persistor}>
-        <Navigation />
-      </PersistGate>
-    </ReduxProvider>
+    <>
+      <ReduxProvider store={store}>
+        <PersistGate persistor={persistor}>
+          <Navigation />
+        </PersistGate>
+      </ReduxProvider>
+      <Toast ref={(ref) => Toast.setRef(ref)} config={toastConfig} />
+    </>
   );
 };
 

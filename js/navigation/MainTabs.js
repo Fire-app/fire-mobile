@@ -10,6 +10,7 @@ import { colors, textStyles, shadows } from '../styles';
 import ResourcesStack from './ResourcesStack';
 import RightsStack from './RightsStack';
 import SettingsStack from './SettingsStack';
+import NotificationStack from './NotificationStack';
 import routes from './routes';
 import FireIcon, { ICON_NAMES } from '../components/FireIcon';
 
@@ -75,6 +76,14 @@ const AppTabs = () => {
         options={{
           tabBarIcon: CreateTabIcon(ICON_NAMES.GEAR),
           tabBarLabel: CreateTabLabel(t('settings')),
+        }}
+      />
+      <Tabs.Screen
+        component={NotificationStack}
+        name={routes.main.notification}
+        options={{
+          tabBarIcon: CreateTabIcon(ICON_NAMES.NOTIFICATIONS),
+          tabBarLabel: CreateTabLabel(t('Notifications')),
         }}
       />
       <Tabs.Screen
