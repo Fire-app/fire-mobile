@@ -1,7 +1,7 @@
 import { initReactI18next } from 'react-i18next';
 import * as Localization from 'expo-localization';
 import i18n from 'i18next';
-import AsyncStorage from '@react-native-community/async-storage';
+import { AsyncStorage } from 'react-native';
 
 // Our app is lightweight, so we import all translations up front.
 import englishJson from '../../lang/en.json';
