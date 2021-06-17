@@ -11,8 +11,6 @@ import {
   /* eslint-enable camelcase */
 } from '@expo-google-fonts/roboto';
 import * as SplashScreenUtils from 'expo-splash-screen';
-import { StatusBar } from 'react-native';
-import React, { useEffect, useState, useRef } from 'react';
 
 import { StatusBar } from 'react-native';
 import React, { useEffect, useState, useRef } from 'react';
