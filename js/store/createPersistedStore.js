@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import { createImmutableStateInvariantMiddleware } from '@reduxjs/toolkit';
 import { createMigrate, persistReducer, persistStore } from 'redux-persist';
-import AsyncStorage from '@react-native-community/async-storage';
+import { AsyncStorage } from 'react-native';
 
 import migrations from './migrations';
 import rootReducer from './reducers/rootReducer';
