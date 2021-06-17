@@ -2,7 +2,7 @@ import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 import { useEffect } from 'react';
-
+import routes from '../navigation/routes';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -64,13 +64,12 @@ export function setupPush(
     );
     // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
     responseListener.current = Notifications.addNotificationResponseReceivedListener(
-      () => {
-        console.log('here');
+      (navigation) => {
+        console.log("heeey") // Swap, make it go to notifications page!
       }
     );
     
     return () => {
-      console.log("hey");
       Notifications.removeNotificationSubscription(
         notificationListener.current
       );
