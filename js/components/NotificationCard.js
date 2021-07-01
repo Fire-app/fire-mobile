@@ -1,17 +1,21 @@
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import TimeAgo from 'react-native-timeago';
 import { colors } from '../styles';
 import textStyles from '../styles/textStyles';
 
 export default function NotificationCard({ title, description, date }) {
-  /*  These might be used once backend is implemented
-   *
-   *  const [tempTitle, setTitle] = useState(title);
-   *  const [tempDescription, setDescription] = useState(description);
-   *  const [tempDate, setDate] = useState(date);
-   */
+  
+  // Only new notifications will appear as unread. Like, new popups :D
+  // Would have groups of notification, one group for today, one for this week,
+  // one for this month, one for older...
+
+  // Sorting can be done simply, do not overthing, be dumb dumb.
+
+  // Probably wont need redux, can do sorting on front end.
+
+  // What happens if you get a message while in the notifications tab?
 
   return (
     <View

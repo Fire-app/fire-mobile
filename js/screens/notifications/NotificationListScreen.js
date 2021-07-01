@@ -1,47 +1,32 @@
-import { FlatList, StyleSheet, View, Button } from 'react-native';
-import React from 'react';
-import Toast from 'react-native-toast-message';
+import { View } from 'react-native';
+import React, { useState } from 'react';
 
 import { NOTIFICATION_LIST } from '../../../data/notification';
-import NotificationCard from '../../components/NotificationCard';
 
-import colors from '../../styles/colors';
-import { DEFAULT_NOTIFICATION } from '../../../data/notificationOptions';
+import NotificationButton from '../../components/Buttons/NotificationButton';
+import NotificationList from '../../components/Resources/NotificationList';
+
+// State is keeping track only of app stuff.
+// All data that changes and needs to be saved is in the Redux store.
+
+// State would only be used for seen and unseen notifications.
+// The notification list would probably be tracked with Redux - All data is 
+//      tracked with Redux.
+
+// Redux store will keep track of the state the user last left the app from, 
+// normal state cannot keep track of that!
+
+// First do seen/unseen, then watch redux lecture.
+
 
 export default function NotificationListScreen() {
+
+  const [todayDate, setTodayDate] = useState(new Date());
+
   return (
     <View style={{ flex: 1 }}>
-      <FlatList
-        contentContainerStyle={{ paddingVertical: 36 }}
-        data={NOTIFICATION_LIST}
-        ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
-        keyExtractor={(_, i) => `${i}`}
-        renderItem={({ item: { title, message, date } }) => (
-          <NotificationCard date={date} description={message} title={title} />
-        )}
-        style={styles.container}
-      />
-      <Button
-        color="rgba(0,0,0,0.85)"
-        onPress={() => {
-          Toast.show({
-            autoHide: true,
-            text1: 'example title',
-            text2: 'example message',
-            topOffset: DEFAULT_NOTIFICATION.offsetTop,
-            visibilityTime: DEFAULT_NOTIFICATION.visibilityTime,
-          });
-        }}
-        title="Toast Notification Test"
-      />
+      <NotificationList notifications={NOTIFICATION_LIST} todayDate={todayDate}/>
+      <NotificationButton/>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.backgroundColor,
-    flex: 1,
-    paddingHorizontal: 24,
-  },
-});
