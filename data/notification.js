@@ -2,13 +2,13 @@
 // The date, message and title values will come from the DataBase
 
 const today = new Date()
-const yesterday = new Date(today)
-const lastWeek = new Date(today)
-const longtimeAgo = new Date(today)
+const thisMonth = new Date(today)
+const thisWeek = new Date(today)
+const earlier = new Date(today)
 
-yesterday.setDate(yesterday.getDate() - 1)
-lastWeek.setDate(lastWeek.getDate() - 7)
-longtimeAgo.setDate(longtimeAgo.getDate() - 100)
+thisWeek.setDate(thisWeek.getDate() - 7)
+thisMonth.setDate(thisMonth.getDate() - 16)
+earlier.setDate(earlier.getDate() - 100)
 
 export const NOTIFICATION_LIST = [
   {
@@ -18,31 +18,31 @@ export const NOTIFICATION_LIST = [
     title: 'ICE activity stopeed',
   },
   {
-    date: yesterday,
+    date: thisMonth,
     message:
       'First responders have confirmed ICE presence in Union Station, Downtown LA. Proceed with caution.',
     title: 'Verified ICE Presence in the Subway',
   },
   {
-    date: lastWeek,
+    date: thisWeek,
     message:
       'Whe have not heard more reports thatICE is in Union Station and are ending the alert.',
     title: 'ICE activity stopeed',
   },
   {
-    date: yesterday,
+    date: thisMonth,
     message:
       'First responders have confirmed ICE presence in Union Station, Downtown LA. Proceed with caution.',
     title: 'Verified ICE Presence in the Subway',
   },
   {
-    date: longtimeAgo,
+    date: earlier,
     message:
       'Whe have not heard more reports thatICE is in Union Station and are ending the alert.',
     title: 'ICE activity stopeed',
   },
   {
-    date: lastWeek,
+    date: thisWeek,
     message:
       'First responders have confirmed ICE presence in Union Station, Downtown LA. Proceed with caution.',
     title: 'Verified ICE Presence in the Subway',

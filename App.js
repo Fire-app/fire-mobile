@@ -104,6 +104,9 @@ const App = () => {
 
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
+  // moment const
+  const moment = require('moment')
+
   // Consts used for Push Notifications
   const [expoPushToken, setExpoPushToken] = useState('');
   const [notification, setNotification] = useState(false);

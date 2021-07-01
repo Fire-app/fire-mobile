@@ -21,11 +21,11 @@ import NotificationList from '../../components/Resources/NotificationList';
 
 export default function NotificationListScreen() {
 
-  const [todayDate, setTodayDate] = useState(new Date());
+  // Will change how notifications are handled.
 
   return (
     <View style={{ flex: 1 }}>
-      <NotificationList notifications={NOTIFICATION_LIST} todayDate={todayDate}/>
+      <NotificationList notifications={NOTIFICATION_LIST}/>
       <NotificationButton/>
     </View>
   );
