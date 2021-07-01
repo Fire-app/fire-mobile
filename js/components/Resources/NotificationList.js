@@ -3,9 +3,6 @@ import { SectionList, Text, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import NotificationCard from '../NotificationCard';
 import colors from '../../styles/colors';
-import { useTranslation } from 'react-i18next';
-
-
 
 // State is keeping track only of app stuff.
 // All data that changes and needs to be saved is in the Redux store.
@@ -29,67 +26,6 @@ const renderItem = ({ item: { title, message, date } }) => (
 );
 
 const NotificationList = (props) => {
-  let dateKey = '';
-  const { t } = useTranslation();
-
-  const notificationSorter = props.notifications.reduce((obj, notification) => {
-
-    // Gets difference, in days, between curr notification date and moment.
-    let now = moment(new Date())
-    let momentDate = moment(notification.date)
-    let duration = moment.duration(now.diff(momentDate))
-    let daysDuration = duration.asDays()
-
-    if (daysDuration < 1) {
-      dateKey = t('Today');
-    } else if (daysDuration < 8) {
-      dateKey = t('This Week');
-    } else if (daysDuration < 31) {
-      dateKey = t('This Month');
-    } else {
-      dateKey = t('Earlier');
-    }
-
-    return {
-      ...obj,
-      [dateKey]: [...(obj[dateKey] || []), notification],
-    };
-  }, {});
-
-  // Gets each letter from the section above, and creates an obj
-  // Very dumb sorting function, how can I improve it??
-  const sections = Object.keys(notificationSorter)
-    .sort(function (a, b) {
-      if (a == t('Today')) {
-        return -1;
-      }
-      if (b == t('Today')) {
-        return 1;
-      }
-      if (a == t('This Week')) {
-        return -1;
-      }
-      if (b == t('This Week')) {
-        return 1;
-      }
-      if (a == t('This Month')) {
-        return -1;
-      }
-      if (b == t('This Month')) {
-        return 1;
-      }
-      if (a == t('Earlier')) {
-        return -1;
-      }
-      if (b == t('Earlier')) {
-        return 1;
-      }
-    })
-    .map((dateKey) => ({
-      data: notificationSorter[dateKey],
-      title: dateKey,
-    }));
-
   return (
     <SectionList
       contentContainerStyle={{ paddingVertical: 36 }}
@@ -99,14 +35,14 @@ const NotificationList = (props) => {
       renderSectionHeader={({ section: { title } }) => (
         <Text style={styles.header}>{title}</Text>
       )}
-      sections={sections}
+      sections={props.sections}
       style={styles.container}
     />
   );
 };
 
 NotificationList.propTypes = {
-  notifications: PropTypes.array.isRequired,
+  sections: PropTypes.array.isRequired,
 };
 
 const styles = StyleSheet.create({

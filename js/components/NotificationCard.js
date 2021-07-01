@@ -43,7 +43,7 @@ export default function NotificationCard({ title, description, date }) {
 }
 
 NotificationCard.propTypes = {
-  date: PropTypes.isRequired,
-  description: PropTypes.string,
+  date: PropTypes.object.isRequired,
+  description: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
