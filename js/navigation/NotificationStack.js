@@ -23,7 +23,7 @@ const NotificationStack = () => {
       <Stack.Screen
         component={NotificationList}
         name={routes.notification.notificationList}
-        options={{ title: t('Notifications') }}
+        options={{ title: t('notifications') }}
       />
     </Stack.Navigator>
   );

@@ -39,13 +39,13 @@ export default function NotificationListScreen() {
     let daysDuration = duration.asDays()
 
     if (daysDuration < 1) {
-      dateKey = t('Today');
+      dateKey = t('today');
     } else if (daysDuration < 8) {
-      dateKey = t('This Week');
+      dateKey = t('this_week');
     } else if (daysDuration < 31) {
-      dateKey = t('This Month');
+      dateKey = t('this_month');
     } else {
-      dateKey = t('Earlier');
+      dateKey = t('earlier');
     }
 
     return {
@@ -56,28 +56,28 @@ export default function NotificationListScreen() {
 
   const sections = Object.keys(notificationSorter)
     .sort(function (a, b) {
-      if (a == t('Today')) {
+      if (a == t('today')) {
         return -1;
       }
-      if (b == t('Today')) {
+      if (b == t('today')) {
         return 1;
       }
-      if (a == t('This Week')) {
+      if (a == t('this_week')) {
         return -1;
       }
-      if (b == t('This Week')) {
+      if (b == t('this_week')) {
         return 1;
       }
-      if (a == t('This Month')) {
+      if (a == t('this_month')) {
         return -1;
       }
-      if (b == t('This Month')) {
+      if (b == t('this_month')) {
         return 1;
       }
-      if (a == t('Earlier')) {
+      if (a == t('earlier')) {
         return -1;
       }
-      if (b == t('Earlier')) {
+      if (b == t('earlier')) {
         return 1;
       }
     })

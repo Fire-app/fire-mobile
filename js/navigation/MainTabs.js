@@ -83,7 +83,7 @@ const AppTabs = () => {
         name={routes.main.notification}
         options={{
           tabBarIcon: CreateTabIcon(ICON_NAMES.NOTIFICATIONS),
-          tabBarLabel: CreateTabLabel(t('Notifications')),
+          tabBarLabel: CreateTabLabel(t('notifications')),
         }}
       />
       <Tabs.Screen
