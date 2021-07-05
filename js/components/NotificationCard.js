@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import TimeAgo from 'react-native-timeago';
 import { colors } from '../styles';
 import textStyles from '../styles/textStyles';

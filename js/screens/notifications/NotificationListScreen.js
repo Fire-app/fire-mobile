@@ -1,12 +1,12 @@
 import { View } from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
 
+import { useTranslation } from 'react-i18next';
 import { NOTIFICATION_LIST } from '../../../data/notification';
 
 import NotificationButton from '../../components/Buttons/NotificationButton';
 import NotificationList from '../../components/Resources/NotificationList';
 
-import { useTranslation } from 'react-i18next';
 
 
 // State is keeping track only of app stuff.
@@ -21,6 +21,7 @@ import { useTranslation } from 'react-i18next';
 
 // First do seen/unseen, then watch redux lecture.
 
+const moment = require('moment');
 
 export default function NotificationListScreen() {
 
@@ -29,14 +30,13 @@ export default function NotificationListScreen() {
   const { t } = useTranslation();
 
   const notificationSorter = NOTIFICATION_LIST.reduce((obj, notification) => {
-    const moment = require('moment');
 
     moment.locale();
     // Gets difference, in days, between curr notification date and moment.
-    let now = moment(new Date())
-    let momentDate = moment(notification.date)
-    let duration = moment.duration(now.diff(momentDate))
-    let daysDuration = duration.asDays()
+    const now = moment(new Date())
+    const momentDate = moment(notification.date)
+    const duration = moment.duration(now.diff(momentDate))
+    const daysDuration = duration.asDays()
 
     if (daysDuration < 1) {
       dateKey = t('today');
@@ -55,7 +55,7 @@ export default function NotificationListScreen() {
   }, {});
 
   const sections = Object.keys(notificationSorter)
-    .sort(function (a, b) {
+    .sort(() => (a, b) => {
       if (a == t('today')) {
         return -1;
       }
@@ -80,6 +80,7 @@ export default function NotificationListScreen() {
       if (b == t('earlier')) {
         return 1;
       }
+      return 1;
     })
     .map((dateKey) => ({
       data: notificationSorter[dateKey],

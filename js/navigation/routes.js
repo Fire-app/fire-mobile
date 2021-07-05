@@ -14,6 +14,7 @@ const routes = {
   },
 
   notificationStack: 'NOTIFICATION_STACK',
+  
   onboarding: {
     complete: 'ONBOARDING_COMPLETE',
     hotline: 'ONBOARDING_HOTLINE',

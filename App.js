@@ -27,9 +27,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import './js/config';
 import Toast, { BaseToast } from 'react-native-toast-message';
-import registerForPushNotificationsAsync, {
-  setupPush, 
-} from './js/components/PushNotifications';
 
 import {
   initialize as initializeSentry,
@@ -40,7 +37,8 @@ import Navigation from './js/navigation';
 import createPersistedStore from './js/store/createPersistedStore';
 import { rehydrateLanguageSelection } from './js/config/i18n';
 import { colors } from './js/styles';
-import { Platform } from 'react-native';
+
+import setupPush from './js/push_notifications/PushNotifications'
 
 initializeSentry(); // Load our build time configs
 logMessage('Sentry Initialized');
@@ -120,6 +118,7 @@ const App = () => {
     setNotification,
     notificationListener,
     responseListener,
+    Navigation,
   );
 
   const googleFontsLoaded = useFonts({
@@ -176,7 +175,7 @@ const App = () => {
         text2Style={{
           color: colors.white,
           fontSize: 12,
-          fontWeight: 'semibold',
+          fontWeight: 'bold',
         }}
       />
     ),
