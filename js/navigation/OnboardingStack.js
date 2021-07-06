@@ -7,6 +7,7 @@ import {
   LanguageScreen,
   WelcomeScreen,
   InfoScreen,
+  notificationSetScreen,
 } from '../screens/onboarding';
 
 import routes from './routes';
@@ -26,6 +27,10 @@ const OnboardingStack = () => (
     <Stack.Screen component={WelcomeScreen} name={onboardingRoutes.welcome} />
     <Stack.Screen component={InfoScreen} name={onboardingRoutes.info} />
     <Stack.Screen component={HotlineScreen} name={onboardingRoutes.hotline} />
+    <Stack.Screen
+      component={notificationSetScreen}
+      name={onboardingRoutes.notificationSet}
+    />
     <Stack.Screen component={CompleteScreen} name={onboardingRoutes.complete} />
   </Stack.Navigator>
 );

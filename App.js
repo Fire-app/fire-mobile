@@ -100,9 +100,6 @@ const App = () => {
 
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
-  // moment const
-  const moment = require('moment')
-
   const googleFontsLoaded = useFonts({
     Roboto_400Regular,
     Roboto_500Medium,

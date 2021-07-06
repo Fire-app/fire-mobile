@@ -6,6 +6,8 @@ import routes from '../navigation/routes';
 
 import registerForPushNotificationsAsync from './registerForPushNotificationsAsync';
 
+const onboardingRoutes = routes.onboarding;
+
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldPlaySound: false,
@@ -18,7 +20,11 @@ Notifications.setNotificationHandler({
 // No token being printed. Double check all the things that are upsets.
 
 function test(navigation) {
+  console.log("a")
+  console.log("b")
+  console.log(typeof navigation)
   navigation.navigate(routes.main.notification)
+  console.log("c")
 }
 
 export default function setupPush(
@@ -28,6 +34,7 @@ export default function setupPush(
   responseListener,
   navigation,
 ) {
+  console.log("INSIDE SET UP PUSH")
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
       setExpoPushToken(token)

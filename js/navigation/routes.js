@@ -20,6 +20,7 @@ const routes = {
     hotline: 'ONBOARDING_HOTLINE',
     info: 'ONBOARDING_INFO',
     language: 'ONBOARDING_LANGUAGE',
+    notificationSet: 'NOTIFICATION_SET',
     welcome: 'ONBOARDING_WELCOME',
   },
 
