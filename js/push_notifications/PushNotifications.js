@@ -1,9 +1,10 @@
-import * as Notifications from "expo-notifications";
-import { useEffect } from "react";
+import * as Notifications from 'expo-notifications';
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-import routes from '../../js/navigation/routes';
+import routes from '../navigation/routes';
 
-import registerForPushNotificationsAsync from "./registerForPushNotificationsAsync";
+import registerForPushNotificationsAsync from './registerForPushNotificationsAsync';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -13,12 +14,11 @@ Notifications.setNotificationHandler({
   }),
 });
 
+// Navigation is erroring out.
+// No token being printed. Double check all the things that are upsets.
 
-function test (navigation) {
-  console.log("a")
-  console.log("b")
-  navigation.navigate(routes.notificationStack)
-  console.log("c")
+function test(navigation) {
+  navigation.navigate(routes.main.notification)
 }
 
 export default function setupPush(
@@ -53,3 +53,9 @@ export default function setupPush(
     };
   }, []);
 }
+
+setupPush.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};

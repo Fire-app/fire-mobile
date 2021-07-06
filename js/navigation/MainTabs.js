@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import EmergencyScreen from '../screens/EmergencyScreen';
 import { colors, textStyles, shadows } from '../styles';
 import ResourcesStack from './ResourcesStack';
@@ -13,6 +13,7 @@ import SettingsStack from './SettingsStack';
 import NotificationStack from './NotificationStack';
 import routes from './routes';
 import FireIcon, { ICON_NAMES } from '../components/FireIcon';
+
 
 const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();

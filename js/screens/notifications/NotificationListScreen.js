@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import React from 'react';
+import React, { useState, useRef } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { NOTIFICATION_LIST } from '../../../data/notification';
@@ -7,6 +7,7 @@ import { NOTIFICATION_LIST } from '../../../data/notification';
 import NotificationButton from '../../components/Buttons/NotificationButton';
 import NotificationList from '../../components/Resources/NotificationList';
 
+import setupPush from '../../push_notifications/PushNotifications'
 
 
 // State is keeping track only of app stuff.
@@ -23,7 +24,20 @@ import NotificationList from '../../components/Resources/NotificationList';
 
 const moment = require('moment');
 
-export default function NotificationListScreen() {
+export default function NotificationListScreen( {navigation} ) {
+
+  const [expoPushToken, setExpoPushToken] = useState('');
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef(null);
+
+  setupPush(
+    setExpoPushToken,
+    setNotification,
+    notificationListener,
+    responseListener,
+    navigation,
+  );
 
   // Will change how notifications are handled.
   let dateKey = '';

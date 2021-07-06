@@ -38,8 +38,6 @@ import createPersistedStore from './js/store/createPersistedStore';
 import { rehydrateLanguageSelection } from './js/config/i18n';
 import { colors } from './js/styles';
 
-import setupPush from './js/push_notifications/PushNotifications'
-
 initializeSentry(); // Load our build time configs
 logMessage('Sentry Initialized');
 SplashScreenUtils.preventAutoHideAsync().catch((e) =>
@@ -104,22 +102,6 @@ const App = () => {
 
   // moment const
   const moment = require('moment')
-
-  // Consts used for Push Notifications
-  const [expoPushToken, setExpoPushToken] = useState('');
-  const [notification, setNotification] = useState(false);
-  const notificationListener = useRef();
-  const responseListener = useRef(null);
-
-  // push notification setup
-
-  setupPush(
-    setExpoPushToken,
-    setNotification,
-    notificationListener,
-    responseListener,
-    Navigation,
-  );
 
   const googleFontsLoaded = useFonts({
     Roboto_400Regular,
