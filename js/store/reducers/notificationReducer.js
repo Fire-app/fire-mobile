@@ -3,8 +3,6 @@ import {
   TOGGLE_DEFAULT_NOTIFICATIONS,
 } from '../actions/constants';
 
-// Initial state will be 10 most recent notifications fetched from database
-// Do that on a separate file.
 const initialState = {
   default_notifications: true,
   ice_notification: true,

@@ -16,8 +16,12 @@ import toggleDefaultNotification from '../../store/actions/notification/toggleDe
 
 const moment = require('moment');
 
+const TODAY = 'today';
+const THIS_WEEK = 'this_week';
+const THIS_MONTH = 'this_month';
+const EARLIER = 'earlier';
+
 export default function NotificationListScreen({ navigation }) {
-  
   const [expoPushToken, setExpoPushToken] = useState('');
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
@@ -28,13 +32,12 @@ export default function NotificationListScreen({ navigation }) {
     setNotification,
     notificationListener,
     responseListener,
-    navigation,
+    navigation
   );
 
-  // NOTIFICATION STATE
   const [notificationArr, setNotificationArr] = useState(NOTIFICATION_LIST);
 
-  // TYPE OF NOTIFICATION TO BE SEEN HANDLER: MOVE THIS TO A DIFF SCREEN LATER
+  // TYPE OF NOTIFICATION TO BE SEEN - HANDLER: MOVE THIS TO A DIFF SCREEN
   const dispatch = useDispatch();
   const toggleIce = () => dispatch(toggleIceNotification());
   const toggleDefault = () => dispatch(toggleDefaultNotification());
@@ -56,13 +59,13 @@ export default function NotificationListScreen({ navigation }) {
     const daysDuration = duration.asDays();
 
     if (daysDuration < 1) {
-      dateKey = t('today');
+      dateKey = t(TODAY);
     } else if (daysDuration < 8) {
-      dateKey = t('this_week');
+      dateKey = t(THIS_WEEK);
     } else if (daysDuration < 31) {
-      dateKey = t('this_month');
+      dateKey = t(THIS_MONTH);
     } else {
-      dateKey = t('earlier');
+      dateKey = t(EARLIER);
     }
 
     if (iceState === false && notification.type === ICE) {
@@ -79,28 +82,28 @@ export default function NotificationListScreen({ navigation }) {
 
   const sections = Object.keys(notificationSorter)
     .sort(() => (a, b) => {
-      if (a == t('today')) {
+      if (a == t(TODAY)) {
         return -1;
       }
-      if (b == t('today')) {
+      if (b == t(TODAY)) {
         return 1;
       }
-      if (a == t('this_week')) {
+      if (a == t(THIS_WEEK)) {
         return -1;
       }
-      if (b == t('this_week')) {
+      if (b == t(THIS_WEEK)) {
         return 1;
       }
-      if (a == t('this_month')) {
+      if (a == t(THIS_MONTH)) {
         return -1;
       }
-      if (b == t('this_month')) {
+      if (b == t(THIS_MONTH)) {
         return 1;
       }
-      if (a == t('earlier')) {
+      if (a == t(EARLIER)) {
         return -1;
       }
-      if (b == t('earlier')) {
+      if (b == t(EARLIER)) {
         return 1;
       }
       return 1;
