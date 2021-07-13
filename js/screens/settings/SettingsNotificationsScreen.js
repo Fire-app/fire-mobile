@@ -12,6 +12,10 @@ import toggleIceNotification from '../../store/actions/notification/toggleIceAct
 
 import toggleDefaultNotification from '../../store/actions/notification/toggleDefaultAction';
 
+import untoggleIceNotification from '../../store/actions/notification/untoggleIceAction';
+
+import untoggleDefaultNotification from '../../store/actions/notification/untoggleDefaultAction';
+
 const SwitchRow = ({ title, subtitle, onChange, value, disabled }) => {
   return (
     <View
@@ -45,6 +49,8 @@ const SettingsNotificationScreen = () => {
   const dispatch = useDispatch();
   const toggleIce = () => dispatch(toggleIceNotification());
   const toggleDefault = () => dispatch(toggleDefaultNotification());
+  const untoggleIce = () => dispatch(untoggleIceNotification());
+  const untoggleDefault = () => dispatch(untoggleDefaultNotification());
   const iceState = useSelector((state) => state.notifications.ice_notification);
   const defaultState = useSelector(
     (state) => state.notifications.default_notifications
@@ -68,7 +74,7 @@ const SettingsNotificationScreen = () => {
   };
   
   /*   THIS IS USEFUL, BUT WORRY ABOUT IT WHEN NOT MOCK API CALLS
-  
+
   const confirmedSubscriptions = useRef({});
   const isReverting = useRef(false);
 
@@ -99,6 +105,8 @@ const SettingsNotificationScreen = () => {
             enableNotifications();
           } else {
             setNotificationsEnabled(false);
+            untoggleIce();
+            untoggleDefault();
             /* setSubscriptions({}); */
           }
         }}

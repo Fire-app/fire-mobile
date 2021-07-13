@@ -1,6 +1,8 @@
 import {
   TOGGLE_ICE_NOTIFICATIONS,
   TOGGLE_DEFAULT_NOTIFICATIONS,
+  UNTOGGLE_ICE_NOTIFICATIONS,
+  UNTOGGLE_DEFAULT_NOTIFICATIONS,
 } from '../actions/constants';
 
 const initialState = {
@@ -20,6 +22,18 @@ const notificationReducer = (state = initialState, action) => {
       return {
         ...state,
         default_notifications: !state.default_notifications,
+      };
+    }
+    case UNTOGGLE_ICE_NOTIFICATIONS: {
+      return {
+        ...state,
+        ice_notification: false,
+      };
+    }
+    case UNTOGGLE_DEFAULT_NOTIFICATIONS: {
+      return {
+        ...state,
+        default_notifications: false,
       };
     }
     default: {

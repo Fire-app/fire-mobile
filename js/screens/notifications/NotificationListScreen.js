@@ -1,18 +1,14 @@
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
 import React, { useState, useRef } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NOTIFICATION_LIST, ICE, DEFAULT } from '../../../data/notification';
 
 import NotificationButton from '../../components/Buttons/NotificationButton';
 import NotificationList from '../../components/Resources/NotificationList';
 
 import setupPush from '../../push_notifications/PushNotifications';
-
-import toggleIceNotification from '../../store/actions/notification/toggleIceAction';
-
-import toggleDefaultNotification from '../../store/actions/notification/toggleDefaultAction';
 
 const moment = require('moment');
 
@@ -36,11 +32,6 @@ export default function NotificationListScreen({ navigation }) {
   );
 
   const [notificationArr, setNotificationArr] = useState(NOTIFICATION_LIST);
-
-  // TYPE OF NOTIFICATION TO BE SEEN - HANDLER: MOVE THIS TO A DIFF SCREEN
-  const dispatch = useDispatch();
-  const toggleIce = () => dispatch(toggleIceNotification());
-  const toggleDefault = () => dispatch(toggleDefaultNotification());
 
   const iceState = useSelector((state) => state.notifications.ice_notification);
   const defaultState = useSelector(
@@ -120,8 +111,6 @@ export default function NotificationListScreen({ navigation }) {
         addNotification={setNotificationArr}
         currNotification={notificationArr}
       />
-      <Button color="#841584" onPress={toggleIce} title="toggle Ice" />
-      <Button color="green" onPress={toggleDefault} title="toggle Default" />
     </View>
   );
 }
