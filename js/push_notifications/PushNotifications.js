@@ -6,8 +6,6 @@ import routes from '../navigation/routes';
 
 import registerForPushNotificationsAsync from './registerForPushNotificationsAsync';
 
-const onboardingRoutes = routes.onboarding;
-
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldPlaySound: false,
@@ -34,10 +32,11 @@ export default function setupPush(
   responseListener,
   navigation,
 ) {
-  console.log("INSIDE SET UP PUSH")
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
-      setExpoPushToken(token)
+      setExpoPushToken(token).catch((error) => {
+        console.log(error)
+      })
     );
     // This listener is fired whenever a notification is received while the app is foregrounded
     notificationListener.current = Notifications.addNotificationReceivedListener(

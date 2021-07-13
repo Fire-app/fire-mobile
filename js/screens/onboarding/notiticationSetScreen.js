@@ -55,7 +55,7 @@ export default function notificationSetScreen ({ navigation }){
     responseListener,
     navigation,
   );
-
+  
   return (
     <ScrollView
       alwaysBounceVertical={false}
@@ -65,13 +65,15 @@ export default function notificationSetScreen ({ navigation }){
       <SwitchRow
         onChange={(enabled) => {
           if (enabled) {
-            setNotificationsEnabled(true);
+            //setNotificationsEnabled(true);
             navigation.navigate(onboardingRoutes.complete);
           } else {
-            setNotificationsEnabled(false);
+            navigation.navigate(onboardingRoutes.complete);
+            //setNotificationsEnabled(false);
           }
         }}
         title="Enable Push Notifications"
+        subtitle="temp"
         value={notificationsEnabled}
       />
       <View style={{ height: 80 }} />
