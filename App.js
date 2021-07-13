@@ -27,6 +27,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import './js/config';
 import Toast, { BaseToast } from 'react-native-toast-message';
+import * as Notifications from 'expo-notifications';
 
 import {
   initialize as initializeSentry,
@@ -120,6 +121,27 @@ const App = () => {
       .catch((e) => {
         logError(e, 'Failed to mount');
       });
+  }, []);
+
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
+  useEffect(() => {
+    // This listener is fired whenever a notification is received while the app is foregrounded
+    notificationListener.current = Notifications.addNotificationReceivedListener(
+      // eslint-disable-next-line no-shadow
+      (notification) => {
+        setNotification(notification);
+      }
+    );
+
+    // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
+    responseListener.current = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+        console.log(response);
+      }
+    );
   }, []);
 
   if (!assetsLoaded || !googleFontsLoaded) {

@@ -31,13 +31,13 @@ export default function NotificationListScreen( {navigation} ) {
   const notificationListener = useRef();
   const responseListener = useRef(null);
 
-  setupPush(
-    setExpoPushToken,
-    setNotification,
-    notificationListener,
-    responseListener,
-    navigation,
-  );
+  // setupPush(
+  //   setExpoPushToken,
+  //   setNotification,
+  //   notificationListener,
+  //   responseListener,
+  //   navigation,
+  // );
 
   // Will change how notifications are handled.
   let dateKey = '';
