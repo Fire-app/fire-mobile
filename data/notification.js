@@ -10,8 +10,8 @@ thisWeek.setDate(thisWeek.getDate() - 7)
 thisMonth.setDate(thisMonth.getDate() - 16)
 earlier.setDate(earlier.getDate() - 100)
 
-const ICE = 'ice';
-const DEFAULT = 'default';
+export const ICE = 'ice';
+export const DEFAULT = 'default';
 
 export const NOTIFICATION_LIST = [
   {

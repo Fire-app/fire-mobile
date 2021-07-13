@@ -1,7 +1,7 @@
 import { TOGGLE_DEFAULT_NOTIFICATIONS } from '../constants';
 
-const toggle_default_notification = () => ({
+const toggleDefaultNotification = () => ({
   type: TOGGLE_DEFAULT_NOTIFICATIONS,
 });
 
-export default toggle_default_notification;
+export default toggleDefaultNotification;

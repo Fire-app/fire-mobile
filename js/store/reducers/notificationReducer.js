@@ -1,10 +1,13 @@
-import { TOGGLE_ICE_NOTIFICATIONS, TOGGLE_DEFAULT_NOTIFICATIONS } from '../actions/constants';
+import {
+  TOGGLE_ICE_NOTIFICATIONS,
+  TOGGLE_DEFAULT_NOTIFICATIONS,
+} from '../actions/constants';
 
 // Initial state will be 10 most recent notifications fetched from database
 // Do that on a separate file.
 const initialState = {
-  ice_notification: true,
   default_notifications: true,
+  ice_notification: true,
 };
 
 const notificationReducer = (state = initialState, action) => {
