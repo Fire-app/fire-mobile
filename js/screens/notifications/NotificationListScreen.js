@@ -58,13 +58,14 @@ export default function NotificationListScreen({ navigation }) {
     } else {
       dateKey = t(EARLIER);
     }
-
+  
+    /*
     if (iceState === false && notification.type === ICE) {
       return { ...obj };
     }
     if (defaultState === false && notification.type === DEFAULT) {
       return { ...obj };
-    }
+    }*/
     return {
       ...obj,
       [dateKey]: [...(obj[dateKey] || []), notification],
