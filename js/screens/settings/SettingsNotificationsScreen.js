@@ -2,33 +2,15 @@ import { ScrollView, StyleSheet, Text, View, Alert } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState, useRef } from 'react';
 import { Switch } from 'react-native-gesture-handler';
+import { useDispatch, useSelector } from 'react-redux';
 import { textStyles, colors } from '../../styles';
 import enablePushNotifications from '../../util/enablePushNotifications';
 import i18n from '../../config/i18n';
 import { logError } from '../../diagnostics/sentry';
 
-const sleep = (milliseconds) =>
-  new Promise((resolve) => setTimeout(resolve, milliseconds));
+import toggleIceNotification from '../../store/actions/notification/toggleIceAction';
 
-const flipCoin = () => Math.floor(Math.random() * 2) % 2 === 0;
-
-// eslint-disable-next-line camelcase
-const registerNotificationsApi_MOCK = async ({
-  token,
-  language,
-  subscriptions,
-}) => {
-  await sleep(500);
-
-  if (flipCoin()) throw new Error('Aww shucks, the API request failed!');
-
-  // return the same payload, to indicate this is the state of the server
-  return {
-    language,
-    subscriptions,
-    token,
-  };
-};
+import toggleDefaultNotification from '../../store/actions/notification/toggleDefaultAction';
 
 const SwitchRow = ({ title, subtitle, onChange, value, disabled }) => {
   return (
@@ -60,13 +42,20 @@ SwitchRow.propTypes = {
 };
 
 const SettingsNotificationScreen = () => {
+  const dispatch = useDispatch();
+  const toggleIce = () => dispatch(toggleIceNotification());
+  const toggleDefault = () => dispatch(toggleDefaultNotification());
+  const iceState = useSelector((state) => state.notifications.ice_notification);
+  const defaultState = useSelector(
+    (state) => state.notifications.default_notifications
+  );
   // used to control the layout and optimistic ui.
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
 
   // used only when full confidence this token is valid.
   const [token, setToken] = useState(null);
 
-  const [subscriptions, setSubscriptions] = useState({});
+  /* const [subscriptions, setSubscriptions] = useState({}); */
 
   const enableNotifications = async () => {
     setNotificationsEnabled(true); // set optimistic value
@@ -77,7 +66,9 @@ const SettingsNotificationScreen = () => {
     }
     setToken(newToken);
   };
-
+  
+  /*   THIS IS USEFUL, BUT WORRY ABOUT IT WHEN NOT MOCK API CALLS
+  
   const confirmedSubscriptions = useRef({});
   const isReverting = useRef(false);
 
@@ -94,23 +85,7 @@ const SettingsNotificationScreen = () => {
         subscriptions,
         token,
       };
-
-      registerNotificationsApi_MOCK(payload)
-        .then((confirmedSettings) => {
-          confirmedSubscriptions.current = confirmedSettings.subscriptions;
-          Alert.alert('Success');
-        })
-        .catch((e) => {
-          isReverting.current = true;
-          setSubscriptions(confirmedSubscriptions.current);
-          if (confirmedSubscriptions.current) {
-            setNotificationsEnabled(true);
-          }
-          Alert.alert('Failure');
-          logError(e, 'Error saving notification settings', { payload });
-        });
-    }
-  }, [token, subscriptions]);
+  }, [token, subscriptions]); */
 
   return (
     <ScrollView
@@ -124,7 +99,7 @@ const SettingsNotificationScreen = () => {
             enableNotifications();
           } else {
             setNotificationsEnabled(false);
-            setSubscriptions({});
+            /* setSubscriptions({}); */
           }
         }}
         subtitle="Subtitle"
@@ -137,43 +112,30 @@ const SettingsNotificationScreen = () => {
       <SwitchRow
         disabled={!notificationsEnabled}
         onChange={(enabled) => {
-          setSubscriptions({
+          /* setSubscriptions({
             ...subscriptions,
             iceArrests: enabled,
-          });
+          }); */
+          toggleIce();
         }}
         subtitle="Subscription option 1"
         title="ICE ARRESTS"
-        value={!!subscriptions.iceArrests}
+        value={iceState}
       />
-
-      <View style={{ height: 20 }} />
-      <SwitchRow
-        disabled={!notificationsEnabled}
-        onChange={(enabled) => {
-          setSubscriptions({
-            ...subscriptions,
-            chirlaEvents: enabled,
-          });
-        }}
-        subtitle="Subscription option 2"
-        title="CHIRLA EVENTS"
-        value={!!subscriptions.chirlaEvents}
-      />
-
       <View style={{ height: 20 }} />
 
       <SwitchRow
         disabled={!notificationsEnabled}
         onChange={(enabled) => {
-          setSubscriptions({
+          /* setSubscriptions({
             ...subscriptions,
             announcements: enabled,
-          });
+          }); */
+          toggleDefault();
         }}
         subtitle="Subscription option 3"
         title="ANNOUNCEMENTS"
-        value={!!subscriptions.announcements}
+        value={defaultState}
       />
     </ScrollView>
   );
