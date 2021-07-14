@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   header: {
-    color: 'blue',
+    color: '#E96316',
     fontSize: 25,
   },
 });

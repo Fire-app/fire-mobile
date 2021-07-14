@@ -1,4 +1,4 @@
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TimeAgo from 'react-native-timeago';
@@ -7,6 +7,8 @@ import textStyles from '../styles/textStyles';
 
 export default function NotificationCard({ title, description, date, type }) {
   
+  const test_icon_ice = '../../assets/notificationIcons/ice.png';
+  const test_icon_default = '../../assets/notificationIcons/default.png';
   // Only new notifications will appear as unread. Like, new popups :D
   // Would have groups of notification, one group for today, one for this week,
   // one for this month, one for older...
@@ -29,9 +31,10 @@ export default function NotificationCard({ title, description, date, type }) {
         <Image
           source={
             type === 'default'
-              ? require('../../assets/notificationIcons/test_icon_default.png')
-              : require('../../assets/notificationIcons/test_icon_ice.png')
+              ? require(test_icon_default)
+              : require(test_icon_ice)
           }
+          style={styles.notificationIcon}
         />
         <Text style={textStyles.h5}> {title} </Text>
       </View>
@@ -54,3 +57,12 @@ NotificationCard.propTypes = {
   description: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
+
+const styles = StyleSheet.create({
+  notificationIcon: {
+    width: 25,
+    height: 25,
+    paddingBottom: 25,
+    top: -2,
+  }
+})
