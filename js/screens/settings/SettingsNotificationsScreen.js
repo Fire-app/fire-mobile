@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View, Alert } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Alert, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState, useRef } from 'react';
 import { Switch } from 'react-native-gesture-handler';
@@ -16,7 +16,8 @@ import untoggleIceNotification from '../../store/actions/notification/untoggleIc
 
 import untoggleDefaultNotification from '../../store/actions/notification/untoggleDefaultAction';
 
-const SwitchRow = ({ title, subtitle, onChange, value, disabled }) => {
+const SwitchRow = ({ title, subtitle, onChange, value, disabled, icon }) => {
+  console.log(icon);
   return (
     <View
       style={{
@@ -27,6 +28,7 @@ const SwitchRow = ({ title, subtitle, onChange, value, disabled }) => {
         paddingVertical: 15,
       }}
     >
+      <Image source={icon} style={styles.notificationIcon} />
       <View style={{ flex: 1 }}>
         <Text style={{ ...textStyles.h3, paddingBottom: 5 }}>{title}</Text>
         <Text style={{ ...textStyles.body1 }}>{subtitle}</Text>
@@ -39,6 +41,7 @@ const SwitchRow = ({ title, subtitle, onChange, value, disabled }) => {
 
 SwitchRow.propTypes = {
   disabled: PropTypes.bool,
+  icon: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -72,7 +75,7 @@ const SettingsNotificationScreen = () => {
     }
     setToken(newToken);
   };
-  
+
   /*   THIS IS USEFUL, BUT WORRY ABOUT IT WHEN NOT MOCK API CALLS
 
   const confirmedSubscriptions = useRef({});
@@ -93,6 +96,9 @@ const SettingsNotificationScreen = () => {
       };
   }, [token, subscriptions]); */
 
+  const testIconIce = require('../../../assets/notificationIcons/ice.png');
+  const testIconDefault = require('../../../assets/notificationIcons/default.png');
+  const testNotification = require('../../../assets/notificationIcons/notification.png');
   return (
     <ScrollView
       alwaysBounceVertical={false}
@@ -100,6 +106,7 @@ const SettingsNotificationScreen = () => {
       style={styles.container}
     >
       <SwitchRow
+        icon={testNotification}
         onChange={(enabled) => {
           if (enabled) {
             enableNotifications();
@@ -123,6 +130,7 @@ const SettingsNotificationScreen = () => {
 
       <SwitchRow
         disabled={!notificationsEnabled}
+        icon={testIconIce}
         onChange={(enabled) => {
           /* setSubscriptions({
             ...subscriptions,
@@ -138,6 +146,7 @@ const SettingsNotificationScreen = () => {
 
       <SwitchRow
         disabled={!notificationsEnabled}
+        icon={testIconDefault}
         onChange={(enabled) => {
           /* setSubscriptions({
             ...subscriptions,
@@ -168,5 +177,10 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     padding: 20,
+  },
+  notificationIcon: {
+    height: 25,
+    left: -5,
+    width: 25,
   },
 });
