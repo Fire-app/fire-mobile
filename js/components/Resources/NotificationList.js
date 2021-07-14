@@ -21,8 +21,8 @@ const moment = require('moment');
 
 moment.locale();
 
-const renderItem = ({ item: { title, message, date } }) => (
-  <NotificationCard date={date} description={message} title={title} />
+const renderItem = ({ item: { title, message, date, type } }) => (
+  <NotificationCard date={date} description={message} title={title} type={type} />
 );
 
 const NotificationList = (props) => {

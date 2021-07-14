@@ -103,8 +103,12 @@ const SettingsNotificationScreen = () => {
         onChange={(enabled) => {
           if (enabled) {
             enableNotifications();
+            // Default state when enabled. Subject to change
+            toggleIce();
+            toggleDefault();
           } else {
             setNotificationsEnabled(false);
+            // Default state when disabled. Subject to change
             untoggleIce();
             untoggleDefault();
             /* setSubscriptions({}); */
