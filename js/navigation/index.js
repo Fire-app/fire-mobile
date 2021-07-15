@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native';
+// import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import React from 'react';
 import MainTabs from './MainTabs';
@@ -8,11 +8,7 @@ const Navigation = () => {
   const { complete: onboardingComplete } = useSelector(
     (state) => state.onboarding
   );
-  return (
-    <NavigationContainer>
-      {onboardingComplete ? <MainTabs /> : <OnboardingStack />}
-    </NavigationContainer>
-  );
+  return onboardingComplete ? <MainTabs /> : <OnboardingStack />;
 };
 
 export default Navigation;
