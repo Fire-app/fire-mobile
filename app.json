@@ -6,6 +6,7 @@
     },
     "android": {
       "versionCode": 400000019
-    }
+    }, 
+    "scheme": "fireapp"
   }
 }
