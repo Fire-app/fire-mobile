@@ -40,7 +40,6 @@ import Navigation from './js/navigation';
 import createPersistedStore from './js/store/createPersistedStore';
 import { rehydrateLanguageSelection } from './js/config/i18n';
 import { colors } from './js/styles';
-import routes from './js/navigation/routes';
 
 initializeSentry(); // Load our build time configs
 logMessage('Sentry Initialized');
@@ -94,6 +93,15 @@ async function loadAssetsAsync() {
 const { store, persistor } = createPersistedStore();
 
 const prefix = Linking.createURL('/');
+const config = {
+  screens: {
+    tabs: {
+      screens: {
+        TAB_NOTIFICATION: 'notifications',
+      },
+    },
+  },
+};
 
 const App = () => {
   // NOTE: This is for development quality of life.
@@ -103,21 +111,6 @@ const App = () => {
   /* eslint-disable no-unused-vars */
   const firstMount = useRef(true);
   /* eslint-enable no-unused-vars */
-
-  const config = {
-    screens: {
-      tabs: {
-        screens: {
-          TAB_NOTIFICATION: 'notifications',
-        },
-      },
-    },
-  };
-
-  // const linking = {
-  //   config,
-  //   prefixes: [prefix],
-  // };
 
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
@@ -152,6 +145,7 @@ const App = () => {
     notificationListener.current = Notifications.addNotificationReceivedListener(
       // eslint-disable-next-line no-shadow
       (notification) => {
+        console.log('here');
         setNotification(notification);
       }
     );
