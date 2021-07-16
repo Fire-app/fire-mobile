@@ -31,6 +31,7 @@ import * as Notifications from 'expo-notifications';
 
 import * as Linking from 'expo-linking';
 import { NavigationContainer } from '@react-navigation/native';
+import linking from './js/util/linkingConfig';
 import {
   initialize as initializeSentry,
   logMessage,
@@ -92,17 +93,6 @@ async function loadAssetsAsync() {
 
 const { store, persistor } = createPersistedStore();
 
-const prefix = Linking.createURL('/');
-const config = {
-  screens: {
-    tabs: {
-      screens: {
-        TAB_NOTIFICATION: 'notifications',
-      },
-    },
-  },
-};
-
 const App = () => {
   // NOTE: This is for development quality of life.
   // This prevents the useEffect of SplashScreenUtils.preventAutoHideAsync from
@@ -145,7 +135,6 @@ const App = () => {
     notificationListener.current = Notifications.addNotificationReceivedListener(
       // eslint-disable-next-line no-shadow
       (notification) => {
-        console.log('here');
         setNotification(notification);
       }
     );
@@ -153,9 +142,7 @@ const App = () => {
     // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
     responseListener.current = Notifications.addNotificationResponseReceivedListener(
       (response) => {
-        // console.log(response);
         const url = response.notification.request.content.data.route;
-        console.log(response.notification.request.content.data.route);
         console.log(url);
         Linking.openURL(url);
       }
@@ -209,38 +196,7 @@ const App = () => {
     <>
       <ReduxProvider store={store}>
         <PersistGate persistor={persistor}>
-          <NavigationContainer
-            linking={{
-              config,
-              prefixes: [prefix],
-              subscribe(listener) {
-                // todo: typecheck the url?
-                const onReceiveURL = (url) => listener(url);
-
-                // Listen to incoming links from deep linking
-                Linking.addEventListener('url', onReceiveURL);
-
-                // Listen to expo push notifications
-                const subscription = Notifications.addNotificationResponseReceivedListener(
-                  (response) => {
-                    const url =
-                      response.notification.request.content.data.route;
-                    console.log(url);
-                    // Any custom logic to see whether the URL needs to be handled
-
-                    // Let React Navigation handle the URL
-                    listener(url);
-                  }
-                );
-
-                return () => {
-                  // Clean up the event listeners
-                  Linking.removeEventListener('url', onReceiveURL);
-                  subscription.remove();
-                };
-              },
-            }}
-          >
+          <NavigationContainer linking={linking}>
             <Navigation />
           </NavigationContainer>
         </PersistGate>
