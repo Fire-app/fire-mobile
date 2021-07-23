@@ -27,7 +27,11 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import './js/config';
 import Toast, { BaseToast } from 'react-native-toast-message';
+import * as Notifications from 'expo-notifications';
 
+import * as Linking from 'expo-linking';
+import { NavigationContainer } from '@react-navigation/native';
+import linking from './js/util/linkingConfig';
 import {
   initialize as initializeSentry,
   logMessage,
@@ -122,6 +126,29 @@ const App = () => {
       });
   }, []);
 
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
+  useEffect(() => {
+    // This listener is fired whenever a notification is received while the app is foregrounded
+    notificationListener.current = Notifications.addNotificationReceivedListener(
+      // eslint-disable-next-line no-shadow
+      (notification) => {
+        setNotification(notification);
+      }
+    );
+
+    // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
+    responseListener.current = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+        const url = response.notification.request.content.data.route;
+        console.log(url);
+        Linking.openURL(url);
+      }
+    );
+  }, []);
+
   if (!assetsLoaded || !googleFontsLoaded) {
     // Use declarative component for this to not bleed into the rest of the app's scope.
     return <StatusBar backgroundColor={colors.white} barStyle="dark-content" />;
@@ -169,7 +196,9 @@ const App = () => {
     <>
       <ReduxProvider store={store}>
         <PersistGate persistor={persistor}>
-          <Navigation />
+          <NavigationContainer linking={linking}>
+            <Navigation />
+          </NavigationContainer>
         </PersistGate>
       </ReduxProvider>
       <Toast ref={(ref) => Toast.setRef(ref)} config={toastConfig} />

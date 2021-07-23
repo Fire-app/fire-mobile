@@ -18,11 +18,11 @@ Notifications.setNotificationHandler({
 // No token being printed. Double check all the things that are upsets.
 
 function test(navigation) {
-  console.log("a")
-  console.log("b")
-  console.log(typeof navigation)
-  navigation.navigate(routes.main.notification)
-  console.log("c")
+  console.log('a');
+  console.log('b');
+  console.log(typeof navigation);
+  navigation.navigate(routes.main.notification);
+  console.log('c');
 }
 
 export default function setupPush(
@@ -30,8 +30,9 @@ export default function setupPush(
   setNotification,
   notificationListener,
   responseListener,
-  navigation,
+  navigation
 ) {
+  console.log(' UP PUSH');
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
       setExpoPushToken(token).catch((error) => {
@@ -47,7 +48,7 @@ export default function setupPush(
     // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
     responseListener.current = Notifications.addNotificationResponseReceivedListener(
       () => {
-        return ( test(navigation) )
+        return test(navigation);
       }
     );
 

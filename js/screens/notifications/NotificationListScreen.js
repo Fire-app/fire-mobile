@@ -23,20 +23,13 @@ export default function NotificationListScreen({ navigation }) {
   const notificationListener = useRef();
   const responseListener = useRef(null);
 
-  setupPush(
-    setExpoPushToken,
-    setNotification,
-    notificationListener,
-    responseListener,
-    navigation
-  );
-
-  const [notificationArr, setNotificationArr] = useState(NOTIFICATION_LIST);
-
-  const iceState = useSelector((state) => state.notifications.ice_notification);
-  const defaultState = useSelector(
-    (state) => state.notifications.default_notifications
-  );
+  // setupPush(
+  //   setExpoPushToken,
+  //   setNotification,
+  //   notificationListener,
+  //   responseListener,
+  //   navigation,
+  // );
 
   let dateKey = '';
   const { t } = useTranslation();
