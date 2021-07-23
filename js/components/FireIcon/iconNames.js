@@ -9,6 +9,7 @@ export const FEATHER_ICONS = {
   HOME: 'home',
   INFO: 'info',
   INSTAGRAM: 'instagram',
+  NOTIFICATIONS: 'bell',
   PHONE: 'phone',
   ROTATE_CCW: 'rotate-ccw',
   SHIELD: 'shield',

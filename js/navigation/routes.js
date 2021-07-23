@@ -2,27 +2,36 @@ const routes = {
   emergencyModal: 'EMERGENCY_MODAL',
   main: {
     emergency: 'TAB_EMERGENCY',
+    notification: 'TAB_NOTIFICATION',
     resources: 'TAB_RESOURCES',
     rights: 'TAB_RIGHTS',
     settings: 'TAB_SETTINGS',
   },
 
   mainTabs: 'MAIN_TABS',
+  notification: {
+    notificationList: 'NOTIFICATION_LIST',
+  },
+
+  notificationStack: 'NOTIFICATION_STACK',
+  
   onboarding: {
     complete: 'ONBOARDING_COMPLETE',
     hotline: 'ONBOARDING_HOTLINE',
     info: 'ONBOARDING_INFO',
     language: 'ONBOARDING_LANGUAGE',
+    notificationSet: 'NOTIFICATION_SET',
     welcome: 'ONBOARDING_WELCOME',
   },
 
   onboardingStack: 'ONBOARDING',
+
   resources: {
     details: 'RESOURCES_DETAILS',
     overviewList: 'RESOURCES_LIST',
   },
-
   resourcesStack: 'RESOURCES_STACK',
+
   rights: {
     overviewList: 'RIGHTS_LIST',
   },
