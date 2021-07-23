@@ -31,6 +31,8 @@ export default function NotificationListScreen({ navigation }) {
   //   navigation,
   // );
 
+  const [notificationArr, setNotificationArr] = useState(NOTIFICATION_LIST);
+
   let dateKey = '';
   const { t } = useTranslation();
 
