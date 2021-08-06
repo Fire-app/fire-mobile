@@ -1,6 +1,6 @@
 import { createServer, server } from 'miragejs';
 
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import React, { useState, useRef, useEffect } from 'react';
 
 import { useTranslation } from 'react-i18next';
@@ -19,8 +19,12 @@ const THIS_WEEK = 'this_week';
 const THIS_MONTH = 'this_month';
 const EARLIER = 'earlier';
 
+const myMockFn = jest
+  .fn(() => 'default')
+  .mockImplementationOnce(() => 'first call')
+  .mockImplementationOnce(() => 'second call');
+
 export default function NotificationListScreen({ navigation }) {
-  
   const [expoPushToken, setExpoPushToken] = useState('');
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
@@ -60,12 +64,22 @@ export default function NotificationListScreen({ navigation }) {
     .then((response) => response.json())
     .then((jsonObj) => console.log(jsonObj));
   */
-  const [testhaha, settest] = useState([]);
+  // const [testhaha, settest] = useState([]);
 
-  fetch('/api/notifications')
-    .then((res) => res.json())
-    .then((json) => console.log(json.notifications))
-    .catch((err) => console.log(err));
+  // fetch('/api/notifications')
+  //   .then((res) => res.json())
+  //   .then((json) => settest(json.notifications))
+  //   .catch((err) => console.log(err));
+
+  // try {
+  //   fetch('/api/notifications')
+  //     .then((res) => res.json())
+  //     .then((json) => settest(json.notifications))
+  //     .catch((err) => console.log(err));
+  //   console.log("lol")
+  // } catch {
+  //   console.log(testhaha);
+  // }
 
   const [notificationArr, setNotificationArr] = useState(NOTIFICATION_LIST);
 

@@ -1,6 +1,5 @@
 import { createServer, server } from 'miragejs';
 
-
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
 import PropTypes from 'prop-types';
@@ -51,35 +50,37 @@ if (window.server) {
 
 window.server = createServer({
   routes() {
-    this.namespace = "api"
-    this.resource("movie")
+    this.passthrough('https://exp.host/--/api/v2/push/updateDeviceToken');
+    this.passthrough('https://exp.host/--/api/v2/push/getExpoPushToken');
+    this.namespace = 'api';
+    this.resource('notification');
     this.get('/api/notifications', () => {
       return {
-        notifications: [
-          {
-            id: 1,
-            message: 'This is a test mesesage 1',
-            title: 'Title Test 1',
-            type: 'alert',
-          },
-          {
-            id: 2,
-            message: 'This is a test mesesage 2',
-            title: 'Title Test 2',
-            type: 'alert',
-          },
-          {
-            id: 3,
-            message: 'This is a test mesesage 3',
-            title: 'Title Test 3',
-            type: 'alert',
-          },
-        ],
+        "something"
+        // notifications: [
+        //   {
+        //     id: 1,
+        //     message: 'This is a test mesesage 1',
+        //     title: 'Title Test 1',
+        //     type: 'alert',
+        //   },
+        //   {
+        //     id: 2,
+        //     message: 'This is a test mesesage 2',
+        //     title: 'Title Test 2',
+        //     type: 'alert',
+        //   },
+        //   {
+        //     id: 3,
+        //     message: 'This is a test mesesage 3',
+        //     title: 'Title Test 3',
+        //     type: 'alert',
+        //   },
+        // ],
       };
     });
   },
 });
-
 
 initializeSentry(); // Load our build time configs
 logMessage('Sentry Initialized');
