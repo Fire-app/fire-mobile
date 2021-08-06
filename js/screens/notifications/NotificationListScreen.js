@@ -25,19 +25,6 @@ const myMockFn = jest
   .mockImplementationOnce(() => 'second call');
 
 export default function NotificationListScreen({ navigation }) {
-  const [expoPushToken, setExpoPushToken] = useState('');
-  const [notification, setNotification] = useState(false);
-  const notificationListener = useRef();
-  const responseListener = useRef(null);
-
-  setupPush(
-    setExpoPushToken,
-    setNotification,
-    notificationListener,
-    responseListener,
-    navigation
-  );
-
   /*
   fetch('https://fire-app-staging.herokuapp.com/new-expo-token', {
     body: JSON.stringify({
