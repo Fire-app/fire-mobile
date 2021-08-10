@@ -44,6 +44,7 @@
     "expo-web-browser": "~9.1.0",
     "i18n-js": "^3.7.0",
     "i18next": "^19.5.1",
+    "jest-fetch-mock": "^3.0.3",
     "libphonenumber-js": "^1.7.55",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",

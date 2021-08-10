@@ -1,5 +1,3 @@
-import { createServer, server } from 'miragejs';
-
 import { View } from 'react-native';
 import React, { useState, useRef, useEffect } from 'react';
 
@@ -12,6 +10,16 @@ import NotificationList from '../../components/Resources/NotificationList';
 
 import setupPush from '../../push_notifications/PushNotifications';
 
+import registerNewToken from '../../util/registerNewExpoToken'
+
+import fetchMock from "jest-fetch-mock"
+
+/* MOCK FETCH */
+
+fetchMock.enableMocks();
+
+
+
 const moment = require('moment');
 
 const TODAY = 'today';
@@ -19,29 +27,31 @@ const THIS_WEEK = 'this_week';
 const THIS_MONTH = 'this_month';
 const EARLIER = 'earlier';
 
-const myMockFn = jest
-  .fn(() => 'default')
-  .mockImplementationOnce(() => 'first call')
-  .mockImplementationOnce(() => 'second call');
-
 export default function NotificationListScreen({ navigation }) {
-  /*
-  fetch('https://fire-app-staging.herokuapp.com/new-expo-token', {
-    body: JSON.stringify({
-      language: 'english',
-      notification_types: ['alert', 'announcement', 'chirla_event'],
-      token: 'ExponentPushToken[wY4HqoNco_fdu_DF2jmeSC]',
-    }),
-    method: 'POST',
-  })
-    .then((response) => response.json())
-    .then((jsonObj) => console.log(jsonObj));
+  
+  // Register expo token
+  const token = 'ExponentPushToken[wY4HqoNco_fdu_DF2jmeSC]';
+  const notificationTypes = ['alert', 'announcement', 'chirla_event'];
+  const language = 'english';
+  registerNewToken(token, language, notificationTypes);
+
+  // fetch('https://fire-app-staging.herokuapp.com/new-expo-token', {
+  //   body: JSON.stringify({
+  //     language: 'english',
+  //     notification_types: ['alert', 'announcement', 'chirla_event'],
+  //     token: 'ExponentPushToken[wY4HqoNco_fdu_DF2jmeSC]',
+  //   }),
+  //   method: 'POST',
+  // })
+  //   .then((response) => response.json())
+  //   .then((jsonObj) => console.log(jsonObj));
 
   const tokenHehe = 'ExponentPushToken[wY4HqoNco_fdu_DF2jmeSC]';
   const fireServer =
     'https://fire-app-staging.herokuapp.com/recent-notifications';
   const param = '?expoToken=ExponentPushToken[wY4HqoNco_fdu_DF2jmeSC]';
 
+  // Fetches most recent notifications
   fetch(
     'https://fire-app-staging.herokuapp.com/recent-notifications?expoToken=ExponentPushToken[wY4HqoNco_fdu_DF2jmeSC]',
     {
@@ -50,7 +60,7 @@ export default function NotificationListScreen({ navigation }) {
   )
     .then((response) => response.json())
     .then((jsonObj) => console.log(jsonObj));
-  */
+
   // const [testhaha, settest] = useState([]);
 
   // fetch('/api/notifications')
