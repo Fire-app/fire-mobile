@@ -45,6 +45,7 @@
     "i18n-js": "^3.7.0",
     "i18next": "^19.5.1",
     "libphonenumber-js": "^1.7.55",
+    "mirage": "^0.0.7",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
