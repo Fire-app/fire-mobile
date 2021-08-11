@@ -1,7 +1,6 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "test": "jest",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -12,9 +11,6 @@
     "build-ios-internal": "expo build:ios --release-channel internal",
     "build-android-internal": "expo build:android --release-channel internal",
     "postinstall": "patch-package"
-  },
-  "jest": {
-    "preset": "jest-expo"
   },
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.1.0",
@@ -84,7 +80,6 @@
     "eslint-plugin-react-native": "^3.8.1",
     "eslint-plugin-sort-imports-es6-autofix": "^0.5.0",
     "eslint-plugin-sort-keys-fix": "^1.1.1",
-    "jest": "^27.0.6",
     "jest-expo": "^42.1.0",
     "miragejs": "^0.1.41",
     "patch-package": "^6.4.7",

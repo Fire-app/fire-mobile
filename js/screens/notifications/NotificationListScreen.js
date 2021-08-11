@@ -10,15 +10,13 @@ import NotificationList from '../../components/Resources/NotificationList';
 
 import setupPush from '../../push_notifications/PushNotifications';
 
-import registerNewToken from '../../util/registerNewExpoToken'
+import registerNewToken from '../../util/registerNewExpoToken';
 
-import fetchMock from "jest-fetch-mock"
+import fetchMock from "jest-fetch-mock";
 
 /* MOCK FETCH */
 
 fetchMock.enableMocks();
-
-
 
 const moment = require('moment');
 
