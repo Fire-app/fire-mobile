@@ -1,5 +1,3 @@
-import { createServer, server } from 'miragejs';
-
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
 import PropTypes from 'prop-types';
@@ -44,45 +42,7 @@ import createPersistedStore from './js/store/createPersistedStore';
 import { rehydrateLanguageSelection } from './js/config/i18n';
 import { colors } from './js/styles';
 
-if (window.server) {
-  server.shutdown();
-}
 
-window.server = createServer({
-  routes() {
-    this.passthrough('https://exp.host/--/api/v2/push/updateDeviceToken');
-    this.passthrough('https://exp.host/--/api/v2/push/getExpoPushToken');
-    this.namespace = 'api';
-    this.resource('notification');
-    this.get('/api/notifications', () => {
-      return {
-        notifications: [
-          {
-            id: 1,
-            message: 'This is a test mesesage 1',
-            title: 'Title Test 1',
-            type: 'alert',
-          },
-          {
-            id: 2,
-            message: 'This is a test mesesage 2',
-            title: 'Title Test 2',
-            type: 'alert',
-          },
-          {
-            id: 3,
-            message: 'This is a test mesesage 3',
-            title: 'Title Test 3',
-            type: 'alert',
-          },
-        ],
-      };
-    });
-  },
-});
-
-initializeSentry(); // Load our build time configs
-logMessage('Sentry Initialized');
 SplashScreenUtils.preventAutoHideAsync().catch((e) =>
   logError(e, 'Splash Screen Error')
 );
