@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -10,6 +10,9 @@ import NotificationList from '../../components/Resources/NotificationList';
 
 import setupPush from '../../push_notifications/PushNotifications';
 
+import registerNewToken from './registerNewToken';
+import fetchRecentNotifications from './fetchRecentNotifications';
+
 const moment = require('moment');
 
 const TODAY = 'today';
@@ -18,20 +21,23 @@ const THIS_MONTH = 'this_month';
 const EARLIER = 'earlier';
 
 export default function NotificationListScreen({ navigation }) {
-  const [expoPushToken, setExpoPushToken] = useState('');
-  const [notification, setNotification] = useState(false);
-  const notificationListener = useRef();
-  const responseListener = useRef(null);
+  
+  //Register expo token
+  const token = 'ExponentPushToken[wY4HqoNco_fdu_DF2jmeSC]';
+  const notificationTypes = ['alert', 'announcement', 'chirla_event'];
+  const language = 'english';
+  registerNewToken(token, language, notificationTypes);
 
-  // setupPush(
-  //   setExpoPushToken,
-  //   setNotification,
-  //   notificationListener,
-  //   responseListener,
-  //   navigation,
-  // );
+  // Fetches most recent notifications
+  console.log(token)
+  console.log(fetchRecentNotifications(token));
 
   const [notificationArr, setNotificationArr] = useState(NOTIFICATION_LIST);
+
+  const iceState = useSelector((state) => state.notifications.ice_notification);
+  const defaultState = useSelector(
+    (state) => state.notifications.default_notifications
+  );
 
   let dateKey = '';
   const { t } = useTranslation();
@@ -53,14 +59,15 @@ export default function NotificationListScreen({ navigation }) {
     } else {
       dateKey = t(EARLIER);
     }
-  
-    /*
+
+    /* THIS CODE MAKES IT SO NotificationSet toggles what shows in the notification page
+
     if (iceState === false && notification.type === ICE) {
       return { ...obj };
     }
     if (defaultState === false && notification.type === DEFAULT) {
       return { ...obj };
-    }*/
+    } */
     return {
       ...obj,
       [dateKey]: [...(obj[dateKey] || []), notification],
